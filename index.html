@@ -1,0 +1,23 @@
+<html>
+  <body>
+    <div><font face="verdana" color="blue">Open</font>
+    <font face="verdana" color="red">Power</font>
+    <font face="verdana" color="yellow">System</font>
+    </div>
+    <br/>
+
+    {% if upload %}
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <div>CIM RDF/XML file: <input type="file" name="fname" />&nbsp;<input type="submit" value="Upload"></div>
+    </form>
+    {% endif %}
+
+    {% for terminal in terminals %}
+      {% if terminal.name %}
+        <b>{{ terminal.name }}</b>
+      {% endif %}
+    {% endfor %}
+
+    <a href="{{ url }}">{{ url_linktext }}</a>
+  </body>
+</html>
