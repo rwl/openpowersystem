@@ -25,6 +25,9 @@ from google.appengine.ext import db
 
 from cim_parser import CIMParser
 
+from django.utils import simplejson
+
+
 class MainPage(webapp.RequestHandler):
   def get(self):
 #    terminals_query = Terminal.all().order('-date')
@@ -61,8 +64,28 @@ class UploadPage(webapp.RequestHandler):
 
     self.redirect('/')
 
+
+class JSONHandler(webapp.RequestHandler):
+  def json_upper(self,args):
+    return [args[0].upper()]
+
+  def post(self):
+    args = simplejson.loads(self.request.body)
+    json_func = getattr(self, 'json_%s' % args[u"method"])
+    json_params = args[u"params"]
+    json_method_id = args[u"id"]
+    result = json_func(json_params)
+    # reuse args to send result back
+    args.pop(u"method")
+    args["result"] = result[0]
+    args["error"] = None # IMPORTANT!!
+    self.response.headers['Content-Type'] = 'application/json'
+    self.response.set_status(200)
+    self.response.out.write(simplejson.dumps(args))
+
 application = webapp.WSGIApplication([('/', MainPage),
-                                      ('/upload', UploadPage)],
+                                      ('/upload', UploadPage),
+                                      ('/json', JSONHandler)],
                                      debug=True)
 
 def main():

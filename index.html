@@ -1,4 +1,8 @@
 <html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+  </head>
   <body>
     <div><font face="verdana" color="blue">Open</font>
     <font face="verdana" color="red">Power</font>
@@ -19,5 +23,15 @@
     {% endfor %}
 
     <a href="{{ url }}">{{ url_linktext }}</a>
+
+    <div style="width:80%; height:80%" id="map"></div>
+    <script defer="defer" type="text/javascript">
+        var map = new OpenLayers.Map('map');
+        var wms = new OpenLayers.Layer.WMS( "OpenLayers WMS",
+            "http://labs.metacarta.com/wms/vmap0", {layers: 'basic'} );
+       map.addLayer(wms);
+        map.zoomToMaxExtent();
+    </script>
+
   </body>
 </html>

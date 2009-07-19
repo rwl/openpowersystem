@@ -55,8 +55,6 @@ class CIMAttributeSink(object):
     def triple(self, sub, pred, obj):
         """ Handles triples from the RDF parser.
         """
-        logger.debug("Processing triple [%s %s %s]." % (sub, pred, obj))
-
         ns_sub,  frag_sub  = splitURI(sub)
         ns_pred, frag_pred = splitURI(pred)
         ns_obj,  frag_obj  = splitURI(obj)
@@ -87,53 +85,53 @@ class CIMAttributeSink(object):
             # Map the element according to its URI.
             self.uri_object_map[uri] = element
 
-            element.put()
+            element.put(    )
 
         # If the predicate is in the CIM namespace the triple is specifying
         # an attribute or a reference.
-#        elif ns_pred == self.ns_cim:
-#            # The URI of the object with the attribute being set.
-#            uri = frag_sub
-#            # Strip the double quotes that rdfxml.py adds to literals.
-#            value = ns_obj.strip('"')
-#
-#            # Split the class name and the attribute name.
-#            class_name, camel_attr_name = frag_pred.rsplit(".", 1)
-#            attr_name = self.camel_to_lcu(camel_attr_name)
-##            logger.debug("Attempting to set '%s' for '%s' to '%s'." %
-##                (attr_name, class_name, value))
-#
-#            # Retrieve the object from the URI map.
-#            if self.uri_object_map.has_key(uri):
-#                element = self.uri_object_map[uri]
-#            else:
-#                logger.error("Element [%s] not found." % uri)
-#                return
-#
-#            if not hasattr(element, attr_name):
-#                logger.error("Element [%s] has no attribute: %s" %
-#                    (element.__class__.__name__, attr_name))
-#                return
-#
-#            default = getattr(element, attr_name)
-#            if default is not None:
-#                # Coerce the parsed value according to the type of the default.
-#                default_type = type(default)
-#                value = default_type(value)
-#            else:
-#                logger.debug("Default value of 'None'.")
-#                return
-#
-#            # TODO: Handle enumerations where the 'object' in the triple is the
-#            # URL for the data type and the value must be split of the end of
-#            # the fragment.
-#            # value = frag_obj.rsplit(".", 1)[1]
-#
-#            logger.debug("Setting '%s' attribute '%s' to: %s %s" %
-#                (element.__class__.__name__, attr_name, str(value),
-#                 type(value)))
-#
-#            setattr(element, attr_name, value)
+        elif ns_pred == self.ns_cim:
+            # The URI of the object with the attribute being set.
+            uri = frag_sub
+            # Strip the double quotes that rdfxml.py adds to literals.
+            value = ns_obj.strip('"')
+
+            # Split the class name and the attribute name.
+            class_name, camel_attr_name = frag_pred.rsplit(".", 1)
+            attr_name = self.camel_to_lcu(camel_attr_name)
+#            logger.debug("Attempting to set '%s' for '%s' to '%s'." %
+#                (attr_name, class_name, value))
+
+            # Retrieve the object from the URI map.
+            if self.uri_object_map.has_key(uri):
+                element = self.uri_object_map[uri]
+            else:
+                logger.error("Element [%s] not found." % uri)
+                return
+
+            if not hasattr(element, attr_name):
+                logger.error("Element [%s] has no attribute: %s" %
+                    (element.__class__.__name__, attr_name))
+                return
+
+            default = getattr(element, attr_name)
+            if default is not None:
+                # Coerce the parsed value according to the type of the default.
+                default_type = type(default)
+                value = default_type(value)
+            else:
+                logger.debug("Default value of 'None'.")
+                return
+
+            # TODO: Handle enumerations where the 'object' in the triple is the
+            # URL for the data type and the value must be split of the end of
+            # the fragment.
+            # value = frag_obj.rsplit(".", 1)[1]
+
+            logger.debug("Setting '%s' attribute '%s' to: %s %s" %
+                (element.__class__.__name__, attr_name, str(value),
+                 type(value)))
+
+            setattr(element, attr_name, value)
 
 
 class CIMReferenceSink(object):
@@ -328,10 +326,10 @@ def splitURI(uri):
 
     head, sep, tail = uri.rpartition("#")
     if head and sep:
-        logger.debug("Partitioned URI: '%s', '%s'." % (head + sep, tail))
+#        logger.debug("Partitioned URI: '%s', '%s'." % (head + sep, tail))
         return (head + sep, tail)
     else:
-        logger.debug("URI [%s] has no end fragment." % uri)
+#        logger.debug("URI [%s] has no end fragment." % uri)
         return (tail, "")
 
 
