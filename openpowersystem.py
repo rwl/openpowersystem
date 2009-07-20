@@ -27,30 +27,35 @@ from cim_parser import CIMParser
 
 from django.utils import simplejson
 
-
 class MainPage(webapp.RequestHandler):
   def get(self):
 #    terminals_query = Terminal.all().order('-date')
 #    terminals = terminals_query.fetch(10)
     terminals = []
 
-    if users.get_current_user():
-      url = users.create_logout_url(self.request.uri)
-      url_linktext = 'Logout'
-      upload = True
-    else:
-      url = users.create_login_url(self.request.uri)
-      url_linktext = 'Login'
-      upload = False
+#    if users.get_current_user():
+#      url = users.create_logout_url(self.request.uri)
+#      url_linktext = 'Logout'
+#      upload = True
+#    else:
+#      url = users.create_login_url(self.request.uri)
+#      url_linktext = 'Login'
+#      upload = False
+#
+#    template_values = {'terminals': terminals,
+#                       'url': url,
+#                       'url_linktext': url_linktext,
+#                       'upload': upload}
+#
+#    path = os.path.join(os.path.dirname(__file__), 'index.html')
+#
+#    self.response.out.write(template.render(path, template_values))
 
-    template_values = {'terminals': terminals,
-                       'url': url,
-                       'url_linktext': url_linktext,
-                       'upload': upload}
+#    path = os.path.join(os.path.dirname(__file__), 'upload.html')
+#    self.response.out.write(template.render(path, {}))
 
-    path = os.path.join(os.path.dirname(__file__), 'index.html')
+    self.redirect('/app/ops.html')
 
-    self.response.out.write(template.render(path, template_values))
 
 class UploadPage(webapp.RequestHandler):
   def post(self):
@@ -66,9 +71,6 @@ class UploadPage(webapp.RequestHandler):
 
 
 class JSONHandler(webapp.RequestHandler):
-  def json_upper(self,args):
-    return [args[0].upper()]
-
   def post(self):
     args = simplejson.loads(self.request.body)
     json_func = getattr(self, 'json_%s' % args[u"method"])
@@ -82,6 +84,9 @@ class JSONHandler(webapp.RequestHandler):
     self.response.headers['Content-Type'] = 'application/json'
     self.response.set_status(200)
     self.response.out.write(simplejson.dumps(args))
+
+  def json_upper(self,args):
+    return [args[0].upper()]
 
 application = webapp.WSGIApplication([('/', MainPage),
                                       ('/upload', UploadPage),
