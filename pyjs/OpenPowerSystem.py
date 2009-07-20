@@ -10,46 +10,7 @@ from pyjamas.ui.FileUpload import FileUpload
 from pyjamas import Window
 from pyjamas.JSONService import JSONProxy
 
-class JSONRPCExample:
-    def onModuleLoad(self):
-        self.TEXT_WAITING = "Waiting for response..."
-        self.TEXT_ERROR = "Server Error"
-        self.remote_py = UpperServicePython()
-        self.status=Label()
-        self.text_area = TextArea()
-        self.text_area.setText(r"Please uppercase this string")
-        self.text_area.setCharacterWidth(80)
-        self.text_area.setVisibleLines(8)
-        self.button_py = Button("Send to Python Service", self)
-        buttons = HorizontalPanel()
-        buttons.add(self.button_py)
-        buttons.setSpacing(8)
-        info = r'This example demonstrates the calling of appengine upper(case) method with JSON-RPC from javascript (i.e. Python code compiled with pyjs to javascript).'
-        panel = VerticalPanel()
-        panel.add(HTML(info))
-        panel.add(self.text_area)
-        panel.add(buttons)
-        panel.add(self.status)
-        RootPanel().add(panel)
-
-    def onClick(self, sender):
-        self.status.setText(self.TEXT_WAITING)
-        text = self.text_area.getText()
-        if self.remote_py.upper(self.text_area.getText(), self) < 0:
-            self.status.setText(self.TEXT_ERROR)
-
-    def onRemoteResponse(self, response, request_info):
-        self.status.setText(response)
-
-    def onRemoteError(self, code, message, request_info):
-        self.status.setText("Server Error or Invalid Response: ERROR " + code + " - " + message)
-
-
-class UpperServicePython(JSONProxy):
-    def __init__(self):
-        JSONProxy.__init__(self, "/json", ["upper"])
-
-class Upload:
+class OpenPowerSystem:
     def onModuleLoad(self):
         # Create a FormPanel and point it at a service.
         self.form = FormPanel()
@@ -100,8 +61,47 @@ class Upload:
             event.setCancelled(True)
 
 
+class JSONRPCExample:
+    def onModuleLoad(self):
+        self.TEXT_WAITING = "Waiting for response..."
+        self.TEXT_ERROR = "Server Error"
+        self.remote_py = UpperServicePython()
+        self.status=Label()
+        self.text_area = TextArea()
+        self.text_area.setText(r"Please uppercase this string")
+        self.text_area.setCharacterWidth(80)
+        self.text_area.setVisibleLines(8)
+        self.button_py = Button("Send to Python Service", self)
+        buttons = HorizontalPanel()
+        buttons.add(self.button_py)
+        buttons.setSpacing(8)
+        info = r'This example demonstrates the calling of appengine upper(case) method with JSON-RPC from javascript (i.e. Python code compiled with pyjs to javascript).'
+        panel = VerticalPanel()
+        panel.add(HTML(info))
+        panel.add(self.text_area)
+        panel.add(buttons)
+        panel.add(self.status)
+        RootPanel().add(panel)
+
+    def onClick(self, sender):
+        self.status.setText(self.TEXT_WAITING)
+        text = self.text_area.getText()
+        if self.remote_py.upper(self.text_area.getText(), self) < 0:
+            self.status.setText(self.TEXT_ERROR)
+
+    def onRemoteResponse(self, response, request_info):
+        self.status.setText(response)
+
+    def onRemoteError(self, code, message, request_info):
+        self.status.setText("Server Error or Invalid Response: ERROR " + code + " - " + message)
+
+
+class UpperServicePython(JSONProxy):
+    def __init__(self):
+        JSONProxy.__init__(self, "/json", ["upper"])
+
 if __name__ == '__main__':
 #    pyjd.setup("./public/Upload.html")
-    app = Upload()
+    app = OpenPowerSystem()
     app.onModuleLoad()
 #    pyjd.run()

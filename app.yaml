@@ -10,8 +10,8 @@ handlers:
 - url: /js
   static_dir: js
 
-- url: /output
-  static_dir: output
+- url: /content
+  static_dir: content
 
 - url: /.*
   script: openpowersystem.py

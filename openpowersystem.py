@@ -54,7 +54,7 @@ class MainPage(webapp.RequestHandler):
 #    path = os.path.join(os.path.dirname(__file__), 'upload.html')
 #    self.response.out.write(template.render(path, {}))
 
-    self.redirect('/app/ops.html')
+    self.redirect('/content/index.html')
 
 
 class UploadPage(webapp.RequestHandler):
