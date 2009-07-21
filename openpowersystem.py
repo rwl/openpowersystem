@@ -23,9 +23,11 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from google.appengine.ext import db
 
-from cim_parser import CIMParser
+from cim14.iec61970.core import GeographicalRegion
 
 from django.utils import simplejson
+
+from cim_parser import CIMParser
 
 class MainPage(webapp.RequestHandler):
   def get(self):
@@ -59,13 +61,12 @@ class MainPage(webapp.RequestHandler):
 
 class UploadPage(webapp.RequestHandler):
   def post(self):
+#    if users.get_current_user():
+    rdf_data = self.request.get('uploadFormElement')
+    ns_cim = self.request.get('ns_cim')
 
-    if users.get_current_user():
-        rdf_data = self.request.get('fname')
-        ns_cim = self.request.get('ns_cim')
-
-        parser = CIMParser()
-        parser(rdf_data)
+    parser = CIMParser()
+    parser(rdf_data)
 
     self.redirect('/')
 
@@ -85,8 +86,13 @@ class JSONHandler(webapp.RequestHandler):
     self.response.set_status(200)
     self.response.out.write(simplejson.dumps(args))
 
-  def json_upper(self,args):
-    return [args[0].upper()]
+  def json_get_geographical_region_names(self, args):
+#    regions = db.GqlQuery("SELECT * FROM GeographicalRegion ORDER BY name DESC LIMIT 10")
+    regions = GeographicalRegion.all()
+#    regions = GeographicalRegion.gql("ORDER BY name DESC LIMIT 10")
+
+    names = [region.uri for region in regions]
+    return [names]
 
 application = webapp.WSGIApplication([('/', MainPage),
                                       ('/upload', UploadPage),
