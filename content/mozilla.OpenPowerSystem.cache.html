@@ -5680,123 +5680,6 @@ pyjamas.ui_prepare_mod = function() {
 pyjamas.ui_prepare_mod();
 
 
-// pyjamas.ui.Focus
-
-// module libs (usually imported javascript)
-
-
-
-// module code
-
-pyjamas.ui.Focus = function (__mod_name__) {
-    if(pyjamas.ui.Focus.__was_initialized__) return;
-    pyjamas.ui.Focus.__was_initialized__ = true;
-if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.Focus';
-pyjamas.ui.Focus.__name__ = __mod_name__;
-var Focus = pyjamas.ui.Focus;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Focus', 'pyjamas', 0, false);
-    
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Focus', 'pyjamas.DOM', 0, false);
-    var DOM = pyjamas.DOM;
-
-pyjamas.ui.Focus.blur = function(elem) {
-
-    elem.blur();
-    
-};
-pyjamas.ui.Focus.blur.__name__ = 'blur';
-
-pyjamas.ui.Focus.createFocusable = function() {
-
-    var e = $doc.createElement("DIV");
-    e.tabIndex = 0;
-    return e;
-    
-};
-pyjamas.ui.Focus.createFocusable.__name__ = 'createFocusable';
-
-pyjamas.ui.Focus.focus = function(elem) {
-
-    elem.focus();
-    
-};
-pyjamas.ui.Focus.focus.__name__ = 'focus';
-
-pyjamas.ui.Focus.getTabIndex = function(elem) {
-
-    return elem.tabIndex;
-    
-};
-pyjamas.ui.Focus.getTabIndex.__name__ = 'getTabIndex';
-
-pyjamas.ui.Focus.setAccessKey = function(elem, key) {
-
-    elem.accessKey = key;
-    
-};
-pyjamas.ui.Focus.setAccessKey.__name__ = 'setAccessKey';
-
-pyjamas.ui.Focus.setTabIndex = function(elem, index) {
-
-    elem.tabIndex = index;
-    
-};
-pyjamas.ui.Focus.setTabIndex.__name__ = 'setTabIndex';
-
-return this;
-
-}; /* end pyjamas.ui.Focus */ 
-
-
-
-
-pyjamas.ui.Focus_loaded_fn = function() {
-}
-
-pyjamas.ui.Focus_prepare_mod = function() {
-    if ((typeof (module_load_request['pyjamas.ui.Focus']) == 'undefined') ||
-        (module_load_request['pyjamas.ui.Focus'] < 2)) {
-        module_load_request['pyjamas.ui.Focus'] = 2;
-    }
-    var modnames = new pyjslib.List([
-		new pyjslib.List([
-			'pyjamas']),
-		new pyjslib.List([
-			'pyjamas.DOM',
-			'pyjamas.ui']),
-		new pyjslib.List([
-			])
-	]);
-    sys.overrides.update(new pyjslib.Dict({
-		'mozilla.pyjslib': 'mozilla.pyjslib',
-		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
-	}));
-    path = sys.loadpath;
-    /*
-    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.Focus_loaded_fn,
-                                            0,
-                                            null);
-                                            //'pyjamas.ui.Focus');
-                                            */
-    //alert("module ajax loaded fn called pyjamas.ui.Focus");
-
-    if (sys.appname != 'pyjamas.ui.Focus')
-    {
-        modules['pyjamas.ui.Focus'] = pyjamas.ui.Focus(name);
-        if (module_load_request['pyjamas.ui.Focus'] < 3) {
-            module_load_request['pyjamas.ui.Focus'] = 3;
-        }
-    }
-}
-
-//alert("module ajax loaded pyjamas.ui.Focus");
-
-pyjamas.ui.Focus_prepare_mod();
-
-
 // pyjamas.ui.FocusListener
 
 // module libs (usually imported javascript)
@@ -5912,7 +5795,7 @@ pyjamas.ui.FocusListener_prepare_mod = function() {
 pyjamas.ui.FocusListener_prepare_mod();
 
 
-// pyjamas.ui.KeyboardListener
+// pyjamas.ui.EventObject
 
 // module libs (usually imported javascript)
 
@@ -5920,137 +5803,69 @@ pyjamas.ui.FocusListener_prepare_mod();
 
 // module code
 
-pyjamas.ui.KeyboardListener = function (__mod_name__) {
-    if(pyjamas.ui.KeyboardListener.__was_initialized__) return;
-    pyjamas.ui.KeyboardListener.__was_initialized__ = true;
-if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.KeyboardListener';
-pyjamas.ui.KeyboardListener.__name__ = __mod_name__;
-var KeyboardListener = pyjamas.ui.KeyboardListener;
+pyjamas.ui.EventObject = function (__mod_name__) {
+    if(pyjamas.ui.EventObject.__was_initialized__) return;
+    pyjamas.ui.EventObject.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.EventObject';
+pyjamas.ui.EventObject.__name__ = __mod_name__;
+var EventObject = pyjamas.ui.EventObject;
 
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.KeyboardListener', 'pyjamas', 0, false);
-    
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.KeyboardListener', 'pyjamas.DOM', 0, false);
-    var DOM = pyjamas.DOM;
-
-    pyjamas.ui.KeyboardListener.KEY_ALT = 18;
-    pyjamas.ui.KeyboardListener.KEY_BACKSPACE = 8;
-    pyjamas.ui.KeyboardListener.KEY_CTRL = 17;
-    pyjamas.ui.KeyboardListener.KEY_DELETE = 46;
-    pyjamas.ui.KeyboardListener.KEY_DOWN = 40;
-    pyjamas.ui.KeyboardListener.KEY_END = 35;
-    pyjamas.ui.KeyboardListener.KEY_ENTER = 13;
-    pyjamas.ui.KeyboardListener.KEY_ESCAPE = 27;
-    pyjamas.ui.KeyboardListener.KEY_HOME = 36;
-    pyjamas.ui.KeyboardListener.KEY_LEFT = 37;
-    pyjamas.ui.KeyboardListener.KEY_PAGEDOWN = 34;
-    pyjamas.ui.KeyboardListener.KEY_PAGEUP = 33;
-    pyjamas.ui.KeyboardListener.KEY_RIGHT = 39;
-    pyjamas.ui.KeyboardListener.KEY_SHIFT = 16;
-    pyjamas.ui.KeyboardListener.KEY_TAB = 9;
-    pyjamas.ui.KeyboardListener.KEY_UP = 38;
-    pyjamas.ui.KeyboardListener.MODIFIER_ALT = 4;
-    pyjamas.ui.KeyboardListener.MODIFIER_CTRL = 2;
-    pyjamas.ui.KeyboardListener.MODIFIER_SHIFT = 1;
-pyjamas.ui.KeyboardListener.getKeyboardModifiers = function(event) {
-    var shift = 0;
-    var ctrl = 0;
-    var alt = 0;
-    if (pyjslib.bool(DOM.eventGetShiftKey(event))) {
-    shift = pyjamas.ui.KeyboardListener.MODIFIER_SHIFT;
-    }
-    if (pyjslib.bool(DOM.eventGetCtrlKey(event))) {
-    ctrl = pyjamas.ui.KeyboardListener.MODIFIER_CTRL;
-    }
-    if (pyjslib.bool(DOM.eventGetAltKey(event))) {
-    alt = pyjamas.ui.KeyboardListener.MODIFIER_ALT;
-    }
-    return (shift | ctrl | alt);
+pyjamas.ui.EventObject.__EventObject = function () {
+}
+pyjamas.ui.EventObject.EventObject = function(source) {
+    var instance = new pyjamas.ui.EventObject.__EventObject();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
 };
-pyjamas.ui.KeyboardListener.getKeyboardModifiers.__name__ = 'getKeyboardModifiers';
+pyjamas.ui.EventObject.EventObject.__name__ = 'EventObject';
 
-pyjamas.ui.KeyboardListener.fireKeyboardEvent = function(listeners, sender, event) {
-    var modifiers = pyjamas.ui.KeyboardListener.getKeyboardModifiers(event);
-    var type = DOM.eventGetType(event);
-    if (pyjslib.bool(pyjslib.eq(type, String('keydown')))) {
-
-        var __listener = listeners.__iter__();
-        try {
-            while (true) {
-                var listener = __listener.next();
-                
-        
-    listener.onKeyDown(sender, DOM.eventGetKeyCode(event), modifiers);
-
-            }
-        } catch (e) {
-            if (e.__name__ != pyjslib.StopIteration.__name__) {
-                throw e;
-            }
-        }
-        
-    }
-    else if (pyjslib.bool(pyjslib.eq(type, String('keyup')))) {
-
-        var __listener = listeners.__iter__();
-        try {
-            while (true) {
-                var listener = __listener.next();
-                
-        
-    listener.onKeyUp(sender, DOM.eventGetKeyCode(event), modifiers);
-
-            }
-        } catch (e) {
-            if (e.__name__ != pyjslib.StopIteration.__name__) {
-                throw e;
-            }
-        }
-        
-    }
-    else if (pyjslib.bool(pyjslib.eq(type, String('keypress')))) {
-
-        var __listener = listeners.__iter__();
-        try {
-            while (true) {
-                var listener = __listener.next();
-                
-        
-    listener.onKeyPress(sender, DOM.eventGetKeyCode(event), modifiers);
-
-            }
-        } catch (e) {
-            if (e.__name__ != pyjslib.StopIteration.__name__) {
-                throw e;
-            }
-        }
-        
-    }
-    return null;
-};
-pyjamas.ui.KeyboardListener.fireKeyboardEvent.__name__ = 'fireKeyboardEvent';
-
+pyjamas.ui.EventObject.__EventObject.__initialize__ = function () {
+    if(pyjamas.ui.EventObject.__EventObject.__was_initialized__) return;
+    pyjamas.ui.EventObject.__EventObject.__was_initialized__ = true;
+    pyjs_extend(pyjamas.ui.EventObject.__EventObject, pyjslib.__Object);
+    pyjamas.ui.EventObject.__EventObject.prototype.__class__.__new__ = pyjamas.ui.EventObject.EventObject;
+    pyjamas.ui.EventObject.__EventObject.prototype.__class__.__name__ = 'EventObject';
+    pyjamas.ui.EventObject.__EventObject.prototype.__init__ = function(source) {
+    this.source = source;
+    };
+    pyjamas.ui.EventObject.__EventObject.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.EventObject.__EventObject.prototype.__init__.call.apply(pyjamas.ui.EventObject.__EventObject.prototype.__init__, arguments);
+    };
+    pyjamas.ui.EventObject.__EventObject.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.EventObject.__EventObject.prototype.__init__.instance_method = true;
+    pyjamas.ui.EventObject.__EventObject.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.EventObject.__EventObject.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.EventObject.__EventObject.prototype.getSource = function() {
+    return this.source;
+    };
+    pyjamas.ui.EventObject.__EventObject.prototype.__class__.getSource = function() {
+        return pyjamas.ui.EventObject.__EventObject.prototype.getSource.call.apply(pyjamas.ui.EventObject.__EventObject.prototype.getSource, arguments);
+    };
+    pyjamas.ui.EventObject.__EventObject.prototype.__class__.getSource.unbound_method = true;
+    pyjamas.ui.EventObject.__EventObject.prototype.getSource.instance_method = true;
+    pyjamas.ui.EventObject.__EventObject.prototype.__class__.getSource.__name__ = 'getSource';
+pyjamas.ui.EventObject.__EventObject.prototype.getSource.__name__ = 'getSource';
+}
+pyjamas.ui.EventObject.__EventObject.__initialize__();
 return this;
 
-}; /* end pyjamas.ui.KeyboardListener */ 
+}; /* end pyjamas.ui.EventObject */ 
 
 
 
 
-pyjamas.ui.KeyboardListener_loaded_fn = function() {
+pyjamas.ui.EventObject_loaded_fn = function() {
 }
 
-pyjamas.ui.KeyboardListener_prepare_mod = function() {
-    if ((typeof (module_load_request['pyjamas.ui.KeyboardListener']) == 'undefined') ||
-        (module_load_request['pyjamas.ui.KeyboardListener'] < 2)) {
-        module_load_request['pyjamas.ui.KeyboardListener'] = 2;
+pyjamas.ui.EventObject_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.EventObject']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.EventObject'] < 2)) {
+        module_load_request['pyjamas.ui.EventObject'] = 2;
     }
     var modnames = new pyjslib.List([
 		new pyjslib.List([
 			'pyjamas']),
 		new pyjslib.List([
-			'pyjamas.DOM',
 			'pyjamas.ui']),
 		new pyjslib.List([
 			])
@@ -6061,25 +5876,25 @@ pyjamas.ui.KeyboardListener_prepare_mod = function() {
 	}));
     path = sys.loadpath;
     /*
-    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.KeyboardListener_loaded_fn,
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.EventObject_loaded_fn,
                                             0,
                                             null);
-                                            //'pyjamas.ui.KeyboardListener');
+                                            //'pyjamas.ui.EventObject');
                                             */
-    //alert("module ajax loaded fn called pyjamas.ui.KeyboardListener");
+    //alert("module ajax loaded fn called pyjamas.ui.EventObject");
 
-    if (sys.appname != 'pyjamas.ui.KeyboardListener')
+    if (sys.appname != 'pyjamas.ui.EventObject')
     {
-        modules['pyjamas.ui.KeyboardListener'] = pyjamas.ui.KeyboardListener(name);
-        if (module_load_request['pyjamas.ui.KeyboardListener'] < 3) {
-            module_load_request['pyjamas.ui.KeyboardListener'] = 3;
+        modules['pyjamas.ui.EventObject'] = pyjamas.ui.EventObject(name);
+        if (module_load_request['pyjamas.ui.EventObject'] < 3) {
+            module_load_request['pyjamas.ui.EventObject'] = 3;
         }
     }
 }
 
-//alert("module ajax loaded pyjamas.ui.KeyboardListener");
+//alert("module ajax loaded pyjamas.ui.EventObject");
 
-pyjamas.ui.KeyboardListener_prepare_mod();
+pyjamas.ui.EventObject_prepare_mod();
 
 
 // pyjamas.ui.MouseListener
@@ -6259,7 +6074,7 @@ pyjamas.ui.MouseListener_prepare_mod = function() {
 pyjamas.ui.MouseListener_prepare_mod();
 
 
-// pyjamas.ui.EventObject
+// pyjamas.ui.Focus
 
 // module libs (usually imported javascript)
 
@@ -6267,69 +6082,84 @@ pyjamas.ui.MouseListener_prepare_mod();
 
 // module code
 
-pyjamas.ui.EventObject = function (__mod_name__) {
-    if(pyjamas.ui.EventObject.__was_initialized__) return;
-    pyjamas.ui.EventObject.__was_initialized__ = true;
-if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.EventObject';
-pyjamas.ui.EventObject.__name__ = __mod_name__;
-var EventObject = pyjamas.ui.EventObject;
+pyjamas.ui.Focus = function (__mod_name__) {
+    if(pyjamas.ui.Focus.__was_initialized__) return;
+    pyjamas.ui.Focus.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.Focus';
+pyjamas.ui.Focus.__name__ = __mod_name__;
+var Focus = pyjamas.ui.Focus;
 
-pyjamas.ui.EventObject.__EventObject = function () {
-}
-pyjamas.ui.EventObject.EventObject = function(source) {
-    var instance = new pyjamas.ui.EventObject.__EventObject();
-    if(instance.__init__) instance.__init__.apply(instance, arguments);
-    return instance;
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Focus', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Focus', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+pyjamas.ui.Focus.blur = function(elem) {
+
+    elem.blur();
+    
 };
-pyjamas.ui.EventObject.EventObject.__name__ = 'EventObject';
+pyjamas.ui.Focus.blur.__name__ = 'blur';
 
-pyjamas.ui.EventObject.__EventObject.__initialize__ = function () {
-    if(pyjamas.ui.EventObject.__EventObject.__was_initialized__) return;
-    pyjamas.ui.EventObject.__EventObject.__was_initialized__ = true;
-    pyjs_extend(pyjamas.ui.EventObject.__EventObject, pyjslib.__Object);
-    pyjamas.ui.EventObject.__EventObject.prototype.__class__.__new__ = pyjamas.ui.EventObject.EventObject;
-    pyjamas.ui.EventObject.__EventObject.prototype.__class__.__name__ = 'EventObject';
-    pyjamas.ui.EventObject.__EventObject.prototype.__init__ = function(source) {
-    this.source = source;
-    };
-    pyjamas.ui.EventObject.__EventObject.prototype.__class__.__init__ = function() {
-        return pyjamas.ui.EventObject.__EventObject.prototype.__init__.call.apply(pyjamas.ui.EventObject.__EventObject.prototype.__init__, arguments);
-    };
-    pyjamas.ui.EventObject.__EventObject.prototype.__class__.__init__.unbound_method = true;
-    pyjamas.ui.EventObject.__EventObject.prototype.__init__.instance_method = true;
-    pyjamas.ui.EventObject.__EventObject.prototype.__class__.__init__.__name__ = '__init__';
-pyjamas.ui.EventObject.__EventObject.prototype.__init__.__name__ = '__init__';
-    pyjamas.ui.EventObject.__EventObject.prototype.getSource = function() {
-    return this.source;
-    };
-    pyjamas.ui.EventObject.__EventObject.prototype.__class__.getSource = function() {
-        return pyjamas.ui.EventObject.__EventObject.prototype.getSource.call.apply(pyjamas.ui.EventObject.__EventObject.prototype.getSource, arguments);
-    };
-    pyjamas.ui.EventObject.__EventObject.prototype.__class__.getSource.unbound_method = true;
-    pyjamas.ui.EventObject.__EventObject.prototype.getSource.instance_method = true;
-    pyjamas.ui.EventObject.__EventObject.prototype.__class__.getSource.__name__ = 'getSource';
-pyjamas.ui.EventObject.__EventObject.prototype.getSource.__name__ = 'getSource';
-}
-pyjamas.ui.EventObject.__EventObject.__initialize__();
+pyjamas.ui.Focus.createFocusable = function() {
+
+    var e = $doc.createElement("DIV");
+    e.tabIndex = 0;
+    return e;
+    
+};
+pyjamas.ui.Focus.createFocusable.__name__ = 'createFocusable';
+
+pyjamas.ui.Focus.focus = function(elem) {
+
+    elem.focus();
+    
+};
+pyjamas.ui.Focus.focus.__name__ = 'focus';
+
+pyjamas.ui.Focus.getTabIndex = function(elem) {
+
+    return elem.tabIndex;
+    
+};
+pyjamas.ui.Focus.getTabIndex.__name__ = 'getTabIndex';
+
+pyjamas.ui.Focus.setAccessKey = function(elem, key) {
+
+    elem.accessKey = key;
+    
+};
+pyjamas.ui.Focus.setAccessKey.__name__ = 'setAccessKey';
+
+pyjamas.ui.Focus.setTabIndex = function(elem, index) {
+
+    elem.tabIndex = index;
+    
+};
+pyjamas.ui.Focus.setTabIndex.__name__ = 'setTabIndex';
+
 return this;
 
-}; /* end pyjamas.ui.EventObject */ 
+}; /* end pyjamas.ui.Focus */ 
 
 
 
 
-pyjamas.ui.EventObject_loaded_fn = function() {
+pyjamas.ui.Focus_loaded_fn = function() {
 }
 
-pyjamas.ui.EventObject_prepare_mod = function() {
-    if ((typeof (module_load_request['pyjamas.ui.EventObject']) == 'undefined') ||
-        (module_load_request['pyjamas.ui.EventObject'] < 2)) {
-        module_load_request['pyjamas.ui.EventObject'] = 2;
+pyjamas.ui.Focus_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.Focus']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.Focus'] < 2)) {
+        module_load_request['pyjamas.ui.Focus'] = 2;
     }
     var modnames = new pyjslib.List([
 		new pyjslib.List([
 			'pyjamas']),
 		new pyjslib.List([
+			'pyjamas.DOM',
 			'pyjamas.ui']),
 		new pyjslib.List([
 			])
@@ -6340,25 +6170,25 @@ pyjamas.ui.EventObject_prepare_mod = function() {
 	}));
     path = sys.loadpath;
     /*
-    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.EventObject_loaded_fn,
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.Focus_loaded_fn,
                                             0,
                                             null);
-                                            //'pyjamas.ui.EventObject');
+                                            //'pyjamas.ui.Focus');
                                             */
-    //alert("module ajax loaded fn called pyjamas.ui.EventObject");
+    //alert("module ajax loaded fn called pyjamas.ui.Focus");
 
-    if (sys.appname != 'pyjamas.ui.EventObject')
+    if (sys.appname != 'pyjamas.ui.Focus')
     {
-        modules['pyjamas.ui.EventObject'] = pyjamas.ui.EventObject(name);
-        if (module_load_request['pyjamas.ui.EventObject'] < 3) {
-            module_load_request['pyjamas.ui.EventObject'] = 3;
+        modules['pyjamas.ui.Focus'] = pyjamas.ui.Focus(name);
+        if (module_load_request['pyjamas.ui.Focus'] < 3) {
+            module_load_request['pyjamas.ui.Focus'] = 3;
         }
     }
 }
 
-//alert("module ajax loaded pyjamas.ui.EventObject");
+//alert("module ajax loaded pyjamas.ui.Focus");
 
-pyjamas.ui.EventObject_prepare_mod();
+pyjamas.ui.Focus_prepare_mod();
 
 
 // pyjamas.log
@@ -6552,6 +6382,176 @@ pyjamas.ui.Event_prepare_mod = function() {
 //alert("module ajax loaded pyjamas.ui.Event");
 
 pyjamas.ui.Event_prepare_mod();
+
+
+// pyjamas.ui.KeyboardListener
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.ui.KeyboardListener = function (__mod_name__) {
+    if(pyjamas.ui.KeyboardListener.__was_initialized__) return;
+    pyjamas.ui.KeyboardListener.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.KeyboardListener';
+pyjamas.ui.KeyboardListener.__name__ = __mod_name__;
+var KeyboardListener = pyjamas.ui.KeyboardListener;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.KeyboardListener', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.KeyboardListener', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+    pyjamas.ui.KeyboardListener.KEY_ALT = 18;
+    pyjamas.ui.KeyboardListener.KEY_BACKSPACE = 8;
+    pyjamas.ui.KeyboardListener.KEY_CTRL = 17;
+    pyjamas.ui.KeyboardListener.KEY_DELETE = 46;
+    pyjamas.ui.KeyboardListener.KEY_DOWN = 40;
+    pyjamas.ui.KeyboardListener.KEY_END = 35;
+    pyjamas.ui.KeyboardListener.KEY_ENTER = 13;
+    pyjamas.ui.KeyboardListener.KEY_ESCAPE = 27;
+    pyjamas.ui.KeyboardListener.KEY_HOME = 36;
+    pyjamas.ui.KeyboardListener.KEY_LEFT = 37;
+    pyjamas.ui.KeyboardListener.KEY_PAGEDOWN = 34;
+    pyjamas.ui.KeyboardListener.KEY_PAGEUP = 33;
+    pyjamas.ui.KeyboardListener.KEY_RIGHT = 39;
+    pyjamas.ui.KeyboardListener.KEY_SHIFT = 16;
+    pyjamas.ui.KeyboardListener.KEY_TAB = 9;
+    pyjamas.ui.KeyboardListener.KEY_UP = 38;
+    pyjamas.ui.KeyboardListener.MODIFIER_ALT = 4;
+    pyjamas.ui.KeyboardListener.MODIFIER_CTRL = 2;
+    pyjamas.ui.KeyboardListener.MODIFIER_SHIFT = 1;
+pyjamas.ui.KeyboardListener.getKeyboardModifiers = function(event) {
+    var shift = 0;
+    var ctrl = 0;
+    var alt = 0;
+    if (pyjslib.bool(DOM.eventGetShiftKey(event))) {
+    shift = pyjamas.ui.KeyboardListener.MODIFIER_SHIFT;
+    }
+    if (pyjslib.bool(DOM.eventGetCtrlKey(event))) {
+    ctrl = pyjamas.ui.KeyboardListener.MODIFIER_CTRL;
+    }
+    if (pyjslib.bool(DOM.eventGetAltKey(event))) {
+    alt = pyjamas.ui.KeyboardListener.MODIFIER_ALT;
+    }
+    return (shift | ctrl | alt);
+};
+pyjamas.ui.KeyboardListener.getKeyboardModifiers.__name__ = 'getKeyboardModifiers';
+
+pyjamas.ui.KeyboardListener.fireKeyboardEvent = function(listeners, sender, event) {
+    var modifiers = pyjamas.ui.KeyboardListener.getKeyboardModifiers(event);
+    var type = DOM.eventGetType(event);
+    if (pyjslib.bool(pyjslib.eq(type, String('keydown')))) {
+
+        var __listener = listeners.__iter__();
+        try {
+            while (true) {
+                var listener = __listener.next();
+                
+        
+    listener.onKeyDown(sender, DOM.eventGetKeyCode(event), modifiers);
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    }
+    else if (pyjslib.bool(pyjslib.eq(type, String('keyup')))) {
+
+        var __listener = listeners.__iter__();
+        try {
+            while (true) {
+                var listener = __listener.next();
+                
+        
+    listener.onKeyUp(sender, DOM.eventGetKeyCode(event), modifiers);
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    }
+    else if (pyjslib.bool(pyjslib.eq(type, String('keypress')))) {
+
+        var __listener = listeners.__iter__();
+        try {
+            while (true) {
+                var listener = __listener.next();
+                
+        
+    listener.onKeyPress(sender, DOM.eventGetKeyCode(event), modifiers);
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    }
+    return null;
+};
+pyjamas.ui.KeyboardListener.fireKeyboardEvent.__name__ = 'fireKeyboardEvent';
+
+return this;
+
+}; /* end pyjamas.ui.KeyboardListener */ 
+
+
+
+
+pyjamas.ui.KeyboardListener_loaded_fn = function() {
+}
+
+pyjamas.ui.KeyboardListener_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.KeyboardListener']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.KeyboardListener'] < 2)) {
+        module_load_request['pyjamas.ui.KeyboardListener'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM',
+			'pyjamas.ui']),
+		new pyjslib.List([
+			])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'mozilla.pyjslib': 'mozilla.pyjslib',
+		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.KeyboardListener_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.ui.KeyboardListener');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.ui.KeyboardListener");
+
+    if (sys.appname != 'pyjamas.ui.KeyboardListener')
+    {
+        modules['pyjamas.ui.KeyboardListener'] = pyjamas.ui.KeyboardListener(name);
+        if (module_load_request['pyjamas.ui.KeyboardListener'] < 3) {
+            module_load_request['pyjamas.ui.KeyboardListener'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.ui.KeyboardListener");
+
+pyjamas.ui.KeyboardListener_prepare_mod();
 
 
 // pyjamas.Window
@@ -8548,6 +8548,147 @@ pyjamas.ui.FocusWidget_prepare_mod = function() {
 pyjamas.ui.FocusWidget_prepare_mod();
 
 
+// pyjamas.ui.FileUpload
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.ui.FileUpload = function (__mod_name__) {
+    if(pyjamas.ui.FileUpload.__was_initialized__) return;
+    pyjamas.ui.FileUpload.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.FileUpload';
+pyjamas.ui.FileUpload.__name__ = __mod_name__;
+var FileUpload = pyjamas.ui.FileUpload;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.FileUpload', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.FileUpload', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.FileUpload', 'pyjamas.ui.Widget', 0, false);
+    var Widget = pyjamas.ui.Widget;
+
+pyjamas.ui.FileUpload.__FileUpload = function () {
+}
+pyjamas.ui.FileUpload.FileUpload = function() {
+    var instance = new pyjamas.ui.FileUpload.__FileUpload();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.FileUpload.FileUpload.__name__ = 'FileUpload';
+
+pyjamas.ui.FileUpload.__FileUpload.__initialize__ = function () {
+    if(pyjamas.ui.FileUpload.__FileUpload.__was_initialized__) return;
+    pyjamas.ui.FileUpload.__FileUpload.__was_initialized__ = true;
+    if(!pyjamas.ui.Widget.__Widget.__was_initialized__)
+        pyjamas.ui.Widget.__Widget.__initialize__();
+    pyjs_extend(pyjamas.ui.FileUpload.__FileUpload, pyjamas.ui.Widget.__Widget);
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.__new__ = pyjamas.ui.FileUpload.FileUpload;
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.__name__ = 'FileUpload';
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__init__ = function() {
+    pyjamas.ui.Widget.__Widget.prototype.__class__.__init__(this);
+    this.setElement(DOM.createElement(String('input')));
+    DOM.setAttribute(this.getElement(), String('type'), String('file'));
+    this.setStyleName(String('gwt-FileUpload'));
+    };
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.FileUpload.__FileUpload.prototype.__init__.call.apply(pyjamas.ui.FileUpload.__FileUpload.prototype.__init__, arguments);
+    };
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__init__.instance_method = true;
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.FileUpload.__FileUpload.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.FileUpload.__FileUpload.prototype.getFilename = function() {
+    return DOM.getAttribute(this.getElement(), String('value'));
+    };
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getFilename = function() {
+        return pyjamas.ui.FileUpload.__FileUpload.prototype.getFilename.call.apply(pyjamas.ui.FileUpload.__FileUpload.prototype.getFilename, arguments);
+    };
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getFilename.unbound_method = true;
+    pyjamas.ui.FileUpload.__FileUpload.prototype.getFilename.instance_method = true;
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getFilename.__name__ = 'getFilename';
+pyjamas.ui.FileUpload.__FileUpload.prototype.getFilename.__name__ = 'getFilename';
+    pyjamas.ui.FileUpload.__FileUpload.prototype.getName = function() {
+    return DOM.getAttribute(this.getElement(), String('name'));
+    };
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getName = function() {
+        return pyjamas.ui.FileUpload.__FileUpload.prototype.getName.call.apply(pyjamas.ui.FileUpload.__FileUpload.prototype.getName, arguments);
+    };
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getName.unbound_method = true;
+    pyjamas.ui.FileUpload.__FileUpload.prototype.getName.instance_method = true;
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getName.__name__ = 'getName';
+pyjamas.ui.FileUpload.__FileUpload.prototype.getName.__name__ = 'getName';
+    pyjamas.ui.FileUpload.__FileUpload.prototype.setName = function(name) {
+    DOM.setAttribute(this.getElement(), String('name'), name);
+    };
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.setName = function() {
+        return pyjamas.ui.FileUpload.__FileUpload.prototype.setName.call.apply(pyjamas.ui.FileUpload.__FileUpload.prototype.setName, arguments);
+    };
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.setName.unbound_method = true;
+    pyjamas.ui.FileUpload.__FileUpload.prototype.setName.instance_method = true;
+    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.setName.__name__ = 'setName';
+pyjamas.ui.FileUpload.__FileUpload.prototype.setName.__name__ = 'setName';
+}
+pyjamas.ui.FileUpload.__FileUpload.__initialize__();
+return this;
+
+}; /* end pyjamas.ui.FileUpload */ 
+
+
+
+
+pyjamas.ui.FileUpload_loaded_fn = function() {
+}
+
+pyjamas.ui.FileUpload_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.FileUpload']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.FileUpload'] < 2)) {
+        module_load_request['pyjamas.ui.FileUpload'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM',
+			'pyjamas.ui']),
+		new pyjslib.List([
+			]),
+		new pyjslib.List([
+			'pyjamas.ui.Widget'])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'mozilla.pyjslib': 'mozilla.pyjslib',
+		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.FileUpload_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.ui.FileUpload');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.ui.FileUpload");
+
+    if (sys.appname != 'pyjamas.ui.FileUpload')
+    {
+        modules['pyjamas.ui.FileUpload'] = pyjamas.ui.FileUpload(name);
+        if (module_load_request['pyjamas.ui.FileUpload'] < 3) {
+            module_load_request['pyjamas.ui.FileUpload'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.ui.FileUpload");
+
+pyjamas.ui.FileUpload_prepare_mod();
+
+
 // pyjamas.ui.Label
 
 // module libs (usually imported javascript)
@@ -8846,6 +8987,186 @@ pyjamas.ui.Label_prepare_mod = function() {
 pyjamas.ui.Label_prepare_mod();
 
 
+// pyjamas.ui.Composite
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.ui.Composite = function (__mod_name__) {
+    if(pyjamas.ui.Composite.__was_initialized__) return;
+    pyjamas.ui.Composite.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.Composite';
+pyjamas.ui.Composite.__name__ = __mod_name__;
+var Composite = pyjamas.ui.Composite;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Composite', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Composite', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Composite', 'pyjamas.ui.Widget', 0, false);
+    var Widget = pyjamas.ui.Widget;
+
+pyjamas.ui.Composite.__Composite = function () {
+}
+pyjamas.ui.Composite.Composite = function() {
+    var instance = new pyjamas.ui.Composite.__Composite();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.Composite.Composite.__name__ = 'Composite';
+
+pyjamas.ui.Composite.__Composite.__initialize__ = function () {
+    if(pyjamas.ui.Composite.__Composite.__was_initialized__) return;
+    pyjamas.ui.Composite.__Composite.__was_initialized__ = true;
+    if(!pyjamas.ui.Widget.__Widget.__was_initialized__)
+        pyjamas.ui.Widget.__Widget.__initialize__();
+    pyjs_extend(pyjamas.ui.Composite.__Composite, pyjamas.ui.Widget.__Widget);
+    pyjamas.ui.Composite.__Composite.prototype.__class__.__new__ = pyjamas.ui.Composite.Composite;
+    pyjamas.ui.Composite.__Composite.prototype.__class__.__name__ = 'Composite';
+    pyjamas.ui.Composite.__Composite.prototype.__init__ = function() {
+    pyjamas.ui.Widget.__Widget.prototype.__class__.__init__(this);
+    this.widget = null;
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.Composite.__Composite.prototype.__init__.call.apply(pyjamas.ui.Composite.__Composite.prototype.__init__, arguments);
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.__init__.instance_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.Composite.__Composite.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.Composite.__Composite.prototype.initWidget = function(widget) {
+    if (pyjslib.bool((this.widget != null))) {
+    return null;
+    }
+    widget.removeFromParent();
+    this.setElement(widget.getElement());
+    this.widget = widget;
+    widget.setParent(this);
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.initWidget = function() {
+        return pyjamas.ui.Composite.__Composite.prototype.initWidget.call.apply(pyjamas.ui.Composite.__Composite.prototype.initWidget, arguments);
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.initWidget.unbound_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.initWidget.instance_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.__class__.initWidget.__name__ = 'initWidget';
+pyjamas.ui.Composite.__Composite.prototype.initWidget.__name__ = 'initWidget';
+    pyjamas.ui.Composite.__Composite.prototype.isAttached = function() {
+    if (pyjslib.bool(this.widget)) {
+    return this.widget.isAttached();
+    }
+    return false;
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.isAttached = function() {
+        return pyjamas.ui.Composite.__Composite.prototype.isAttached.call.apply(pyjamas.ui.Composite.__Composite.prototype.isAttached, arguments);
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.isAttached.unbound_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.isAttached.instance_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.__class__.isAttached.__name__ = 'isAttached';
+pyjamas.ui.Composite.__Composite.prototype.isAttached.__name__ = 'isAttached';
+    pyjamas.ui.Composite.__Composite.prototype.onAttach = function() {
+    this.widget.onAttach();
+    DOM.setEventListener(this.getElement(), this);
+    this.onLoad();
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.onAttach = function() {
+        return pyjamas.ui.Composite.__Composite.prototype.onAttach.call.apply(pyjamas.ui.Composite.__Composite.prototype.onAttach, arguments);
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.onAttach.unbound_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.onAttach.instance_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.__class__.onAttach.__name__ = 'onAttach';
+pyjamas.ui.Composite.__Composite.prototype.onAttach.__name__ = 'onAttach';
+    pyjamas.ui.Composite.__Composite.prototype.onDetach = function() {
+    this.widget.onDetach();
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.onDetach = function() {
+        return pyjamas.ui.Composite.__Composite.prototype.onDetach.call.apply(pyjamas.ui.Composite.__Composite.prototype.onDetach, arguments);
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.onDetach.unbound_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.onDetach.instance_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.__class__.onDetach.__name__ = 'onDetach';
+pyjamas.ui.Composite.__Composite.prototype.onDetach.__name__ = 'onDetach';
+    pyjamas.ui.Composite.__Composite.prototype.setWidget = function(widget) {
+    this.initWidget(widget);
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.setWidget = function() {
+        return pyjamas.ui.Composite.__Composite.prototype.setWidget.call.apply(pyjamas.ui.Composite.__Composite.prototype.setWidget, arguments);
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.setWidget.unbound_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.setWidget.instance_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.__class__.setWidget.__name__ = 'setWidget';
+pyjamas.ui.Composite.__Composite.prototype.setWidget.__name__ = 'setWidget';
+    pyjamas.ui.Composite.__Composite.prototype.onBrowserEvent = function(event) {
+    this.widget.onBrowserEvent(event);
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.onBrowserEvent = function() {
+        return pyjamas.ui.Composite.__Composite.prototype.onBrowserEvent.call.apply(pyjamas.ui.Composite.__Composite.prototype.onBrowserEvent, arguments);
+    };
+    pyjamas.ui.Composite.__Composite.prototype.__class__.onBrowserEvent.unbound_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.onBrowserEvent.instance_method = true;
+    pyjamas.ui.Composite.__Composite.prototype.__class__.onBrowserEvent.__name__ = 'onBrowserEvent';
+pyjamas.ui.Composite.__Composite.prototype.onBrowserEvent.__name__ = 'onBrowserEvent';
+}
+pyjamas.ui.Composite.__Composite.__initialize__();
+return this;
+
+}; /* end pyjamas.ui.Composite */ 
+
+
+
+
+pyjamas.ui.Composite_loaded_fn = function() {
+}
+
+pyjamas.ui.Composite_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.Composite']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.Composite'] < 2)) {
+        module_load_request['pyjamas.ui.Composite'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM',
+			'pyjamas.ui']),
+		new pyjslib.List([
+			]),
+		new pyjslib.List([
+			'pyjamas.ui.Widget'])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'mozilla.pyjslib': 'mozilla.pyjslib',
+		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.Composite_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.ui.Composite');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.ui.Composite");
+
+    if (sys.appname != 'pyjamas.ui.Composite')
+    {
+        modules['pyjamas.ui.Composite'] = pyjamas.ui.Composite(name);
+        if (module_load_request['pyjamas.ui.Composite'] < 3) {
+            module_load_request['pyjamas.ui.Composite'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.ui.Composite");
+
+pyjamas.ui.Composite_prepare_mod();
+
+
 // pyjamas.ui.Panel
 
 // module libs (usually imported javascript)
@@ -9108,147 +9429,6 @@ pyjamas.ui.Panel_prepare_mod = function() {
 //alert("module ajax loaded pyjamas.ui.Panel");
 
 pyjamas.ui.Panel_prepare_mod();
-
-
-// pyjamas.ui.FileUpload
-
-// module libs (usually imported javascript)
-
-
-
-// module code
-
-pyjamas.ui.FileUpload = function (__mod_name__) {
-    if(pyjamas.ui.FileUpload.__was_initialized__) return;
-    pyjamas.ui.FileUpload.__was_initialized__ = true;
-if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.FileUpload';
-pyjamas.ui.FileUpload.__name__ = __mod_name__;
-var FileUpload = pyjamas.ui.FileUpload;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.FileUpload', 'pyjamas', 0, false);
-    
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.FileUpload', 'pyjamas.DOM', 0, false);
-    var DOM = pyjamas.DOM;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.FileUpload', 'pyjamas.ui.Widget', 0, false);
-    var Widget = pyjamas.ui.Widget;
-
-pyjamas.ui.FileUpload.__FileUpload = function () {
-}
-pyjamas.ui.FileUpload.FileUpload = function() {
-    var instance = new pyjamas.ui.FileUpload.__FileUpload();
-    if(instance.__init__) instance.__init__.apply(instance, arguments);
-    return instance;
-};
-pyjamas.ui.FileUpload.FileUpload.__name__ = 'FileUpload';
-
-pyjamas.ui.FileUpload.__FileUpload.__initialize__ = function () {
-    if(pyjamas.ui.FileUpload.__FileUpload.__was_initialized__) return;
-    pyjamas.ui.FileUpload.__FileUpload.__was_initialized__ = true;
-    if(!pyjamas.ui.Widget.__Widget.__was_initialized__)
-        pyjamas.ui.Widget.__Widget.__initialize__();
-    pyjs_extend(pyjamas.ui.FileUpload.__FileUpload, pyjamas.ui.Widget.__Widget);
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.__new__ = pyjamas.ui.FileUpload.FileUpload;
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.__name__ = 'FileUpload';
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__init__ = function() {
-    pyjamas.ui.Widget.__Widget.prototype.__class__.__init__(this);
-    this.setElement(DOM.createElement(String('input')));
-    DOM.setAttribute(this.getElement(), String('type'), String('file'));
-    this.setStyleName(String('gwt-FileUpload'));
-    };
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.__init__ = function() {
-        return pyjamas.ui.FileUpload.__FileUpload.prototype.__init__.call.apply(pyjamas.ui.FileUpload.__FileUpload.prototype.__init__, arguments);
-    };
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.__init__.unbound_method = true;
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__init__.instance_method = true;
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.__init__.__name__ = '__init__';
-pyjamas.ui.FileUpload.__FileUpload.prototype.__init__.__name__ = '__init__';
-    pyjamas.ui.FileUpload.__FileUpload.prototype.getFilename = function() {
-    return DOM.getAttribute(this.getElement(), String('value'));
-    };
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getFilename = function() {
-        return pyjamas.ui.FileUpload.__FileUpload.prototype.getFilename.call.apply(pyjamas.ui.FileUpload.__FileUpload.prototype.getFilename, arguments);
-    };
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getFilename.unbound_method = true;
-    pyjamas.ui.FileUpload.__FileUpload.prototype.getFilename.instance_method = true;
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getFilename.__name__ = 'getFilename';
-pyjamas.ui.FileUpload.__FileUpload.prototype.getFilename.__name__ = 'getFilename';
-    pyjamas.ui.FileUpload.__FileUpload.prototype.getName = function() {
-    return DOM.getAttribute(this.getElement(), String('name'));
-    };
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getName = function() {
-        return pyjamas.ui.FileUpload.__FileUpload.prototype.getName.call.apply(pyjamas.ui.FileUpload.__FileUpload.prototype.getName, arguments);
-    };
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getName.unbound_method = true;
-    pyjamas.ui.FileUpload.__FileUpload.prototype.getName.instance_method = true;
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.getName.__name__ = 'getName';
-pyjamas.ui.FileUpload.__FileUpload.prototype.getName.__name__ = 'getName';
-    pyjamas.ui.FileUpload.__FileUpload.prototype.setName = function(name) {
-    DOM.setAttribute(this.getElement(), String('name'), name);
-    };
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.setName = function() {
-        return pyjamas.ui.FileUpload.__FileUpload.prototype.setName.call.apply(pyjamas.ui.FileUpload.__FileUpload.prototype.setName, arguments);
-    };
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.setName.unbound_method = true;
-    pyjamas.ui.FileUpload.__FileUpload.prototype.setName.instance_method = true;
-    pyjamas.ui.FileUpload.__FileUpload.prototype.__class__.setName.__name__ = 'setName';
-pyjamas.ui.FileUpload.__FileUpload.prototype.setName.__name__ = 'setName';
-}
-pyjamas.ui.FileUpload.__FileUpload.__initialize__();
-return this;
-
-}; /* end pyjamas.ui.FileUpload */ 
-
-
-
-
-pyjamas.ui.FileUpload_loaded_fn = function() {
-}
-
-pyjamas.ui.FileUpload_prepare_mod = function() {
-    if ((typeof (module_load_request['pyjamas.ui.FileUpload']) == 'undefined') ||
-        (module_load_request['pyjamas.ui.FileUpload'] < 2)) {
-        module_load_request['pyjamas.ui.FileUpload'] = 2;
-    }
-    var modnames = new pyjslib.List([
-		new pyjslib.List([
-			'pyjamas']),
-		new pyjslib.List([
-			'pyjamas.DOM',
-			'pyjamas.ui']),
-		new pyjslib.List([
-			]),
-		new pyjslib.List([
-			'pyjamas.ui.Widget'])
-	]);
-    sys.overrides.update(new pyjslib.Dict({
-		'mozilla.pyjslib': 'mozilla.pyjslib',
-		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
-	}));
-    path = sys.loadpath;
-    /*
-    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.FileUpload_loaded_fn,
-                                            0,
-                                            null);
-                                            //'pyjamas.ui.FileUpload');
-                                            */
-    //alert("module ajax loaded fn called pyjamas.ui.FileUpload");
-
-    if (sys.appname != 'pyjamas.ui.FileUpload')
-    {
-        modules['pyjamas.ui.FileUpload'] = pyjamas.ui.FileUpload(name);
-        if (module_load_request['pyjamas.ui.FileUpload'] < 3) {
-            module_load_request['pyjamas.ui.FileUpload'] = 3;
-        }
-    }
-}
-
-//alert("module ajax loaded pyjamas.ui.FileUpload");
-
-pyjamas.ui.FileUpload_prepare_mod();
 
 
 // pyjamas.ui.ButtonBase
@@ -10282,253 +10462,6 @@ pyjamas.ui.Button_prepare_mod = function() {
 pyjamas.ui.Button_prepare_mod();
 
 
-// pyjamas.ui.CellPanel
-
-// module libs (usually imported javascript)
-
-
-
-// module code
-
-pyjamas.ui.CellPanel = function (__mod_name__) {
-    if(pyjamas.ui.CellPanel.__was_initialized__) return;
-    pyjamas.ui.CellPanel.__was_initialized__ = true;
-if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.CellPanel';
-pyjamas.ui.CellPanel.__name__ = __mod_name__;
-var CellPanel = pyjamas.ui.CellPanel;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.CellPanel', 'pyjamas', 0, false);
-    
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.CellPanel', 'pyjamas.DOM', 0, false);
-    var DOM = pyjamas.DOM;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.CellPanel', 'pyjamas.ui.ComplexPanel', 0, false);
-    var ComplexPanel = pyjamas.ui.ComplexPanel;
-
-pyjamas.ui.CellPanel.__CellPanel = function () {
-}
-pyjamas.ui.CellPanel.CellPanel = function() {
-    var instance = new pyjamas.ui.CellPanel.__CellPanel();
-    if(instance.__init__) instance.__init__.apply(instance, arguments);
-    return instance;
-};
-pyjamas.ui.CellPanel.CellPanel.__name__ = 'CellPanel';
-
-pyjamas.ui.CellPanel.__CellPanel.__initialize__ = function () {
-    if(pyjamas.ui.CellPanel.__CellPanel.__was_initialized__) return;
-    pyjamas.ui.CellPanel.__CellPanel.__was_initialized__ = true;
-    if(!pyjamas.ui.ComplexPanel.__ComplexPanel.__was_initialized__)
-        pyjamas.ui.ComplexPanel.__ComplexPanel.__initialize__();
-    pyjs_extend(pyjamas.ui.CellPanel.__CellPanel, pyjamas.ui.ComplexPanel.__ComplexPanel);
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.__new__ = pyjamas.ui.CellPanel.CellPanel;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.__name__ = 'CellPanel';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__init__ = function() {
-    pyjamas.ui.ComplexPanel.__ComplexPanel.prototype.__class__.__init__(this);
-    this.table = DOM.createTable();
-    this.body = DOM.createTBody();
-    this.spacing = null;
-    this.padding = null;
-    DOM.appendChild(this.table, this.body);
-    this.setElement(this.table);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.__init__ = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.__init__.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.__init__, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.__init__.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__init__.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.__init__.__name__ = '__init__';
-pyjamas.ui.CellPanel.__CellPanel.prototype.__init__.__name__ = '__init__';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.getTable = function() {
-    return this.table;
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getTable = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.getTable.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.getTable, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getTable.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.getTable.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getTable.__name__ = 'getTable';
-pyjamas.ui.CellPanel.__CellPanel.prototype.getTable.__name__ = 'getTable';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.getBody = function() {
-    return this.body;
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getBody = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.getBody.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.getBody, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getBody.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.getBody.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getBody.__name__ = 'getBody';
-pyjamas.ui.CellPanel.__CellPanel.prototype.getBody.__name__ = 'getBody';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.getSpacing = function() {
-    return this.spacing;
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getSpacing = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.getSpacing.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.getSpacing, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getSpacing.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.getSpacing.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getSpacing.__name__ = 'getSpacing';
-pyjamas.ui.CellPanel.__CellPanel.prototype.getSpacing.__name__ = 'getSpacing';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.getPadding = function() {
-    return this.padding;
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getPadding = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.getPadding.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.getPadding, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getPadding.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.getPadding.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getPadding.__name__ = 'getPadding';
-pyjamas.ui.CellPanel.__CellPanel.prototype.getPadding.__name__ = 'getPadding';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.getWidgetTd = function(widget) {
-    if (pyjslib.bool((widget.getParent() != this))) {
-    return null;
-    }
-    return DOM.getParent(widget.getElement());
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getWidgetTd = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.getWidgetTd.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.getWidgetTd, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getWidgetTd.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.getWidgetTd.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getWidgetTd.__name__ = 'getWidgetTd';
-pyjamas.ui.CellPanel.__CellPanel.prototype.getWidgetTd.__name__ = 'getWidgetTd';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setBorderWidth = function(width) {
-    DOM.setAttribute(this.table, String('border'),  ( String('') + width ) );
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setBorderWidth = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.setBorderWidth.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setBorderWidth, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setBorderWidth.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setBorderWidth.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setBorderWidth.__name__ = 'setBorderWidth';
-pyjamas.ui.CellPanel.__CellPanel.prototype.setBorderWidth.__name__ = 'setBorderWidth';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHeight = function(widget, height) {
-    var td = DOM.getParent(widget.getElement());
-    DOM.setAttribute(td, String('height'), height);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHeight = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHeight.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHeight, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHeight.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHeight.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHeight.__name__ = 'setCellHeight';
-pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHeight.__name__ = 'setCellHeight';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHorizontalAlignment = function(widget, align) {
-    var td = this.getWidgetTd(widget);
-    if (pyjslib.bool((td != null))) {
-    DOM.setAttribute(td, String('align'), align);
-    }
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHorizontalAlignment = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHorizontalAlignment.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHorizontalAlignment, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHorizontalAlignment.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHorizontalAlignment.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHorizontalAlignment.__name__ = 'setCellHorizontalAlignment';
-pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHorizontalAlignment.__name__ = 'setCellHorizontalAlignment';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellVerticalAlignment = function(widget, align) {
-    var td = this.getWidgetTd(widget);
-    if (pyjslib.bool((td != null))) {
-    DOM.setStyleAttribute(td, String('verticalAlign'), align);
-    }
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellVerticalAlignment = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.setCellVerticalAlignment.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setCellVerticalAlignment, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellVerticalAlignment.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellVerticalAlignment.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellVerticalAlignment.__name__ = 'setCellVerticalAlignment';
-pyjamas.ui.CellPanel.__CellPanel.prototype.setCellVerticalAlignment.__name__ = 'setCellVerticalAlignment';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellWidth = function(widget, width) {
-    var td = DOM.getParent(widget.getElement());
-    DOM.setAttribute(td, String('width'), width);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellWidth = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.setCellWidth.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setCellWidth, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellWidth.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellWidth.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellWidth.__name__ = 'setCellWidth';
-pyjamas.ui.CellPanel.__CellPanel.prototype.setCellWidth.__name__ = 'setCellWidth';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setSpacing = function(spacing) {
-    this.spacing = spacing;
-    DOM.setIntAttribute(this.table, String('cellSpacing'), spacing);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setSpacing = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.setSpacing.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setSpacing, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setSpacing.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setSpacing.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setSpacing.__name__ = 'setSpacing';
-pyjamas.ui.CellPanel.__CellPanel.prototype.setSpacing.__name__ = 'setSpacing';
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setPadding = function(padding) {
-    this.padding = padding;
-    DOM.setIntAttribute(this.table, String('cellPadding'), padding);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setPadding = function() {
-        return pyjamas.ui.CellPanel.__CellPanel.prototype.setPadding.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setPadding, arguments);
-    };
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setPadding.unbound_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.setPadding.instance_method = true;
-    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setPadding.__name__ = 'setPadding';
-pyjamas.ui.CellPanel.__CellPanel.prototype.setPadding.__name__ = 'setPadding';
-}
-pyjamas.ui.CellPanel.__CellPanel.__initialize__();
-return this;
-
-}; /* end pyjamas.ui.CellPanel */ 
-
-
-
-
-pyjamas.ui.CellPanel_loaded_fn = function() {
-}
-
-pyjamas.ui.CellPanel_prepare_mod = function() {
-    if ((typeof (module_load_request['pyjamas.ui.CellPanel']) == 'undefined') ||
-        (module_load_request['pyjamas.ui.CellPanel'] < 2)) {
-        module_load_request['pyjamas.ui.CellPanel'] = 2;
-    }
-    var modnames = new pyjslib.List([
-		new pyjslib.List([
-			'pyjamas']),
-		new pyjslib.List([
-			'pyjamas.DOM',
-			'pyjamas.ui']),
-		new pyjslib.List([
-			]),
-		new pyjslib.List([
-			'pyjamas.ui.ComplexPanel'])
-	]);
-    sys.overrides.update(new pyjslib.Dict({
-		'mozilla.pyjslib': 'mozilla.pyjslib',
-		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
-	}));
-    path = sys.loadpath;
-    /*
-    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.CellPanel_loaded_fn,
-                                            0,
-                                            null);
-                                            //'pyjamas.ui.CellPanel');
-                                            */
-    //alert("module ajax loaded fn called pyjamas.ui.CellPanel");
-
-    if (sys.appname != 'pyjamas.ui.CellPanel')
-    {
-        modules['pyjamas.ui.CellPanel'] = pyjamas.ui.CellPanel(name);
-        if (module_load_request['pyjamas.ui.CellPanel'] < 3) {
-            module_load_request['pyjamas.ui.CellPanel'] = 3;
-        }
-    }
-}
-
-//alert("module ajax loaded pyjamas.ui.CellPanel");
-
-pyjamas.ui.CellPanel_prepare_mod();
-
-
 // pyjamas.ui.FormPanel
 
 // module libs (usually imported javascript)
@@ -11058,6 +10991,670 @@ pyjamas.ui.FormPanel_prepare_mod = function() {
 //alert("module ajax loaded pyjamas.ui.FormPanel");
 
 pyjamas.ui.FormPanel_prepare_mod();
+
+
+// pyjamas.ui.DeckPanel
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.ui.DeckPanel = function (__mod_name__) {
+    if(pyjamas.ui.DeckPanel.__was_initialized__) return;
+    pyjamas.ui.DeckPanel.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.DeckPanel';
+pyjamas.ui.DeckPanel.__name__ = __mod_name__;
+var DeckPanel = pyjamas.ui.DeckPanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.DeckPanel', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.DeckPanel', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.DeckPanel', 'pyjamas.ui.ComplexPanel', 0, false);
+    var ComplexPanel = pyjamas.ui.ComplexPanel;
+
+pyjamas.ui.DeckPanel.__DeckPanel = function () {
+}
+pyjamas.ui.DeckPanel.DeckPanel = function() {
+    var instance = new pyjamas.ui.DeckPanel.__DeckPanel();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.DeckPanel.DeckPanel.__name__ = 'DeckPanel';
+
+pyjamas.ui.DeckPanel.__DeckPanel.__initialize__ = function () {
+    if(pyjamas.ui.DeckPanel.__DeckPanel.__was_initialized__) return;
+    pyjamas.ui.DeckPanel.__DeckPanel.__was_initialized__ = true;
+    if(!pyjamas.ui.ComplexPanel.__ComplexPanel.__was_initialized__)
+        pyjamas.ui.ComplexPanel.__ComplexPanel.__initialize__();
+    pyjs_extend(pyjamas.ui.DeckPanel.__DeckPanel, pyjamas.ui.ComplexPanel.__ComplexPanel);
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.__new__ = pyjamas.ui.DeckPanel.DeckPanel;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.__name__ = 'DeckPanel';
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__init__ = function() {
+    pyjamas.ui.ComplexPanel.__ComplexPanel.prototype.__class__.__init__(this);
+    this.visibleWidget = null;
+    this.setElement(DOM.createDiv());
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.DeckPanel.__DeckPanel.prototype.__init__.call.apply(pyjamas.ui.DeckPanel.__DeckPanel.prototype.__init__, arguments);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__init__.instance_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.DeckPanel.__DeckPanel.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.add = function(widget) {
+    this.insert(widget, this.getWidgetCount());
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.add = function() {
+        return pyjamas.ui.DeckPanel.__DeckPanel.prototype.add.call.apply(pyjamas.ui.DeckPanel.__DeckPanel.prototype.add, arguments);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.add.unbound_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.add.instance_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.add.__name__ = 'add';
+pyjamas.ui.DeckPanel.__DeckPanel.prototype.add.__name__ = 'add';
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.getVisibleWidget = function() {
+    return this.getWidgetIndex(this.visibleWidget);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getVisibleWidget = function() {
+        return pyjamas.ui.DeckPanel.__DeckPanel.prototype.getVisibleWidget.call.apply(pyjamas.ui.DeckPanel.__DeckPanel.prototype.getVisibleWidget, arguments);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getVisibleWidget.unbound_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.getVisibleWidget.instance_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getVisibleWidget.__name__ = 'getVisibleWidget';
+pyjamas.ui.DeckPanel.__DeckPanel.prototype.getVisibleWidget.__name__ = 'getVisibleWidget';
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidget = function(index) {
+    return this.children.__getitem__(index);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getWidget = function() {
+        return pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidget.call.apply(pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidget, arguments);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getWidget.unbound_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidget.instance_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getWidget.__name__ = 'getWidget';
+pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidget.__name__ = 'getWidget';
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidgetCount = function() {
+    return pyjslib.len(this.children);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getWidgetCount = function() {
+        return pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidgetCount.call.apply(pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidgetCount, arguments);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getWidgetCount.unbound_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidgetCount.instance_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getWidgetCount.__name__ = 'getWidgetCount';
+pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidgetCount.__name__ = 'getWidgetCount';
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidgetIndex = function(child) {
+    return this.children.index(child);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getWidgetIndex = function() {
+        return pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidgetIndex.call.apply(pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidgetIndex, arguments);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getWidgetIndex.unbound_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidgetIndex.instance_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.getWidgetIndex.__name__ = 'getWidgetIndex';
+pyjamas.ui.DeckPanel.__DeckPanel.prototype.getWidgetIndex.__name__ = 'getWidgetIndex';
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.insert = function(widget, beforeIndex) {
+    if (typeof beforeIndex == 'undefined') beforeIndex=null;
+    if (pyjslib.bool(((beforeIndex < 0)) || ((beforeIndex > this.getWidgetCount())))) {
+    return null;
+    }
+    pyjamas.ui.ComplexPanel.__ComplexPanel.prototype.__class__.insert(this, widget, this.getElement(), beforeIndex);
+    var child = widget.getElement();
+    DOM.setStyleAttribute(child, String('width'), String('100%'));
+    DOM.setStyleAttribute(child, String('height'), String('100%'));
+    widget.setVisible(false);
+    };
+pyjamas.ui.DeckPanel.__DeckPanel.prototype.insert.parse_kwargs = function ( __kwargs, widget, beforeIndex ) {
+    if (typeof beforeIndex == 'undefined')
+        beforeIndex=__kwargs.beforeIndex;
+    var __r = [widget, beforeIndex];
+    return __r;
+};
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.insert = function() {
+        return pyjamas.ui.DeckPanel.__DeckPanel.prototype.insert.call.apply(pyjamas.ui.DeckPanel.__DeckPanel.prototype.insert, arguments);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.insert.unbound_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.insert.instance_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.insert.__name__ = 'insert';
+pyjamas.ui.DeckPanel.__DeckPanel.prototype.insert.__name__ = 'insert';
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.insert.parse_kwargs = pyjamas.ui.DeckPanel.__DeckPanel.prototype.insert.parse_kwargs;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.remove = function(widget) {
+    if (pyjslib.bool(pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.pyjslib.isNumber(widget))) {
+    widget = this.getWidget(widget);
+    }
+    if (pyjslib.bool(!(pyjamas.ui.ComplexPanel.__ComplexPanel.prototype.__class__.remove(this, widget)))) {
+    return false;
+    }
+    if (pyjslib.bool(pyjslib.eq(this.visibleWidget, widget))) {
+    this.visibleWidget = null;
+    }
+    return true;
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.remove = function() {
+        return pyjamas.ui.DeckPanel.__DeckPanel.prototype.remove.call.apply(pyjamas.ui.DeckPanel.__DeckPanel.prototype.remove, arguments);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.remove.unbound_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.remove.instance_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.remove.__name__ = 'remove';
+pyjamas.ui.DeckPanel.__DeckPanel.prototype.remove.__name__ = 'remove';
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.showWidget = function(index) {
+    this.checkIndex(index);
+    if (pyjslib.bool((this.visibleWidget != null))) {
+    this.visibleWidget.setVisible(false);
+    }
+    this.visibleWidget = this.getWidget(index);
+    this.visibleWidget.setVisible(true);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.showWidget = function() {
+        return pyjamas.ui.DeckPanel.__DeckPanel.prototype.showWidget.call.apply(pyjamas.ui.DeckPanel.__DeckPanel.prototype.showWidget, arguments);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.showWidget.unbound_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.showWidget.instance_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.showWidget.__name__ = 'showWidget';
+pyjamas.ui.DeckPanel.__DeckPanel.prototype.showWidget.__name__ = 'showWidget';
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.checkIndex = function(index) {
+    if (pyjslib.bool(((index < 0)) || ((index >= this.getWidgetCount())))) {
+    }
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.checkIndex = function() {
+        return pyjamas.ui.DeckPanel.__DeckPanel.prototype.checkIndex.call.apply(pyjamas.ui.DeckPanel.__DeckPanel.prototype.checkIndex, arguments);
+    };
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.checkIndex.unbound_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.checkIndex.instance_method = true;
+    pyjamas.ui.DeckPanel.__DeckPanel.prototype.__class__.checkIndex.__name__ = 'checkIndex';
+pyjamas.ui.DeckPanel.__DeckPanel.prototype.checkIndex.__name__ = 'checkIndex';
+}
+pyjamas.ui.DeckPanel.__DeckPanel.__initialize__();
+return this;
+
+}; /* end pyjamas.ui.DeckPanel */ 
+
+
+
+
+pyjamas.ui.DeckPanel_loaded_fn = function() {
+}
+
+pyjamas.ui.DeckPanel_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.DeckPanel']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.DeckPanel'] < 2)) {
+        module_load_request['pyjamas.ui.DeckPanel'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM',
+			'pyjamas.ui']),
+		new pyjslib.List([
+			]),
+		new pyjslib.List([
+			'pyjamas.ui.ComplexPanel'])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'mozilla.pyjslib': 'mozilla.pyjslib',
+		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.DeckPanel_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.ui.DeckPanel');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.ui.DeckPanel");
+
+    if (sys.appname != 'pyjamas.ui.DeckPanel')
+    {
+        modules['pyjamas.ui.DeckPanel'] = pyjamas.ui.DeckPanel(name);
+        if (module_load_request['pyjamas.ui.DeckPanel'] < 3) {
+            module_load_request['pyjamas.ui.DeckPanel'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.ui.DeckPanel");
+
+pyjamas.ui.DeckPanel_prepare_mod();
+
+
+// pyjamas.ui.CellPanel
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.ui.CellPanel = function (__mod_name__) {
+    if(pyjamas.ui.CellPanel.__was_initialized__) return;
+    pyjamas.ui.CellPanel.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.CellPanel';
+pyjamas.ui.CellPanel.__name__ = __mod_name__;
+var CellPanel = pyjamas.ui.CellPanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.CellPanel', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.CellPanel', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.CellPanel', 'pyjamas.ui.ComplexPanel', 0, false);
+    var ComplexPanel = pyjamas.ui.ComplexPanel;
+
+pyjamas.ui.CellPanel.__CellPanel = function () {
+}
+pyjamas.ui.CellPanel.CellPanel = function() {
+    var instance = new pyjamas.ui.CellPanel.__CellPanel();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.CellPanel.CellPanel.__name__ = 'CellPanel';
+
+pyjamas.ui.CellPanel.__CellPanel.__initialize__ = function () {
+    if(pyjamas.ui.CellPanel.__CellPanel.__was_initialized__) return;
+    pyjamas.ui.CellPanel.__CellPanel.__was_initialized__ = true;
+    if(!pyjamas.ui.ComplexPanel.__ComplexPanel.__was_initialized__)
+        pyjamas.ui.ComplexPanel.__ComplexPanel.__initialize__();
+    pyjs_extend(pyjamas.ui.CellPanel.__CellPanel, pyjamas.ui.ComplexPanel.__ComplexPanel);
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.__new__ = pyjamas.ui.CellPanel.CellPanel;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.__name__ = 'CellPanel';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__init__ = function() {
+    pyjamas.ui.ComplexPanel.__ComplexPanel.prototype.__class__.__init__(this);
+    this.table = DOM.createTable();
+    this.body = DOM.createTBody();
+    this.spacing = null;
+    this.padding = null;
+    DOM.appendChild(this.table, this.body);
+    this.setElement(this.table);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.__init__.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.__init__, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__init__.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.CellPanel.__CellPanel.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.getTable = function() {
+    return this.table;
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getTable = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.getTable.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.getTable, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getTable.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.getTable.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getTable.__name__ = 'getTable';
+pyjamas.ui.CellPanel.__CellPanel.prototype.getTable.__name__ = 'getTable';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.getBody = function() {
+    return this.body;
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getBody = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.getBody.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.getBody, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getBody.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.getBody.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getBody.__name__ = 'getBody';
+pyjamas.ui.CellPanel.__CellPanel.prototype.getBody.__name__ = 'getBody';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.getSpacing = function() {
+    return this.spacing;
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getSpacing = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.getSpacing.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.getSpacing, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getSpacing.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.getSpacing.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getSpacing.__name__ = 'getSpacing';
+pyjamas.ui.CellPanel.__CellPanel.prototype.getSpacing.__name__ = 'getSpacing';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.getPadding = function() {
+    return this.padding;
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getPadding = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.getPadding.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.getPadding, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getPadding.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.getPadding.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getPadding.__name__ = 'getPadding';
+pyjamas.ui.CellPanel.__CellPanel.prototype.getPadding.__name__ = 'getPadding';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.getWidgetTd = function(widget) {
+    if (pyjslib.bool((widget.getParent() != this))) {
+    return null;
+    }
+    return DOM.getParent(widget.getElement());
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getWidgetTd = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.getWidgetTd.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.getWidgetTd, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getWidgetTd.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.getWidgetTd.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.getWidgetTd.__name__ = 'getWidgetTd';
+pyjamas.ui.CellPanel.__CellPanel.prototype.getWidgetTd.__name__ = 'getWidgetTd';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setBorderWidth = function(width) {
+    DOM.setAttribute(this.table, String('border'),  ( String('') + width ) );
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setBorderWidth = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.setBorderWidth.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setBorderWidth, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setBorderWidth.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setBorderWidth.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setBorderWidth.__name__ = 'setBorderWidth';
+pyjamas.ui.CellPanel.__CellPanel.prototype.setBorderWidth.__name__ = 'setBorderWidth';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHeight = function(widget, height) {
+    var td = DOM.getParent(widget.getElement());
+    DOM.setAttribute(td, String('height'), height);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHeight = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHeight.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHeight, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHeight.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHeight.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHeight.__name__ = 'setCellHeight';
+pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHeight.__name__ = 'setCellHeight';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHorizontalAlignment = function(widget, align) {
+    var td = this.getWidgetTd(widget);
+    if (pyjslib.bool((td != null))) {
+    DOM.setAttribute(td, String('align'), align);
+    }
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHorizontalAlignment = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHorizontalAlignment.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHorizontalAlignment, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHorizontalAlignment.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHorizontalAlignment.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellHorizontalAlignment.__name__ = 'setCellHorizontalAlignment';
+pyjamas.ui.CellPanel.__CellPanel.prototype.setCellHorizontalAlignment.__name__ = 'setCellHorizontalAlignment';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellVerticalAlignment = function(widget, align) {
+    var td = this.getWidgetTd(widget);
+    if (pyjslib.bool((td != null))) {
+    DOM.setStyleAttribute(td, String('verticalAlign'), align);
+    }
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellVerticalAlignment = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.setCellVerticalAlignment.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setCellVerticalAlignment, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellVerticalAlignment.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellVerticalAlignment.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellVerticalAlignment.__name__ = 'setCellVerticalAlignment';
+pyjamas.ui.CellPanel.__CellPanel.prototype.setCellVerticalAlignment.__name__ = 'setCellVerticalAlignment';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellWidth = function(widget, width) {
+    var td = DOM.getParent(widget.getElement());
+    DOM.setAttribute(td, String('width'), width);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellWidth = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.setCellWidth.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setCellWidth, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellWidth.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setCellWidth.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setCellWidth.__name__ = 'setCellWidth';
+pyjamas.ui.CellPanel.__CellPanel.prototype.setCellWidth.__name__ = 'setCellWidth';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setSpacing = function(spacing) {
+    this.spacing = spacing;
+    DOM.setIntAttribute(this.table, String('cellSpacing'), spacing);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setSpacing = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.setSpacing.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setSpacing, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setSpacing.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setSpacing.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setSpacing.__name__ = 'setSpacing';
+pyjamas.ui.CellPanel.__CellPanel.prototype.setSpacing.__name__ = 'setSpacing';
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setPadding = function(padding) {
+    this.padding = padding;
+    DOM.setIntAttribute(this.table, String('cellPadding'), padding);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setPadding = function() {
+        return pyjamas.ui.CellPanel.__CellPanel.prototype.setPadding.call.apply(pyjamas.ui.CellPanel.__CellPanel.prototype.setPadding, arguments);
+    };
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setPadding.unbound_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.setPadding.instance_method = true;
+    pyjamas.ui.CellPanel.__CellPanel.prototype.__class__.setPadding.__name__ = 'setPadding';
+pyjamas.ui.CellPanel.__CellPanel.prototype.setPadding.__name__ = 'setPadding';
+}
+pyjamas.ui.CellPanel.__CellPanel.__initialize__();
+return this;
+
+}; /* end pyjamas.ui.CellPanel */ 
+
+
+
+
+pyjamas.ui.CellPanel_loaded_fn = function() {
+}
+
+pyjamas.ui.CellPanel_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.CellPanel']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.CellPanel'] < 2)) {
+        module_load_request['pyjamas.ui.CellPanel'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM',
+			'pyjamas.ui']),
+		new pyjslib.List([
+			]),
+		new pyjslib.List([
+			'pyjamas.ui.ComplexPanel'])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'mozilla.pyjslib': 'mozilla.pyjslib',
+		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.CellPanel_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.ui.CellPanel');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.ui.CellPanel");
+
+    if (sys.appname != 'pyjamas.ui.CellPanel')
+    {
+        modules['pyjamas.ui.CellPanel'] = pyjamas.ui.CellPanel(name);
+        if (module_load_request['pyjamas.ui.CellPanel'] < 3) {
+            module_load_request['pyjamas.ui.CellPanel'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.ui.CellPanel");
+
+pyjamas.ui.CellPanel_prepare_mod();
+
+
+// pyjamas.ui.ClickDelegatePanel
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.ui.ClickDelegatePanel = function (__mod_name__) {
+    if(pyjamas.ui.ClickDelegatePanel.__was_initialized__) return;
+    pyjamas.ui.ClickDelegatePanel.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.ClickDelegatePanel';
+pyjamas.ui.ClickDelegatePanel.__name__ = __mod_name__;
+var ClickDelegatePanel = pyjamas.ui.ClickDelegatePanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.ClickDelegatePanel', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.ClickDelegatePanel', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.ClickDelegatePanel', 'pyjamas.ui.Composite', 0, false);
+    var Composite = pyjamas.ui.Composite;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.ClickDelegatePanel', 'pyjamas.ui', 0, false);
+    var ui = pyjamas.ui;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.ClickDelegatePanel', 'pyjamas.ui.Event', 0, false);
+    var Event = pyjamas.ui.Event;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.ClickDelegatePanel', 'pyjamas.ui.Focus', 0, false);
+    var Focus = pyjamas.ui.Focus;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.ClickDelegatePanel', 'pyjamas.ui.SimplePanel', 0, false);
+    var SimplePanel = pyjamas.ui.SimplePanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.ClickDelegatePanel', 'pyjamas.ui.KeyboardListener', 0, false);
+    var KeyboardListener = pyjamas.ui.KeyboardListener;
+
+pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel = function () {
+}
+pyjamas.ui.ClickDelegatePanel.ClickDelegatePanel = function(p, child, cDelegate, kDelegate) {
+    var instance = new pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.ClickDelegatePanel.ClickDelegatePanel.__name__ = 'ClickDelegatePanel';
+
+pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.__initialize__ = function () {
+    if(pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.__was_initialized__) return;
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.__was_initialized__ = true;
+    if(!pyjamas.ui.Composite.__Composite.__was_initialized__)
+        pyjamas.ui.Composite.__Composite.__initialize__();
+    pyjs_extend(pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel, pyjamas.ui.Composite.__Composite);
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.__new__ = pyjamas.ui.ClickDelegatePanel.ClickDelegatePanel;
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.__name__ = 'ClickDelegatePanel';
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__init__ = function(p, child, cDelegate, kDelegate) {
+    pyjamas.ui.Composite.__Composite.prototype.__class__.__init__(this);
+    this.clickDelegate = cDelegate;
+    this.keyDelegate = kDelegate;
+    this.focusablePanel = pyjamas.ui.SimplePanel.SimplePanel(Focus.createFocusable());
+    this.focusablePanel.setWidget(child);
+    var wrapperWidget = p.createTabTextWrapper();
+    if (pyjslib.bool(pyjslib.eq(wrapperWidget, null))) {
+    this.initWidget(this.focusablePanel);
+    }
+    else {
+    wrapperWidget.setWidget(this.focusablePanel);
+    this.initWidget(wrapperWidget);
+    }
+    child.addClickListener(this);
+    if (pyjslib.bool(pyjslib.hasattr(child, String('addKeyboardListener')))) {
+    child.addKeyboardListener(kDelegate);
+    }
+    this.sinkEvents((Event.ONCLICK | Event.ONKEYDOWN));
+    };
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__init__.call.apply(pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__init__, arguments);
+    };
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__init__.instance_method = true;
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.onClick = function(sender, event) {
+    this.clickDelegate.onClick(this, event);
+    };
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.onClick = function() {
+        return pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.onClick.call.apply(pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.onClick, arguments);
+    };
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.onClick.unbound_method = true;
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.onClick.instance_method = true;
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.onClick.__name__ = 'onClick';
+pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.onClick.__name__ = 'onClick';
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.getFocusablePanel = function() {
+    return this.focusablePanel;
+    };
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.getFocusablePanel = function() {
+        return pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.getFocusablePanel.call.apply(pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.getFocusablePanel, arguments);
+    };
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.getFocusablePanel.unbound_method = true;
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.getFocusablePanel.instance_method = true;
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.getFocusablePanel.__name__ = 'getFocusablePanel';
+pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.getFocusablePanel.__name__ = 'getFocusablePanel';
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.onBrowserEvent = function(event) {
+    var type = DOM.eventGetType(event);
+    if (pyjslib.bool(pyjslib.eq(type, String('click')))) {
+    this.onClick(this, event);
+    }
+    else if (pyjslib.bool(pyjslib.eq(type, String('keydown')))) {
+    var modifiers = KeyboardListener.getKeyboardModifiers(event);
+    if (pyjslib.bool(pyjslib.hasattr(this.keyDelegate, String('onKeyDown')))) {
+    this.keyDelegate.onKeyDown(this, DOM.eventGetKeyCode(event), modifiers);
+    }
+    }
+    };
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.onBrowserEvent = function() {
+        return pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.onBrowserEvent.call.apply(pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.onBrowserEvent, arguments);
+    };
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.onBrowserEvent.unbound_method = true;
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.onBrowserEvent.instance_method = true;
+    pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.__class__.onBrowserEvent.__name__ = 'onBrowserEvent';
+pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.prototype.onBrowserEvent.__name__ = 'onBrowserEvent';
+}
+pyjamas.ui.ClickDelegatePanel.__ClickDelegatePanel.__initialize__();
+return this;
+
+}; /* end pyjamas.ui.ClickDelegatePanel */ 
+
+
+
+
+pyjamas.ui.ClickDelegatePanel_loaded_fn = function() {
+}
+
+pyjamas.ui.ClickDelegatePanel_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.ClickDelegatePanel']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.ClickDelegatePanel'] < 2)) {
+        module_load_request['pyjamas.ui.ClickDelegatePanel'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM',
+			'pyjamas.ui']),
+		new pyjslib.List([
+			'pyjamas.ui.Event',
+			'pyjamas.ui.Focus',
+			'pyjamas.ui.KeyboardListener']),
+		new pyjslib.List([
+			'pyjamas.ui.Composite',
+			'pyjamas.ui.SimplePanel'])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'mozilla.pyjslib': 'mozilla.pyjslib',
+		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.ClickDelegatePanel_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.ui.ClickDelegatePanel');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.ui.ClickDelegatePanel");
+
+    if (sys.appname != 'pyjamas.ui.ClickDelegatePanel')
+    {
+        modules['pyjamas.ui.ClickDelegatePanel'] = pyjamas.ui.ClickDelegatePanel(name);
+        if (module_load_request['pyjamas.ui.ClickDelegatePanel'] < 3) {
+            module_load_request['pyjamas.ui.ClickDelegatePanel'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.ui.ClickDelegatePanel");
+
+pyjamas.ui.ClickDelegatePanel_prepare_mod();
 
 
 // pyjamas.ui.RootPanel
@@ -11776,6 +12373,1212 @@ pyjamas.ui.HorizontalPanel_prepare_mod = function() {
 pyjamas.ui.HorizontalPanel_prepare_mod();
 
 
+// pyjamas.ui.TabBar
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.ui.TabBar = function (__mod_name__) {
+    if(pyjamas.ui.TabBar.__was_initialized__) return;
+    pyjamas.ui.TabBar.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.TabBar';
+pyjamas.ui.TabBar.__name__ = __mod_name__;
+var TabBar = pyjamas.ui.TabBar;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabBar', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabBar', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabBar', 'pyjamas.ui.Composite', 0, false);
+    var Composite = pyjamas.ui.Composite;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabBar', 'pyjamas.ui', 0, false);
+    var ui = pyjamas.ui;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabBar', 'pyjamas.ui.Event', 0, false);
+    var Event = pyjamas.ui.Event;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabBar', 'pyjamas.ui.HTML', 0, false);
+    var HTML = pyjamas.ui.HTML;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabBar', 'pyjamas.ui.Label', 0, false);
+    var Label = pyjamas.ui.Label;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabBar', 'pyjamas.ui.HorizontalPanel', 0, false);
+    var HorizontalPanel = pyjamas.ui.HorizontalPanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabBar', 'pyjamas.ui.ClickDelegatePanel', 0, false);
+    var ClickDelegatePanel = pyjamas.ui.ClickDelegatePanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabBar', 'pyjslib', 0, false);
+    
+pyjamas.ui.TabBar.__TabBar = function () {
+}
+pyjamas.ui.TabBar.TabBar = function() {
+    var instance = new pyjamas.ui.TabBar.__TabBar();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.TabBar.TabBar.__name__ = 'TabBar';
+
+pyjamas.ui.TabBar.__TabBar.__initialize__ = function () {
+    if(pyjamas.ui.TabBar.__TabBar.__was_initialized__) return;
+    pyjamas.ui.TabBar.__TabBar.__was_initialized__ = true;
+    if(!pyjamas.ui.Composite.__Composite.__was_initialized__)
+        pyjamas.ui.Composite.__Composite.__initialize__();
+    pyjs_extend(pyjamas.ui.TabBar.__TabBar, pyjamas.ui.Composite.__Composite);
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.__new__ = pyjamas.ui.TabBar.TabBar;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.__name__ = 'TabBar';
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.STYLENAME_DEFAULT = String('gwt-TabBarItem');
+    pyjamas.ui.TabBar.__TabBar.prototype.__init__ = function() {
+    pyjamas.ui.Composite.__Composite.prototype.__class__.__init__(this);
+    this.panel = pyjamas.ui.HorizontalPanel.HorizontalPanel();
+    this.selectedTab = null;
+    this.tabListeners = new pyjslib.List([]);
+    this.initWidget(this.panel);
+    this.sinkEvents(Event.ONCLICK);
+    this.setStyleName(String('gwt-TabBar'));
+    this.panel.setVerticalAlignment(pyjamas.ui.__HasAlignment.prototype.__class__.ALIGN_BOTTOM);
+    var first = pyjamas.ui.HTML.HTML(String('\x26nbsp\x3B'), true);
+    var rest = pyjamas.ui.HTML.HTML(String('\x26nbsp\x3B'), true);
+    first.setStyleName(String('gwt-TabBarFirst'));
+    rest.setStyleName(String('gwt-TabBarRest'));
+    first.setHeight(String('100%'));
+    rest.setHeight(String('100%'));
+    this.panel.add(first);
+    this.panel.add(rest);
+    first.setHeight(String('100%'));
+    this.panel.setCellHeight(first, String('100%'));
+    this.panel.setCellWidth(rest, String('100%'));
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.__init__.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.__init__, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__init__.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.TabBar.__TabBar.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.TabBar.__TabBar.prototype.addTab = function(text, asHTML) {
+    if (typeof asHTML == 'undefined') asHTML=false;
+    this.insertTab(text, asHTML, this.getTabCount());
+    };
+pyjamas.ui.TabBar.__TabBar.prototype.addTab.parse_kwargs = function ( __kwargs, text, asHTML ) {
+    if (typeof asHTML == 'undefined')
+        asHTML=__kwargs.asHTML;
+    var __r = [text, asHTML];
+    return __r;
+};
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.addTab = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.addTab.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.addTab, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.addTab.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.addTab.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.addTab.__name__ = 'addTab';
+pyjamas.ui.TabBar.__TabBar.prototype.addTab.__name__ = 'addTab';
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.addTab.parse_kwargs = pyjamas.ui.TabBar.__TabBar.prototype.addTab.parse_kwargs;
+    pyjamas.ui.TabBar.__TabBar.prototype.addTabListener = function(listener) {
+    this.tabListeners.append(listener);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.addTabListener = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.addTabListener.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.addTabListener, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.addTabListener.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.addTabListener.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.addTabListener.__name__ = 'addTabListener';
+pyjamas.ui.TabBar.__TabBar.prototype.addTabListener.__name__ = 'addTabListener';
+    pyjamas.ui.TabBar.__TabBar.prototype.getSelectedTab = function() {
+    if (pyjslib.bool(pyjslib.eq(this.selectedTab, null))) {
+    return -1;
+    }
+    return  ( this.panel.getWidgetIndex(this.selectedTab) - 1 ) ;
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.getSelectedTab = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.getSelectedTab.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.getSelectedTab, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.getSelectedTab.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.getSelectedTab.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.getSelectedTab.__name__ = 'getSelectedTab';
+pyjamas.ui.TabBar.__TabBar.prototype.getSelectedTab.__name__ = 'getSelectedTab';
+    pyjamas.ui.TabBar.__TabBar.prototype.getTabCount = function() {
+    return  ( this.panel.getWidgetCount() - 2 ) ;
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.getTabCount = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.getTabCount.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.getTabCount, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.getTabCount.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.getTabCount.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.getTabCount.__name__ = 'getTabCount';
+pyjamas.ui.TabBar.__TabBar.prototype.getTabCount.__name__ = 'getTabCount';
+    pyjamas.ui.TabBar.__TabBar.prototype.getTabHTML = function(index) {
+    if (pyjslib.bool((index >= this.getTabCount()))) {
+    return null;
+    }
+    var delPanel = this.panel.getWidget( ( index + 1 ) );
+    var focusablePanel = delPanel.getFocusablePanel();
+    var widget = focusablePanel.getWidget();
+    if (pyjslib.bool(pyjslib.hasattr(widget, String('getHTML')))) {
+    return widget.getHTML();
+    }
+    else if (pyjslib.bool(pyjslib.hasattr(widget, String('getText')))) {
+    return widget.getText();
+    }
+    else {
+    var fpe = DOM.getParent(this.focusablePanel.getElement());
+    return DOM.getInnerHTML(fpe);
+    }
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.getTabHTML = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.getTabHTML.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.getTabHTML, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.getTabHTML.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.getTabHTML.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.getTabHTML.__name__ = 'getTabHTML';
+pyjamas.ui.TabBar.__TabBar.prototype.getTabHTML.__name__ = 'getTabHTML';
+    pyjamas.ui.TabBar.__TabBar.prototype.createTabTextWrapper = function() {
+    return null;
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.createTabTextWrapper = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.createTabTextWrapper.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.createTabTextWrapper, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.createTabTextWrapper.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.createTabTextWrapper.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.createTabTextWrapper.__name__ = 'createTabTextWrapper';
+pyjamas.ui.TabBar.__TabBar.prototype.createTabTextWrapper.__name__ = 'createTabTextWrapper';
+    pyjamas.ui.TabBar.__TabBar.prototype.insertTab = function(text, asHTML, beforeIndex) {
+    if (typeof beforeIndex == 'undefined') beforeIndex=null;
+    if (pyjslib.bool(pyjslib.eq(beforeIndex, null))) {
+    beforeIndex = asHTML;
+    asHTML = false;
+    }
+    if (pyjslib.bool(((beforeIndex < 0)) || ((beforeIndex > this.getTabCount())))) {
+    }
+    if (pyjslib.bool(pyjslib.isString(text))) {
+    if (pyjslib.bool(asHTML)) {
+    var item = pyjamas.ui.HTML.HTML(text);
+    }
+    else {
+    item = pyjamas.ui.Label.Label(text);
+    }
+    item.setWordWrap(false);
+    }
+    else {
+    item = text;
+    }
+    this.insertTabWidget(item, beforeIndex);
+    };
+pyjamas.ui.TabBar.__TabBar.prototype.insertTab.parse_kwargs = function ( __kwargs, text, asHTML, beforeIndex ) {
+    if (typeof beforeIndex == 'undefined')
+        beforeIndex=__kwargs.beforeIndex;
+    var __r = [text, asHTML, beforeIndex];
+    return __r;
+};
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.insertTab = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.insertTab.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.insertTab, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.insertTab.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.insertTab.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.insertTab.__name__ = 'insertTab';
+pyjamas.ui.TabBar.__TabBar.prototype.insertTab.__name__ = 'insertTab';
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.insertTab.parse_kwargs = pyjamas.ui.TabBar.__TabBar.prototype.insertTab.parse_kwargs;
+    pyjamas.ui.TabBar.__TabBar.prototype.insertTabWidget = function(widget, beforeIndex) {
+    var delWidget = pyjamas.ui.ClickDelegatePanel.ClickDelegatePanel(this, widget, this, this);
+    delWidget.setStyleName(this.STYLENAME_DEFAULT);
+    var focusablePanel = delWidget.getFocusablePanel();
+    this.panel.insert(delWidget,  ( beforeIndex + 1 ) );
+    this.setStyleName(DOM.getParent(delWidget.getElement()),  ( this.STYLENAME_DEFAULT + String('-wrapper') ) , true);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.insertTabWidget = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.insertTabWidget.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.insertTabWidget, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.insertTabWidget.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.insertTabWidget.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.insertTabWidget.__name__ = 'insertTabWidget';
+pyjamas.ui.TabBar.__TabBar.prototype.insertTabWidget.__name__ = 'insertTabWidget';
+    pyjamas.ui.TabBar.__TabBar.prototype.onClick = function(sender) {
+
+        var __i = pyjslib.range(1,  ( this.panel.getWidgetCount() - 1 ) ).__iter__();
+        try {
+            while (true) {
+                var i = __i.next();
+                
+        
+    if (pyjslib.bool(pyjslib.eq(this.panel.getWidget(i), sender))) {
+    return this.selectTab( ( i - 1 ) );
+    }
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    return false;
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.onClick = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.onClick.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.onClick, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.onClick.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.onClick.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.onClick.__name__ = 'onClick';
+pyjamas.ui.TabBar.__TabBar.prototype.onClick.__name__ = 'onClick';
+    pyjamas.ui.TabBar.__TabBar.prototype.removeTab = function(index) {
+    this.checkTabIndex(index);
+    var toRemove = this.panel.getWidget( ( index + 1 ) );
+    if (pyjslib.bool(pyjslib.eq(toRemove, this.selectedTab))) {
+    this.selectedTab = null;
+    }
+    this.panel.remove(toRemove);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.removeTab = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.removeTab.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.removeTab, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.removeTab.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.removeTab.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.removeTab.__name__ = 'removeTab';
+pyjamas.ui.TabBar.__TabBar.prototype.removeTab.__name__ = 'removeTab';
+    pyjamas.ui.TabBar.__TabBar.prototype.removeTabListener = function(listener) {
+    this.tabListeners.remove(listener);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.removeTabListener = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.removeTabListener.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.removeTabListener, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.removeTabListener.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.removeTabListener.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.removeTabListener.__name__ = 'removeTabListener';
+pyjamas.ui.TabBar.__TabBar.prototype.removeTabListener.__name__ = 'removeTabListener';
+    pyjamas.ui.TabBar.__TabBar.prototype.selectTab = function(index) {
+    this.checkTabIndex(index);
+
+        var __listener = this.tabListeners.__iter__();
+        try {
+            while (true) {
+                var listener = __listener.next();
+                
+        
+    if (pyjslib.bool(!(listener.onBeforeTabSelected(this, index)))) {
+    return false;
+    }
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    this.setSelectionStyle(this.selectedTab, false);
+    if (pyjslib.bool(pyjslib.eq(index, -1))) {
+    this.selectedTab = null;
+    return true;
+    }
+    this.selectedTab = this.panel.getWidget( ( index + 1 ) );
+    this.setSelectionStyle(this.selectedTab, true);
+
+        var __listener = this.tabListeners.__iter__();
+        try {
+            while (true) {
+                var listener = __listener.next();
+                
+        
+    listener.onTabSelected(this, index);
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    return true;
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.selectTab = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.selectTab.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.selectTab, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.selectTab.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.selectTab.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.selectTab.__name__ = 'selectTab';
+pyjamas.ui.TabBar.__TabBar.prototype.selectTab.__name__ = 'selectTab';
+    pyjamas.ui.TabBar.__TabBar.prototype.checkTabIndex = function(index) {
+    if (pyjslib.bool(((index < -1)) || ((index >= this.getTabCount())))) {
+    }
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.checkTabIndex = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.checkTabIndex.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.checkTabIndex, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.checkTabIndex.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.checkTabIndex.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.checkTabIndex.__name__ = 'checkTabIndex';
+pyjamas.ui.TabBar.__TabBar.prototype.checkTabIndex.__name__ = 'checkTabIndex';
+    pyjamas.ui.TabBar.__TabBar.prototype.setSelectionStyle = function(item, selected) {
+    if (pyjslib.bool((item != null))) {
+    if (pyjslib.bool(selected)) {
+    item.addStyleName(String('gwt-TabBarItem-selected'));
+    this.setStyleName(DOM.getParent(item.getElement()), String('gwt-TabBarItem-wrapper-selected'), true);
+    }
+    else {
+    item.removeStyleName(String('gwt-TabBarItem-selected'));
+    this.setStyleName(DOM.getParent(item.getElement()), String('gwt-TabBarItem-wrapper-selected'), false);
+    }
+    }
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.setSelectionStyle = function() {
+        return pyjamas.ui.TabBar.__TabBar.prototype.setSelectionStyle.call.apply(pyjamas.ui.TabBar.__TabBar.prototype.setSelectionStyle, arguments);
+    };
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.setSelectionStyle.unbound_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.setSelectionStyle.instance_method = true;
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.setSelectionStyle.__name__ = 'setSelectionStyle';
+pyjamas.ui.TabBar.__TabBar.prototype.setSelectionStyle.__name__ = 'setSelectionStyle';
+}
+pyjamas.ui.TabBar.__TabBar.__initialize__();
+return this;
+
+}; /* end pyjamas.ui.TabBar */ 
+
+
+
+
+pyjamas.ui.TabBar_loaded_fn = function() {
+}
+
+pyjamas.ui.TabBar_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.TabBar']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.TabBar'] < 2)) {
+        module_load_request['pyjamas.ui.TabBar'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM',
+			'pyjamas.ui']),
+		new pyjslib.List([
+			'pyjamas.ui.Event']),
+		new pyjslib.List([
+			'pyjamas.ui.Composite',
+			'pyjamas.ui.HTML',
+			'pyjamas.ui.Label',
+			'pyjamas.ui.HorizontalPanel',
+			'pyjamas.ui.ClickDelegatePanel'])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'mozilla.pyjslib': 'mozilla.pyjslib',
+		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.TabBar_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.ui.TabBar');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.ui.TabBar");
+
+    if (sys.appname != 'pyjamas.ui.TabBar')
+    {
+        modules['pyjamas.ui.TabBar'] = pyjamas.ui.TabBar(name);
+        if (module_load_request['pyjamas.ui.TabBar'] < 3) {
+            module_load_request['pyjamas.ui.TabBar'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.ui.TabBar");
+
+pyjamas.ui.TabBar_prepare_mod();
+
+
+// pyjamas.ui.TabPanel
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.ui.TabPanel = function (__mod_name__) {
+    if(pyjamas.ui.TabPanel.__was_initialized__) return;
+    pyjamas.ui.TabPanel.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.TabPanel';
+pyjamas.ui.TabPanel.__name__ = __mod_name__;
+var TabPanel = pyjamas.ui.TabPanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabPanel', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabPanel', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabPanel', 'pyjamas.ui.Composite', 0, false);
+    var Composite = pyjamas.ui.Composite;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabPanel', 'pyjamas.ui.DeckPanel', 0, false);
+    var DeckPanel = pyjamas.ui.DeckPanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabPanel', 'pyjamas.ui.VerticalPanel', 0, false);
+    var VerticalPanel = pyjamas.ui.VerticalPanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabPanel', 'pyjamas.ui.TabBar', 0, false);
+    var TabBar = pyjamas.ui.TabBar;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.TabPanel', 'pyjslib', 0, false);
+    
+pyjamas.ui.TabPanel.__TabPanel = function () {
+}
+pyjamas.ui.TabPanel.TabPanel = function(tabBar) {
+    if (typeof tabBar == 'undefined') tabBar=null;
+    var instance = new pyjamas.ui.TabPanel.__TabPanel();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.TabPanel.TabPanel.__name__ = 'TabPanel';
+
+pyjamas.ui.TabPanel.TabPanel.parse_kwargs = function ( __kwargs, tabBar ) {
+    if (typeof tabBar == 'undefined')
+        tabBar=__kwargs.tabBar;
+    var __r = [tabBar];
+    return __r;
+};
+pyjamas.ui.TabPanel.__TabPanel.__initialize__ = function () {
+    if(pyjamas.ui.TabPanel.__TabPanel.__was_initialized__) return;
+    pyjamas.ui.TabPanel.__TabPanel.__was_initialized__ = true;
+    if(!pyjamas.ui.Composite.__Composite.__was_initialized__)
+        pyjamas.ui.Composite.__Composite.__initialize__();
+    pyjs_extend(pyjamas.ui.TabPanel.__TabPanel, pyjamas.ui.Composite.__Composite);
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.__new__ = pyjamas.ui.TabPanel.TabPanel;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.__name__ = 'TabPanel';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__init__ = function(tabBar) {
+    if (typeof tabBar == 'undefined') tabBar=null;
+    pyjamas.ui.Composite.__Composite.prototype.__class__.__init__(this);
+    this.tab_children = new pyjslib.List([]);
+    this.deck = pyjamas.ui.DeckPanel.DeckPanel();
+    if (pyjslib.bool(pyjslib.eq(tabBar, null))) {
+    this.tabBar = pyjamas.ui.TabBar.TabBar();
+    }
+    else {
+    this.tabBar = tabBar;
+    }
+    this.tabListeners = new pyjslib.List([]);
+    var panel = pyjamas.ui.VerticalPanel.VerticalPanel();
+    panel.add(this.tabBar);
+    panel.add(this.deck);
+    panel.setCellHeight(this.deck, String('100%'));
+    this.tabBar.setWidth(String('100%'));
+    this.tabBar.addTabListener(this);
+    this.initWidget(panel);
+    this.setStyleName(String('gwt-TabPanel'));
+    this.deck.setStyleName(String('gwt-TabPanelBottom'));
+    };
+pyjamas.ui.TabPanel.__TabPanel.prototype.__init__.parse_kwargs = function ( __kwargs, tabBar ) {
+    if (typeof tabBar == 'undefined')
+        tabBar=__kwargs.tabBar;
+    var __r = [tabBar];
+    return __r;
+};
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.__init__.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.__init__, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__init__.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.TabPanel.__TabPanel.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.__init__.parse_kwargs = pyjamas.ui.TabPanel.__TabPanel.prototype.__init__.parse_kwargs;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.add = function(widget, tabText, asHTML) {
+    if (typeof tabText == 'undefined') tabText=null;
+    if (typeof asHTML == 'undefined') asHTML=false;
+    if (pyjslib.bool(pyjslib.eq(tabText, null))) {
+    console.error(String('A tabText parameter must be specified with add().'));
+    }
+    this.insert(widget, tabText, asHTML, this.getWidgetCount());
+    };
+pyjamas.ui.TabPanel.__TabPanel.prototype.add.parse_kwargs = function ( __kwargs, widget, tabText, asHTML ) {
+    if (typeof tabText == 'undefined')
+        tabText=__kwargs.tabText;
+    if (typeof asHTML == 'undefined')
+        asHTML=__kwargs.asHTML;
+    var __r = [widget, tabText, asHTML];
+    return __r;
+};
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.add = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.add.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.add, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.add.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.add.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.add.__name__ = 'add';
+pyjamas.ui.TabPanel.__TabPanel.prototype.add.__name__ = 'add';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.add.parse_kwargs = pyjamas.ui.TabPanel.__TabPanel.prototype.add.parse_kwargs;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.addTabListener = function(listener) {
+    this.tabListeners.append(listener);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.addTabListener = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.addTabListener.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.addTabListener, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.addTabListener.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.addTabListener.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.addTabListener.__name__ = 'addTabListener';
+pyjamas.ui.TabPanel.__TabPanel.prototype.addTabListener.__name__ = 'addTabListener';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.clear = function() {
+    while (pyjslib.bool((this.getWidgetCount() > 0))) {
+    this.remove(this.getWidget(0));
+    }
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.clear = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.clear.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.clear, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.clear.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.clear.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.clear.__name__ = 'clear';
+pyjamas.ui.TabPanel.__TabPanel.prototype.clear.__name__ = 'clear';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.getDeckPanel = function() {
+    return this.deck;
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getDeckPanel = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.getDeckPanel.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.getDeckPanel, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getDeckPanel.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.getDeckPanel.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getDeckPanel.__name__ = 'getDeckPanel';
+pyjamas.ui.TabPanel.__TabPanel.prototype.getDeckPanel.__name__ = 'getDeckPanel';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.getTabBar = function() {
+    return this.tabBar;
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getTabBar = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.getTabBar.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.getTabBar, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getTabBar.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.getTabBar.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getTabBar.__name__ = 'getTabBar';
+pyjamas.ui.TabPanel.__TabPanel.prototype.getTabBar.__name__ = 'getTabBar';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.getWidget = function(index) {
+    return this.tab_children.__getitem__(index);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getWidget = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.getWidget.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.getWidget, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getWidget.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.getWidget.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getWidget.__name__ = 'getWidget';
+pyjamas.ui.TabPanel.__TabPanel.prototype.getWidget.__name__ = 'getWidget';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.getWidgetCount = function() {
+    return pyjslib.len(this.tab_children);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getWidgetCount = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.getWidgetCount.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.getWidgetCount, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getWidgetCount.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.getWidgetCount.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getWidgetCount.__name__ = 'getWidgetCount';
+pyjamas.ui.TabPanel.__TabPanel.prototype.getWidgetCount.__name__ = 'getWidgetCount';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.getWidgetIndex = function(child) {
+    return this.tab_children.index(child);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getWidgetIndex = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.getWidgetIndex.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.getWidgetIndex, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getWidgetIndex.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.getWidgetIndex.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.getWidgetIndex.__name__ = 'getWidgetIndex';
+pyjamas.ui.TabPanel.__TabPanel.prototype.getWidgetIndex.__name__ = 'getWidgetIndex';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.insert = function(widget, tabText, asHTML, beforeIndex) {
+    if (typeof asHTML == 'undefined') asHTML=false;
+    if (typeof beforeIndex == 'undefined') beforeIndex=null;
+    if (pyjslib.bool((beforeIndex === null))) {
+    beforeIndex = asHTML;
+    asHTML = false;
+    }
+    this.tab_children.insert(beforeIndex, widget);
+    this.tabBar.insertTab(tabText, asHTML, beforeIndex);
+    this.deck.insert(widget, beforeIndex);
+    };
+pyjamas.ui.TabPanel.__TabPanel.prototype.insert.parse_kwargs = function ( __kwargs, widget, tabText, asHTML, beforeIndex ) {
+    if (typeof asHTML == 'undefined')
+        asHTML=__kwargs.asHTML;
+    if (typeof beforeIndex == 'undefined')
+        beforeIndex=__kwargs.beforeIndex;
+    var __r = [widget, tabText, asHTML, beforeIndex];
+    return __r;
+};
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.insert = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.insert.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.insert, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.insert.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.insert.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.insert.__name__ = 'insert';
+pyjamas.ui.TabPanel.__TabPanel.prototype.insert.__name__ = 'insert';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.insert.parse_kwargs = pyjamas.ui.TabPanel.__TabPanel.prototype.insert.parse_kwargs;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__iter__ = function() {
+    return this.tab_children.__iter__();
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.__iter__ = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.__iter__.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.__iter__, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.__iter__.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__iter__.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.__iter__.__name__ = '__iter__';
+pyjamas.ui.TabPanel.__TabPanel.prototype.__iter__.__name__ = '__iter__';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.onBeforeTabSelected = function(sender, tabIndex) {
+
+        var __listener = this.tabListeners.__iter__();
+        try {
+            while (true) {
+                var listener = __listener.next();
+                
+        
+    if (pyjslib.bool(!(listener.onBeforeTabSelected(sender, tabIndex)))) {
+    return false;
+    }
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    return true;
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.onBeforeTabSelected = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.onBeforeTabSelected.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.onBeforeTabSelected, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.onBeforeTabSelected.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.onBeforeTabSelected.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.onBeforeTabSelected.__name__ = 'onBeforeTabSelected';
+pyjamas.ui.TabPanel.__TabPanel.prototype.onBeforeTabSelected.__name__ = 'onBeforeTabSelected';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.onTabSelected = function(sender, tabIndex) {
+    this.deck.showWidget(tabIndex);
+
+        var __listener = this.tabListeners.__iter__();
+        try {
+            while (true) {
+                var listener = __listener.next();
+                
+        
+    listener.onTabSelected(sender, tabIndex);
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.onTabSelected = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.onTabSelected.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.onTabSelected, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.onTabSelected.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.onTabSelected.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.onTabSelected.__name__ = 'onTabSelected';
+pyjamas.ui.TabPanel.__TabPanel.prototype.onTabSelected.__name__ = 'onTabSelected';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.remove = function(widget) {
+    if (pyjslib.bool(pyjslib.isNumber(widget))) {
+    widget = this.getWidget(widget);
+    }
+    var index = this.getWidgetIndex(widget);
+    if (pyjslib.bool(pyjslib.eq(index, -1))) {
+    return false;
+    }
+    this.tab_children.remove(widget);
+    this.tabBar.removeTab(index);
+    this.deck.remove(widget);
+    return true;
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.remove = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.remove.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.remove, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.remove.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.remove.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.remove.__name__ = 'remove';
+pyjamas.ui.TabPanel.__TabPanel.prototype.remove.__name__ = 'remove';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.removeTabListener = function(listener) {
+    this.tabListeners.remove(listener);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.removeTabListener = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.removeTabListener.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.removeTabListener, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.removeTabListener.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.removeTabListener.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.removeTabListener.__name__ = 'removeTabListener';
+pyjamas.ui.TabPanel.__TabPanel.prototype.removeTabListener.__name__ = 'removeTabListener';
+    pyjamas.ui.TabPanel.__TabPanel.prototype.selectTab = function(index) {
+    this.tabBar.selectTab(index);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.selectTab = function() {
+        return pyjamas.ui.TabPanel.__TabPanel.prototype.selectTab.call.apply(pyjamas.ui.TabPanel.__TabPanel.prototype.selectTab, arguments);
+    };
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.selectTab.unbound_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.selectTab.instance_method = true;
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.selectTab.__name__ = 'selectTab';
+pyjamas.ui.TabPanel.__TabPanel.prototype.selectTab.__name__ = 'selectTab';
+}
+pyjamas.ui.TabPanel.__TabPanel.__initialize__();
+return this;
+
+}; /* end pyjamas.ui.TabPanel */ 
+
+
+
+
+pyjamas.ui.TabPanel_loaded_fn = function() {
+}
+
+pyjamas.ui.TabPanel_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.TabPanel']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.TabPanel'] < 2)) {
+        module_load_request['pyjamas.ui.TabPanel'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM',
+			'pyjamas.ui']),
+		new pyjslib.List([
+			]),
+		new pyjslib.List([
+			'pyjamas.ui.Composite',
+			'pyjamas.ui.DeckPanel',
+			'pyjamas.ui.VerticalPanel',
+			'pyjamas.ui.TabBar'])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'mozilla.pyjslib': 'mozilla.pyjslib',
+		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.TabPanel_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.ui.TabPanel');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.ui.TabPanel");
+
+    if (sys.appname != 'pyjamas.ui.TabPanel')
+    {
+        modules['pyjamas.ui.TabPanel'] = pyjamas.ui.TabPanel(name);
+        if (module_load_request['pyjamas.ui.TabPanel'] < 3) {
+            module_load_request['pyjamas.ui.TabPanel'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.ui.TabPanel");
+
+pyjamas.ui.TabPanel_prepare_mod();
+
+
+// pyjamas.ui.decoratorpanel
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.ui.decoratorpanel = function (__mod_name__) {
+    if(pyjamas.ui.decoratorpanel.__was_initialized__) return;
+    pyjamas.ui.decoratorpanel.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.decoratorpanel';
+pyjamas.ui.decoratorpanel.__name__ = __mod_name__;
+var decoratorpanel = pyjamas.ui.decoratorpanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.decoratorpanel', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.decoratorpanel', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.decoratorpanel', 'pyjamas.ui.SimplePanel', 0, false);
+    var SimplePanel = pyjamas.ui.SimplePanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.decoratorpanel', 'pyjamas.ui.TabPanel', 0, false);
+    var TabPanel = pyjamas.ui.TabPanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.decoratorpanel', 'pyjamas.ui.TabBar', 0, false);
+    var TabBar = pyjamas.ui.TabBar;
+
+String('\x0A  \x0A  A {@link SimplePanel} that wraps its contents in stylized boxes, which can be\x0A  used to add rounded corners to a {@link Widget}.\x0A  \x0A  Wrapping a {@link Widget} in a \x229-box\x22 allows users to specify images in each\x0A  of the corners and along the four borders. This method allows the content\x0A  within the {@link DecoratorPanel} to resize without disrupting the look of\x0A  the border. In addition, rounded corners can generally be combined into a\x0A  single image file, which reduces the number of downloaded files at startup.\x0A  This class also simplifies the process of using AlphaImageLoaders to support\x0A  8-bit transparencies (anti-aliasing and shadows) in ie6, which does not\x0A  support them normally.\x0A  \x0A  \x0A  CSS Style Rules\x0A\x0A  .gwt-DecoratorPanel { the panel }\x0A  .gwt-DecoratorPanel .top { the top row }\x0A  .gwt-DecoratorPanel .topLeft { the top left cell }\x0A  .gwt-DecoratorPanel .topLeftInner { the inner element of the cell }\x0A  .gwt-DecoratorPanel .topCenter { the top center cell }\x0A  .gwt-DecoratorPanel .topCenterInner { the inner element of the cell }\x0A  .gwt-DecoratorPanel .topRight { the top right cell }\x0A  .gwt-DecoratorPanel .topRightInner { the inner element of the cell }\x0A  .gwt-DecoratorPanel .middle { the middle row }\x0A  .gwt-DecoratorPanel .middleLeft { the middle left cell }\x0A  .gwt-DecoratorPanel .middleLeftInner { the inner element of the cell }\x0A  .gwt-DecoratorPanel .middleCenter { the middle center cell }\x0A  .gwt-DecoratorPanel .middleCenterInner { the inner element of the cell }\x0A  .gwt-DecoratorPanel .middleRight { the middle right cell }\x0A  .gwt-DecoratorPanel .middleRightInner { the inner element of the cell }\x0A  .gwt-DecoratorPanel .bottom { the bottom row }\x0A  .gwt-DecoratorPanel .bottomLeft { the bottom left cell }\x0A  .gwt-DecoratorPanel .bottomLeftInner { the inner element of the cell }\x0A  .gwt-DecoratorPanel .bottomCenter { the bottom center cell }\x0A  .gwt-DecoratorPanel .bottomCenterInner { the inner element of the cell }\x0A  .gwt-DecoratorPanel .bottomRight { the bottom right cell }\x0A  .gwt-DecoratorPanel .bottomRightInner { the inner element of the cell }\x0A\x0A')
+pyjamas.ui.decoratorpanel.__DecoratorPanel = function () {
+}
+pyjamas.ui.decoratorpanel.DecoratorPanel = function(rowStyles, containerIndex) {
+    if (typeof rowStyles == 'undefined') rowStyles=null;
+    if (typeof containerIndex == 'undefined') containerIndex=1;
+    var instance = new pyjamas.ui.decoratorpanel.__DecoratorPanel();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.decoratorpanel.DecoratorPanel.__name__ = 'DecoratorPanel';
+
+pyjamas.ui.decoratorpanel.DecoratorPanel.parse_kwargs = function ( __kwargs, rowStyles, containerIndex ) {
+    if (typeof rowStyles == 'undefined')
+        rowStyles=__kwargs.rowStyles;
+    if (typeof containerIndex == 'undefined')
+        containerIndex=__kwargs.containerIndex;
+    var __r = [rowStyles, containerIndex];
+    return __r;
+};
+pyjamas.ui.decoratorpanel.__DecoratorPanel.__initialize__ = function () {
+    if(pyjamas.ui.decoratorpanel.__DecoratorPanel.__was_initialized__) return;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.__was_initialized__ = true;
+    if(!pyjamas.ui.SimplePanel.__SimplePanel.__was_initialized__)
+        pyjamas.ui.SimplePanel.__SimplePanel.__initialize__();
+    pyjs_extend(pyjamas.ui.decoratorpanel.__DecoratorPanel, pyjamas.ui.SimplePanel.__SimplePanel);
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.__new__ = pyjamas.ui.decoratorpanel.DecoratorPanel;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.__name__ = 'DecoratorPanel';
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.DEFAULT_STYLENAME = String('gwt-DecoratorPanel');
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.DEFAULT_ROW_STYLENAMES = new pyjslib.List([String('top'), String('middle'), String('bottom')]);
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__init__ = function(rowStyles, containerIndex) {
+    if (typeof rowStyles == 'undefined') rowStyles=null;
+    if (typeof containerIndex == 'undefined') containerIndex=1;
+    if (pyjslib.bool(pyjslib.eq(rowStyles, null))) {
+    rowStyles = this.DEFAULT_ROW_STYLENAMES;
+    }
+    pyjamas.ui.SimplePanel.__SimplePanel.prototype.__class__.__init__(this, DOM.createTable());
+    this.table = this.getElement();
+    this.tbody = DOM.createTBody();
+    DOM.appendChild(this.table, this.tbody);
+    DOM.setIntAttribute(this.table, String('cellSpacing'), 0);
+    DOM.setIntAttribute(this.table, String('cellPadding'), 0);
+
+        var __i = pyjslib.range(pyjslib.len(rowStyles)).__iter__();
+        try {
+            while (true) {
+                var i = __i.next();
+                
+        
+    var row = this.createTR(rowStyles.__getitem__(i));
+    DOM.appendChild(this.tbody, row);
+    if (pyjslib.bool(pyjslib.eq(i, containerIndex))) {
+    this.containerElem = DOM.getFirstChild(DOM.getChild(row, 1));
+    }
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    this.setStyleName(this.DEFAULT_STYLENAME);
+    };
+pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__init__.parse_kwargs = function ( __kwargs, rowStyles, containerIndex ) {
+    if (typeof rowStyles == 'undefined')
+        rowStyles=__kwargs.rowStyles;
+    if (typeof containerIndex == 'undefined')
+        containerIndex=__kwargs.containerIndex;
+    var __r = [rowStyles, containerIndex];
+    return __r;
+};
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__init__.call.apply(pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__init__, arguments);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__init__.instance_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.__init__.parse_kwargs = pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__init__.parse_kwargs;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.createTR = function(styleName) {
+    var trElem = DOM.createTR();
+    this.setStyleName(trElem, styleName);
+    DOM.appendChild(trElem, this.createTD( ( styleName + String('Left') ) ));
+    DOM.appendChild(trElem, this.createTD( ( styleName + String('Center') ) ));
+    DOM.appendChild(trElem, this.createTD( ( styleName + String('Right') ) ));
+    return trElem;
+    };
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.createTR = function() {
+        return pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.createTR.call.apply(pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.createTR, arguments);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.createTR.unbound_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.createTR.instance_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.createTR.__name__ = 'createTR';
+pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.createTR.__name__ = 'createTR';
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.createTD = function(styleName) {
+    var tdElem = DOM.createTD();
+    var inner = DOM.createDiv();
+    DOM.appendChild(tdElem, inner);
+    this.setStyleName(tdElem, styleName);
+    this.setStyleName(inner,  ( styleName + String('Inner') ) );
+    return tdElem;
+    };
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.createTD = function() {
+        return pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.createTD.call.apply(pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.createTD, arguments);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.createTD.unbound_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.createTD.instance_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.createTD.__name__ = 'createTD';
+pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.createTD.__name__ = 'createTD';
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.getCellElement = function(row, cell) {
+    var tr = DOM.getChild(this.tbody, row);
+    var td = DOM.getChild(tr, cell);
+    return DOM.getFirstChild(td);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.getCellElement = function() {
+        return pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.getCellElement.call.apply(pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.getCellElement, arguments);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.getCellElement.unbound_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.getCellElement.instance_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.getCellElement.__name__ = 'getCellElement';
+pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.getCellElement.__name__ = 'getCellElement';
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.getContainerElement = function() {
+    return this.containerElem;
+    };
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.getContainerElement = function() {
+        return pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.getContainerElement.call.apply(pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.getContainerElement, arguments);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.getContainerElement.unbound_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.getContainerElement.instance_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.getContainerElement.__name__ = 'getContainerElement';
+pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.getContainerElement.__name__ = 'getContainerElement';
+}
+pyjamas.ui.decoratorpanel.__DecoratorPanel.__initialize__();
+pyjamas.ui.decoratorpanel.__DecoratedTabBar = function () {
+}
+pyjamas.ui.decoratorpanel.DecoratedTabBar = function() {
+    var instance = new pyjamas.ui.decoratorpanel.__DecoratedTabBar();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.decoratorpanel.DecoratedTabBar.__name__ = 'DecoratedTabBar';
+
+pyjamas.ui.decoratorpanel.__DecoratedTabBar.__initialize__ = function () {
+    if(pyjamas.ui.decoratorpanel.__DecoratedTabBar.__was_initialized__) return;
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.__was_initialized__ = true;
+    if(!pyjamas.ui.TabBar.__TabBar.__was_initialized__)
+        pyjamas.ui.TabBar.__TabBar.__initialize__();
+    pyjs_extend(pyjamas.ui.decoratorpanel.__DecoratedTabBar, pyjamas.ui.TabBar.__TabBar);
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.__new__ = pyjamas.ui.decoratorpanel.DecoratedTabBar;
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.__name__ = 'DecoratedTabBar';
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.TAB_ROW_STYLES = new pyjslib.List([String('tabTop'), String('tabMiddle')]);
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.STYLENAME_DEFAULT = String('gwt-DecoratedTabBar');
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__init__ = function() {
+    pyjamas.ui.TabBar.__TabBar.prototype.__class__.__init__(this);
+    this.setStyleName(this.STYLENAME_DEFAULT);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__init__.call.apply(pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__init__, arguments);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__init__.instance_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.createTabTextWrapper = function() {
+    return pyjamas.ui.decoratorpanel.DecoratorPanel(this.TAB_ROW_STYLES, 1);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.createTabTextWrapper = function() {
+        return pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.createTabTextWrapper.call.apply(pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.createTabTextWrapper, arguments);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.createTabTextWrapper.unbound_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.createTabTextWrapper.instance_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.createTabTextWrapper.__name__ = 'createTabTextWrapper';
+pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.createTabTextWrapper.__name__ = 'createTabTextWrapper';
+}
+pyjamas.ui.decoratorpanel.__DecoratedTabBar.__initialize__();
+pyjamas.ui.decoratorpanel.__DecoratedTabPanel = function () {
+}
+pyjamas.ui.decoratorpanel.DecoratedTabPanel = function() {
+    var instance = new pyjamas.ui.decoratorpanel.__DecoratedTabPanel();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.decoratorpanel.DecoratedTabPanel.__name__ = 'DecoratedTabPanel';
+
+pyjamas.ui.decoratorpanel.__DecoratedTabPanel.__initialize__ = function () {
+    if(pyjamas.ui.decoratorpanel.__DecoratedTabPanel.__was_initialized__) return;
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.__was_initialized__ = true;
+    if(!pyjamas.ui.TabPanel.__TabPanel.__was_initialized__)
+        pyjamas.ui.TabPanel.__TabPanel.__initialize__();
+    pyjs_extend(pyjamas.ui.decoratorpanel.__DecoratedTabPanel, pyjamas.ui.TabPanel.__TabPanel);
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__class__.__new__ = pyjamas.ui.decoratorpanel.DecoratedTabPanel;
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__class__.__name__ = 'DecoratedTabPanel';
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__class__.DEFAULT_STYLENAME = String('gwt-DecoratedTabPanel');
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__init__ = function() {
+    pyjamas.ui.TabPanel.__TabPanel.prototype.__class__.__init__(this, pyjamas.ui.decoratorpanel.DecoratedTabBar());
+    this.setStyleName(this.DEFAULT_STYLENAME);
+    this.getTabBar().setStyleName(pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.STYLENAME_DEFAULT);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__init__.call.apply(pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__init__, arguments);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__init__.instance_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.createTabTextWrapper = function() {
+    return pyjamas.ui.decoratorpanel.DecoratorPanel(pyjamas.ui.decoratorpanel.__DecoratedTabBar.prototype.__class__.TAB_ROW_STYLES, 1);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__class__.createTabTextWrapper = function() {
+        return pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.createTabTextWrapper.call.apply(pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.createTabTextWrapper, arguments);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__class__.createTabTextWrapper.unbound_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.createTabTextWrapper.instance_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.__class__.createTabTextWrapper.__name__ = 'createTabTextWrapper';
+pyjamas.ui.decoratorpanel.__DecoratedTabPanel.prototype.createTabTextWrapper.__name__ = 'createTabTextWrapper';
+}
+pyjamas.ui.decoratorpanel.__DecoratedTabPanel.__initialize__();
+pyjamas.ui.decoratorpanel.__DecoratorTitledPanel = function () {
+}
+pyjamas.ui.decoratorpanel.DecoratorTitledPanel = function(title, titleStyle, imgStyle, rowStyles, containerIndex, titleIndex) {
+    if (typeof titleStyle == 'undefined') titleStyle=null;
+    if (typeof imgStyle == 'undefined') imgStyle=null;
+    if (typeof rowStyles == 'undefined') rowStyles=null;
+    if (typeof containerIndex == 'undefined') containerIndex=2;
+    if (typeof titleIndex == 'undefined') titleIndex=1;
+    var instance = new pyjamas.ui.decoratorpanel.__DecoratorTitledPanel();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.decoratorpanel.DecoratorTitledPanel.__name__ = 'DecoratorTitledPanel';
+
+pyjamas.ui.decoratorpanel.DecoratorTitledPanel.parse_kwargs = function ( __kwargs, title, titleStyle, imgStyle, rowStyles, containerIndex, titleIndex ) {
+    if (typeof titleStyle == 'undefined')
+        titleStyle=__kwargs.titleStyle;
+    if (typeof imgStyle == 'undefined')
+        imgStyle=__kwargs.imgStyle;
+    if (typeof rowStyles == 'undefined')
+        rowStyles=__kwargs.rowStyles;
+    if (typeof containerIndex == 'undefined')
+        containerIndex=__kwargs.containerIndex;
+    if (typeof titleIndex == 'undefined')
+        titleIndex=__kwargs.titleIndex;
+    var __r = [title, titleStyle, imgStyle, rowStyles, containerIndex, titleIndex];
+    return __r;
+};
+pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.__initialize__ = function () {
+    if(pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.__was_initialized__) return;
+    pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.__was_initialized__ = true;
+    if(!pyjamas.ui.decoratorpanel.__DecoratorPanel.__was_initialized__)
+        pyjamas.ui.decoratorpanel.__DecoratorPanel.__initialize__();
+    pyjs_extend(pyjamas.ui.decoratorpanel.__DecoratorTitledPanel, pyjamas.ui.decoratorpanel.__DecoratorPanel);
+    pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__class__.__new__ = pyjamas.ui.decoratorpanel.DecoratorTitledPanel;
+    pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__class__.__name__ = 'DecoratorTitledPanel';
+    pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__init__ = function(title, titleStyle, imgStyle, rowStyles, containerIndex, titleIndex) {
+    if (typeof titleStyle == 'undefined') titleStyle=null;
+    if (typeof imgStyle == 'undefined') imgStyle=null;
+    if (typeof rowStyles == 'undefined') rowStyles=null;
+    if (typeof containerIndex == 'undefined') containerIndex=2;
+    if (typeof titleIndex == 'undefined') titleIndex=1;
+    if (pyjslib.bool(pyjslib.eq(rowStyles, null))) {
+    rowStyles = new pyjslib.List([String('top'), String('top2'), String('middle'), String('bottom')]);
+    }
+    if (pyjslib.bool(pyjslib.eq(titleStyle, null))) {
+    titleStyle = String('title');
+    }
+    pyjamas.ui.decoratorpanel.__DecoratorPanel.prototype.__class__.__init__(this, rowStyles, containerIndex);
+    var inner = this.getCellElement(titleIndex, 1);
+    if (pyjslib.bool(imgStyle)) {
+    var img = DOM.createDiv();
+    DOM.setAttribute(img, String('className'), imgStyle);
+    DOM.appendChild(inner, img);
+    }
+    var tdiv = DOM.createDiv();
+    DOM.setAttribute(tdiv, String('className'), titleStyle);
+    DOM.setInnerText(tdiv, title);
+    DOM.appendChild(inner, tdiv);
+    };
+pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__init__.parse_kwargs = function ( __kwargs, title, titleStyle, imgStyle, rowStyles, containerIndex, titleIndex ) {
+    if (typeof titleStyle == 'undefined')
+        titleStyle=__kwargs.titleStyle;
+    if (typeof imgStyle == 'undefined')
+        imgStyle=__kwargs.imgStyle;
+    if (typeof rowStyles == 'undefined')
+        rowStyles=__kwargs.rowStyles;
+    if (typeof containerIndex == 'undefined')
+        containerIndex=__kwargs.containerIndex;
+    if (typeof titleIndex == 'undefined')
+        titleIndex=__kwargs.titleIndex;
+    var __r = [title, titleStyle, imgStyle, rowStyles, containerIndex, titleIndex];
+    return __r;
+};
+    pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__init__.call.apply(pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__init__, arguments);
+    };
+    pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__init__.instance_method = true;
+    pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__class__.__init__.parse_kwargs = pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.prototype.__init__.parse_kwargs;
+}
+pyjamas.ui.decoratorpanel.__DecoratorTitledPanel.__initialize__();
+return this;
+
+}; /* end pyjamas.ui.decoratorpanel */ 
+
+
+
+
+pyjamas.ui.decoratorpanel_loaded_fn = function() {
+}
+
+pyjamas.ui.decoratorpanel_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.decoratorpanel']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.decoratorpanel'] < 2)) {
+        module_load_request['pyjamas.ui.decoratorpanel'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM',
+			'pyjamas.ui']),
+		new pyjslib.List([
+			]),
+		new pyjslib.List([
+			'pyjamas.ui.SimplePanel',
+			'pyjamas.ui.TabPanel',
+			'pyjamas.ui.TabBar'])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'mozilla.pyjslib': 'mozilla.pyjslib',
+		'mozilla.pyjamas.DOM': 'mozilla.pyjamas.DOM'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.decoratorpanel_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.ui.decoratorpanel');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.ui.decoratorpanel");
+
+    if (sys.appname != 'pyjamas.ui.decoratorpanel')
+    {
+        modules['pyjamas.ui.decoratorpanel'] = pyjamas.ui.decoratorpanel(name);
+        if (module_load_request['pyjamas.ui.decoratorpanel'] < 3) {
+            module_load_request['pyjamas.ui.decoratorpanel'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.ui.decoratorpanel");
+
+pyjamas.ui.decoratorpanel_prepare_mod();
+
+
 // OpenPowerSystem
 
 // module libs (usually imported javascript)
@@ -11822,6 +13625,14 @@ OpenPowerSystem.__name__ = __mod_name__;
     var FileUpload = pyjamas.ui.FileUpload;
 
 
+    pyjslib.import_module(sys.loadpath, 'OpenPowerSystem', 'pyjamas.ui.TabPanel', 0, false);
+    var TabPanel = pyjamas.ui.TabPanel;
+
+
+    pyjslib.import_module(sys.loadpath, 'OpenPowerSystem', 'pyjamas.ui.decoratorpanel', 0, false);
+    var decoratorpanel = pyjamas.ui.decoratorpanel;
+
+
     pyjslib.import_module(sys.loadpath, 'OpenPowerSystem', 'pyjamas', 0, false);
     
 
@@ -11832,6 +13643,52 @@ OpenPowerSystem.__name__ = __mod_name__;
     pyjslib.import_module(sys.loadpath, 'OpenPowerSystem', 'pyjamas.JSONService', 0, false);
     var JSONService = pyjamas.JSONService;
 
+OpenPowerSystem.__UploadFormHandler = function () {
+}
+OpenPowerSystem.UploadFormHandler = function() {
+    var instance = new OpenPowerSystem.__UploadFormHandler();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+OpenPowerSystem.UploadFormHandler.__name__ = 'UploadFormHandler';
+
+OpenPowerSystem.__UploadFormHandler.__initialize__ = function () {
+    if(OpenPowerSystem.__UploadFormHandler.__was_initialized__) return;
+    OpenPowerSystem.__UploadFormHandler.__was_initialized__ = true;
+    pyjs_extend(OpenPowerSystem.__UploadFormHandler, pyjslib.__Object);
+    OpenPowerSystem.__UploadFormHandler.prototype.__class__.__new__ = OpenPowerSystem.UploadFormHandler;
+    OpenPowerSystem.__UploadFormHandler.prototype.__class__.__name__ = 'UploadFormHandler';
+    OpenPowerSystem.__UploadFormHandler.prototype.onClick = function(sender) {
+    this.form.submit();
+    };
+    OpenPowerSystem.__UploadFormHandler.prototype.__class__.onClick = function() {
+        return OpenPowerSystem.__UploadFormHandler.prototype.onClick.call.apply(OpenPowerSystem.__UploadFormHandler.prototype.onClick, arguments);
+    };
+    OpenPowerSystem.__UploadFormHandler.prototype.__class__.onClick.unbound_method = true;
+    OpenPowerSystem.__UploadFormHandler.prototype.onClick.instance_method = true;
+    OpenPowerSystem.__UploadFormHandler.prototype.__class__.onClick.__name__ = 'onClick';
+OpenPowerSystem.__UploadFormHandler.prototype.onClick.__name__ = 'onClick';
+    OpenPowerSystem.__UploadFormHandler.prototype.onSubmitComplete = function(event) {
+    Window.alert(event.getResults());
+    };
+    OpenPowerSystem.__UploadFormHandler.prototype.__class__.onSubmitComplete = function() {
+        return OpenPowerSystem.__UploadFormHandler.prototype.onSubmitComplete.call.apply(OpenPowerSystem.__UploadFormHandler.prototype.onSubmitComplete, arguments);
+    };
+    OpenPowerSystem.__UploadFormHandler.prototype.__class__.onSubmitComplete.unbound_method = true;
+    OpenPowerSystem.__UploadFormHandler.prototype.onSubmitComplete.instance_method = true;
+    OpenPowerSystem.__UploadFormHandler.prototype.__class__.onSubmitComplete.__name__ = 'onSubmitComplete';
+OpenPowerSystem.__UploadFormHandler.prototype.onSubmitComplete.__name__ = 'onSubmitComplete';
+    OpenPowerSystem.__UploadFormHandler.prototype.onSubmit = function(event) {
+    };
+    OpenPowerSystem.__UploadFormHandler.prototype.__class__.onSubmit = function() {
+        return OpenPowerSystem.__UploadFormHandler.prototype.onSubmit.call.apply(OpenPowerSystem.__UploadFormHandler.prototype.onSubmit, arguments);
+    };
+    OpenPowerSystem.__UploadFormHandler.prototype.__class__.onSubmit.unbound_method = true;
+    OpenPowerSystem.__UploadFormHandler.prototype.onSubmit.instance_method = true;
+    OpenPowerSystem.__UploadFormHandler.prototype.__class__.onSubmit.__name__ = 'onSubmit';
+OpenPowerSystem.__UploadFormHandler.prototype.onSubmit.__name__ = 'onSubmit';
+}
+OpenPowerSystem.__UploadFormHandler.__initialize__();
 OpenPowerSystem.__OpenPowerSystem = function () {
 }
 OpenPowerSystem.OpenPowerSystem = function() {
@@ -11848,19 +13705,14 @@ OpenPowerSystem.__OpenPowerSystem.__initialize__ = function () {
     OpenPowerSystem.__OpenPowerSystem.prototype.__class__.__new__ = OpenPowerSystem.OpenPowerSystem;
     OpenPowerSystem.__OpenPowerSystem.prototype.__class__.__name__ = 'OpenPowerSystem';
     OpenPowerSystem.__OpenPowerSystem.prototype.onModuleLoad = function() {
-    this.form = pyjamas.ui.FormPanel.FormPanel();
-    this.form.setAction(String('/upload/'));
-    this.form.setEncoding(pyjamas.ui.FormPanel.__FormPanel.prototype.__class__.ENCODING_MULTIPART);
-    this.form.setMethod(pyjamas.ui.FormPanel.__FormPanel.prototype.__class__.METHOD_POST);
-    var panel = pyjamas.ui.VerticalPanel.VerticalPanel();
-    this.form.setWidget(panel);
-    panel.setStyleName(String('panel'));
-    var upload = pyjamas.ui.FileUpload.FileUpload();
-    upload.setName(String('uploadFormElement'));
-    panel.add(upload);
-    panel.add(pyjamas.ui.Button.Button(String('Upload'), this));
-    this.form.addFormHandler(this);
-    pyjamas.ui.RootPanel.RootPanel().add(this.form);
+    this.TEXT_WAITING = String('Waiting for response...');
+    this.TEXT_ERROR = String('Server Error');
+    this.remote_py = OpenPowerSystem.UpperServicePython();
+    this.tab_panel = pyjamas.ui.TabPanel.TabPanel();
+    this.tab_panel.add(this.get_map_panel(), String('Map'));
+    this.tab_panel.add(this.get_edit_panel(), String('Edit'));
+    this.tab_panel.add(this.get_upload_panel(), String('Upload'));
+    pyjamas.ui.RootPanel.RootPanel().add(this.tab_panel);
     };
     OpenPowerSystem.__OpenPowerSystem.prototype.__class__.onModuleLoad = function() {
         return OpenPowerSystem.__OpenPowerSystem.prototype.onModuleLoad.call.apply(OpenPowerSystem.__OpenPowerSystem.prototype.onModuleLoad, arguments);
@@ -11869,120 +13721,62 @@ OpenPowerSystem.__OpenPowerSystem.__initialize__ = function () {
     OpenPowerSystem.__OpenPowerSystem.prototype.onModuleLoad.instance_method = true;
     OpenPowerSystem.__OpenPowerSystem.prototype.__class__.onModuleLoad.__name__ = 'onModuleLoad';
 OpenPowerSystem.__OpenPowerSystem.prototype.onModuleLoad.__name__ = 'onModuleLoad';
-    OpenPowerSystem.__OpenPowerSystem.prototype.onClick = function(sender) {
-    this.form.submit();
+    OpenPowerSystem.__OpenPowerSystem.prototype.get_map_panel = function() {
+    var panel = pyjamas.ui.HorizontalPanel.HorizontalPanel();
+    var info = pyjamas.ui.HTML.HTML(String('OpenPowerSystem map.'));
+    panel.add(info);
+    return panel;
     };
-    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.onClick = function() {
-        return OpenPowerSystem.__OpenPowerSystem.prototype.onClick.call.apply(OpenPowerSystem.__OpenPowerSystem.prototype.onClick, arguments);
+    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.get_map_panel = function() {
+        return OpenPowerSystem.__OpenPowerSystem.prototype.get_map_panel.call.apply(OpenPowerSystem.__OpenPowerSystem.prototype.get_map_panel, arguments);
     };
-    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.onClick.unbound_method = true;
-    OpenPowerSystem.__OpenPowerSystem.prototype.onClick.instance_method = true;
-    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.onClick.__name__ = 'onClick';
-OpenPowerSystem.__OpenPowerSystem.prototype.onClick.__name__ = 'onClick';
-    OpenPowerSystem.__OpenPowerSystem.prototype.onSubmitComplete = function(event) {
-    Window.alert(event.getResults());
+    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.get_map_panel.unbound_method = true;
+    OpenPowerSystem.__OpenPowerSystem.prototype.get_map_panel.instance_method = true;
+    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.get_map_panel.__name__ = 'get_map_panel';
+OpenPowerSystem.__OpenPowerSystem.prototype.get_map_panel.__name__ = 'get_map_panel';
+    OpenPowerSystem.__OpenPowerSystem.prototype.get_edit_panel = function() {
+    var panel = pyjamas.ui.HorizontalPanel.HorizontalPanel();
+    var info = pyjamas.ui.HTML.HTML(String('Edit OpenPowerSystem data.'));
+    panel.add(info);
+    return panel;
     };
-    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.onSubmitComplete = function() {
-        return OpenPowerSystem.__OpenPowerSystem.prototype.onSubmitComplete.call.apply(OpenPowerSystem.__OpenPowerSystem.prototype.onSubmitComplete, arguments);
+    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.get_edit_panel = function() {
+        return OpenPowerSystem.__OpenPowerSystem.prototype.get_edit_panel.call.apply(OpenPowerSystem.__OpenPowerSystem.prototype.get_edit_panel, arguments);
     };
-    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.onSubmitComplete.unbound_method = true;
-    OpenPowerSystem.__OpenPowerSystem.prototype.onSubmitComplete.instance_method = true;
-    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.onSubmitComplete.__name__ = 'onSubmitComplete';
-OpenPowerSystem.__OpenPowerSystem.prototype.onSubmitComplete.__name__ = 'onSubmitComplete';
-    OpenPowerSystem.__OpenPowerSystem.prototype.onSubmit = function(event) {
-    if (pyjslib.bool(pyjslib.eq(this.upload.getText().length, 0))) {
-    Window.alert(String('The file field must not be empty'));
-    event.setCancelled(true);
-    }
+    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.get_edit_panel.unbound_method = true;
+    OpenPowerSystem.__OpenPowerSystem.prototype.get_edit_panel.instance_method = true;
+    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.get_edit_panel.__name__ = 'get_edit_panel';
+OpenPowerSystem.__OpenPowerSystem.prototype.get_edit_panel.__name__ = 'get_edit_panel';
+    OpenPowerSystem.__OpenPowerSystem.prototype.get_upload_panel = function() {
+    this.form = pyjamas.ui.FormPanel.FormPanel();
+    this.form.setAction(String('/upload/'));
+    this.form.setEncoding(pyjamas.ui.FormPanel.__FormPanel.prototype.__class__.ENCODING_MULTIPART);
+    this.form.setMethod(pyjamas.ui.FormPanel.__FormPanel.prototype.__class__.METHOD_POST);
+    var panel = pyjamas.ui.VerticalPanel.VerticalPanel();
+    panel.setSpacing(8);
+    panel.setStyleName(String('panel'));
+    this.form.setWidget(panel);
+    var info = pyjamas.ui.HTML.HTML(String('Upload CIM RDF/XML instance file.'));
+    panel.add(info);
+    var rdfxml_file = pyjamas.ui.FileUpload.FileUpload();
+    rdfxml_file.setName(String('uploadFormElement'));
+    panel.add(rdfxml_file);
+    var upload = pyjamas.ui.Button.Button(String('Upload'));
+    panel.add(upload);
+    var handler = OpenPowerSystem.UploadFormHandler();
+    handler.form = this.form;
+    this.form.addFormHandler(handler);
+    return this.form;
     };
-    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.onSubmit = function() {
-        return OpenPowerSystem.__OpenPowerSystem.prototype.onSubmit.call.apply(OpenPowerSystem.__OpenPowerSystem.prototype.onSubmit, arguments);
+    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.get_upload_panel = function() {
+        return OpenPowerSystem.__OpenPowerSystem.prototype.get_upload_panel.call.apply(OpenPowerSystem.__OpenPowerSystem.prototype.get_upload_panel, arguments);
     };
-    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.onSubmit.unbound_method = true;
-    OpenPowerSystem.__OpenPowerSystem.prototype.onSubmit.instance_method = true;
-    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.onSubmit.__name__ = 'onSubmit';
-OpenPowerSystem.__OpenPowerSystem.prototype.onSubmit.__name__ = 'onSubmit';
+    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.get_upload_panel.unbound_method = true;
+    OpenPowerSystem.__OpenPowerSystem.prototype.get_upload_panel.instance_method = true;
+    OpenPowerSystem.__OpenPowerSystem.prototype.__class__.get_upload_panel.__name__ = 'get_upload_panel';
+OpenPowerSystem.__OpenPowerSystem.prototype.get_upload_panel.__name__ = 'get_upload_panel';
 }
 OpenPowerSystem.__OpenPowerSystem.__initialize__();
-OpenPowerSystem.__JSONRPCExample = function () {
-}
-OpenPowerSystem.JSONRPCExample = function() {
-    var instance = new OpenPowerSystem.__JSONRPCExample();
-    if(instance.__init__) instance.__init__.apply(instance, arguments);
-    return instance;
-};
-OpenPowerSystem.JSONRPCExample.__name__ = 'JSONRPCExample';
-
-OpenPowerSystem.__JSONRPCExample.__initialize__ = function () {
-    if(OpenPowerSystem.__JSONRPCExample.__was_initialized__) return;
-    OpenPowerSystem.__JSONRPCExample.__was_initialized__ = true;
-    pyjs_extend(OpenPowerSystem.__JSONRPCExample, pyjslib.__Object);
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.__new__ = OpenPowerSystem.JSONRPCExample;
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.__name__ = 'JSONRPCExample';
-    OpenPowerSystem.__JSONRPCExample.prototype.onModuleLoad = function() {
-    this.TEXT_WAITING = String('Waiting for response...');
-    this.TEXT_ERROR = String('Server Error');
-    this.remote_py = OpenPowerSystem.UpperServicePython();
-    this.status = pyjamas.ui.Label.Label();
-    this.text_area = TextArea();
-    this.text_area.setText(String('Please uppercase this string'));
-    this.text_area.setCharacterWidth(80);
-    this.text_area.setVisibleLines(8);
-    this.button_py = pyjamas.ui.Button.Button(String('Send to Python Service'), this);
-    var buttons = pyjamas.ui.HorizontalPanel.HorizontalPanel();
-    buttons.add(this.button_py);
-    buttons.setSpacing(8);
-    var info = String('This example demonstrates the calling of appengine upper(case) method with JSON-RPC from javascript (i.e. Python code compiled with pyjs to javascript).');
-    var panel = pyjamas.ui.VerticalPanel.VerticalPanel();
-    panel.add(pyjamas.ui.HTML.HTML(info));
-    panel.add(this.text_area);
-    panel.add(buttons);
-    panel.add(this.status);
-    pyjamas.ui.RootPanel.RootPanel().add(panel);
-    };
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onModuleLoad = function() {
-        return OpenPowerSystem.__JSONRPCExample.prototype.onModuleLoad.call.apply(OpenPowerSystem.__JSONRPCExample.prototype.onModuleLoad, arguments);
-    };
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onModuleLoad.unbound_method = true;
-    OpenPowerSystem.__JSONRPCExample.prototype.onModuleLoad.instance_method = true;
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onModuleLoad.__name__ = 'onModuleLoad';
-OpenPowerSystem.__JSONRPCExample.prototype.onModuleLoad.__name__ = 'onModuleLoad';
-    OpenPowerSystem.__JSONRPCExample.prototype.onClick = function(sender) {
-    this.status.setText(this.TEXT_WAITING);
-    var text = this.text_area.getText();
-    if (pyjslib.bool((this.remote_py.upper(this.text_area.getText(), this) < 0))) {
-    this.status.setText(this.TEXT_ERROR);
-    }
-    };
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onClick = function() {
-        return OpenPowerSystem.__JSONRPCExample.prototype.onClick.call.apply(OpenPowerSystem.__JSONRPCExample.prototype.onClick, arguments);
-    };
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onClick.unbound_method = true;
-    OpenPowerSystem.__JSONRPCExample.prototype.onClick.instance_method = true;
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onClick.__name__ = 'onClick';
-OpenPowerSystem.__JSONRPCExample.prototype.onClick.__name__ = 'onClick';
-    OpenPowerSystem.__JSONRPCExample.prototype.onRemoteResponse = function(response, request_info) {
-    this.status.setText(response);
-    };
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onRemoteResponse = function() {
-        return OpenPowerSystem.__JSONRPCExample.prototype.onRemoteResponse.call.apply(OpenPowerSystem.__JSONRPCExample.prototype.onRemoteResponse, arguments);
-    };
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onRemoteResponse.unbound_method = true;
-    OpenPowerSystem.__JSONRPCExample.prototype.onRemoteResponse.instance_method = true;
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onRemoteResponse.__name__ = 'onRemoteResponse';
-OpenPowerSystem.__JSONRPCExample.prototype.onRemoteResponse.__name__ = 'onRemoteResponse';
-    OpenPowerSystem.__JSONRPCExample.prototype.onRemoteError = function(code, message, request_info) {
-    this.status.setText( (  (  ( String('Server Error or Invalid Response: ERROR ') + code )  + String(' - ') )  + message ) );
-    };
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onRemoteError = function() {
-        return OpenPowerSystem.__JSONRPCExample.prototype.onRemoteError.call.apply(OpenPowerSystem.__JSONRPCExample.prototype.onRemoteError, arguments);
-    };
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onRemoteError.unbound_method = true;
-    OpenPowerSystem.__JSONRPCExample.prototype.onRemoteError.instance_method = true;
-    OpenPowerSystem.__JSONRPCExample.prototype.__class__.onRemoteError.__name__ = 'onRemoteError';
-OpenPowerSystem.__JSONRPCExample.prototype.onRemoteError.__name__ = 'onRemoteError';
-}
-OpenPowerSystem.__JSONRPCExample.__initialize__();
 OpenPowerSystem.__UpperServicePython = function () {
 }
 OpenPowerSystem.UpperServicePython = function() {
@@ -12001,7 +13795,7 @@ OpenPowerSystem.__UpperServicePython.__initialize__ = function () {
     OpenPowerSystem.__UpperServicePython.prototype.__class__.__new__ = OpenPowerSystem.UpperServicePython;
     OpenPowerSystem.__UpperServicePython.prototype.__class__.__name__ = 'UpperServicePython';
     OpenPowerSystem.__UpperServicePython.prototype.__init__ = function() {
-    pyjamas.JSONService.__JSONProxy.prototype.__class__.__init__(this, String('/json'), new pyjslib.List([String('upper')]));
+    pyjamas.JSONService.__JSONProxy.prototype.__class__.__init__(this, String('/json'), new pyjslib.List([String('upload')]));
     };
     OpenPowerSystem.__UpperServicePython.prototype.__class__.__init__ = function() {
         return OpenPowerSystem.__UpperServicePython.prototype.__init__.call.apply(OpenPowerSystem.__UpperServicePython.prototype.__init__, arguments);
@@ -12045,6 +13839,8 @@ OpenPowerSystem_prepare_mod = function() {
 			'pyjamas.ui.HorizontalPanel',
 			'pyjamas.ui.FormPanel',
 			'pyjamas.ui.FileUpload',
+			'pyjamas.ui.TabPanel',
+			'pyjamas.ui.decoratorpanel',
 			'pyjamas.Window',
 			'pyjamas.JSONService'])
 	]);
@@ -12112,21 +13908,22 @@ function prepare_app() {
 		new pyjslib.List([
 			'pyjamas.JSONService',
 			'pyjamas.Window',
+			'pyjamas.ui.KeyboardListener',
 			'pyjamas.ui.Event',
 			'pyjamas.log',
-			'pyjamas.ui.EventObject',
+			'pyjamas.ui.Focus',
 			'pyjamas.ui.MouseListener',
-			'pyjamas.ui.KeyboardListener',
-			'pyjamas.ui.FocusListener',
-			'pyjamas.ui.Focus']),
+			'pyjamas.ui.EventObject',
+			'pyjamas.ui.FocusListener']),
 		new pyjslib.List([
 			'pyjamas.ui.UIObject']),
 		new pyjslib.List([
 			'pyjamas.ui.Widget']),
 		new pyjslib.List([
-			'pyjamas.ui.FileUpload',
 			'pyjamas.ui.Panel',
+			'pyjamas.ui.Composite',
 			'pyjamas.ui.Label',
+			'pyjamas.ui.FileUpload',
 			'pyjamas.ui.FocusWidget']),
 		new pyjslib.List([
 			'pyjamas.ui.SimplePanel',
@@ -12134,14 +13931,22 @@ function prepare_app() {
 			'pyjamas.ui.HTML',
 			'pyjamas.ui.ButtonBase']),
 		new pyjslib.List([
-			'pyjamas.ui.FormPanel',
+			'pyjamas.ui.ClickDelegatePanel',
 			'pyjamas.ui.CellPanel',
+			'pyjamas.ui.DeckPanel',
+			'pyjamas.ui.FormPanel',
 			'pyjamas.ui.Button',
 			'pyjamas.ui.AbsolutePanel']),
 		new pyjslib.List([
 			'pyjamas.ui.HorizontalPanel',
 			'pyjamas.ui.VerticalPanel',
 			'pyjamas.ui.RootPanel']),
+		new pyjslib.List([
+			'pyjamas.ui.TabBar']),
+		new pyjslib.List([
+			'pyjamas.ui.TabPanel']),
+		new pyjslib.List([
+			'pyjamas.ui.decoratorpanel']),
 		new pyjslib.List([
 			'OpenPowerSystem'])
 	]);
