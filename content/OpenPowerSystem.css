@@ -44,7 +44,6 @@ body {
   border-bottom: 2px solid #87B3FF;
   padding: 4px;
   cursor: pointer;
-  cursor: hand;
 }
 
 .gwt-TabBar .gwt-TabBarItem-selected {

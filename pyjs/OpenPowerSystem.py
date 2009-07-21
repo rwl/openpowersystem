@@ -14,7 +14,9 @@ from pyjamas import Window
 
 from Edit import Edit
 
-#from OpenLayers import Map
+#from Controls import OpenLayersMap
+
+import OpenLayers.js
 
 class UploadFormHandler:
     """ Event handler for the upload form.
@@ -38,6 +40,9 @@ class UploadFormHandler:
 #            event.setCancelled(True)
         pass
 
+def OLMap():
+    JS("""return new OpenLayers.Map('map');""")
+
 class OpenPowerSystem:
     def onModuleLoad(self):
         self.TEXT_WAITING = "Waiting for response..."
@@ -54,8 +59,14 @@ class OpenPowerSystem:
     def get_map_panel(self):
         panel = HorizontalPanel()
 
-#        map = Map()
-#        panel.add(map)
+        map_div = HTML("""
+        <div style="width:80%; height:60%" id="map"></div>
+        """)
+        panel.add(map_div)
+
+        self.map = OLMap()
+
+#        map = OpenLayersMap('map')
 
         return panel
 
