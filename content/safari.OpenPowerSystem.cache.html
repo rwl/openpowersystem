@@ -3817,6 +3817,598 @@ pyjamas_prepare_mod = function() {
 pyjamas_prepare_mod();
 
 
+// pyjamas.HTTPRequest
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.HTTPRequest = function (__mod_name__) {
+    if(pyjamas.HTTPRequest.__was_initialized__) return;
+    pyjamas.HTTPRequest.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.HTTPRequest';
+pyjamas.HTTPRequest.__name__ = __mod_name__;
+var HTTPRequest = pyjamas.HTTPRequest;
+
+pyjamas.HTTPRequest.__HTTPRequest = function () {
+}
+pyjamas.HTTPRequest.HTTPRequest = function() {
+    var instance = new pyjamas.HTTPRequest.__HTTPRequest();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.HTTPRequest.HTTPRequest.__name__ = 'HTTPRequest';
+
+pyjamas.HTTPRequest.__HTTPRequest.__initialize__ = function () {
+    if(pyjamas.HTTPRequest.__HTTPRequest.__was_initialized__) return;
+    pyjamas.HTTPRequest.__HTTPRequest.__was_initialized__ = true;
+    pyjs_extend(pyjamas.HTTPRequest.__HTTPRequest, pyjslib.__Object);
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.__new__ = pyjamas.HTTPRequest.HTTPRequest;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.__name__ = 'HTTPRequest';
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost = function(user, pwd, url, postData, handler, returnxml) {
+    if (typeof postData == 'undefined') postData=null;
+    if (typeof handler == 'undefined') handler=null;
+    if (typeof returnxml == 'undefined') returnxml=0;
+    if (pyjslib.bool(pyjslib.eq(postData, null))) {
+    return this.asyncPostImpl(null, null, user, pwd, url, returnxml);
+    }
+    return this.asyncPostImpl(user, pwd, url, postData, handler, returnxml);
+    };
+pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost.parse_kwargs = function ( __kwargs, user, pwd, url, postData, handler, returnxml ) {
+    if (typeof postData == 'undefined')
+        postData=__kwargs.postData;
+    if (typeof handler == 'undefined')
+        handler=__kwargs.handler;
+    if (typeof returnxml == 'undefined')
+        returnxml=__kwargs.returnxml;
+    var __r = [user, pwd, url, postData, handler, returnxml];
+    return __r;
+};
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPost = function() {
+        return pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost, arguments);
+    };
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPost.unbound_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost.instance_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPost.__name__ = 'asyncPost';
+pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost.__name__ = 'asyncPost';
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPost.parse_kwargs = pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost.parse_kwargs;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet = function(user, pwd, url, handler, returnxml) {
+    if (typeof returnxml == 'undefined') returnxml=0;
+    if (pyjslib.bool(pyjslib.eq(url, null))) {
+    return this.asyncGetImpl(null, null, user, pwd, returnxml);
+    }
+    return this.asyncGetImpl(user, pwd, url, handler, returnxml);
+    };
+pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet.parse_kwargs = function ( __kwargs, user, pwd, url, handler, returnxml ) {
+    if (typeof returnxml == 'undefined')
+        returnxml=__kwargs.returnxml;
+    var __r = [user, pwd, url, handler, returnxml];
+    return __r;
+};
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGet = function() {
+        return pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet, arguments);
+    };
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGet.unbound_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet.instance_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGet.__name__ = 'asyncGet';
+pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet.__name__ = 'asyncGet';
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGet.parse_kwargs = pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet.parse_kwargs;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.createXmlHTTPRequest = function() {
+    return this.doCreateXmlHTTPRequest();
+    };
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.createXmlHTTPRequest = function() {
+        return pyjamas.HTTPRequest.__HTTPRequest.prototype.createXmlHTTPRequest.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.createXmlHTTPRequest, arguments);
+    };
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.createXmlHTTPRequest.unbound_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.createXmlHTTPRequest.instance_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.createXmlHTTPRequest.__name__ = 'createXmlHTTPRequest';
+pyjamas.HTTPRequest.__HTTPRequest.prototype.createXmlHTTPRequest.__name__ = 'createXmlHTTPRequest';
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.doCreateXmlHTTPRequest = function() {
+
+        return new XMLHttpRequest();
+        
+    };
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.doCreateXmlHTTPRequest = function() {
+        return pyjamas.HTTPRequest.__HTTPRequest.prototype.doCreateXmlHTTPRequest.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.doCreateXmlHTTPRequest, arguments);
+    };
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.doCreateXmlHTTPRequest.unbound_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.doCreateXmlHTTPRequest.instance_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.doCreateXmlHTTPRequest.__name__ = 'doCreateXmlHTTPRequest';
+pyjamas.HTTPRequest.__HTTPRequest.prototype.doCreateXmlHTTPRequest.__name__ = 'doCreateXmlHTTPRequest';
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl = function(user, pwd, url, postData, handler, returnxml) {
+    if (typeof returnxml == 'undefined') returnxml=0;
+
+        var xmlHttp = this.doCreateXmlHTTPRequest();
+        try {
+            xmlHttp.open("POST", url, true);
+            xmlHttp.setRequestHeader("Content-Type",
+                                           "application/x-www-form-urlencoded");
+            xmlHttp.setRequestHeader("Content-Length", postData.length);
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState == 4) {
+                    delete xmlHttp.onreadystatechange;
+                    var localHandler = handler;
+                    var response;
+                    var status = xmlHttp.status;
+                    if (returnxml)
+                        response = xmlHttp.responseXML;
+                    else
+                        response = xmlHttp.responseText;
+                    handler = null;
+                    xmlHttp = null;
+                    if(status == 200) {
+                        localHandler.onCompletion(response);
+                    } else {
+                        localHandler.onError(response, status);
+                    }
+                }
+            };
+            xmlHttp.send(postData);
+            return true;
+        }
+        catch (e) {
+            delete xmlHttp.onreadystatechange;
+            var localHandler = handler;
+            handler = null;
+            xmlHttp = null;
+            localHandler.onError(String(e));
+            return false;
+        }
+        
+    };
+pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl.parse_kwargs = function ( __kwargs, user, pwd, url, postData, handler, returnxml ) {
+    if (typeof returnxml == 'undefined')
+        returnxml=__kwargs.returnxml;
+    var __r = [user, pwd, url, postData, handler, returnxml];
+    return __r;
+};
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPostImpl = function() {
+        return pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl, arguments);
+    };
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPostImpl.unbound_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl.instance_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPostImpl.__name__ = 'asyncPostImpl';
+pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl.__name__ = 'asyncPostImpl';
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPostImpl.parse_kwargs = pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl.parse_kwargs;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl = function(user, pwd, url, handler, returnxml) {
+    if (typeof returnxml == 'undefined') returnxml=0;
+
+        var xmlHttp = this.doCreateXmlHTTPRequest();
+        try {
+            xmlHttp.open("GET", url, true);
+            xmlHttp.setRequestHeader("Content-Type", "text/plain; charset=utf-8");
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState == 4) {
+                    delete xmlHttp.onreadystatechange;
+                    var localHandler = handler;
+                    var response;
+                    var status = xmlHttp.status;
+                    if (returnxml)
+                        response = xmlHttp.responseXML;
+                    else
+                        response = xmlHttp.responseText;
+                    handler = null;
+                    xmlHttp = null;
+                    if(status == 200) {
+                        localHandler.onCompletion(response);
+                    } else {
+                        localHandler.onError(response, status);
+                    }
+                }
+            };
+            xmlHttp.send('');
+            return true;
+        }
+        catch (e) {
+            delete xmlHttp.onreadystatechange;
+            var localHandler = handler;
+            handler = null;
+            xmlHttp = null;
+            localHandler.onError(String(e));
+            return false;
+        }
+        
+    };
+pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl.parse_kwargs = function ( __kwargs, user, pwd, url, handler, returnxml ) {
+    if (typeof returnxml == 'undefined')
+        returnxml=__kwargs.returnxml;
+    var __r = [user, pwd, url, handler, returnxml];
+    return __r;
+};
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGetImpl = function() {
+        return pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl, arguments);
+    };
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGetImpl.unbound_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl.instance_method = true;
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGetImpl.__name__ = 'asyncGetImpl';
+pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl.__name__ = 'asyncGetImpl';
+    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGetImpl.parse_kwargs = pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl.parse_kwargs;
+}
+pyjamas.HTTPRequest.__HTTPRequest.__initialize__();
+return this;
+
+}; /* end pyjamas.HTTPRequest */ 
+
+
+
+
+pyjamas.HTTPRequest_loaded_fn = function() {
+}
+
+pyjamas.HTTPRequest_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.HTTPRequest']) == 'undefined') ||
+        (module_load_request['pyjamas.HTTPRequest'] < 2)) {
+        module_load_request['pyjamas.HTTPRequest'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
+		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
+		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.HTTPRequest_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.HTTPRequest');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.HTTPRequest");
+
+    if (sys.appname != 'pyjamas.HTTPRequest')
+    {
+        modules['pyjamas.HTTPRequest'] = pyjamas.HTTPRequest(name);
+        if (module_load_request['pyjamas.HTTPRequest'] < 3) {
+            module_load_request['pyjamas.HTTPRequest'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.HTTPRequest");
+
+pyjamas.HTTPRequest_prepare_mod();
+
+
+// pyjamas.JSONParser
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.JSONParser = function (__mod_name__) {
+    if(pyjamas.JSONParser.__was_initialized__) return;
+    pyjamas.JSONParser.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.JSONParser';
+pyjamas.JSONParser.__name__ = __mod_name__;
+var JSONParser = pyjamas.JSONParser;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.JSONParser', 'math', 0, false);
+    
+
+/*
+JSONEncode:
+    +---------------+-------------------+---------------+
+    | PYGWT         | Python            | JSON          |
+    +===============+===================+===============+
+    | pyjslib.Dict  | dict              | object        |
+    +---------------+-------------------+---------------+
+    | pyjslib.List  | list, tuple       | array         |
+    +---------------+-------------------+---------------+
+    | string        | str, unicode      | string        |
+    +---------------+-------------------+---------------+
+    | number        | int, long, float  | number        |
+    +---------------+-------------------+---------------+
+    | true          | True              | true          |
+    +---------------+-------------------+---------------+
+    | false         | False             | false         |
+    +---------------+-------------------+---------------+
+    | null          | None              | null          |
+    +---------------+-------------------+---------------+
+
+
+JSONDecode:
+    +---------------+-------------------+--------------+
+    | JSON          | Python            | PYGWT        |
+    +===============+===================+==============+
+    | object        | dict              | pyjslib.Dict |
+    +---------------+-------------------+--------------+
+    | array         | list              | pyjslib.List |
+    +---------------+-------------------+--------------+
+    | string        | unicode           | string       |
+    +---------------+-------------------+--------------+
+    | number (int)  | int, long         | number       |
+    +---------------+-------------------+--------------+
+    | number (real) | float             | number       |
+    +---------------+-------------------+--------------+
+    | true          | True              | true         |
+    +---------------+-------------------+--------------+
+    | false         | False             | false        |
+    +---------------+-------------------+--------------+
+    | null          | None              | null         |
+    +---------------+-------------------+--------------+
+*/
+
+pyjamas.JSONParser.__JSONParser = function () {
+}
+pyjamas.JSONParser.JSONParser = function() {
+    var instance = new pyjamas.JSONParser.__JSONParser();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.JSONParser.JSONParser.__name__ = 'JSONParser';
+
+pyjamas.JSONParser.__JSONParser.__initialize__ = function () {
+    if(pyjamas.JSONParser.__JSONParser.__was_initialized__) return;
+    pyjamas.JSONParser.__JSONParser.__was_initialized__ = true;
+    pyjs_extend(pyjamas.JSONParser.__JSONParser, pyjslib.__Object);
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.__new__ = pyjamas.JSONParser.JSONParser;
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.__name__ = 'JSONParser';
+    pyjamas.JSONParser.__JSONParser.prototype.decode = function(str) {
+    return this.jsObjectToPy(this.parseJSON(str));
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.decode = function() {
+        return pyjamas.JSONParser.__JSONParser.prototype.decode.call.apply(pyjamas.JSONParser.__JSONParser.prototype.decode, arguments);
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.decode.unbound_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.decode.instance_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.decode.__name__ = 'decode';
+pyjamas.JSONParser.__JSONParser.prototype.decode.__name__ = 'decode';
+    pyjamas.JSONParser.__JSONParser.prototype.decodeAsObject = function(str) {
+    return this.jsObjectToPyObject(this.parseJSON(str));
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.decodeAsObject = function() {
+        return pyjamas.JSONParser.__JSONParser.prototype.decodeAsObject.call.apply(pyjamas.JSONParser.__JSONParser.prototype.decodeAsObject, arguments);
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.decodeAsObject.unbound_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.decodeAsObject.instance_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.decodeAsObject.__name__ = 'decodeAsObject';
+pyjamas.JSONParser.__JSONParser.prototype.decodeAsObject.__name__ = 'decodeAsObject';
+    pyjamas.JSONParser.__JSONParser.prototype.encode = function(obj) {
+    return this.toJSONString(obj);
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.encode = function() {
+        return pyjamas.JSONParser.__JSONParser.prototype.encode.call.apply(pyjamas.JSONParser.__JSONParser.prototype.encode, arguments);
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.encode.unbound_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.encode.instance_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.encode.__name__ = 'encode';
+pyjamas.JSONParser.__JSONParser.prototype.encode.__name__ = 'encode';
+    pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPy = function(obj) {
+
+        if (pyjslib.isArray(obj)) {
+            for (var i in obj) obj[i] = this.jsObjectToPy(obj[i]);
+            obj=new pyjslib.List(obj);
+            }
+        else if (pyjslib.isObject(obj)) {
+            for (var i in obj) obj[i]=this.jsObjectToPy(obj[i]);
+            obj=new pyjslib.Dict(obj);
+            }
+        
+        return obj;
+        
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPy = function() {
+        return pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPy.call.apply(pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPy, arguments);
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPy.unbound_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPy.instance_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPy.__name__ = 'jsObjectToPy';
+pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPy.__name__ = 'jsObjectToPy';
+    pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPyObject = function(obj) {
+
+        if (pyjslib.isArray(obj)) {
+            for (var i in obj) obj[i] = this.jsObjectToPyObject(obj[i]);
+            obj=new pyjslib.List(obj);
+            }
+        else if (pyjslib.isObject(obj)) {
+            if (obj["__jsonclass__"]) {
+                var class_name = obj["__jsonclass__"][0];
+                //class_name = class_name.replace(".", "_");
+                
+                var new_obj = eval("new " + class_name + "()");
+                delete obj["__jsonclass__"];
+                for (var i in obj) new_obj[i] = this.jsObjectToPyObject(obj[i]);
+                obj = new_obj;
+                }
+            else {
+                for (var i in obj) obj[i]=this.jsObjectToPyObject(obj[i]);
+                obj=new pyjslib.Dict(obj);
+                }       
+            }
+        
+        return obj;
+        
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPyObject = function() {
+        return pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPyObject.call.apply(pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPyObject, arguments);
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPyObject.unbound_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPyObject.instance_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPyObject.__name__ = 'jsObjectToPyObject';
+pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPyObject.__name__ = 'jsObjectToPyObject';
+    pyjamas.JSONParser.__JSONParser.prototype.toJSONString = function(obj) {
+
+   var m = {
+            '\b': '\\b',
+            '\t': '\\t',
+            '\n': '\\n',
+            '\f': '\\f',
+            '\r': '\\r',
+            '"' : '\\"',
+            '\\': '\\\\'
+        },
+        s = {
+            array: function (x) {
+                var a = ['['], b, f, i, l = x.length, v;
+                for (i = 0; i < l; i += 1) {
+                    v = x[i];
+                    f = s[typeof v];
+                    if (f) {
+                        v = f(v);
+                        if (typeof v == 'string') {
+                            if (b) {
+                                a[a.length] = ',';
+                            }
+                            a[a.length] = v;
+                            b = true;
+                        }
+                    }
+                }
+                a[a.length] = ']';
+                return a.join('');
+            },
+            'boolean': function (x) {
+                return String(x);
+            },
+            'undefined':function (x) {
+               return "null";
+            },
+            'null': function (x) {
+                return "null";
+            },
+            number: function (x) {
+                return isFinite(x) ? String(x) : 'null';
+            },
+            object: function (x) {
+                if (x) {
+                    if (x instanceof Array) {
+                        return s.array(x);
+                    }
+                    if (x instanceof pyjslib.__List) {
+                        return s.array(x.l);
+                    }
+                    if (x instanceof pyjslib.__Dict) {
+                        return s.object(pyjslib.toJSObjects(x));
+                    }
+                    var a = ['{'], b, f, i, v;
+                    for (i in x) {
+                        v = x[i];
+                        f = s[typeof v];
+                        if (f) {
+                            v = f(v);
+                            if (typeof v == 'string') {
+                                if (b) {
+                                    a[a.length] = ',';
+                                }
+                                a.push(s.string(i), ':', v);
+                                b = true;
+                            }
+                        }
+                    }
+                    a[a.length] = '}';
+                    return a.join('');
+                }
+                return 'null';
+            },
+            string: function (x) {
+                if (/["\\\x00-\x1f]/.test(x)) {
+                    x = x.replace(/([\x00-\x1f\\"])/g, function(a, b) {
+                        var c = m[b];
+                        if (c) {
+                            return c;
+                        }
+                        c = b.charCodeAt();
+                        return '\\u00' +
+                            math.floor(c / 16).toString(16) +
+                            (c % 16).toString(16);
+                    });
+                }
+                return '"' + x + '"';
+            }
+        };
+
+        typ = typeof obj;
+        f=s[typ];
+        o = f(obj);
+        
+    return o;
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.toJSONString = function() {
+        return pyjamas.JSONParser.__JSONParser.prototype.toJSONString.call.apply(pyjamas.JSONParser.__JSONParser.prototype.toJSONString, arguments);
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.toJSONString.unbound_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.toJSONString.instance_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.toJSONString.__name__ = 'toJSONString';
+pyjamas.JSONParser.__JSONParser.prototype.toJSONString.__name__ = 'toJSONString';
+    pyjamas.JSONParser.__JSONParser.prototype.parseJSON = function(str) {
+
+        try {
+            return (/^("(\\.|[^"\\\n\r])*?"|[,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t])+?$/.test(str)) &&
+                eval('(' + str + ')');
+        } catch (e) {
+            return false;
+        }
+        
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.parseJSON = function() {
+        return pyjamas.JSONParser.__JSONParser.prototype.parseJSON.call.apply(pyjamas.JSONParser.__JSONParser.prototype.parseJSON, arguments);
+    };
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.parseJSON.unbound_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.parseJSON.instance_method = true;
+    pyjamas.JSONParser.__JSONParser.prototype.__class__.parseJSON.__name__ = 'parseJSON';
+pyjamas.JSONParser.__JSONParser.prototype.parseJSON.__name__ = 'parseJSON';
+}
+pyjamas.JSONParser.__JSONParser.__initialize__();
+return this;
+
+}; /* end pyjamas.JSONParser */ 
+
+
+
+
+pyjamas.JSONParser_loaded_fn = function() {
+}
+
+pyjamas.JSONParser_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.JSONParser']) == 'undefined') ||
+        (module_load_request['pyjamas.JSONParser'] < 2)) {
+        module_load_request['pyjamas.JSONParser'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'math',
+			'pyjamas']),
+		new pyjslib.List([
+			])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
+		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
+		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.JSONParser_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.JSONParser');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.JSONParser");
+
+    if (sys.appname != 'pyjamas.JSONParser')
+    {
+        modules['pyjamas.JSONParser'] = pyjamas.JSONParser(name);
+        if (module_load_request['pyjamas.JSONParser'] < 3) {
+            module_load_request['pyjamas.JSONParser'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.JSONParser");
+
+pyjamas.JSONParser_prepare_mod();
+
+
 // pyjamas.DOM
 
 // module libs (usually imported javascript)
@@ -5178,598 +5770,6 @@ pyjamas.Location_prepare_mod = function() {
 pyjamas.Location_prepare_mod();
 
 
-// pyjamas.HTTPRequest
-
-// module libs (usually imported javascript)
-
-
-
-// module code
-
-pyjamas.HTTPRequest = function (__mod_name__) {
-    if(pyjamas.HTTPRequest.__was_initialized__) return;
-    pyjamas.HTTPRequest.__was_initialized__ = true;
-if (__mod_name__ == null) __mod_name__ = 'pyjamas.HTTPRequest';
-pyjamas.HTTPRequest.__name__ = __mod_name__;
-var HTTPRequest = pyjamas.HTTPRequest;
-
-pyjamas.HTTPRequest.__HTTPRequest = function () {
-}
-pyjamas.HTTPRequest.HTTPRequest = function() {
-    var instance = new pyjamas.HTTPRequest.__HTTPRequest();
-    if(instance.__init__) instance.__init__.apply(instance, arguments);
-    return instance;
-};
-pyjamas.HTTPRequest.HTTPRequest.__name__ = 'HTTPRequest';
-
-pyjamas.HTTPRequest.__HTTPRequest.__initialize__ = function () {
-    if(pyjamas.HTTPRequest.__HTTPRequest.__was_initialized__) return;
-    pyjamas.HTTPRequest.__HTTPRequest.__was_initialized__ = true;
-    pyjs_extend(pyjamas.HTTPRequest.__HTTPRequest, pyjslib.__Object);
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.__new__ = pyjamas.HTTPRequest.HTTPRequest;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.__name__ = 'HTTPRequest';
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost = function(user, pwd, url, postData, handler, returnxml) {
-    if (typeof postData == 'undefined') postData=null;
-    if (typeof handler == 'undefined') handler=null;
-    if (typeof returnxml == 'undefined') returnxml=0;
-    if (pyjslib.bool(pyjslib.eq(postData, null))) {
-    return this.asyncPostImpl(null, null, user, pwd, url, returnxml);
-    }
-    return this.asyncPostImpl(user, pwd, url, postData, handler, returnxml);
-    };
-pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost.parse_kwargs = function ( __kwargs, user, pwd, url, postData, handler, returnxml ) {
-    if (typeof postData == 'undefined')
-        postData=__kwargs.postData;
-    if (typeof handler == 'undefined')
-        handler=__kwargs.handler;
-    if (typeof returnxml == 'undefined')
-        returnxml=__kwargs.returnxml;
-    var __r = [user, pwd, url, postData, handler, returnxml];
-    return __r;
-};
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPost = function() {
-        return pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost, arguments);
-    };
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPost.unbound_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost.instance_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPost.__name__ = 'asyncPost';
-pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost.__name__ = 'asyncPost';
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPost.parse_kwargs = pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPost.parse_kwargs;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet = function(user, pwd, url, handler, returnxml) {
-    if (typeof returnxml == 'undefined') returnxml=0;
-    if (pyjslib.bool(pyjslib.eq(url, null))) {
-    return this.asyncGetImpl(null, null, user, pwd, returnxml);
-    }
-    return this.asyncGetImpl(user, pwd, url, handler, returnxml);
-    };
-pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet.parse_kwargs = function ( __kwargs, user, pwd, url, handler, returnxml ) {
-    if (typeof returnxml == 'undefined')
-        returnxml=__kwargs.returnxml;
-    var __r = [user, pwd, url, handler, returnxml];
-    return __r;
-};
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGet = function() {
-        return pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet, arguments);
-    };
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGet.unbound_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet.instance_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGet.__name__ = 'asyncGet';
-pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet.__name__ = 'asyncGet';
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGet.parse_kwargs = pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGet.parse_kwargs;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.createXmlHTTPRequest = function() {
-    return this.doCreateXmlHTTPRequest();
-    };
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.createXmlHTTPRequest = function() {
-        return pyjamas.HTTPRequest.__HTTPRequest.prototype.createXmlHTTPRequest.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.createXmlHTTPRequest, arguments);
-    };
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.createXmlHTTPRequest.unbound_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.createXmlHTTPRequest.instance_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.createXmlHTTPRequest.__name__ = 'createXmlHTTPRequest';
-pyjamas.HTTPRequest.__HTTPRequest.prototype.createXmlHTTPRequest.__name__ = 'createXmlHTTPRequest';
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.doCreateXmlHTTPRequest = function() {
-
-        return new XMLHttpRequest();
-        
-    };
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.doCreateXmlHTTPRequest = function() {
-        return pyjamas.HTTPRequest.__HTTPRequest.prototype.doCreateXmlHTTPRequest.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.doCreateXmlHTTPRequest, arguments);
-    };
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.doCreateXmlHTTPRequest.unbound_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.doCreateXmlHTTPRequest.instance_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.doCreateXmlHTTPRequest.__name__ = 'doCreateXmlHTTPRequest';
-pyjamas.HTTPRequest.__HTTPRequest.prototype.doCreateXmlHTTPRequest.__name__ = 'doCreateXmlHTTPRequest';
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl = function(user, pwd, url, postData, handler, returnxml) {
-    if (typeof returnxml == 'undefined') returnxml=0;
-
-        var xmlHttp = this.doCreateXmlHTTPRequest();
-        try {
-            xmlHttp.open("POST", url, true);
-            xmlHttp.setRequestHeader("Content-Type",
-                                           "application/x-www-form-urlencoded");
-            xmlHttp.setRequestHeader("Content-Length", postData.length);
-            xmlHttp.onreadystatechange = function() {
-                if (xmlHttp.readyState == 4) {
-                    delete xmlHttp.onreadystatechange;
-                    var localHandler = handler;
-                    var response;
-                    var status = xmlHttp.status;
-                    if (returnxml)
-                        response = xmlHttp.responseXML;
-                    else
-                        response = xmlHttp.responseText;
-                    handler = null;
-                    xmlHttp = null;
-                    if(status == 200) {
-                        localHandler.onCompletion(response);
-                    } else {
-                        localHandler.onError(response, status);
-                    }
-                }
-            };
-            xmlHttp.send(postData);
-            return true;
-        }
-        catch (e) {
-            delete xmlHttp.onreadystatechange;
-            var localHandler = handler;
-            handler = null;
-            xmlHttp = null;
-            localHandler.onError(String(e));
-            return false;
-        }
-        
-    };
-pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl.parse_kwargs = function ( __kwargs, user, pwd, url, postData, handler, returnxml ) {
-    if (typeof returnxml == 'undefined')
-        returnxml=__kwargs.returnxml;
-    var __r = [user, pwd, url, postData, handler, returnxml];
-    return __r;
-};
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPostImpl = function() {
-        return pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl, arguments);
-    };
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPostImpl.unbound_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl.instance_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPostImpl.__name__ = 'asyncPostImpl';
-pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl.__name__ = 'asyncPostImpl';
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncPostImpl.parse_kwargs = pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncPostImpl.parse_kwargs;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl = function(user, pwd, url, handler, returnxml) {
-    if (typeof returnxml == 'undefined') returnxml=0;
-
-        var xmlHttp = this.doCreateXmlHTTPRequest();
-        try {
-            xmlHttp.open("GET", url, true);
-            xmlHttp.setRequestHeader("Content-Type", "text/plain; charset=utf-8");
-            xmlHttp.onreadystatechange = function() {
-                if (xmlHttp.readyState == 4) {
-                    delete xmlHttp.onreadystatechange;
-                    var localHandler = handler;
-                    var response;
-                    var status = xmlHttp.status;
-                    if (returnxml)
-                        response = xmlHttp.responseXML;
-                    else
-                        response = xmlHttp.responseText;
-                    handler = null;
-                    xmlHttp = null;
-                    if(status == 200) {
-                        localHandler.onCompletion(response);
-                    } else {
-                        localHandler.onError(response, status);
-                    }
-                }
-            };
-            xmlHttp.send('');
-            return true;
-        }
-        catch (e) {
-            delete xmlHttp.onreadystatechange;
-            var localHandler = handler;
-            handler = null;
-            xmlHttp = null;
-            localHandler.onError(String(e));
-            return false;
-        }
-        
-    };
-pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl.parse_kwargs = function ( __kwargs, user, pwd, url, handler, returnxml ) {
-    if (typeof returnxml == 'undefined')
-        returnxml=__kwargs.returnxml;
-    var __r = [user, pwd, url, handler, returnxml];
-    return __r;
-};
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGetImpl = function() {
-        return pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl.call.apply(pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl, arguments);
-    };
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGetImpl.unbound_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl.instance_method = true;
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGetImpl.__name__ = 'asyncGetImpl';
-pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl.__name__ = 'asyncGetImpl';
-    pyjamas.HTTPRequest.__HTTPRequest.prototype.__class__.asyncGetImpl.parse_kwargs = pyjamas.HTTPRequest.__HTTPRequest.prototype.asyncGetImpl.parse_kwargs;
-}
-pyjamas.HTTPRequest.__HTTPRequest.__initialize__();
-return this;
-
-}; /* end pyjamas.HTTPRequest */ 
-
-
-
-
-pyjamas.HTTPRequest_loaded_fn = function() {
-}
-
-pyjamas.HTTPRequest_prepare_mod = function() {
-    if ((typeof (module_load_request['pyjamas.HTTPRequest']) == 'undefined') ||
-        (module_load_request['pyjamas.HTTPRequest'] < 2)) {
-        module_load_request['pyjamas.HTTPRequest'] = 2;
-    }
-    var modnames = new pyjslib.List([
-		new pyjslib.List([
-			'pyjamas']),
-		new pyjslib.List([
-			])
-	]);
-    sys.overrides.update(new pyjslib.Dict({
-		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
-		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
-		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
-	}));
-    path = sys.loadpath;
-    /*
-    pyjslib.preload_app_modules(path, modnames, pyjamas.HTTPRequest_loaded_fn,
-                                            0,
-                                            null);
-                                            //'pyjamas.HTTPRequest');
-                                            */
-    //alert("module ajax loaded fn called pyjamas.HTTPRequest");
-
-    if (sys.appname != 'pyjamas.HTTPRequest')
-    {
-        modules['pyjamas.HTTPRequest'] = pyjamas.HTTPRequest(name);
-        if (module_load_request['pyjamas.HTTPRequest'] < 3) {
-            module_load_request['pyjamas.HTTPRequest'] = 3;
-        }
-    }
-}
-
-//alert("module ajax loaded pyjamas.HTTPRequest");
-
-pyjamas.HTTPRequest_prepare_mod();
-
-
-// pyjamas.JSONParser
-
-// module libs (usually imported javascript)
-
-
-
-// module code
-
-pyjamas.JSONParser = function (__mod_name__) {
-    if(pyjamas.JSONParser.__was_initialized__) return;
-    pyjamas.JSONParser.__was_initialized__ = true;
-if (__mod_name__ == null) __mod_name__ = 'pyjamas.JSONParser';
-pyjamas.JSONParser.__name__ = __mod_name__;
-var JSONParser = pyjamas.JSONParser;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.JSONParser', 'math', 0, false);
-    
-
-/*
-JSONEncode:
-    +---------------+-------------------+---------------+
-    | PYGWT         | Python            | JSON          |
-    +===============+===================+===============+
-    | pyjslib.Dict  | dict              | object        |
-    +---------------+-------------------+---------------+
-    | pyjslib.List  | list, tuple       | array         |
-    +---------------+-------------------+---------------+
-    | string        | str, unicode      | string        |
-    +---------------+-------------------+---------------+
-    | number        | int, long, float  | number        |
-    +---------------+-------------------+---------------+
-    | true          | True              | true          |
-    +---------------+-------------------+---------------+
-    | false         | False             | false         |
-    +---------------+-------------------+---------------+
-    | null          | None              | null          |
-    +---------------+-------------------+---------------+
-
-
-JSONDecode:
-    +---------------+-------------------+--------------+
-    | JSON          | Python            | PYGWT        |
-    +===============+===================+==============+
-    | object        | dict              | pyjslib.Dict |
-    +---------------+-------------------+--------------+
-    | array         | list              | pyjslib.List |
-    +---------------+-------------------+--------------+
-    | string        | unicode           | string       |
-    +---------------+-------------------+--------------+
-    | number (int)  | int, long         | number       |
-    +---------------+-------------------+--------------+
-    | number (real) | float             | number       |
-    +---------------+-------------------+--------------+
-    | true          | True              | true         |
-    +---------------+-------------------+--------------+
-    | false         | False             | false        |
-    +---------------+-------------------+--------------+
-    | null          | None              | null         |
-    +---------------+-------------------+--------------+
-*/
-
-pyjamas.JSONParser.__JSONParser = function () {
-}
-pyjamas.JSONParser.JSONParser = function() {
-    var instance = new pyjamas.JSONParser.__JSONParser();
-    if(instance.__init__) instance.__init__.apply(instance, arguments);
-    return instance;
-};
-pyjamas.JSONParser.JSONParser.__name__ = 'JSONParser';
-
-pyjamas.JSONParser.__JSONParser.__initialize__ = function () {
-    if(pyjamas.JSONParser.__JSONParser.__was_initialized__) return;
-    pyjamas.JSONParser.__JSONParser.__was_initialized__ = true;
-    pyjs_extend(pyjamas.JSONParser.__JSONParser, pyjslib.__Object);
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.__new__ = pyjamas.JSONParser.JSONParser;
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.__name__ = 'JSONParser';
-    pyjamas.JSONParser.__JSONParser.prototype.decode = function(str) {
-    return this.jsObjectToPy(this.parseJSON(str));
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.decode = function() {
-        return pyjamas.JSONParser.__JSONParser.prototype.decode.call.apply(pyjamas.JSONParser.__JSONParser.prototype.decode, arguments);
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.decode.unbound_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.decode.instance_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.decode.__name__ = 'decode';
-pyjamas.JSONParser.__JSONParser.prototype.decode.__name__ = 'decode';
-    pyjamas.JSONParser.__JSONParser.prototype.decodeAsObject = function(str) {
-    return this.jsObjectToPyObject(this.parseJSON(str));
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.decodeAsObject = function() {
-        return pyjamas.JSONParser.__JSONParser.prototype.decodeAsObject.call.apply(pyjamas.JSONParser.__JSONParser.prototype.decodeAsObject, arguments);
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.decodeAsObject.unbound_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.decodeAsObject.instance_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.decodeAsObject.__name__ = 'decodeAsObject';
-pyjamas.JSONParser.__JSONParser.prototype.decodeAsObject.__name__ = 'decodeAsObject';
-    pyjamas.JSONParser.__JSONParser.prototype.encode = function(obj) {
-    return this.toJSONString(obj);
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.encode = function() {
-        return pyjamas.JSONParser.__JSONParser.prototype.encode.call.apply(pyjamas.JSONParser.__JSONParser.prototype.encode, arguments);
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.encode.unbound_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.encode.instance_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.encode.__name__ = 'encode';
-pyjamas.JSONParser.__JSONParser.prototype.encode.__name__ = 'encode';
-    pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPy = function(obj) {
-
-        if (pyjslib.isArray(obj)) {
-            for (var i in obj) obj[i] = this.jsObjectToPy(obj[i]);
-            obj=new pyjslib.List(obj);
-            }
-        else if (pyjslib.isObject(obj)) {
-            for (var i in obj) obj[i]=this.jsObjectToPy(obj[i]);
-            obj=new pyjslib.Dict(obj);
-            }
-        
-        return obj;
-        
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPy = function() {
-        return pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPy.call.apply(pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPy, arguments);
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPy.unbound_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPy.instance_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPy.__name__ = 'jsObjectToPy';
-pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPy.__name__ = 'jsObjectToPy';
-    pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPyObject = function(obj) {
-
-        if (pyjslib.isArray(obj)) {
-            for (var i in obj) obj[i] = this.jsObjectToPyObject(obj[i]);
-            obj=new pyjslib.List(obj);
-            }
-        else if (pyjslib.isObject(obj)) {
-            if (obj["__jsonclass__"]) {
-                var class_name = obj["__jsonclass__"][0];
-                //class_name = class_name.replace(".", "_");
-                
-                var new_obj = eval("new " + class_name + "()");
-                delete obj["__jsonclass__"];
-                for (var i in obj) new_obj[i] = this.jsObjectToPyObject(obj[i]);
-                obj = new_obj;
-                }
-            else {
-                for (var i in obj) obj[i]=this.jsObjectToPyObject(obj[i]);
-                obj=new pyjslib.Dict(obj);
-                }       
-            }
-        
-        return obj;
-        
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPyObject = function() {
-        return pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPyObject.call.apply(pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPyObject, arguments);
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPyObject.unbound_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPyObject.instance_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.jsObjectToPyObject.__name__ = 'jsObjectToPyObject';
-pyjamas.JSONParser.__JSONParser.prototype.jsObjectToPyObject.__name__ = 'jsObjectToPyObject';
-    pyjamas.JSONParser.__JSONParser.prototype.toJSONString = function(obj) {
-
-   var m = {
-            '\b': '\\b',
-            '\t': '\\t',
-            '\n': '\\n',
-            '\f': '\\f',
-            '\r': '\\r',
-            '"' : '\\"',
-            '\\': '\\\\'
-        },
-        s = {
-            array: function (x) {
-                var a = ['['], b, f, i, l = x.length, v;
-                for (i = 0; i < l; i += 1) {
-                    v = x[i];
-                    f = s[typeof v];
-                    if (f) {
-                        v = f(v);
-                        if (typeof v == 'string') {
-                            if (b) {
-                                a[a.length] = ',';
-                            }
-                            a[a.length] = v;
-                            b = true;
-                        }
-                    }
-                }
-                a[a.length] = ']';
-                return a.join('');
-            },
-            'boolean': function (x) {
-                return String(x);
-            },
-            'undefined':function (x) {
-               return "null";
-            },
-            'null': function (x) {
-                return "null";
-            },
-            number: function (x) {
-                return isFinite(x) ? String(x) : 'null';
-            },
-            object: function (x) {
-                if (x) {
-                    if (x instanceof Array) {
-                        return s.array(x);
-                    }
-                    if (x instanceof pyjslib.__List) {
-                        return s.array(x.l);
-                    }
-                    if (x instanceof pyjslib.__Dict) {
-                        return s.object(pyjslib.toJSObjects(x));
-                    }
-                    var a = ['{'], b, f, i, v;
-                    for (i in x) {
-                        v = x[i];
-                        f = s[typeof v];
-                        if (f) {
-                            v = f(v);
-                            if (typeof v == 'string') {
-                                if (b) {
-                                    a[a.length] = ',';
-                                }
-                                a.push(s.string(i), ':', v);
-                                b = true;
-                            }
-                        }
-                    }
-                    a[a.length] = '}';
-                    return a.join('');
-                }
-                return 'null';
-            },
-            string: function (x) {
-                if (/["\\\x00-\x1f]/.test(x)) {
-                    x = x.replace(/([\x00-\x1f\\"])/g, function(a, b) {
-                        var c = m[b];
-                        if (c) {
-                            return c;
-                        }
-                        c = b.charCodeAt();
-                        return '\\u00' +
-                            math.floor(c / 16).toString(16) +
-                            (c % 16).toString(16);
-                    });
-                }
-                return '"' + x + '"';
-            }
-        };
-
-        typ = typeof obj;
-        f=s[typ];
-        o = f(obj);
-        
-    return o;
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.toJSONString = function() {
-        return pyjamas.JSONParser.__JSONParser.prototype.toJSONString.call.apply(pyjamas.JSONParser.__JSONParser.prototype.toJSONString, arguments);
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.toJSONString.unbound_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.toJSONString.instance_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.toJSONString.__name__ = 'toJSONString';
-pyjamas.JSONParser.__JSONParser.prototype.toJSONString.__name__ = 'toJSONString';
-    pyjamas.JSONParser.__JSONParser.prototype.parseJSON = function(str) {
-
-        try {
-            return (/^("(\\.|[^"\\\n\r])*?"|[,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t])+?$/.test(str)) &&
-                eval('(' + str + ')');
-        } catch (e) {
-            return false;
-        }
-        
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.parseJSON = function() {
-        return pyjamas.JSONParser.__JSONParser.prototype.parseJSON.call.apply(pyjamas.JSONParser.__JSONParser.prototype.parseJSON, arguments);
-    };
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.parseJSON.unbound_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.parseJSON.instance_method = true;
-    pyjamas.JSONParser.__JSONParser.prototype.__class__.parseJSON.__name__ = 'parseJSON';
-pyjamas.JSONParser.__JSONParser.prototype.parseJSON.__name__ = 'parseJSON';
-}
-pyjamas.JSONParser.__JSONParser.__initialize__();
-return this;
-
-}; /* end pyjamas.JSONParser */ 
-
-
-
-
-pyjamas.JSONParser_loaded_fn = function() {
-}
-
-pyjamas.JSONParser_prepare_mod = function() {
-    if ((typeof (module_load_request['pyjamas.JSONParser']) == 'undefined') ||
-        (module_load_request['pyjamas.JSONParser'] < 2)) {
-        module_load_request['pyjamas.JSONParser'] = 2;
-    }
-    var modnames = new pyjslib.List([
-		new pyjslib.List([
-			'math',
-			'pyjamas']),
-		new pyjslib.List([
-			])
-	]);
-    sys.overrides.update(new pyjslib.Dict({
-		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
-		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
-		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
-	}));
-    path = sys.loadpath;
-    /*
-    pyjslib.preload_app_modules(path, modnames, pyjamas.JSONParser_loaded_fn,
-                                            0,
-                                            null);
-                                            //'pyjamas.JSONParser');
-                                            */
-    //alert("module ajax loaded fn called pyjamas.JSONParser");
-
-    if (sys.appname != 'pyjamas.JSONParser')
-    {
-        modules['pyjamas.JSONParser'] = pyjamas.JSONParser(name);
-        if (module_load_request['pyjamas.JSONParser'] < 3) {
-            module_load_request['pyjamas.JSONParser'] = 3;
-        }
-    }
-}
-
-//alert("module ajax loaded pyjamas.JSONParser");
-
-pyjamas.JSONParser_prepare_mod();
-
-
 // pyjamas.ui
 
 // module libs (usually imported javascript)
@@ -5998,201 +5998,6 @@ pyjamas.ui.EventObject_prepare_mod = function() {
 //alert("module ajax loaded pyjamas.ui.EventObject");
 
 pyjamas.ui.EventObject_prepare_mod();
-
-
-// pyjamas.log
-
-// module libs (usually imported javascript)
-
-
-
-// module code
-
-pyjamas.log = function (__mod_name__) {
-    if(pyjamas.log.__was_initialized__) return;
-    pyjamas.log.__was_initialized__ = true;
-if (__mod_name__ == null) __mod_name__ = 'pyjamas.log';
-pyjamas.log.__name__ = __mod_name__;
-var log = pyjamas.log;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.log', 'pyjamas', 0, false);
-    
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.log', 'pyjamas.DOM', 0, false);
-    var DOM = pyjamas.DOM;
-
-pyjamas.log.getBodyElement = function() {
- return $doc.body; 
-};
-pyjamas.log.getBodyElement.__name__ = 'getBodyElement';
-
-pyjamas.log.write = function(text) {
-    pyjamas.log.add_elem();
-    text = text.replace(String('\x0A'), String('\x3Cbr /\x3E\x5Cn'));
-    pyjamas.log.data += text;
-    DOM.setInnerHTML(pyjamas.log.element, pyjamas.log.data);
-    return null;
-};
-pyjamas.log.write.__name__ = 'write';
-
-pyjamas.log.writebr = function(text) {
-    pyjamas.log.write( ( text + String('\x0A') ) );
-    return null;
-};
-pyjamas.log.writebr.__name__ = 'writebr';
-
-    pyjamas.log.data = String('');
-    pyjamas.log.element = null;
-pyjamas.log.add_elem = function() {
-    if (pyjslib.bool((pyjamas.log.element !== null))) {
-    return null;
-    }
-    pyjamas.log.element = DOM.createDiv();
-    DOM.appendChild(pyjamas.log.getBodyElement(), pyjamas.log.element);
-    return null;
-};
-pyjamas.log.add_elem.__name__ = 'add_elem';
-
-return this;
-
-}; /* end pyjamas.log */ 
-
-
-
-
-pyjamas.log_loaded_fn = function() {
-}
-
-pyjamas.log_prepare_mod = function() {
-    if ((typeof (module_load_request['pyjamas.log']) == 'undefined') ||
-        (module_load_request['pyjamas.log'] < 2)) {
-        module_load_request['pyjamas.log'] = 2;
-    }
-    var modnames = new pyjslib.List([
-		new pyjslib.List([
-			'pyjamas']),
-		new pyjslib.List([
-			'pyjamas.DOM']),
-		new pyjslib.List([
-			])
-	]);
-    sys.overrides.update(new pyjslib.Dict({
-		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
-		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
-		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
-	}));
-    path = sys.loadpath;
-    /*
-    pyjslib.preload_app_modules(path, modnames, pyjamas.log_loaded_fn,
-                                            0,
-                                            null);
-                                            //'pyjamas.log');
-                                            */
-    //alert("module ajax loaded fn called pyjamas.log");
-
-    if (sys.appname != 'pyjamas.log')
-    {
-        modules['pyjamas.log'] = pyjamas.log(name);
-        if (module_load_request['pyjamas.log'] < 3) {
-            module_load_request['pyjamas.log'] = 3;
-        }
-    }
-}
-
-//alert("module ajax loaded pyjamas.log");
-
-pyjamas.log_prepare_mod();
-
-
-// pyjamas.ui.Event
-
-// module libs (usually imported javascript)
-
-
-
-// module code
-
-pyjamas.ui.Event = function (__mod_name__) {
-    if(pyjamas.ui.Event.__was_initialized__) return;
-    pyjamas.ui.Event.__was_initialized__ = true;
-if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.Event';
-pyjamas.ui.Event.__name__ = __mod_name__;
-var Event = pyjamas.ui.Event;
-
-    pyjamas.ui.Event.BUTTON_LEFT = 1;
-    pyjamas.ui.Event.BUTTON_MIDDLE = 4;
-    pyjamas.ui.Event.BUTTON_RIGHT = 2;
-    pyjamas.ui.Event.ONBLUR = 4096;
-    pyjamas.ui.Event.ONCHANGE = 1024;
-    pyjamas.ui.Event.ONCLICK = 1;
-    pyjamas.ui.Event.ONCONTEXTMENU = 131072;
-    pyjamas.ui.Event.ONDBLCLICK = 2;
-    pyjamas.ui.Event.ONERROR = 65536;
-    pyjamas.ui.Event.ONFOCUS = 2048;
-    pyjamas.ui.Event.ONKEYDOWN = 128;
-    pyjamas.ui.Event.ONKEYPRESS = 256;
-    pyjamas.ui.Event.ONKEYUP = 512;
-    pyjamas.ui.Event.ONLOAD = 32768;
-    pyjamas.ui.Event.ONLOSECAPTURE = 8192;
-    pyjamas.ui.Event.ONMOUSEDOWN = 4;
-    pyjamas.ui.Event.ONMOUSEMOVE = 64;
-    pyjamas.ui.Event.ONMOUSEOUT = 32;
-    pyjamas.ui.Event.ONMOUSEOVER = 16;
-    pyjamas.ui.Event.ONMOUSEUP = 8;
-    pyjamas.ui.Event.ONSCROLL = 16384;
-    pyjamas.ui.Event.FOCUSEVENTS = 6144;
-    pyjamas.ui.Event.KEYEVENTS = 896;
-    pyjamas.ui.Event.MOUSEEVENTS = 124;
-return this;
-
-}; /* end pyjamas.ui.Event */ 
-
-
-
-
-pyjamas.ui.Event_loaded_fn = function() {
-}
-
-pyjamas.ui.Event_prepare_mod = function() {
-    if ((typeof (module_load_request['pyjamas.ui.Event']) == 'undefined') ||
-        (module_load_request['pyjamas.ui.Event'] < 2)) {
-        module_load_request['pyjamas.ui.Event'] = 2;
-    }
-    var modnames = new pyjslib.List([
-		new pyjslib.List([
-			'pyjamas']),
-		new pyjslib.List([
-			'pyjamas.ui']),
-		new pyjslib.List([
-			])
-	]);
-    sys.overrides.update(new pyjslib.Dict({
-		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
-		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
-		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
-	}));
-    path = sys.loadpath;
-    /*
-    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.Event_loaded_fn,
-                                            0,
-                                            null);
-                                            //'pyjamas.ui.Event');
-                                            */
-    //alert("module ajax loaded fn called pyjamas.ui.Event");
-
-    if (sys.appname != 'pyjamas.ui.Event')
-    {
-        modules['pyjamas.ui.Event'] = pyjamas.ui.Event(name);
-        if (module_load_request['pyjamas.ui.Event'] < 3) {
-            module_load_request['pyjamas.ui.Event'] = 3;
-        }
-    }
-}
-
-//alert("module ajax loaded pyjamas.ui.Event");
-
-pyjamas.ui.Event_prepare_mod();
 
 
 // pyjamas.ui.Focus
@@ -6811,352 +6616,6 @@ pyjamas.ui.FocusListener_prepare_mod = function() {
 pyjamas.ui.FocusListener_prepare_mod();
 
 
-// pyjamas.Window
-
-// module libs (usually imported javascript)
-
-
-
-// module code
-
-pyjamas.Window = function (__mod_name__) {
-    if(pyjamas.Window.__was_initialized__) return;
-    pyjamas.Window.__was_initialized__ = true;
-if (__mod_name__ == null) __mod_name__ = 'pyjamas.Window';
-pyjamas.Window.__name__ = __mod_name__;
-var Window = pyjamas.Window;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.Window', 'pyjamas', 0, false);
-    
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.Window', 'pyjamas.Location', 0, false);
-    var Location = pyjamas.Location;
-
-    pyjamas.Window.closingListeners = null;
-    pyjamas.Window.resizeListeners = null;
-pyjamas.Window.addWindowCloseListener = function(listener) {
-    pyjamas.Window.init_listeners();
-    pyjamas.Window.closingListeners.append(listener);
-    return null;
-};
-pyjamas.Window.addWindowCloseListener.__name__ = 'addWindowCloseListener';
-
-pyjamas.Window.addWindowResizeListener = function(listener) {
-    pyjamas.Window.init_listeners();
-    pyjamas.Window.resizeListeners.append(listener);
-    return null;
-};
-pyjamas.Window.addWindowResizeListener.__name__ = 'addWindowResizeListener';
-
-pyjamas.Window.alert = function(msg) {
-
-    $wnd.alert(msg);
-    
-};
-pyjamas.Window.alert.__name__ = 'alert';
-
-pyjamas.Window.confirm = function(msg) {
-
-    return $wnd.confirm(msg);
-    
-};
-pyjamas.Window.confirm.__name__ = 'confirm';
-
-pyjamas.Window.prompt = function(msg, defaultReply) {
-    if (typeof defaultReply == 'undefined') defaultReply=String('');
-
-        return $wnd.prompt(msg, defaultReply);
-    
-};
-pyjamas.Window.prompt.__name__ = 'prompt';
-
-pyjamas.Window.prompt.parse_kwargs = function ( __kwargs, msg, defaultReply ) {
-    if (typeof defaultReply == 'undefined')
-        defaultReply=__kwargs.defaultReply;
-    var __r = [msg, defaultReply];
-    return __r;
-};
-pyjamas.Window.enableScrolling = function(enable) {
-
-   $doc.body.style.overflow = enable ? 'auto' : 'hidden';
-   
-};
-pyjamas.Window.enableScrolling.__name__ = 'enableScrolling';
-
-pyjamas.Window.scrollBy = function(x, y) {
-
-    $wnd.scrollBy(x, y);
-    
-};
-pyjamas.Window.scrollBy.__name__ = 'scrollBy';
-
-pyjamas.Window.scroll = function(x, y) {
-
-    $wnd.scroll(x, y);
-    
-};
-pyjamas.Window.scroll.__name__ = 'scroll';
-
-pyjamas.Window.getClientHeight = function() {
-
-    if ($wnd.innerHeight)
-        return $wnd.innerHeight;
-    return $doc.body.clientHeight;
-    
-};
-pyjamas.Window.getClientHeight.__name__ = 'getClientHeight';
-
-pyjamas.Window.getClientWidth = function() {
-
-    if ($wnd.innerWidth)
-        return $wnd.innerWidth;
-    return $doc.body.clientWidth;
-    
-};
-pyjamas.Window.getClientWidth.__name__ = 'getClientWidth';
-
-pyjamas.Window.setLocation = function(url) {
-
-    $wnd.location = url;
-    
-};
-pyjamas.Window.setLocation.__name__ = 'setLocation';
-
-    pyjamas.Window.location = null;
-pyjamas.Window.getLocation = function() {
-
-    if(!Window.location)
-       Window.location = Location.Location($wnd.location);
-    return Window.location;
-    
-};
-pyjamas.Window.getLocation.__name__ = 'getLocation';
-
-pyjamas.Window.getTitle = function() {
-
-    return $doc.title;
-    
-};
-pyjamas.Window.getTitle.__name__ = 'getTitle';
-
-pyjamas.Window.open = function(url, name, features) {
-
-    $wnd.open(url, name, features);
-    
-};
-pyjamas.Window.open.__name__ = 'open';
-
-pyjamas.Window.removeWindowCloseListener = function(listener) {
-    pyjamas.Window.closingListeners.remove(listener);
-    return null;
-};
-pyjamas.Window.removeWindowCloseListener.__name__ = 'removeWindowCloseListener';
-
-pyjamas.Window.removeWindowResizeListener = function(listener) {
-    pyjamas.Window.resizeListeners.remove(listener);
-    return null;
-};
-pyjamas.Window.removeWindowResizeListener.__name__ = 'removeWindowResizeListener';
-
-pyjamas.Window.setMargin = function(size) {
-
-    $doc.body.style.margin = size;
-    
-};
-pyjamas.Window.setMargin.__name__ = 'setMargin';
-
-pyjamas.Window.setTitle = function(title) {
-
-    $doc.title = title;
-    
-};
-pyjamas.Window.setTitle.__name__ = 'setTitle';
-
-pyjamas.Window.onClosed = function() {
-    pyjamas.Window.fireClosedImpl();
-    return null;
-};
-pyjamas.Window.onClosed.__name__ = 'onClosed';
-
-pyjamas.Window.onClosing = function() {
-    pyjamas.Window.fireClosingImpl();
-    return null;
-};
-pyjamas.Window.onClosing.__name__ = 'onClosing';
-
-pyjamas.Window.onResize = function() {
-    pyjamas.Window.fireResizedImpl();
-    return null;
-};
-pyjamas.Window.onResize.__name__ = 'onResize';
-
-pyjamas.Window.fireClosedAndCatch = function(handler) {
-    return null;
-};
-pyjamas.Window.fireClosedAndCatch.__name__ = 'fireClosedAndCatch';
-
-pyjamas.Window.fireClosedImpl = function() {
-
-        var __listener = pyjamas.Window.closingListeners.__iter__();
-        try {
-            while (true) {
-                var listener = __listener.next();
-                
-        
-    listener.onWindowClosed();
-
-            }
-        } catch (e) {
-            if (e.__name__ != pyjslib.StopIteration.__name__) {
-                throw e;
-            }
-        }
-        
-    return null;
-};
-pyjamas.Window.fireClosedImpl.__name__ = 'fireClosedImpl';
-
-pyjamas.Window.fireClosingAndCatch = function(handler) {
-    return null;
-};
-pyjamas.Window.fireClosingAndCatch.__name__ = 'fireClosingAndCatch';
-
-pyjamas.Window.fireClosingImpl = function() {
-    var ret = null;
-
-        var __listener = pyjamas.Window.closingListeners.__iter__();
-        try {
-            while (true) {
-                var listener = __listener.next();
-                
-        
-    var msg = listener.onWindowClosing();
-    if (pyjslib.bool(pyjslib.eq(ret, null))) {
-    ret = msg;
-    }
-
-            }
-        } catch (e) {
-            if (e.__name__ != pyjslib.StopIteration.__name__) {
-                throw e;
-            }
-        }
-        
-    return ret;
-};
-pyjamas.Window.fireClosingImpl.__name__ = 'fireClosingImpl';
-
-pyjamas.Window.fireResizedAndCatch = function(handler) {
-    return null;
-};
-pyjamas.Window.fireResizedAndCatch.__name__ = 'fireResizedAndCatch';
-
-pyjamas.Window.fireResizedImpl = function() {
-
-        var __listener = pyjamas.Window.resizeListeners.__iter__();
-        try {
-            while (true) {
-                var listener = __listener.next();
-                
-        
-    listener.onWindowResized(pyjamas.Window.getClientWidth(), pyjamas.Window.getClientHeight());
-
-            }
-        } catch (e) {
-            if (e.__name__ != pyjslib.StopIteration.__name__) {
-                throw e;
-            }
-        }
-        
-    return null;
-};
-pyjamas.Window.fireResizedImpl.__name__ = 'fireResizedImpl';
-
-pyjamas.Window.init_listeners = function() {
-    if (pyjslib.bool(!(pyjamas.Window.closingListeners))) {
-    pyjamas.Window.closingListeners = new pyjslib.List([]);
-    }
-    if (pyjslib.bool(!(pyjamas.Window.resizeListeners))) {
-    pyjamas.Window.resizeListeners = new pyjslib.List([]);
-    }
-    return null;
-};
-pyjamas.Window.init_listeners.__name__ = 'init_listeners';
-
-pyjamas.Window.init = function() {
-    pyjamas.Window.init_listeners();
-
-    $wnd.__pygwt_initHandlers(
-        function() {
-            Window.onResize();
-        },
-        function() {
-            return Window.onClosing();
-        },
-        function() {
-            Window.onClosed();
-            /*$wnd.onresize = null;
-            $wnd.onbeforeclose = null;
-            $wnd.onclose = null;*/
-        }
-    );
-    
-};
-pyjamas.Window.init.__name__ = 'init';
-
-    pyjamas.Window.init();
-return this;
-
-}; /* end pyjamas.Window */ 
-
-
-
-
-pyjamas.Window_loaded_fn = function() {
-}
-
-pyjamas.Window_prepare_mod = function() {
-    if ((typeof (module_load_request['pyjamas.Window']) == 'undefined') ||
-        (module_load_request['pyjamas.Window'] < 2)) {
-        module_load_request['pyjamas.Window'] = 2;
-    }
-    var modnames = new pyjslib.List([
-		new pyjslib.List([
-			'pyjamas']),
-		new pyjslib.List([
-			'pyjamas.Location']),
-		new pyjslib.List([
-			])
-	]);
-    sys.overrides.update(new pyjslib.Dict({
-		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
-		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
-		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
-	}));
-    path = sys.loadpath;
-    /*
-    pyjslib.preload_app_modules(path, modnames, pyjamas.Window_loaded_fn,
-                                            0,
-                                            null);
-                                            //'pyjamas.Window');
-                                            */
-    //alert("module ajax loaded fn called pyjamas.Window");
-
-    if (sys.appname != 'pyjamas.Window')
-    {
-        modules['pyjamas.Window'] = pyjamas.Window(name);
-        if (module_load_request['pyjamas.Window'] < 3) {
-            module_load_request['pyjamas.Window'] = 3;
-        }
-    }
-}
-
-//alert("module ajax loaded pyjamas.Window");
-
-pyjamas.Window_prepare_mod();
-
-
 // pyjamas.JSONService
 
 // module libs (usually imported javascript)
@@ -7515,6 +6974,547 @@ pyjamas.JSONService_prepare_mod = function() {
 //alert("module ajax loaded pyjamas.JSONService");
 
 pyjamas.JSONService_prepare_mod();
+
+
+// pyjamas.log
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.log = function (__mod_name__) {
+    if(pyjamas.log.__was_initialized__) return;
+    pyjamas.log.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.log';
+pyjamas.log.__name__ = __mod_name__;
+var log = pyjamas.log;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.log', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.log', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+pyjamas.log.getBodyElement = function() {
+ return $doc.body; 
+};
+pyjamas.log.getBodyElement.__name__ = 'getBodyElement';
+
+pyjamas.log.write = function(text) {
+    pyjamas.log.add_elem();
+    text = text.replace(String('\x0A'), String('\x3Cbr /\x3E\x5Cn'));
+    pyjamas.log.data += text;
+    DOM.setInnerHTML(pyjamas.log.element, pyjamas.log.data);
+    return null;
+};
+pyjamas.log.write.__name__ = 'write';
+
+pyjamas.log.writebr = function(text) {
+    pyjamas.log.write( ( text + String('\x0A') ) );
+    return null;
+};
+pyjamas.log.writebr.__name__ = 'writebr';
+
+    pyjamas.log.data = String('');
+    pyjamas.log.element = null;
+pyjamas.log.add_elem = function() {
+    if (pyjslib.bool((pyjamas.log.element !== null))) {
+    return null;
+    }
+    pyjamas.log.element = DOM.createDiv();
+    DOM.appendChild(pyjamas.log.getBodyElement(), pyjamas.log.element);
+    return null;
+};
+pyjamas.log.add_elem.__name__ = 'add_elem';
+
+return this;
+
+}; /* end pyjamas.log */ 
+
+
+
+
+pyjamas.log_loaded_fn = function() {
+}
+
+pyjamas.log_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.log']) == 'undefined') ||
+        (module_load_request['pyjamas.log'] < 2)) {
+        module_load_request['pyjamas.log'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM']),
+		new pyjslib.List([
+			])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
+		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
+		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.log_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.log');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.log");
+
+    if (sys.appname != 'pyjamas.log')
+    {
+        modules['pyjamas.log'] = pyjamas.log(name);
+        if (module_load_request['pyjamas.log'] < 3) {
+            module_load_request['pyjamas.log'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.log");
+
+pyjamas.log_prepare_mod();
+
+
+// pyjamas.Window
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.Window = function (__mod_name__) {
+    if(pyjamas.Window.__was_initialized__) return;
+    pyjamas.Window.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.Window';
+pyjamas.Window.__name__ = __mod_name__;
+var Window = pyjamas.Window;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.Window', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.Window', 'pyjamas.Location', 0, false);
+    var Location = pyjamas.Location;
+
+    pyjamas.Window.closingListeners = null;
+    pyjamas.Window.resizeListeners = null;
+pyjamas.Window.addWindowCloseListener = function(listener) {
+    pyjamas.Window.init_listeners();
+    pyjamas.Window.closingListeners.append(listener);
+    return null;
+};
+pyjamas.Window.addWindowCloseListener.__name__ = 'addWindowCloseListener';
+
+pyjamas.Window.addWindowResizeListener = function(listener) {
+    pyjamas.Window.init_listeners();
+    pyjamas.Window.resizeListeners.append(listener);
+    return null;
+};
+pyjamas.Window.addWindowResizeListener.__name__ = 'addWindowResizeListener';
+
+pyjamas.Window.alert = function(msg) {
+
+    $wnd.alert(msg);
+    
+};
+pyjamas.Window.alert.__name__ = 'alert';
+
+pyjamas.Window.confirm = function(msg) {
+
+    return $wnd.confirm(msg);
+    
+};
+pyjamas.Window.confirm.__name__ = 'confirm';
+
+pyjamas.Window.prompt = function(msg, defaultReply) {
+    if (typeof defaultReply == 'undefined') defaultReply=String('');
+
+        return $wnd.prompt(msg, defaultReply);
+    
+};
+pyjamas.Window.prompt.__name__ = 'prompt';
+
+pyjamas.Window.prompt.parse_kwargs = function ( __kwargs, msg, defaultReply ) {
+    if (typeof defaultReply == 'undefined')
+        defaultReply=__kwargs.defaultReply;
+    var __r = [msg, defaultReply];
+    return __r;
+};
+pyjamas.Window.enableScrolling = function(enable) {
+
+   $doc.body.style.overflow = enable ? 'auto' : 'hidden';
+   
+};
+pyjamas.Window.enableScrolling.__name__ = 'enableScrolling';
+
+pyjamas.Window.scrollBy = function(x, y) {
+
+    $wnd.scrollBy(x, y);
+    
+};
+pyjamas.Window.scrollBy.__name__ = 'scrollBy';
+
+pyjamas.Window.scroll = function(x, y) {
+
+    $wnd.scroll(x, y);
+    
+};
+pyjamas.Window.scroll.__name__ = 'scroll';
+
+pyjamas.Window.getClientHeight = function() {
+
+    if ($wnd.innerHeight)
+        return $wnd.innerHeight;
+    return $doc.body.clientHeight;
+    
+};
+pyjamas.Window.getClientHeight.__name__ = 'getClientHeight';
+
+pyjamas.Window.getClientWidth = function() {
+
+    if ($wnd.innerWidth)
+        return $wnd.innerWidth;
+    return $doc.body.clientWidth;
+    
+};
+pyjamas.Window.getClientWidth.__name__ = 'getClientWidth';
+
+pyjamas.Window.setLocation = function(url) {
+
+    $wnd.location = url;
+    
+};
+pyjamas.Window.setLocation.__name__ = 'setLocation';
+
+    pyjamas.Window.location = null;
+pyjamas.Window.getLocation = function() {
+
+    if(!Window.location)
+       Window.location = Location.Location($wnd.location);
+    return Window.location;
+    
+};
+pyjamas.Window.getLocation.__name__ = 'getLocation';
+
+pyjamas.Window.getTitle = function() {
+
+    return $doc.title;
+    
+};
+pyjamas.Window.getTitle.__name__ = 'getTitle';
+
+pyjamas.Window.open = function(url, name, features) {
+
+    $wnd.open(url, name, features);
+    
+};
+pyjamas.Window.open.__name__ = 'open';
+
+pyjamas.Window.removeWindowCloseListener = function(listener) {
+    pyjamas.Window.closingListeners.remove(listener);
+    return null;
+};
+pyjamas.Window.removeWindowCloseListener.__name__ = 'removeWindowCloseListener';
+
+pyjamas.Window.removeWindowResizeListener = function(listener) {
+    pyjamas.Window.resizeListeners.remove(listener);
+    return null;
+};
+pyjamas.Window.removeWindowResizeListener.__name__ = 'removeWindowResizeListener';
+
+pyjamas.Window.setMargin = function(size) {
+
+    $doc.body.style.margin = size;
+    
+};
+pyjamas.Window.setMargin.__name__ = 'setMargin';
+
+pyjamas.Window.setTitle = function(title) {
+
+    $doc.title = title;
+    
+};
+pyjamas.Window.setTitle.__name__ = 'setTitle';
+
+pyjamas.Window.onClosed = function() {
+    pyjamas.Window.fireClosedImpl();
+    return null;
+};
+pyjamas.Window.onClosed.__name__ = 'onClosed';
+
+pyjamas.Window.onClosing = function() {
+    pyjamas.Window.fireClosingImpl();
+    return null;
+};
+pyjamas.Window.onClosing.__name__ = 'onClosing';
+
+pyjamas.Window.onResize = function() {
+    pyjamas.Window.fireResizedImpl();
+    return null;
+};
+pyjamas.Window.onResize.__name__ = 'onResize';
+
+pyjamas.Window.fireClosedAndCatch = function(handler) {
+    return null;
+};
+pyjamas.Window.fireClosedAndCatch.__name__ = 'fireClosedAndCatch';
+
+pyjamas.Window.fireClosedImpl = function() {
+
+        var __listener = pyjamas.Window.closingListeners.__iter__();
+        try {
+            while (true) {
+                var listener = __listener.next();
+                
+        
+    listener.onWindowClosed();
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    return null;
+};
+pyjamas.Window.fireClosedImpl.__name__ = 'fireClosedImpl';
+
+pyjamas.Window.fireClosingAndCatch = function(handler) {
+    return null;
+};
+pyjamas.Window.fireClosingAndCatch.__name__ = 'fireClosingAndCatch';
+
+pyjamas.Window.fireClosingImpl = function() {
+    var ret = null;
+
+        var __listener = pyjamas.Window.closingListeners.__iter__();
+        try {
+            while (true) {
+                var listener = __listener.next();
+                
+        
+    var msg = listener.onWindowClosing();
+    if (pyjslib.bool(pyjslib.eq(ret, null))) {
+    ret = msg;
+    }
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    return ret;
+};
+pyjamas.Window.fireClosingImpl.__name__ = 'fireClosingImpl';
+
+pyjamas.Window.fireResizedAndCatch = function(handler) {
+    return null;
+};
+pyjamas.Window.fireResizedAndCatch.__name__ = 'fireResizedAndCatch';
+
+pyjamas.Window.fireResizedImpl = function() {
+
+        var __listener = pyjamas.Window.resizeListeners.__iter__();
+        try {
+            while (true) {
+                var listener = __listener.next();
+                
+        
+    listener.onWindowResized(pyjamas.Window.getClientWidth(), pyjamas.Window.getClientHeight());
+
+            }
+        } catch (e) {
+            if (e.__name__ != pyjslib.StopIteration.__name__) {
+                throw e;
+            }
+        }
+        
+    return null;
+};
+pyjamas.Window.fireResizedImpl.__name__ = 'fireResizedImpl';
+
+pyjamas.Window.init_listeners = function() {
+    if (pyjslib.bool(!(pyjamas.Window.closingListeners))) {
+    pyjamas.Window.closingListeners = new pyjslib.List([]);
+    }
+    if (pyjslib.bool(!(pyjamas.Window.resizeListeners))) {
+    pyjamas.Window.resizeListeners = new pyjslib.List([]);
+    }
+    return null;
+};
+pyjamas.Window.init_listeners.__name__ = 'init_listeners';
+
+pyjamas.Window.init = function() {
+    pyjamas.Window.init_listeners();
+
+    $wnd.__pygwt_initHandlers(
+        function() {
+            Window.onResize();
+        },
+        function() {
+            return Window.onClosing();
+        },
+        function() {
+            Window.onClosed();
+            /*$wnd.onresize = null;
+            $wnd.onbeforeclose = null;
+            $wnd.onclose = null;*/
+        }
+    );
+    
+};
+pyjamas.Window.init.__name__ = 'init';
+
+    pyjamas.Window.init();
+return this;
+
+}; /* end pyjamas.Window */ 
+
+
+
+
+pyjamas.Window_loaded_fn = function() {
+}
+
+pyjamas.Window_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.Window']) == 'undefined') ||
+        (module_load_request['pyjamas.Window'] < 2)) {
+        module_load_request['pyjamas.Window'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.Location']),
+		new pyjslib.List([
+			])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
+		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
+		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.Window_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.Window');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.Window");
+
+    if (sys.appname != 'pyjamas.Window')
+    {
+        modules['pyjamas.Window'] = pyjamas.Window(name);
+        if (module_load_request['pyjamas.Window'] < 3) {
+            module_load_request['pyjamas.Window'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.Window");
+
+pyjamas.Window_prepare_mod();
+
+
+// pyjamas.ui.Event
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.ui.Event = function (__mod_name__) {
+    if(pyjamas.ui.Event.__was_initialized__) return;
+    pyjamas.ui.Event.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.Event';
+pyjamas.ui.Event.__name__ = __mod_name__;
+var Event = pyjamas.ui.Event;
+
+    pyjamas.ui.Event.BUTTON_LEFT = 1;
+    pyjamas.ui.Event.BUTTON_MIDDLE = 4;
+    pyjamas.ui.Event.BUTTON_RIGHT = 2;
+    pyjamas.ui.Event.ONBLUR = 4096;
+    pyjamas.ui.Event.ONCHANGE = 1024;
+    pyjamas.ui.Event.ONCLICK = 1;
+    pyjamas.ui.Event.ONCONTEXTMENU = 131072;
+    pyjamas.ui.Event.ONDBLCLICK = 2;
+    pyjamas.ui.Event.ONERROR = 65536;
+    pyjamas.ui.Event.ONFOCUS = 2048;
+    pyjamas.ui.Event.ONKEYDOWN = 128;
+    pyjamas.ui.Event.ONKEYPRESS = 256;
+    pyjamas.ui.Event.ONKEYUP = 512;
+    pyjamas.ui.Event.ONLOAD = 32768;
+    pyjamas.ui.Event.ONLOSECAPTURE = 8192;
+    pyjamas.ui.Event.ONMOUSEDOWN = 4;
+    pyjamas.ui.Event.ONMOUSEMOVE = 64;
+    pyjamas.ui.Event.ONMOUSEOUT = 32;
+    pyjamas.ui.Event.ONMOUSEOVER = 16;
+    pyjamas.ui.Event.ONMOUSEUP = 8;
+    pyjamas.ui.Event.ONSCROLL = 16384;
+    pyjamas.ui.Event.FOCUSEVENTS = 6144;
+    pyjamas.ui.Event.KEYEVENTS = 896;
+    pyjamas.ui.Event.MOUSEEVENTS = 124;
+return this;
+
+}; /* end pyjamas.ui.Event */ 
+
+
+
+
+pyjamas.ui.Event_loaded_fn = function() {
+}
+
+pyjamas.ui.Event_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.Event']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.Event'] < 2)) {
+        module_load_request['pyjamas.ui.Event'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.ui']),
+		new pyjslib.List([
+			])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
+		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
+		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.Event_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.ui.Event');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.ui.Event");
+
+    if (sys.appname != 'pyjamas.ui.Event')
+    {
+        modules['pyjamas.ui.Event'] = pyjamas.ui.Event(name);
+        if (module_load_request['pyjamas.ui.Event'] < 3) {
+            module_load_request['pyjamas.ui.Event'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.ui.Event");
+
+pyjamas.ui.Event_prepare_mod();
 
 
 // pyjamas.ui.UIObject
@@ -8178,326 +8178,6 @@ pyjamas.ui.UIObject_prepare_mod = function() {
 //alert("module ajax loaded pyjamas.ui.UIObject");
 
 pyjamas.ui.UIObject_prepare_mod();
-
-
-// pyjamas.ui.Widget
-
-// module libs (usually imported javascript)
-
-
-
-// module code
-
-pyjamas.ui.Widget = function (__mod_name__) {
-    if(pyjamas.ui.Widget.__was_initialized__) return;
-    pyjamas.ui.Widget.__was_initialized__ = true;
-if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.Widget';
-pyjamas.ui.Widget.__name__ = __mod_name__;
-var Widget = pyjamas.ui.Widget;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas', 0, false);
-    
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas.DOM', 0, false);
-    var DOM = pyjamas.DOM;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas.log', 0, false);
-    var log = pyjamas.log;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas.ui.UIObject', 0, false);
-    var UIObject = pyjamas.ui.UIObject;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas.ui', 0, false);
-    var ui = pyjamas.ui;
-
-
-    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas.ui.Event', 0, false);
-    var Event = pyjamas.ui.Event;
-
-pyjamas.ui.Widget.__Widget = function () {
-}
-pyjamas.ui.Widget.Widget = function(kwargs) {
-    var instance = new pyjamas.ui.Widget.__Widget();
-    if(instance.__init__) instance.__init__.apply(instance, arguments);
-    return instance;
-};
-pyjamas.ui.Widget.Widget.__name__ = 'Widget';
-
-pyjamas.ui.Widget.Widget.parse_kwargs = function ( __kwargs ) {
-    var __r = [pyjslib.Dict(__kwargs)];
-    return __r;
-};
-pyjamas.ui.Widget.__Widget.__initialize__ = function () {
-    if(pyjamas.ui.Widget.__Widget.__was_initialized__) return;
-    pyjamas.ui.Widget.__Widget.__was_initialized__ = true;
-    if(!pyjamas.ui.UIObject.__UIObject.__was_initialized__)
-        pyjamas.ui.UIObject.__UIObject.__initialize__();
-    pyjs_extend(pyjamas.ui.Widget.__Widget, pyjamas.ui.UIObject.__UIObject);
-    pyjamas.ui.Widget.__Widget.prototype.__class__.__new__ = pyjamas.ui.Widget.Widget;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.__name__ = 'Widget';
-    pyjamas.ui.Widget.__Widget.prototype.__init__ = function(kwargs) {
-    this.attached = false;
-    this.parent = null;
-    this.layoutData = null;
-    this.contextMenu = null;
-    pyjamas.ui.UIObject.__UIObject.prototype.__class__.__init__();
-    };
-pyjamas.ui.Widget.__Widget.prototype.__init__.parse_kwargs = function ( __kwargs ) {
-    var __r = [pyjslib.Dict(__kwargs)];
-    return __r;
-};
-    pyjamas.ui.Widget.__Widget.prototype.__class__.__init__ = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.__init__.call.apply(pyjamas.ui.Widget.__Widget.prototype.__init__, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.__init__.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__init__.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.__init__.__name__ = '__init__';
-pyjamas.ui.Widget.__Widget.prototype.__init__.__name__ = '__init__';
-    pyjamas.ui.Widget.__Widget.prototype.__class__.__init__.parse_kwargs = pyjamas.ui.Widget.__Widget.prototype.__init__.parse_kwargs;
-    pyjamas.ui.Widget.__Widget.prototype.getLayoutData = function() {
-    return this.layoutData;
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.getLayoutData = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.getLayoutData.call.apply(pyjamas.ui.Widget.__Widget.prototype.getLayoutData, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.getLayoutData.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.getLayoutData.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.getLayoutData.__name__ = 'getLayoutData';
-pyjamas.ui.Widget.__Widget.prototype.getLayoutData.__name__ = 'getLayoutData';
-    pyjamas.ui.Widget.__Widget.prototype.getParent = function() {
-    return this.parent;
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.getParent = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.getParent.call.apply(pyjamas.ui.Widget.__Widget.prototype.getParent, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.getParent.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.getParent.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.getParent.__name__ = 'getParent';
-pyjamas.ui.Widget.__Widget.prototype.getParent.__name__ = 'getParent';
-    pyjamas.ui.Widget.__Widget.prototype.isAttached = function() {
-    return this.attached;
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.isAttached = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.isAttached.call.apply(pyjamas.ui.Widget.__Widget.prototype.isAttached, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.isAttached.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.isAttached.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.isAttached.__name__ = 'isAttached';
-pyjamas.ui.Widget.__Widget.prototype.isAttached.__name__ = 'isAttached';
-    pyjamas.ui.Widget.__Widget.prototype.setContextMenu = function(menu) {
-    this.contextMenu = menu;
-    if (pyjslib.bool(menu)) {
-    this.sinkEvents(Event.ONCONTEXTMENU);
-    }
-    else {
-    this.unsinkEvents(Event.ONCONTEXTMENU);
-    }
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setContextMenu = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.setContextMenu.call.apply(pyjamas.ui.Widget.__Widget.prototype.setContextMenu, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setContextMenu.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.setContextMenu.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setContextMenu.__name__ = 'setContextMenu';
-pyjamas.ui.Widget.__Widget.prototype.setContextMenu.__name__ = 'setContextMenu';
-    pyjamas.ui.Widget.__Widget.prototype.onBrowserEvent = function(event) {
-    if (pyjslib.bool((this.contextMenu === null))) {
-    return true;
-    }
-    var type = DOM.eventGetType(event);
-    if (pyjslib.bool(pyjslib.eq(type, String('contextmenu')))) {
-    DOM.eventCancelBubble(event, true);
-    DOM.eventPreventDefault(event);
-    this.contextMenu.onContextMenu(this);
-    return false;
-    }
-    return true;
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onBrowserEvent = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.onBrowserEvent.call.apply(pyjamas.ui.Widget.__Widget.prototype.onBrowserEvent, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onBrowserEvent.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.onBrowserEvent.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onBrowserEvent.__name__ = 'onBrowserEvent';
-pyjamas.ui.Widget.__Widget.prototype.onBrowserEvent.__name__ = 'onBrowserEvent';
-    pyjamas.ui.Widget.__Widget.prototype.onLoad = function() {
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onLoad = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.onLoad.call.apply(pyjamas.ui.Widget.__Widget.prototype.onLoad, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onLoad.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.onLoad.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onLoad.__name__ = 'onLoad';
-pyjamas.ui.Widget.__Widget.prototype.onLoad.__name__ = 'onLoad';
-    pyjamas.ui.Widget.__Widget.prototype.doDetachChildren = function() {
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.doDetachChildren = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.doDetachChildren.call.apply(pyjamas.ui.Widget.__Widget.prototype.doDetachChildren, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.doDetachChildren.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.doDetachChildren.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.doDetachChildren.__name__ = 'doDetachChildren';
-pyjamas.ui.Widget.__Widget.prototype.doDetachChildren.__name__ = 'doDetachChildren';
-    pyjamas.ui.Widget.__Widget.prototype.doAttachChildren = function() {
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.doAttachChildren = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.doAttachChildren.call.apply(pyjamas.ui.Widget.__Widget.prototype.doAttachChildren, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.doAttachChildren.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.doAttachChildren.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.doAttachChildren.__name__ = 'doAttachChildren';
-pyjamas.ui.Widget.__Widget.prototype.doAttachChildren.__name__ = 'doAttachChildren';
-    pyjamas.ui.Widget.__Widget.prototype.onAttach = function() {
-    if (pyjslib.bool(this.isAttached())) {
-    return null;
-    }
-    this.attached = true;
-    DOM.setEventListener(this.getElement(), this);
-    this.doAttachChildren();
-    this.onLoad();
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onAttach = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.onAttach.call.apply(pyjamas.ui.Widget.__Widget.prototype.onAttach, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onAttach.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.onAttach.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onAttach.__name__ = 'onAttach';
-pyjamas.ui.Widget.__Widget.prototype.onAttach.__name__ = 'onAttach';
-    pyjamas.ui.Widget.__Widget.prototype.onDetach = function() {
-    if (pyjslib.bool(!(this.isAttached()))) {
-    return null;
-    }
-    this.doDetachChildren();
-    this.attached = false;
-    DOM.setEventListener(this.getElement(), null);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onDetach = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.onDetach.call.apply(pyjamas.ui.Widget.__Widget.prototype.onDetach, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onDetach.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.onDetach.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.onDetach.__name__ = 'onDetach';
-pyjamas.ui.Widget.__Widget.prototype.onDetach.__name__ = 'onDetach';
-    pyjamas.ui.Widget.__Widget.prototype.setLayoutData = function(layoutData) {
-    this.layoutData = layoutData;
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setLayoutData = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.setLayoutData.call.apply(pyjamas.ui.Widget.__Widget.prototype.setLayoutData, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setLayoutData.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.setLayoutData.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setLayoutData.__name__ = 'setLayoutData';
-pyjamas.ui.Widget.__Widget.prototype.setLayoutData.__name__ = 'setLayoutData';
-    pyjamas.ui.Widget.__Widget.prototype.setParent = function(parent) {
-    var oldparent = this.parent;
-    this.parent = parent;
-    if (pyjslib.bool(pyjslib.eq(parent, null))) {
-    if (pyjslib.bool(((oldparent != null)) && (oldparent.attached))) {
-    this.onDetach();
-    }
-    }
-    else if (pyjslib.bool(parent.attached)) {
-    this.onAttach();
-    }
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setParent = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.setParent.call.apply(pyjamas.ui.Widget.__Widget.prototype.setParent, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setParent.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.setParent.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setParent.__name__ = 'setParent';
-pyjamas.ui.Widget.__Widget.prototype.setParent.__name__ = 'setParent';
-    pyjamas.ui.Widget.__Widget.prototype.removeFromParent = function() {
-    if (pyjslib.bool(pyjslib.hasattr(this.parent, String('remove')))) {
-    this.parent.remove(this);
-    }
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.removeFromParent = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.removeFromParent.call.apply(pyjamas.ui.Widget.__Widget.prototype.removeFromParent, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.removeFromParent.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.removeFromParent.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.removeFromParent.__name__ = 'removeFromParent';
-pyjamas.ui.Widget.__Widget.prototype.removeFromParent.__name__ = 'removeFromParent';
-    pyjamas.ui.Widget.__Widget.prototype.getID = function() {
-    return DOM.getAttribute(this.getElement(), String('id'));
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.getID = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.getID.call.apply(pyjamas.ui.Widget.__Widget.prototype.getID, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.getID.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.getID.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.getID.__name__ = 'getID';
-pyjamas.ui.Widget.__Widget.prototype.getID.__name__ = 'getID';
-    pyjamas.ui.Widget.__Widget.prototype.setID = function(id) {
-    DOM.setAttribute(this.getElement(), String('id'), id);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setID = function() {
-        return pyjamas.ui.Widget.__Widget.prototype.setID.call.apply(pyjamas.ui.Widget.__Widget.prototype.setID, arguments);
-    };
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setID.unbound_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.setID.instance_method = true;
-    pyjamas.ui.Widget.__Widget.prototype.__class__.setID.__name__ = 'setID';
-pyjamas.ui.Widget.__Widget.prototype.setID.__name__ = 'setID';
-}
-pyjamas.ui.Widget.__Widget.__initialize__();
-return this;
-
-}; /* end pyjamas.ui.Widget */ 
-
-
-
-
-pyjamas.ui.Widget_loaded_fn = function() {
-}
-
-pyjamas.ui.Widget_prepare_mod = function() {
-    if ((typeof (module_load_request['pyjamas.ui.Widget']) == 'undefined') ||
-        (module_load_request['pyjamas.ui.Widget'] < 2)) {
-        module_load_request['pyjamas.ui.Widget'] = 2;
-    }
-    var modnames = new pyjslib.List([
-		new pyjslib.List([
-			'pyjamas']),
-		new pyjslib.List([
-			'pyjamas.DOM',
-			'pyjamas.ui']),
-		new pyjslib.List([
-			'pyjamas.log',
-			'pyjamas.ui.Event']),
-		new pyjslib.List([
-			'pyjamas.ui.UIObject'])
-	]);
-    sys.overrides.update(new pyjslib.Dict({
-		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
-		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
-		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
-	}));
-    path = sys.loadpath;
-    /*
-    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.Widget_loaded_fn,
-                                            0,
-                                            null);
-                                            //'pyjamas.ui.Widget');
-                                            */
-    //alert("module ajax loaded fn called pyjamas.ui.Widget");
-
-    if (sys.appname != 'pyjamas.ui.Widget')
-    {
-        modules['pyjamas.ui.Widget'] = pyjamas.ui.Widget(name);
-        if (module_load_request['pyjamas.ui.Widget'] < 3) {
-            module_load_request['pyjamas.ui.Widget'] = 3;
-        }
-    }
-}
-
-//alert("module ajax loaded pyjamas.ui.Widget");
-
-pyjamas.ui.Widget_prepare_mod();
 
 
 // pyjamas.ui.TreeItem
@@ -9232,6 +8912,326 @@ pyjamas.ui.TreeItem_prepare_mod = function() {
 //alert("module ajax loaded pyjamas.ui.TreeItem");
 
 pyjamas.ui.TreeItem_prepare_mod();
+
+
+// pyjamas.ui.Widget
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+pyjamas.ui.Widget = function (__mod_name__) {
+    if(pyjamas.ui.Widget.__was_initialized__) return;
+    pyjamas.ui.Widget.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'pyjamas.ui.Widget';
+pyjamas.ui.Widget.__name__ = __mod_name__;
+var Widget = pyjamas.ui.Widget;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas.log', 0, false);
+    var log = pyjamas.log;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas.ui.UIObject', 0, false);
+    var UIObject = pyjamas.ui.UIObject;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas.ui', 0, false);
+    var ui = pyjamas.ui;
+
+
+    pyjslib.import_module(sys.loadpath, 'pyjamas.ui.Widget', 'pyjamas.ui.Event', 0, false);
+    var Event = pyjamas.ui.Event;
+
+pyjamas.ui.Widget.__Widget = function () {
+}
+pyjamas.ui.Widget.Widget = function(kwargs) {
+    var instance = new pyjamas.ui.Widget.__Widget();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+pyjamas.ui.Widget.Widget.__name__ = 'Widget';
+
+pyjamas.ui.Widget.Widget.parse_kwargs = function ( __kwargs ) {
+    var __r = [pyjslib.Dict(__kwargs)];
+    return __r;
+};
+pyjamas.ui.Widget.__Widget.__initialize__ = function () {
+    if(pyjamas.ui.Widget.__Widget.__was_initialized__) return;
+    pyjamas.ui.Widget.__Widget.__was_initialized__ = true;
+    if(!pyjamas.ui.UIObject.__UIObject.__was_initialized__)
+        pyjamas.ui.UIObject.__UIObject.__initialize__();
+    pyjs_extend(pyjamas.ui.Widget.__Widget, pyjamas.ui.UIObject.__UIObject);
+    pyjamas.ui.Widget.__Widget.prototype.__class__.__new__ = pyjamas.ui.Widget.Widget;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.__name__ = 'Widget';
+    pyjamas.ui.Widget.__Widget.prototype.__init__ = function(kwargs) {
+    this.attached = false;
+    this.parent = null;
+    this.layoutData = null;
+    this.contextMenu = null;
+    pyjamas.ui.UIObject.__UIObject.prototype.__class__.__init__();
+    };
+pyjamas.ui.Widget.__Widget.prototype.__init__.parse_kwargs = function ( __kwargs ) {
+    var __r = [pyjslib.Dict(__kwargs)];
+    return __r;
+};
+    pyjamas.ui.Widget.__Widget.prototype.__class__.__init__ = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.__init__.call.apply(pyjamas.ui.Widget.__Widget.prototype.__init__, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.__init__.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__init__.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.__init__.__name__ = '__init__';
+pyjamas.ui.Widget.__Widget.prototype.__init__.__name__ = '__init__';
+    pyjamas.ui.Widget.__Widget.prototype.__class__.__init__.parse_kwargs = pyjamas.ui.Widget.__Widget.prototype.__init__.parse_kwargs;
+    pyjamas.ui.Widget.__Widget.prototype.getLayoutData = function() {
+    return this.layoutData;
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.getLayoutData = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.getLayoutData.call.apply(pyjamas.ui.Widget.__Widget.prototype.getLayoutData, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.getLayoutData.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.getLayoutData.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.getLayoutData.__name__ = 'getLayoutData';
+pyjamas.ui.Widget.__Widget.prototype.getLayoutData.__name__ = 'getLayoutData';
+    pyjamas.ui.Widget.__Widget.prototype.getParent = function() {
+    return this.parent;
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.getParent = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.getParent.call.apply(pyjamas.ui.Widget.__Widget.prototype.getParent, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.getParent.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.getParent.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.getParent.__name__ = 'getParent';
+pyjamas.ui.Widget.__Widget.prototype.getParent.__name__ = 'getParent';
+    pyjamas.ui.Widget.__Widget.prototype.isAttached = function() {
+    return this.attached;
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.isAttached = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.isAttached.call.apply(pyjamas.ui.Widget.__Widget.prototype.isAttached, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.isAttached.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.isAttached.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.isAttached.__name__ = 'isAttached';
+pyjamas.ui.Widget.__Widget.prototype.isAttached.__name__ = 'isAttached';
+    pyjamas.ui.Widget.__Widget.prototype.setContextMenu = function(menu) {
+    this.contextMenu = menu;
+    if (pyjslib.bool(menu)) {
+    this.sinkEvents(Event.ONCONTEXTMENU);
+    }
+    else {
+    this.unsinkEvents(Event.ONCONTEXTMENU);
+    }
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setContextMenu = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.setContextMenu.call.apply(pyjamas.ui.Widget.__Widget.prototype.setContextMenu, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setContextMenu.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.setContextMenu.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setContextMenu.__name__ = 'setContextMenu';
+pyjamas.ui.Widget.__Widget.prototype.setContextMenu.__name__ = 'setContextMenu';
+    pyjamas.ui.Widget.__Widget.prototype.onBrowserEvent = function(event) {
+    if (pyjslib.bool((this.contextMenu === null))) {
+    return true;
+    }
+    var type = DOM.eventGetType(event);
+    if (pyjslib.bool(pyjslib.eq(type, String('contextmenu')))) {
+    DOM.eventCancelBubble(event, true);
+    DOM.eventPreventDefault(event);
+    this.contextMenu.onContextMenu(this);
+    return false;
+    }
+    return true;
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onBrowserEvent = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.onBrowserEvent.call.apply(pyjamas.ui.Widget.__Widget.prototype.onBrowserEvent, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onBrowserEvent.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.onBrowserEvent.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onBrowserEvent.__name__ = 'onBrowserEvent';
+pyjamas.ui.Widget.__Widget.prototype.onBrowserEvent.__name__ = 'onBrowserEvent';
+    pyjamas.ui.Widget.__Widget.prototype.onLoad = function() {
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onLoad = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.onLoad.call.apply(pyjamas.ui.Widget.__Widget.prototype.onLoad, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onLoad.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.onLoad.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onLoad.__name__ = 'onLoad';
+pyjamas.ui.Widget.__Widget.prototype.onLoad.__name__ = 'onLoad';
+    pyjamas.ui.Widget.__Widget.prototype.doDetachChildren = function() {
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.doDetachChildren = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.doDetachChildren.call.apply(pyjamas.ui.Widget.__Widget.prototype.doDetachChildren, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.doDetachChildren.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.doDetachChildren.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.doDetachChildren.__name__ = 'doDetachChildren';
+pyjamas.ui.Widget.__Widget.prototype.doDetachChildren.__name__ = 'doDetachChildren';
+    pyjamas.ui.Widget.__Widget.prototype.doAttachChildren = function() {
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.doAttachChildren = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.doAttachChildren.call.apply(pyjamas.ui.Widget.__Widget.prototype.doAttachChildren, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.doAttachChildren.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.doAttachChildren.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.doAttachChildren.__name__ = 'doAttachChildren';
+pyjamas.ui.Widget.__Widget.prototype.doAttachChildren.__name__ = 'doAttachChildren';
+    pyjamas.ui.Widget.__Widget.prototype.onAttach = function() {
+    if (pyjslib.bool(this.isAttached())) {
+    return null;
+    }
+    this.attached = true;
+    DOM.setEventListener(this.getElement(), this);
+    this.doAttachChildren();
+    this.onLoad();
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onAttach = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.onAttach.call.apply(pyjamas.ui.Widget.__Widget.prototype.onAttach, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onAttach.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.onAttach.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onAttach.__name__ = 'onAttach';
+pyjamas.ui.Widget.__Widget.prototype.onAttach.__name__ = 'onAttach';
+    pyjamas.ui.Widget.__Widget.prototype.onDetach = function() {
+    if (pyjslib.bool(!(this.isAttached()))) {
+    return null;
+    }
+    this.doDetachChildren();
+    this.attached = false;
+    DOM.setEventListener(this.getElement(), null);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onDetach = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.onDetach.call.apply(pyjamas.ui.Widget.__Widget.prototype.onDetach, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onDetach.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.onDetach.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.onDetach.__name__ = 'onDetach';
+pyjamas.ui.Widget.__Widget.prototype.onDetach.__name__ = 'onDetach';
+    pyjamas.ui.Widget.__Widget.prototype.setLayoutData = function(layoutData) {
+    this.layoutData = layoutData;
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setLayoutData = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.setLayoutData.call.apply(pyjamas.ui.Widget.__Widget.prototype.setLayoutData, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setLayoutData.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.setLayoutData.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setLayoutData.__name__ = 'setLayoutData';
+pyjamas.ui.Widget.__Widget.prototype.setLayoutData.__name__ = 'setLayoutData';
+    pyjamas.ui.Widget.__Widget.prototype.setParent = function(parent) {
+    var oldparent = this.parent;
+    this.parent = parent;
+    if (pyjslib.bool(pyjslib.eq(parent, null))) {
+    if (pyjslib.bool(((oldparent != null)) && (oldparent.attached))) {
+    this.onDetach();
+    }
+    }
+    else if (pyjslib.bool(parent.attached)) {
+    this.onAttach();
+    }
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setParent = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.setParent.call.apply(pyjamas.ui.Widget.__Widget.prototype.setParent, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setParent.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.setParent.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setParent.__name__ = 'setParent';
+pyjamas.ui.Widget.__Widget.prototype.setParent.__name__ = 'setParent';
+    pyjamas.ui.Widget.__Widget.prototype.removeFromParent = function() {
+    if (pyjslib.bool(pyjslib.hasattr(this.parent, String('remove')))) {
+    this.parent.remove(this);
+    }
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.removeFromParent = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.removeFromParent.call.apply(pyjamas.ui.Widget.__Widget.prototype.removeFromParent, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.removeFromParent.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.removeFromParent.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.removeFromParent.__name__ = 'removeFromParent';
+pyjamas.ui.Widget.__Widget.prototype.removeFromParent.__name__ = 'removeFromParent';
+    pyjamas.ui.Widget.__Widget.prototype.getID = function() {
+    return DOM.getAttribute(this.getElement(), String('id'));
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.getID = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.getID.call.apply(pyjamas.ui.Widget.__Widget.prototype.getID, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.getID.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.getID.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.getID.__name__ = 'getID';
+pyjamas.ui.Widget.__Widget.prototype.getID.__name__ = 'getID';
+    pyjamas.ui.Widget.__Widget.prototype.setID = function(id) {
+    DOM.setAttribute(this.getElement(), String('id'), id);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setID = function() {
+        return pyjamas.ui.Widget.__Widget.prototype.setID.call.apply(pyjamas.ui.Widget.__Widget.prototype.setID, arguments);
+    };
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setID.unbound_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.setID.instance_method = true;
+    pyjamas.ui.Widget.__Widget.prototype.__class__.setID.__name__ = 'setID';
+pyjamas.ui.Widget.__Widget.prototype.setID.__name__ = 'setID';
+}
+pyjamas.ui.Widget.__Widget.__initialize__();
+return this;
+
+}; /* end pyjamas.ui.Widget */ 
+
+
+
+
+pyjamas.ui.Widget_loaded_fn = function() {
+}
+
+pyjamas.ui.Widget_prepare_mod = function() {
+    if ((typeof (module_load_request['pyjamas.ui.Widget']) == 'undefined') ||
+        (module_load_request['pyjamas.ui.Widget'] < 2)) {
+        module_load_request['pyjamas.ui.Widget'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM',
+			'pyjamas.ui']),
+		new pyjslib.List([
+			'pyjamas.log',
+			'pyjamas.ui.Event']),
+		new pyjslib.List([
+			'pyjamas.ui.UIObject'])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
+		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
+		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, pyjamas.ui.Widget_loaded_fn,
+                                            0,
+                                            null);
+                                            //'pyjamas.ui.Widget');
+                                            */
+    //alert("module ajax loaded fn called pyjamas.ui.Widget");
+
+    if (sys.appname != 'pyjamas.ui.Widget')
+    {
+        modules['pyjamas.ui.Widget'] = pyjamas.ui.Widget(name);
+        if (module_load_request['pyjamas.ui.Widget'] < 3) {
+            module_load_request['pyjamas.ui.Widget'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded pyjamas.ui.Widget");
+
+pyjamas.ui.Widget_prepare_mod();
 
 
 // pyjamas.ui.FileUpload
@@ -11330,6 +11330,189 @@ pyjamas.ui.Tree_prepare_mod = function() {
 //alert("module ajax loaded pyjamas.ui.Tree");
 
 pyjamas.ui.Tree_prepare_mod();
+
+
+// OpenMaps
+
+// module libs (usually imported javascript)
+
+
+
+// module code
+
+var OpenMaps = function (__mod_name__) {
+    if(OpenMaps.__was_initialized__) return;
+    OpenMaps.__was_initialized__ = true;
+if (__mod_name__ == null) __mod_name__ = 'OpenMaps';
+OpenMaps.__name__ = __mod_name__;
+
+    pyjslib.import_module(sys.loadpath, 'OpenMaps', 'pyjamas', 0, false);
+    
+
+    pyjslib.import_module(sys.loadpath, 'OpenMaps', 'pyjamas.DOM', 0, false);
+    var DOM = pyjamas.DOM;
+
+
+    pyjslib.import_module(sys.loadpath, 'OpenMaps', 'pyjamas.ui.Widget', 0, false);
+    var Widget = pyjamas.ui.Widget;
+
+OpenMaps.__OLMap = function () {
+}
+OpenMaps.OLMap = function(url, kwargs) {
+    var args = new pyjslib.Tuple();
+    for(var __va_arg=2; __va_arg < arguments.length; __va_arg++) {
+        var __arg = arguments[__va_arg];
+        args.append(__arg);
+    }
+    var instance = new OpenMaps.__OLMap();
+    if(instance.__init__) instance.__init__.apply(instance, arguments);
+    return instance;
+};
+OpenMaps.OLMap.__name__ = 'OLMap';
+
+OpenMaps.OLMap.parse_kwargs = function ( __kwargs, url ) {
+    var __r = [url, pyjslib.Dict(__kwargs)];
+    var __args = new pyjslib.Tuple();
+    for(var __va_arg=2; __va_arg < arguments.length; __va_arg++) {
+        var __arg = arguments[__va_arg];
+        __args.append(__arg);
+    }
+    __r.push.apply(__r, __args.getArray())
+    return __r;
+};
+OpenMaps.__OLMap.__initialize__ = function () {
+    if(OpenMaps.__OLMap.__was_initialized__) return;
+    OpenMaps.__OLMap.__was_initialized__ = true;
+    if(!pyjamas.ui.Widget.__Widget.__was_initialized__)
+        pyjamas.ui.Widget.__Widget.__initialize__();
+    pyjs_extend(OpenMaps.__OLMap, pyjamas.ui.Widget.__Widget);
+    OpenMaps.__OLMap.prototype.__class__.__new__ = OpenMaps.OLMap;
+    OpenMaps.__OLMap.prototype.__class__.__name__ = 'OLMap';
+    OpenMaps.__OLMap.prototype.__init__ = function(url, kwargs) {
+    var args = new pyjslib.Tuple();
+    for(var __va_arg=2; __va_arg < arguments.length; __va_arg++) {
+        var __arg = arguments[__va_arg];
+        args.append(__arg);
+    }
+    var map_div = DOM.createElement(String('div'));
+    DOM.setAttribute(map_div, String('id'), String('map'));
+    this.setElement(map_div);
+    var map = null;
+    var wms = null;
+
+        var map = new OpenLayers.Map('map');
+
+        var wms = new OpenLayers.Layer.WMS( "OpenLayers WMS",
+            url, {layers: 'basic'} );
+
+          
+    this.map = map;
+    this.wms = wms;
+    map.addLayer(wms);
+    this.zoomToMaxExtent();
+    pyjs_kwargs_method_call(pyjamas.ui.Widget.__Widget.prototype.__class__, '__init__', args, [this]);
+    };
+OpenMaps.__OLMap.prototype.__init__.parse_kwargs = function ( __kwargs, url ) {
+    var __r = [url, pyjslib.Dict(__kwargs)];
+    var __args = new pyjslib.Tuple();
+    for(var __va_arg=2; __va_arg < arguments.length; __va_arg++) {
+        var __arg = arguments[__va_arg];
+        __args.append(__arg);
+    }
+    __r.push.apply(__r, __args.getArray())
+    return __r;
+};
+    OpenMaps.__OLMap.prototype.__class__.__init__ = function() {
+        return OpenMaps.__OLMap.prototype.__init__.call.apply(OpenMaps.__OLMap.prototype.__init__, arguments);
+    };
+    OpenMaps.__OLMap.prototype.__class__.__init__.unbound_method = true;
+    OpenMaps.__OLMap.prototype.__init__.instance_method = true;
+    OpenMaps.__OLMap.prototype.__class__.__init__.__name__ = '__init__';
+OpenMaps.__OLMap.prototype.__init__.__name__ = '__init__';
+    OpenMaps.__OLMap.prototype.__class__.__init__.parse_kwargs = OpenMaps.__OLMap.prototype.__init__.parse_kwargs;
+    OpenMaps.__OLMap.prototype.zoomToMaxExtent = function() {
+    this.map.zoomToMaxExtent();
+    };
+    OpenMaps.__OLMap.prototype.__class__.zoomToMaxExtent = function() {
+        return OpenMaps.__OLMap.prototype.zoomToMaxExtent.call.apply(OpenMaps.__OLMap.prototype.zoomToMaxExtent, arguments);
+    };
+    OpenMaps.__OLMap.prototype.__class__.zoomToMaxExtent.unbound_method = true;
+    OpenMaps.__OLMap.prototype.zoomToMaxExtent.instance_method = true;
+    OpenMaps.__OLMap.prototype.__class__.zoomToMaxExtent.__name__ = 'zoomToMaxExtent';
+OpenMaps.__OLMap.prototype.zoomToMaxExtent.__name__ = 'zoomToMaxExtent';
+    OpenMaps.__OLMap.prototype.getMapElement = function() {
+    return this.map;
+    };
+    OpenMaps.__OLMap.prototype.__class__.getMapElement = function() {
+        return OpenMaps.__OLMap.prototype.getMapElement.call.apply(OpenMaps.__OLMap.prototype.getMapElement, arguments);
+    };
+    OpenMaps.__OLMap.prototype.__class__.getMapElement.unbound_method = true;
+    OpenMaps.__OLMap.prototype.getMapElement.instance_method = true;
+    OpenMaps.__OLMap.prototype.__class__.getMapElement.__name__ = 'getMapElement';
+OpenMaps.__OLMap.prototype.getMapElement.__name__ = 'getMapElement';
+    OpenMaps.__OLMap.prototype.getWmsElement = function() {
+    return this.wms;
+    };
+    OpenMaps.__OLMap.prototype.__class__.getWmsElement = function() {
+        return OpenMaps.__OLMap.prototype.getWmsElement.call.apply(OpenMaps.__OLMap.prototype.getWmsElement, arguments);
+    };
+    OpenMaps.__OLMap.prototype.__class__.getWmsElement.unbound_method = true;
+    OpenMaps.__OLMap.prototype.getWmsElement.instance_method = true;
+    OpenMaps.__OLMap.prototype.__class__.getWmsElement.__name__ = 'getWmsElement';
+OpenMaps.__OLMap.prototype.getWmsElement.__name__ = 'getWmsElement';
+}
+OpenMaps.__OLMap.__initialize__();
+return this;
+
+}; /* end OpenMaps */ 
+
+
+
+
+OpenMaps_loaded_fn = function() {
+}
+
+OpenMaps_prepare_mod = function() {
+    if ((typeof (module_load_request['OpenMaps']) == 'undefined') ||
+        (module_load_request['OpenMaps'] < 2)) {
+        module_load_request['OpenMaps'] = 2;
+    }
+    var modnames = new pyjslib.List([
+		new pyjslib.List([
+			'pyjamas']),
+		new pyjslib.List([
+			'pyjamas.DOM']),
+		new pyjslib.List([
+			]),
+		new pyjslib.List([
+			'pyjamas.ui.Widget'])
+	]);
+    sys.overrides.update(new pyjslib.Dict({
+		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
+		'safari.pyjamas.ui.FormPanel': 'safari.pyjamas.ui.FormPanel',
+		'safari.pyjamas.ui.Focus': 'safari.pyjamas.ui.Focus'
+	}));
+    path = sys.loadpath;
+    /*
+    pyjslib.preload_app_modules(path, modnames, OpenMaps_loaded_fn,
+                                            0,
+                                            null);
+                                            //'OpenMaps');
+                                            */
+    //alert("module ajax loaded fn called OpenMaps");
+
+    if (sys.appname != 'OpenMaps')
+    {
+        modules['OpenMaps'] = OpenMaps(name);
+        if (module_load_request['OpenMaps'] < 3) {
+            module_load_request['OpenMaps'] = 3;
+        }
+    }
+}
+
+//alert("module ajax loaded OpenMaps");
+
+OpenMaps_prepare_mod();
 
 
 // pyjamas.ui.HTML
@@ -17989,6 +18172,9 @@ OpenPowerSystem.__name__ = __mod_name__;
 
     pyjslib.import_module(sys.loadpath, 'OpenPowerSystem', 'Edit', 0, false);
     
+
+    pyjslib.import_module(sys.loadpath, 'OpenPowerSystem', 'OpenMaps', 0, false);
+    
 OpenPowerSystem.__UploadFormHandler = function () {
 }
 OpenPowerSystem.UploadFormHandler = function() {
@@ -18034,11 +18220,6 @@ OpenPowerSystem.__UploadFormHandler.prototype.onSubmitComplete.__name__ = 'onSub
 OpenPowerSystem.__UploadFormHandler.prototype.onSubmit.__name__ = 'onSubmit';
 }
 OpenPowerSystem.__UploadFormHandler.__initialize__();
-OpenPowerSystem.OLMap = function() {
-return new OpenLayers.Map('map');
-};
-OpenPowerSystem.OLMap.__name__ = 'OLMap';
-
 OpenPowerSystem.__OpenPowerSystem = function () {
 }
 OpenPowerSystem.OpenPowerSystem = function() {
@@ -18073,9 +18254,8 @@ OpenPowerSystem.__OpenPowerSystem.__initialize__ = function () {
 OpenPowerSystem.__OpenPowerSystem.prototype.onModuleLoad.__name__ = 'onModuleLoad';
     OpenPowerSystem.__OpenPowerSystem.prototype.get_map_panel = function() {
     var panel = pyjamas.ui.HorizontalPanel.HorizontalPanel();
-    var map_div = pyjamas.ui.HTML.HTML(String('\x0A        \x3Cdiv style=\x22width:80%\x3B height:60%\x22 id=\x22map\x22\x3E\x3C/div\x3E\x0A        '));
-    panel.add(map_div);
-    this.map = OpenPowerSystem.OLMap();
+    this.map = pyjs_kwargs_method_call(OpenMaps, 'OLMap', null, [{Width:String('60%'), Height:String('80%')}, String('http://labs.metacarta.com/wms/vmap0')]);
+    panel.add(this.map);
     return panel;
     };
     OpenPowerSystem.__OpenPowerSystem.prototype.__class__.get_map_panel = function() {
@@ -18163,7 +18343,8 @@ OpenPowerSystem_prepare_mod = function() {
 			'pyjamas.ui.TabPanel',
 			'pyjamas.ui.decoratorpanel',
 			'pyjamas.Window',
-			'Edit'])
+			'Edit',
+			'OpenMaps'])
 	]);
     sys.overrides.update(new pyjslib.Dict({
 		'safari.pyjamas.DOM': 'safari.pyjamas.DOM',
@@ -18224,26 +18405,27 @@ function prepare_app() {
 			'sets']),
 		new pyjslib.List([
 			'pyjamas.ui',
-			'pyjamas.JSONParser',
-			'pyjamas.HTTPRequest',
 			'pyjamas.Location',
-			'pyjamas.DOM']),
+			'pyjamas.DOM',
+			'pyjamas.JSONParser',
+			'pyjamas.HTTPRequest']),
 		new pyjslib.List([
-			'pyjamas.JSONService',
+			'pyjamas.ui.Event',
 			'pyjamas.Window',
+			'pyjamas.log',
+			'pyjamas.JSONService',
 			'pyjamas.ui.FocusListener',
 			'pyjamas.ui.KeyboardListener',
 			'pyjamas.ui.MouseListener',
 			'pyjamas.ui.Focus',
-			'pyjamas.ui.Event',
-			'pyjamas.log',
 			'pyjamas.ui.EventObject']),
 		new pyjslib.List([
 			'pyjamas.ui.UIObject']),
 		new pyjslib.List([
-			'pyjamas.ui.TreeItem',
-			'pyjamas.ui.Widget']),
+			'pyjamas.ui.Widget',
+			'pyjamas.ui.TreeItem']),
 		new pyjslib.List([
+			'OpenMaps',
 			'pyjamas.ui.Tree',
 			'pyjamas.ui.Panel',
 			'pyjamas.ui.FocusWidget',

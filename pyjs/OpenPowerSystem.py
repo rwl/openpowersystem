@@ -14,7 +14,7 @@ from pyjamas import Window
 
 from Edit import Edit
 
-#from Controls import OpenLayersMap
+from OpenMaps import OLMap
 
 import OpenLayers.js
 
@@ -40,9 +40,6 @@ class UploadFormHandler:
 #            event.setCancelled(True)
         pass
 
-def OLMap():
-    JS("""return new OpenLayers.Map('map');""")
-
 class OpenPowerSystem:
     def onModuleLoad(self):
         self.TEXT_WAITING = "Waiting for response..."
@@ -59,14 +56,8 @@ class OpenPowerSystem:
     def get_map_panel(self):
         panel = HorizontalPanel()
 
-        map_div = HTML("""
-        <div style="width:80%; height:60%" id="map"></div>
-        """)
-        panel.add(map_div)
-
-        self.map = OLMap()
-
-#        map = OpenLayersMap('map')
+        self.map = OLMap("http://labs.metacarta.com/wms/vmap0", Width="60%", Height="80%")
+        panel.add(self.map)
 
         return panel
 
