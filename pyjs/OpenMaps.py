@@ -4,13 +4,17 @@ from pyjamas.ui.SimplePanel import SimplePanel
 
 import OpenLayers.js
 
-class OpenMap(Widget):
-    def __init__(self, url, *args, **kwargs):
+class OpenMap(SimplePanel):
+    def __init__(self, *args, **kwargs):
         map_div = DOM.createDiv()
         DOM.setAttribute(map_div, "id", "map")
 
         self.setElement(map_div)
-        self.setStyleName("ol-Map")
+#        self.setStyleName("ol-Map")
+
+#        parent = self.getParent()
+#        if self.getParent() is not None:
+#            DOM.appendChild(self.getParent(), map_div)
 
         map = None
         wms = None
@@ -18,18 +22,14 @@ class OpenMap(Widget):
         JS("""
         var map = new OpenLayers.Map("map");
 
-        var wms = new OpenLayers.Layer.WMS( "OpenLayers WMS",
-            url, {'layers': 'basic'} );
-
         """)
         self.map = map
-        self.wms = wms
-        map.addLayer(wms);
-        self.zoomToMaxExtent()
 
-        Widget.__init__(self, *args, **kwargs)
+#        Widget.__init__(self, *args, **kwargs)
+        SimplePanel.__init__(self, map_div)
 
     def onLoad(self):
+        self.map.updateSize()
         self.map.render(self.getElement())
 
     def getMapElement(self):
@@ -53,19 +53,27 @@ class OpenWMSLayer:
 
             name: A name for the layer
             url: Base url for the WMS (e.g. http://wms.jpl.nasa.gov/wms.cgi)
-            params: An object with key/value pairs representing the GetMap
-                query string parameters and parameter values.
+            params: Key/value pairs representing the GetMap query string
+                parameters and parameter values (e.g. layers='basic')
         """
-        if params is None:
-            params = {}
-
         wms = None
 
+        params_obj = WMSParams(params)
+
         JS("""
-        var wms = new OpenLayers.Layer.WMS(name, url, params);
+        var wms = new OpenLayers.Layer.WMS(name, url, params_obj);
         """)
 
         self.wms = wms
 
     def getLayerElement(self):
         return self.wms
+
+
+class WMSParams:
+    """ OpenLayers expects params to be an object with key/value pairs
+        representing the GetMap query string parameters and values.
+    """
+    def __init__(self, **kw_args):
+        for key in kw_args:
+            setattr(self, key, kw_args[key])

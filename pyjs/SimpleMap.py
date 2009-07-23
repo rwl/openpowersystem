@@ -7,11 +7,12 @@ class SimpleMap:
     def onModuleLoad(self):
         panel = VerticalPanel()
 
-        self.map = OpenMap("http://labs.metacarta.com/wms/vmap0",
-                           Width="50%", Height="50%")
+        self.map = OpenMap(Width="50%", Height="50%")
 
         self.wms = OpenWMSLayer("OpenLayers WMS",
-            "http://labs.metacarta.com/wms/vmap0", layers='basic')
+            "http://labs.metacarta.com/wms/vmap0", layers="basic")
+
+        self.map.addLayer(self.wms)
 
         panel.add(self.map)
 
