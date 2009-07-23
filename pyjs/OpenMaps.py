@@ -4,45 +4,68 @@ from pyjamas.ui.SimplePanel import SimplePanel
 
 import OpenLayers.js
 
-class OLMap(SimplePanel):
+class OpenMap(Widget):
     def __init__(self, url, *args, **kwargs):
-        SimplePanel.__init__(self)
-
-        map_div = DOM.createElement("div")
-#        map_div = DOM.createDiv()
+        map_div = DOM.createDiv()
         DOM.setAttribute(map_div, "id", "map")
 
         self.setElement(map_div)
-
-#        self.setWidth(width)
-#        self.setHeight(height)
+        self.setStyleName("ol-Map")
 
         map = None
         wms = None
 
         JS("""
-        var map = new OpenLayers.Map('map');
+        var map = new OpenLayers.Map("map");
 
         var wms = new OpenLayers.Layer.WMS( "OpenLayers WMS",
-            "http://labs.metacarta.com/wms/vmap0", {layers: 'basic'} );
+            url, {'layers': 'basic'} );
 
-          """)
+        """)
         self.map = map
         self.wms = wms
         map.addLayer(wms);
         self.zoomToMaxExtent()
 
-#       Widget.__init__(self, *args, **kwargs)
+        Widget.__init__(self, *args, **kwargs)
 
     def onLoad(self):
-        SimplePanel.onLoad(self)
-        self.map.updateSize()
-
-    def zoomToMaxExtent(self):
-        self.map.zoomToMaxExtent()
+        self.map.render(self.getElement())
 
     def getMapElement(self):
         return self.map
 
     def getWmsElement(self):
+        return self.wms
+
+    def zoomToMaxExtent(self):
+        """ Zoom to the full extent and recenter.
+        """
+        self.map.zoomToMaxExtent()
+
+    def addLayer(self, layer):
+        self.map.addLayer(layer.getLayerElement())
+
+
+class OpenWMSLayer:
+    def __init__(self, name, url, **params):
+        """ Initialises a new WMS layer instance.
+
+            name: A name for the layer
+            url: Base url for the WMS (e.g. http://wms.jpl.nasa.gov/wms.cgi)
+            params: An object with key/value pairs representing the GetMap
+                query string parameters and parameter values.
+        """
+        if params is None:
+            params = {}
+
+        wms = None
+
+        JS("""
+        var wms = new OpenLayers.Layer.WMS(name, url, params);
+        """)
+
+        self.wms = wms
+
+    def getLayerElement(self):
         return self.wms

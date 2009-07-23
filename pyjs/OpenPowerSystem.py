@@ -14,9 +14,7 @@ from pyjamas import Window
 
 from Edit import Edit
 
-from OpenMaps import OLMap
-
-import OpenLayers.js
+from OpenMaps import OpenMap
 
 class UploadFormHandler:
     """ Event handler for the upload form.
@@ -54,10 +52,13 @@ class OpenPowerSystem:
         RootPanel().add(self.tab_panel)
 
     def get_map_panel(self):
-        panel = HorizontalPanel()
+        panel = VerticalPanel()
 
-        self.map = OLMap("http://labs.metacarta.com/wms/vmap0", Width="60%", Height="80%")
+        self.map = OpenMap("http://labs.metacarta.com/wms/vmap0",
+                           width="50%", height="50%")
         panel.add(self.map)
+
+        RootPanel().add(self.map)
 
         return panel
 

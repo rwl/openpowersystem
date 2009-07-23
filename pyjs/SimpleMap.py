@@ -1,16 +1,22 @@
 from pyjamas.ui.RootPanel import RootPanel
 from pyjamas.ui.VerticalPanel import VerticalPanel
 
-from OpenMaps import OLMap
+from OpenMaps import OpenMap, OpenWMSLayer
 
-class OL:
+class SimpleMap:
     def onModuleLoad(self):
-        self.map = OLMap("http://labs.metacarta.com/wms/vmap0",
-                         width="60%", height="80%")
+        panel = VerticalPanel()
+
+        self.map = OpenMap("http://labs.metacarta.com/wms/vmap0",
+                           Width="50%", Height="50%")
+
+        self.wms = OpenWMSLayer("OpenLayers WMS",
+            "http://labs.metacarta.com/wms/vmap0", layers='basic')
+
+        panel.add(self.map)
 
         RootPanel().add(self.map)
 
 if __name__ == '__main__':
-    app = OL()
+    app = SimpleMap()
     app.onModuleLoad()
-
