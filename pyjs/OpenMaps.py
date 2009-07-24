@@ -8,13 +8,14 @@ class OpenMap(SimplePanel):
     def __init__(self, *args, **kwargs):
         map_div = DOM.createDiv()
         DOM.setAttribute(map_div, "id", "map")
+        DOM.setStyleAttribute(map_div, "width", kwargs["Width"])
+        DOM.setStyleAttribute(map_div, "height", kwargs["Height"])
 
         self.setElement(map_div)
-#        self.setStyleName("ol-Map")
+        self.setStyleName("ol-Map")
 
-#        parent = self.getParent()
-#        if self.getParent() is not None:
-#            DOM.appendChild(self.getParent(), map_div)
+#        map_div.width = kwargs["Width"]
+#        map_div.height = kwargs["Height"]
 
         map = None
         wms = None

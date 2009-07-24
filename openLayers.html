@@ -3,7 +3,11 @@
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
   </head>
   <body>
-    <div style="width:60%; height:60%" id="map"/>
+    <table border="5px">
+    <tr>
+    <td><div style="width:500px; height:500px" id="map"/></td>
+    </tr>
+    </table>
     <script defer="defer" type="text/javascript">
         var map = new OpenLayers.Map('map');
         var wms = new OpenLayers.Layer.WMS( "OpenLayers WMS",
@@ -11,6 +15,5 @@
         map.addLayer(wms);
         map.zoomToMaxExtent();
     </script>
-
   </body>
 </html>
