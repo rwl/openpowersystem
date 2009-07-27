@@ -32,6 +32,11 @@ class Edit:
         self.tree.addTreeListener(self)
         edit_panel.add(self.tree)
 
+        upload_item = TreeItem("Upload")
+        self.tree.add(upload_item)
+        map_item = TreeItem("Map")
+        self.tree.add(map_item)
+
     def onTreeItemSelected(self, item):
         pass
 
