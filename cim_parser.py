@@ -29,7 +29,7 @@ import rdfxml
 
 from package_map import pkg_map
 
-from cim14 import ns_uri
+from cpsm import ns_uri
 #ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#"
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,

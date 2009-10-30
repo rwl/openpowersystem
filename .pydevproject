@@ -7,4 +7,14 @@
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.5</pydev_property>
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
 
+<pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
+<path>/home/rwl/tmp/google_appengine</path>
+<path>/home/rwl/tmp/google_appengine/lib/django</path>
+<path>/home/rwl/tmp/google_appengine/lib/webob</path>
+<path>/home/rwl/tmp/google_appengine/lib/yaml/lib</path>
+</pydev_pathproperty>
+<pydev_variables_property name="org.python.pydev.PROJECT_VARIABLE_SUBSTITUTION">
+<key>GOOGLE_APPENGINE</key>
+<value>/home/rwl/tmp/google_appengine</value>
+</pydev_variables_property>
 </pydev_project>
