@@ -17,7 +17,7 @@ from Edit import Edit
 from OpenMaps import OpenMap, OpenWMSLayer
 
 class OpenPowerSystem:
-    def onModuleLoad(self):
+    def __init__(self):
         self.TEXT_WAITING = "Waiting for response..."
         self.TEXT_ERROR = "Server Error"
 
@@ -121,5 +121,4 @@ class UploadFormHandler:
 if __name__ == '__main__':
 #    pyjd.setup("./public/Upload.html")
     app = OpenPowerSystem()
-    app.onModuleLoad()
 #    pyjd.run()
