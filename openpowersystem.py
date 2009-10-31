@@ -72,13 +72,33 @@ class UploadPage(webapp.RequestHandler):
 
 
 class JSONHandler(webapp.RequestHandler):
+    def __init__(self):
+        webapp.RequestHandler.__init__(self)
+        self.methods = RPCMethods()
+
     def post(self):
         args = simplejson.loads(self.request.body)
-        json_func = getattr(self, 'json_%s' % args[u"method"])
-        json_params = args[u"params"]
-        json_method_id = args[u"id"]
-        result = json_func(json_params)
-        # reuse args to send result back
+        method_name = args[u"method"]
+
+        if method_name:
+            # Deny requests to execute any private or protected methods.
+            if method_name[0] == '_':
+                self.error(403) # access denied
+                return
+            else:
+                func = getattr(self.methods, method_name, None)
+        else:
+            func = None
+
+        if not func:
+            self.error(404) # file not found
+            return
+
+        params = args[u"params"]
+        method_id = args[u"id"]
+        result = func(params)
+
+        # Reuse args to send result back.
         args.pop(u"method")
         args["result"] = result[0]
         args["error"] = None # IMPORTANT!!
@@ -86,7 +106,11 @@ class JSONHandler(webapp.RequestHandler):
         self.response.set_status(200)
         self.response.out.write(simplejson.dumps(args))
 
-    def json_get_geographical_region_names(self, args):
+
+class RPCMethods(object):
+    """ Defines methods available for RPC.
+    """
+    def get_geographical_region_names(self, args):
 #        regions = db.GqlQuery("SELECT * FROM GeographicalRegion ORDER BY name DESC LIMIT 10")
         regions = GeographicalRegion.all()
 #        regions = GeographicalRegion.gql("ORDER BY name DESC LIMIT 10")
