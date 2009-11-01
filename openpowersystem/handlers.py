@@ -1,4 +1,5 @@
-# Copyright (C) 2009 Richard W. Lincoln
+#------------------------------------------------------------------------------
+# Copyright (C) 2009 Richard Lincoln
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
@@ -12,6 +13,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program; if not, write to the Free Software Foundation,
 # Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+#------------------------------------------------------------------------------
 
 import os
 import cgi
@@ -27,7 +29,11 @@ from cpsm.core import GeographicalRegion
 
 from django.utils import simplejson
 
-from cim_parser import CIMParser
+from openpowersystem.parser import CIMParser
+
+#------------------------------------------------------------------------------
+#  "MainPage" class:
+#------------------------------------------------------------------------------
 
 class MainPage(webapp.RequestHandler):
     def get(self):
@@ -58,6 +64,9 @@ class MainPage(webapp.RequestHandler):
 
         self.redirect('/content/OpenPowerSystem.html')
 
+#------------------------------------------------------------------------------
+#  "UploadPage" class:
+#------------------------------------------------------------------------------
 
 class UploadPage(webapp.RequestHandler):
     def post(self):
@@ -70,6 +79,9 @@ class UploadPage(webapp.RequestHandler):
 
         self.redirect('/')
 
+#------------------------------------------------------------------------------
+#  "JSONHandler" class:
+#------------------------------------------------------------------------------
 
 class JSONHandler(webapp.RequestHandler):
     def __init__(self):
@@ -106,6 +118,9 @@ class JSONHandler(webapp.RequestHandler):
         self.response.set_status(200)
         self.response.out.write(simplejson.dumps(args))
 
+#------------------------------------------------------------------------------
+#  "RPCMethods" class:
+#------------------------------------------------------------------------------
 
 class RPCMethods(object):
     """ Defines methods available for RPC.
@@ -118,15 +133,4 @@ class RPCMethods(object):
         names = [region.uri for region in regions]
         return [names]
 
-application = webapp.WSGIApplication([('/', MainPage),
-                                      ('/upload', UploadPage),
-                                      ('/json', JSONHandler)],
-                                     debug=True)
-
-def main():
-    logging.getLogger().setLevel(logging.DEBUG)
-
-    run_wsgi_app(application)
-
-if __name__ == "__main__":
-    main()
+# EOF -------------------------------------------------------------------------
