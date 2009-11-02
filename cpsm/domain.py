@@ -59,7 +59,7 @@ Reactance = db.FloatProperty()
 # http://www.w3.org/2001/XMLSchema#floatVoltage variation with reactive powerVoltage variation with reactive power"
 VoltagePerReactivePower = db.FloatProperty()
 
-UnitSymbol = db.StringProperty(choices=("w/s", "none", "s", "h", "j/s", "va", "wh", "ohm", "m3", "hz-1", "w", "min", "rad", "g", "j", "h", "f", "kg/j", "vah", "s-1", "º_c", "deg", "pa", "var", "s", "w/hz", "m", "m2", "hz", "a", "n", "v/var", "varh", "v"))
+UnitSymbol = db.StringProperty(choices=("w/s", "none", "s", "h", "j/s", "va", "wh", "ohm", "m3", "hz-1", "w", "min", "rad", "g", "j", "h", "f", "kg/j", "vah", "s-1", "deg_c", "deg", "pa", "var", "s", "w/hz", "m", "m2", "hz", "a", "n", "v/var", "varh", "v"))
 
 #------------------------------------------------------------------------------
 #  Constants:

@@ -54,7 +54,7 @@ class IdentifiedObject(Element):
     """ This is a root class to provide common naming attributes for all classes needing naming attributesThis is a root class to provide common naming attributes for all classes needing naming attributes
     """
 
-    
+
     # The pathname is a system unique name composed from all IdentifiedObject.localNames in a naming hierarchy path from the object to the root.The pathname is a system unique name composed from all IdentifiedObject.localNames in a naming hierarchy path from the object to the root.
     path_name = db.StringProperty()
 
@@ -80,7 +80,7 @@ class RegularTimePoint(Element):
     """ TimePoints for a schedule where the time between the points is constant.TimePoints for a schedule where the time between the points is constant.
     """
 
-    
+
     # The first value at the time. The meaning of the value is defined by the class inhering the RegularIntervalSchedule.The first value at the time. The meaning of the value is defined by the class inhering the RegularIntervalSchedule.
     value1 = db.FloatProperty()
 
@@ -106,7 +106,7 @@ class CurveData(Element):
     """ Data point values for defining a curve or scheduleData point values for defining a curve or schedule
     """
 
-    
+
     # The data value of the second Y-axis variable (if present), depending on the Y-axis unitsThe data value of the second Y-axis variable (if present), depending on the Y-axis units
     y2value = db.FloatProperty()
 
@@ -132,7 +132,7 @@ class Terminal(IdentifiedObject):
     """ An electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called 'connectivity nodes'.An electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called 'connectivity nodes'.
     """
 
-    
+
     # Virtual property. One or more measurements may be associated with a terminal in the network. Measurement-Terminal defines where the measurement is placed in the network topology. Some Measurements represent quantities related to a particular sensor position, e.g. a voltage transformer (PT) at a busbar or a current transformer (CT) at the bar between a breaker and an isolator. The sensing position is captured by the Measurement - Terminal association that makes it possible to place the sensing position at a  well defined place. The place is defined by the connection of the Terminal to ConductingEquipment.One or more measurements may be associated with a terminal in the network. Measurement-Terminal defines where the measurement is placed in the network topology. Some Measurements represent quantities related to a particular sensor position, e.g. a voltage transformer (PT) at a busbar or a current transformer (CT) at the bar between a breaker and an isolator. The sensing position is captured by the Measurement - Terminal association that makes it possible to place the sensing position at a  well defined place. The place is defined by the connection of the Terminal to ConductingEquipment.
     pass #measurements
 
@@ -140,7 +140,7 @@ class Terminal(IdentifiedObject):
     pass #regulating_control
 
     # Terminals interconnect with zero impedance at a node.  Measurements on a node apply to all of its terminals.Terminals interconnect with zero impedance at a node.  Measurements on a node apply to all of its terminals.
-    connectivity_node = db.ReferenceProperty(collection_name="terminals")
+#    connectivity_node = db.ReferenceProperty(collection_name="terminals")
 
     # ConductingEquipment has 1 or 2 terminals that may be connected to other ConductingEquipment terminals via ConnectivityNodesConductingEquipment has 1 or 2 terminals that may be connected to other ConductingEquipment terminals via ConnectivityNodes
     conducting_equipment = db.ReferenceProperty(collection_name="terminals")
@@ -158,7 +158,7 @@ class BaseVoltage(IdentifiedObject):
     """ Collection of BaseVoltages which is used to verify that the BusbarSection.BaseVoltage and other voltage attributes in the CIM are given a value existing in the collection.Collection of BaseVoltages which is used to verify that the BusbarSection.BaseVoltage and other voltage attributes in the CIM are given a value existing in the collection.
     """
 
-    
+
     # The PowerSystemResource's base voltage.The PowerSystemResource's base voltage.
     nominal_voltage = Voltage
 
@@ -181,7 +181,7 @@ class Unit(IdentifiedObject):
     """ Quantity being measured. The Unit.name shall be unique among all specified quantities and describe the quantity. The Unit.aliasName is meant to be used for localization.Quantity being measured. The Unit.name shall be unique among all specified quantities and describe the quantity. The Unit.aliasName is meant to be used for localization.
     """
 
-    
+
     # Virtual property. The Measurements having the UnitThe Measurements having the Unit
     pass #measurements
 
@@ -198,7 +198,7 @@ class SubGeographicalRegion(IdentifiedObject):
     """ A subset of a geographical region of a power system network model.A subset of a geographical region of a power system network model.
     """
 
-    
+
     # The association is used in the naming hierarchy.The association is used in the naming hierarchy.
     region = db.ReferenceProperty(collection_name="regions")
 
@@ -221,7 +221,7 @@ class Curve(IdentifiedObject):
     """ Relationship between an independent variable (X-axis) and one or two dependent  variables (Y1-axis and Y2-axis). Curves can also serve as schedules.Relationship between an independent variable (X-axis) and one or two dependent  variables (Y1-axis and Y2-axis). Curves can also serve as schedules.
     """
 
-    
+
     # The Y2-axis units of measure.The Y2-axis units of measure.
     y2_unit = UnitSymbol
 
@@ -250,7 +250,7 @@ class PowerSystemResource(IdentifiedObject):
     """ A power system resource can be an item of equipment such as a Switch, an EquipmentContainer containing many individual items of equipment such as a  Substation, or an organisational entity such as Company or SubControlArea.  This provides for the nesting of collections of PowerSystemResources within other PowerSystemResources. For example, a Switch could be a member of a Substation and a Substation could be a member of a division of a Company.A power system resource can be an item of equipment such as a Switch, an EquipmentContainer containing many individual items of equipment such as a  Substation, or an organisational entity such as Company or SubControlArea.  This provides for the nesting of collections of PowerSystemResources within other PowerSystemResources. For example, a Switch could be a member of a Substation and a Substation could be a member of a division of a Company.
     """
 
-    
+
     # Virtual property. The Measurements that are included in the naming hierarchy where the PSR is the containing objectThe Measurements that are included in the naming hierarchy where the PSR is the containing object
     pass #contains_measurements
 
@@ -267,7 +267,7 @@ class BasicIntervalSchedule(IdentifiedObject):
     """ Schedule of values at points in time.Schedule of values at points in time.
     """
 
-    
+
     # The time for the first time point.The time for the first time point.
     start_time = db.DateProperty()
 
@@ -290,7 +290,7 @@ class GeographicalRegion(IdentifiedObject):
     """ A geographical region of a power system network model.A geographical region of a power system network model.
     """
 
-    
+
     # Virtual property. The association is used in the naming hierarchy.The association is used in the naming hierarchy.
     pass #regions
 
@@ -307,7 +307,7 @@ class RegularIntervalSchedule(BasicIntervalSchedule):
     """ The schedule has TimePoints where the time between them is constant.The schedule has TimePoints where the time between them is constant.
     """
 
-    
+
     # The time for the last time point.The time for the last time point.
     end_time = db.DateProperty()
 
@@ -330,7 +330,7 @@ class ConnectivityNodeContainer(PowerSystemResource):
     """ A base class for all objects that may contain ConnectivityNodes.A base class for all objects that may contain ConnectivityNodes.
     """
 
-    
+
     # Virtual property. Connectivity nodes contained by this container.Connectivity nodes contained by this container.
     pass #connectivity_nodes
 
@@ -347,7 +347,7 @@ class EquipmentContainer(ConnectivityNodeContainer):
     """ A modeling construct to provide a root class for all Equipment classesA modeling construct to provide a root class for all Equipment classes
     """
 
-    
+
     # Virtual property. The association is used in the naming hierarchy.The association is used in the naming hierarchy.
     pass #contains_equipments
 
@@ -364,7 +364,7 @@ class VoltageLevel(EquipmentContainer):
     """ A collection of equipment at one common system voltage forming a switchgear. The equipment typically consist of breakers, busbars, instrumentation, control, regulation and protection devices as well as assemblies of all these.A collection of equipment at one common system voltage forming a switchgear. The equipment typically consist of breakers, busbars, instrumentation, control, regulation and protection devices as well as assemblies of all these.
     """
 
-    
+
     # The bus bar's low voltage limitThe bus bar's low voltage limit
     low_voltage_limit = Voltage
 
@@ -393,7 +393,7 @@ class Bay(EquipmentContainer):
     """ A collection of power system resources (within a given substation) including conducting equipment, protection relays, measurements, and telemetry.A collection of power system resources (within a given substation) including conducting equipment, protection relays, measurements, and telemetry.
     """
 
-    
+
     # The association is used in the naming hierarchy.The association is used in the naming hierarchy.
     member_of_voltage_level = db.ReferenceProperty(collection_name="contains_bays")
 
@@ -410,7 +410,7 @@ class Equipment(PowerSystemResource):
     """ The parts of a power system that are physical devices, electronic or mechanicalThe parts of a power system that are physical devices, electronic or mechanical
     """
 
-    
+
     # The association is used in the naming hierarchy.The association is used in the naming hierarchy.
     member_of_equipment_container = db.ReferenceProperty(collection_name="contains_equipments")
 
@@ -430,7 +430,7 @@ class Substation(EquipmentContainer):
     """ A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics.A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics.
     """
 
-    
+
     # The association is used in the naming hierarchy.The association is used in the naming hierarchy.
     region = db.ReferenceProperty(collection_name="substations")
 
@@ -450,7 +450,7 @@ class ConductingEquipment(Equipment):
     """ The parts of the power system that are designed to carry current or that are conductively connected therewith. ConductingEquipment is contained within an EquipmentContainer that may be a Substation, or a VoltageLevel or a Bay within a Substation.The parts of the power system that are designed to carry current or that are conductively connected therewith. ConductingEquipment is contained within an EquipmentContainer that may be a Substation, or a VoltageLevel or a Bay within a Substation.
     """
 
-    
+
     # Use association to ConductingEquipment only when there is no VoltageLevel container used.Use association to ConductingEquipment only when there is no VoltageLevel container used.
     base_voltage = db.ReferenceProperty(collection_name="conducting_equipment")
 
