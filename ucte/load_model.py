@@ -15,75 +15,71 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package is responsible for modeling the energy consumers and the system load as curves and associated curve data. Special circumstances that may affect the load, such as seasons and daytypes, are also included here.  This information is used by Load Forecasting and Load Management.This package is responsible for modeling the energy consumers and the system load as curves and associated curve data. Special circumstances that may affect the load, such as seasons and daytypes, are also included here.  This information is used by Load Forecasting and Load Management.
+""" This package is responsible for modeling the energy consumers and the system load as curves and associated curve data. Special circumstances that may affect the load, such as seasons and daytypes, are also included here.  This information is used by Load Forecasting and Load Management. 
 """
-
-#------------------------------------------------------------------------------
-#  Imports:
-#------------------------------------------------------------------------------
-
-from ucte.core import IdentifiedObject
-
 
 # <<< imports
 # @generated
+from ucte.core import IdentifiedObject
+
+
 from google.appengine.ext import db
 # >>> imports
 
-#------------------------------------------------------------------------------
-#  Properties:
-#------------------------------------------------------------------------------
+# <<< properties
+# @generated
+# >>> properties
 
-#------------------------------------------------------------------------------
-#  Constants:
-#------------------------------------------------------------------------------
-
+# <<< constants
+# @generated
 NS_PREFIX = "cim"
 NS_URI = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_LoadModel"
-
-#------------------------------------------------------------------------------
-#  "LoadResponseCharacteristic" class:
-#------------------------------------------------------------------------------
+# >>> constants
 
 class LoadResponseCharacteristic(IdentifiedObject):
-    """ Models the characteristic response of the load demand due to to changes in system conditions such as voltage and frequency. This is not related to demand response.Models the characteristic response of the load demand due to to changes in system conditions such as voltage and frequency. This is not related to demand response.
+    """ Models the characteristic response of the load demand due to to changes in system conditions such as voltage and frequency. This is not related to demand response. 
     """
-
-    
-    # Exponent of per unit voltage effecting real power.   This model used only when 'useExponentModel' is true.Exponent of per unit voltage effecting real power.   This model used only when 'useExponentModel' is true.
+    # <<< load_response_characteristic.attributes
+    # @generated
+    # Exponent of per unit voltage effecting real power.   This model used only when 'useExponentModel' is true. 
     p_voltage_exponent = db.FloatProperty()
 
-    # Portion of reactive power load modeled as constant current. Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP.Portion of reactive power load modeled as constant current. Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP.
+    # Portion of reactive power load modeled as constant current. Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP. 
     q_constant_current = db.FloatProperty()
 
-    # Portion of active power load modeled as constant current. Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP.Portion of active power load modeled as constant current. Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP.
+    # Portion of active power load modeled as constant current. Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP. 
     p_constant_current = db.FloatProperty()
 
-    # Indicates the exponential voltage dependency model (pVoltateExponent and qVoltageExponent) is to be used.   If false, the coeficient model (consisting of pConstantImpedance, pConstantCurrent, pConstantPower, qConstantImpedance, qConstantCurrent, and qConstantPower) is to be used.Indicates the exponential voltage dependency model (pVoltateExponent and qVoltageExponent) is to be used.   If false, the coeficient model (consisting of pConstantImpedance, pConstantCurrent, pConstantPower, qConstantImpedance, qConstantCurrent, and qConstantPower) is to be used.
+    # Indicates the exponential voltage dependency model (pVoltateExponent and qVoltageExponent) is to be used.   If false, the coeficient model (consisting of pConstantImpedance, pConstantCurrent, pConstantPower, qConstantImpedance, qConstantCurrent, and qConstantPower) is to be used. 
     exponent_model = db.BooleanProperty()
 
-    # Portion of active power load modeled as constant power. Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP.Portion of active power load modeled as constant power. Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP.
+    # Portion of active power load modeled as constant power. Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP. 
     p_constant_power = db.FloatProperty()
 
-    # Exponent of per unit voltage effecting reactive power.   This model used only when 'useExponentModel' is true.Exponent of per unit voltage effecting reactive power.   This model used only when 'useExponentModel' is true.
+    # Exponent of per unit voltage effecting reactive power.   This model used only when 'useExponentModel' is true. 
     q_voltage_exponent = db.FloatProperty()
 
-    # Portion of reactive power load modeled as constant power. Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP.Portion of reactive power load modeled as constant power. Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP.
+    # Portion of reactive power load modeled as constant power. Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP. 
     q_constant_power = db.FloatProperty()
 
-    # Portion of reactive power load modeled as constant impedance.  Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP.Portion of reactive power load modeled as constant impedance.  Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP.
+    # Portion of reactive power load modeled as constant impedance.  Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP. 
     q_constant_impedance = db.FloatProperty()
 
-    # Portion of active power load modeled as constant impedance.  Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP.Portion of active power load modeled as constant impedance.  Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP.
+    # Portion of active power load modeled as constant impedance.  Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP. 
     p_constant_impedance = db.FloatProperty()
 
-    # Virtual property. The set of loads that have the response characteristics.The set of loads that have the response characteristics.
-    pass #energy_consumer
+    # >>> load_response_characteristic.attributes
 
-    # <<< load_response_characteristic
+    # <<< load_response_characteristic.references
     # @generated
-    # >>> load_response_characteristic
+    # Virtual property. The set of loads that have the response characteristics.  
+    pass # energy_consumer
 
+    # >>> load_response_characteristic.references
+
+    # <<< load_response_characteristic.operations
+    # @generated
+    # >>> load_response_characteristic.operations
 
 
 

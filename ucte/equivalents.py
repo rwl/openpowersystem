@@ -15,45 +15,41 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" The equivalents package models equivalent networks.The equivalents package models equivalent networks.
+""" The equivalents package models equivalent networks. 
 """
-
-#------------------------------------------------------------------------------
-#  Imports:
-#------------------------------------------------------------------------------
-
-from ucte.core import ConductingEquipment
-
 
 # <<< imports
 # @generated
+from ucte.core import ConductingEquipment
+
+
 from google.appengine.ext import db
 # >>> imports
 
-#------------------------------------------------------------------------------
-#  Properties:
-#------------------------------------------------------------------------------
+# <<< properties
+# @generated
+# >>> properties
 
-#------------------------------------------------------------------------------
-#  Constants:
-#------------------------------------------------------------------------------
-
+# <<< constants
+# @generated
 NS_PREFIX = "cim"
 NS_URI = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Equivalents"
-
-#------------------------------------------------------------------------------
-#  "EquivalentEquipment" class:
-#------------------------------------------------------------------------------
+# >>> constants
 
 class EquivalentEquipment(ConductingEquipment):
-    """ The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types.The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types.
+    """ The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types. 
     """
-
-    pass
-    # <<< equivalent_equipment
+    # <<< equivalent_equipment.attributes
     # @generated
-    # >>> equivalent_equipment
+    # >>> equivalent_equipment.attributes
 
+    # <<< equivalent_equipment.references
+    # @generated
+    # >>> equivalent_equipment.references
+
+    # <<< equivalent_equipment.operations
+    # @generated
+    # >>> equivalent_equipment.operations
 
 
 

@@ -25,7 +25,12 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from google.appengine.ext import db
 
-from cpsm.core import GeographicalRegion
+from ucte.core import GeographicalRegion
+from ucte.wires import SynchronousMachine, ACLineSegment
+from ucte.state_variables import SvPowerFlow
+from ucte.operational_limits import VoltageLimit
+from ucte.topology import TopologicalNode
+from ucte.generation.production import ThermalGeneratingUnit
 
 from django.utils import simplejson
 

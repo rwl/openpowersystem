@@ -15,133 +15,133 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" The OperationalLimits package models a specification of limits associated with equipment and other operational entities.The OperationalLimits package models a specification of limits associated with equipment and other operational entities.
+""" The OperationalLimits package models a specification of limits associated with equipment and other operational entities. 
 """
 
-#------------------------------------------------------------------------------
-#  Imports:
-#------------------------------------------------------------------------------
-
+# <<< imports
+# @generated
 from ucte.core import IdentifiedObject
 
 from ucte.domain import CurrentFlow
 from ucte.domain import Voltage
 from ucte.domain import Seconds
 
-# <<< imports
-# @generated
 from google.appengine.ext import db
 # >>> imports
 
-#------------------------------------------------------------------------------
-#  Properties:
-#------------------------------------------------------------------------------
+# <<< properties
+# @generated
 
 OperationalLimitDirectionKind = db.StringProperty(choices=("high", "absolute_value", "low"))
+# >>> properties
 
-#------------------------------------------------------------------------------
-#  Constants:
-#------------------------------------------------------------------------------
-
+# <<< constants
+# @generated
 NS_PREFIX = "cim"
 NS_URI = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_OperationalLimits"
-
-#------------------------------------------------------------------------------
-#  "OperationalLimit" class:
-#------------------------------------------------------------------------------
+# >>> constants
 
 class OperationalLimit(IdentifiedObject):
-    """ A value associated with a specific kind of limit.A value associated with a specific kind of limit.
+    """ A value associated with a specific kind of limit. 
     """
-
-    
-    # The limit set to which the limit values belong.The limit set to which the limit values belong.
-    operational_limit_set = db.ReferenceProperty(collection_name="operational_limit_value")
-
-    # The limit type associated with this limit.The limit type associated with this limit.
-    operational_limit_type = db.ReferenceProperty(collection_name="operational_limit")
-
-    # <<< operational_limit
+    # <<< operational_limit.attributes
     # @generated
-    # >>> operational_limit
+    # >>> operational_limit.attributes
 
+    # <<< operational_limit.references
+    # @generated
+    # The limit set to which the limit values belong. 
+    operational_limit_set = db.ReferenceProperty(db.Model, collection_name="operational_limit_value")
 
-#------------------------------------------------------------------------------
-#  "OperationalLimitSet" class:
-#------------------------------------------------------------------------------
+    # The limit type associated with this limit. 
+    operational_limit_type = db.ReferenceProperty(db.Model, collection_name="operational_limit")
+
+    # >>> operational_limit.references
+
+    # <<< operational_limit.operations
+    # @generated
+    # >>> operational_limit.operations
 
 class OperationalLimitSet(IdentifiedObject):
-    """ A set of limits associated with equipmnet.  Sets of limits might apply to a specific temperature, or season for example. A set of limits may contain may different severiteis of limit levels that would apply to the same equipment.   The set may contain limits of different types such as apparent power and current limits or high and low voltage limits  that are logically applied together as a set.A set of limits associated with equipmnet.  Sets of limits might apply to a specific temperature, or season for example. A set of limits may contain may different severiteis of limit levels that would apply to the same equipment.   The set may contain limits of different types such as apparent power and current limits or high and low voltage limits  that are logically applied together as a set.
+    """ A set of limits associated with equipmnet.  Sets of limits might apply to a specific temperature, or season for example. A set of limits may contain may different severiteis of limit levels that would apply to the same equipment.   The set may contain limits of different types such as apparent power and current limits or high and low voltage limits  that are logically applied together as a set. 
     """
-
-    
-    # The terminal specifically associated to this operational limit set.  If no terminal is associated, all terminals of the equipment are implied.For UCTE profile, the terminal associated with the limit is always required, and thus there is no need to exchange the associated Equipment which can always be derived from the terminal.The terminal specifically associated to this operational limit set.  If no terminal is associated, all terminals of the equipment are implied.For UCTE profile, the terminal associated with the limit is always required, and thus there is no need to exchange the associated Equipment which can always be derived from the terminal.
-    terminal = db.ReferenceProperty(collection_name="operational_limit_set")
-
-    # Virtual property. Values of equipment limits.Values of equipment limits.
-    pass #operational_limit_value
-
-    # <<< operational_limit_set
+    # <<< operational_limit_set.attributes
     # @generated
-    # >>> operational_limit_set
+    # >>> operational_limit_set.attributes
 
+    # <<< operational_limit_set.references
+    # @generated
+    # The terminal specifically associated to this operational limit set.  If no terminal is associated, all terminals of the equipment are implied. For UCTE profile, the terminal associated with the limit is always required, and thus there is no need to exchange the associated Equipment which can always be derived from the terminal. 
+    terminal = db.ReferenceProperty(db.Model, collection_name="operational_limit_set")
 
-#------------------------------------------------------------------------------
-#  "OperationalLimitType" class:
-#------------------------------------------------------------------------------
+    # Virtual property. Values of equipment limits.  
+    pass # operational_limit_value
+
+    # >>> operational_limit_set.references
+
+    # <<< operational_limit_set.operations
+    # @generated
+    # >>> operational_limit_set.operations
 
 class OperationalLimitType(IdentifiedObject):
-    """ A type of limit.  The meaning of a specific limit is described in this class.A type of limit.  The meaning of a specific limit is described in this class.
+    """ A type of limit.  The meaning of a specific limit is described in this class. 
     """
-
-    
-    # The direction of the limit.The direction of the limit.
+    # <<< operational_limit_type.attributes
+    # @generated
+    # The direction of the limit. 
     direction = OperationalLimitDirectionKind
 
-    # The nominal acceptable duration of the limit.  Limits are commonly expressed in terms of the a time limit for which the limit is normally acceptable.   The actual acceptable duration of a specific limit may depend on other local factors such as temperature or wind speed.The nominal acceptable duration of the limit.  Limits are commonly expressed in terms of the a time limit for which the limit is normally acceptable.   The actual acceptable duration of a specific limit may depend on other local factors such as temperature or wind speed.
+    # The nominal acceptable duration of the limit.  Limits are commonly expressed in terms of the a time limit for which the limit is normally acceptable.   The actual acceptable duration of a specific limit may depend on other local factors such as temperature or wind speed. 
     acceptable_duration = Seconds
 
-    # Virtual property. The operational limits associated with this type of limit.The operational limits associated with this type of limit.
-    pass #operational_limit
+    # >>> operational_limit_type.attributes
 
-    # <<< operational_limit_type
+    # <<< operational_limit_type.references
     # @generated
-    # >>> operational_limit_type
+    # Virtual property. The operational limits associated with this type of limit.  
+    pass # operational_limit
 
+    # >>> operational_limit_type.references
 
-#------------------------------------------------------------------------------
-#  "CurrentLimit" class:
-#------------------------------------------------------------------------------
+    # <<< operational_limit_type.operations
+    # @generated
+    # >>> operational_limit_type.operations
 
 class CurrentLimit(OperationalLimit):
-    """ Operational limit on current.Operational limit on current.
+    """ Operational limit on current. 
     """
-
-    
-    # Limit on current flow.Limit on current flow.
+    # <<< current_limit.attributes
+    # @generated
+    # Limit on current flow. 
     value = CurrentFlow
 
-    # <<< current_limit
+    # >>> current_limit.attributes
+
+    # <<< current_limit.references
     # @generated
-    # >>> current_limit
+    # >>> current_limit.references
 
-
-#------------------------------------------------------------------------------
-#  "VoltageLimit" class:
-#------------------------------------------------------------------------------
+    # <<< current_limit.operations
+    # @generated
+    # >>> current_limit.operations
 
 class VoltageLimit(OperationalLimit):
-    """ Operational limit applied to voltage.Operational limit applied to voltage.
+    """ Operational limit applied to voltage. 
     """
-
-    
-    # Limit on voltage. High or low limit depends on the OperatoinalLimit.limitKindLimit on voltage. High or low limit depends on the OperatoinalLimit.limitKind
+    # <<< voltage_limit.attributes
+    # @generated
+    # Limit on voltage. High or low limit depends on the OperatoinalLimit.limitKind 
     value = Voltage
 
-    # <<< voltage_limit
-    # @generated
-    # >>> voltage_limit
+    # >>> voltage_limit.attributes
 
+    # <<< voltage_limit.references
+    # @generated
+    # >>> voltage_limit.references
+
+    # <<< voltage_limit.operations
+    # @generated
+    # >>> voltage_limit.operations
 
 
 

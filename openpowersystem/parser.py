@@ -29,8 +29,8 @@ import rdfxml
 
 from package_map import pkg_map
 
-from cpsm import NS_URI
-#ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#"
+from ucte import NS_URI
+#NS_URI = "http://iec.ch/TC57/2009/CIM-schema-cim14#"
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,
     format="%(levelname)s: %(message)s")
