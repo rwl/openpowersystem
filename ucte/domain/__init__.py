@@ -18,53 +18,54 @@
 """ The domain package is a data dictionary of quantities and units that define datatypes for attributes (properties) that may be used by any class in any other package.  This package contains the definition of primitive datatypes, including units of measure and permissible values. Each datatype contains a value attribute and an optional unit of measure, which is specified as a static variable initialized to the textual description of the unit of measure. The value of the 'units' string may be country or customer specific. Typical values are given. Permissible values for enumerations are listed in the documentation for the attribute using UML constraint syntax inside curly braces. Lengths of variable strings are listed in the descriptive text where required. 
 """
 
-# <<< imports
-# @generated
-
-
 from google.appengine.ext import db
-# >>> imports
 
-# <<< properties
-# @generated
-# Long unit of length. "
+ns_prefix = "cim"
+ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Domain"
+
+# Long unit of length. 
 LongLength = db.FloatProperty()
-# Amount of money "
+
+# Amount of money 
 Money = db.FloatProperty()
-# Resistance (real part of impedance). "
+
+# Resistance (real part of impedance). 
 Resistance = db.FloatProperty()
-# Product of the RMS value of the voltage and the RMS value of the current "
+
+# Product of the RMS value of the voltage and the RMS value of the current 
 ApparentPower = db.FloatProperty()
-# Phase angle in radians "
+
+# Phase angle in radians 
 AngleRadians = db.FloatProperty()
-# Product of RMS value of the voltage and the RMS value of the in-phase component of the current "
+
+# Product of RMS value of the voltage and the RMS value of the in-phase component of the current 
 ActivePower = db.FloatProperty()
-# Imaginary part of admittance. "
+
+# Imaginary part of admittance. 
 Susceptance = db.FloatProperty()
-# Electrical current (positive flow is out of the ConductingEquipment into the ConnectivityNode) "
+
+# Electrical current (positive flow is out of the ConductingEquipment into the ConnectivityNode) 
 CurrentFlow = db.FloatProperty()
-# Factor by which voltage must be multiplied to give corresponding power lost from a circuit. Real part of admittance. "
+
+# Factor by which voltage must be multiplied to give corresponding power lost from a circuit. Real part of admittance. 
 Conductance = db.FloatProperty()
-# Reactance (imaginary part of impedance), at rated frequency. "
+
+# Reactance (imaginary part of impedance), at rated frequency. 
 Reactance = db.FloatProperty()
-# Time, in seconds "
+
+# Time, in seconds 
 Seconds = db.FloatProperty()
-# Electrical voltage. "
+
+# Electrical voltage. 
 Voltage = db.FloatProperty()
-# Product of RMS value of the voltage and the RMS value of the quadrature component of the current. "
+
+# Product of RMS value of the voltage and the RMS value of the quadrature component of the current. 
 ReactivePower = db.FloatProperty()
-# Measurement of angle in degrees "
+
+# Measurement of angle in degrees 
 AngleDegrees = db.FloatProperty()
-# Normally 0 - 100 on a defined base "
+
+# Normally 0 - 100 on a defined base 
 PerCent = db.FloatProperty()
-# >>> properties
-
-# <<< constants
-# @generated
-NS_PREFIX = "cim"
-NS_URI = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Domain"
-# >>> constants
-
-
 
 # EOF -------------------------------------------------------------------------

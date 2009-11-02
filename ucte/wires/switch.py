@@ -15,10 +15,31 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" A generic device designed to close, or open, or both, one or more electric circuits. 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.core.conducting_equipment import ConductingEquipment
+
+
+
+from google.appengine.ext import db
+# >>> imports
+
+class Switch(ConductingEquipment):
+    """ A generic device designed to close, or open, or both, one or more electric circuits. 
+    """
+    # <<< switch.attributes
+    # @generated
+    # >>> switch.attributes
+
+    # <<< switch.references
+    # @generated
+    # >>> switch.references
+
+    # <<< switch.operations
+    # @generated
+    # >>> switch.operations
 
 # EOF -------------------------------------------------------------------------

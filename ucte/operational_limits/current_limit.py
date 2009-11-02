@@ -15,10 +15,35 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" Operational limit on current. 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.operational_limits.operational_limit import OperationalLimit
+
+
+from ucte.domain import CurrentFlow
+
+from google.appengine.ext import db
+# >>> imports
+
+class CurrentLimit(OperationalLimit):
+    """ Operational limit on current. 
+    """
+    # <<< current_limit.attributes
+    # @generated
+    # Limit on current flow. 
+    value = CurrentFlow
+
+    # >>> current_limit.attributes
+
+    # <<< current_limit.references
+    # @generated
+    # >>> current_limit.references
+
+    # <<< current_limit.operations
+    # @generated
+    # >>> current_limit.operations
 
 # EOF -------------------------------------------------------------------------

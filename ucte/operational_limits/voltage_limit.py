@@ -15,10 +15,35 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" Operational limit applied to voltage. 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.operational_limits.operational_limit import OperationalLimit
+
+
+from ucte.domain import Voltage
+
+from google.appengine.ext import db
+# >>> imports
+
+class VoltageLimit(OperationalLimit):
+    """ Operational limit applied to voltage. 
+    """
+    # <<< voltage_limit.attributes
+    # @generated
+    # Limit on voltage. High or low limit depends on the OperatoinalLimit.limitKind 
+    value = Voltage
+
+    # >>> voltage_limit.attributes
+
+    # <<< voltage_limit.references
+    # @generated
+    # >>> voltage_limit.references
+
+    # <<< voltage_limit.operations
+    # @generated
+    # >>> voltage_limit.operations
 
 # EOF -------------------------------------------------------------------------

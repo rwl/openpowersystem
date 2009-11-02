@@ -15,10 +15,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" This package is responsible for modeling the energy consumers and the system load as curves and associated curve data. Special circumstances that may affect the load, such as seasons and daytypes, are also included here.  This information is used by Load Forecasting and Load Management. 
 """
 
 ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_LoadModel"
 
 # EOF -------------------------------------------------------------------------

@@ -15,10 +15,31 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" A wind driven generating unit. 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.generation.production.generating_unit import GeneratingUnit
+
+
+
+from google.appengine.ext import db
+# >>> imports
+
+class WindGeneratingUnit(GeneratingUnit):
+    """ A wind driven generating unit. 
+    """
+    # <<< wind_generating_unit.attributes
+    # @generated
+    # >>> wind_generating_unit.attributes
+
+    # <<< wind_generating_unit.references
+    # @generated
+    # >>> wind_generating_unit.references
+
+    # <<< wind_generating_unit.operations
+    # @generated
+    # >>> wind_generating_unit.operations
 
 # EOF -------------------------------------------------------------------------

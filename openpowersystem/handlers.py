@@ -25,12 +25,13 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from google.appengine.ext import db
 
-from ucte.core import GeographicalRegion
-from ucte.wires import SynchronousMachine, ACLineSegment
-from ucte.state_variables import SvPowerFlow
-from ucte.operational_limits import VoltageLimit
-from ucte.topology import TopologicalNode
-from ucte.generation.production import ThermalGeneratingUnit
+from ucte.core.geographical_region import GeographicalRegion
+from ucte.wires.synchronous_machine import SynchronousMachine
+from ucte.wires.acline_segment import ACLineSegment
+from ucte.state_variables.sv_power_flow import SvPowerFlow
+from ucte.operational_limits.voltage_limit import VoltageLimit
+from ucte.topology.topological_node import TopologicalNode
+from ucte.generation.production.thermal_generating_unit import ThermalGeneratingUnit
 
 from django.utils import simplejson
 

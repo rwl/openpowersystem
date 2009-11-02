@@ -15,10 +15,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" The OperationalLimits package models a specification of limits associated with equipment and other operational entities. 
 """
 
+from google.appengine.ext import db
+
 ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_OperationalLimits"
+
+
+OperationalLimitDirectionKind = db.StringProperty(choices=("high", "absoluteValue", "low"))
 
 # EOF -------------------------------------------------------------------------

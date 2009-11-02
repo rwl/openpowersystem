@@ -15,10 +15,35 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" Generic user of energy - a  point of consumption on the power system model 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.core.conducting_equipment import ConductingEquipment
+
+from ucte.load_model.load_response_characteristic import LoadResponseCharacteristic
+
+
+from google.appengine.ext import db
+# >>> imports
+
+class EnergyConsumer(ConductingEquipment):
+    """ Generic user of energy - a  point of consumption on the power system model 
+    """
+    # <<< energy_consumer.attributes
+    # @generated
+    # >>> energy_consumer.attributes
+
+    # <<< energy_consumer.references
+    # @generated
+    # The load response characteristic of this load. 
+    load_response = db.ReferenceProperty(LoadResponseCharacteristic, collection_name="energy_consumer")
+
+    # >>> energy_consumer.references
+
+    # <<< energy_consumer.operations
+    # @generated
+    # >>> energy_consumer.operations
 
 # EOF -------------------------------------------------------------------------

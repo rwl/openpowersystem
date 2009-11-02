@@ -15,10 +15,31 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" A component part of a system extending between adjacent substations or from a substation to an adjacent interconnection point. 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.core.equipment_container import EquipmentContainer
+
+
+
+from google.appengine.ext import db
+# >>> imports
+
+class Line(EquipmentContainer):
+    """ A component part of a system extending between adjacent substations or from a substation to an adjacent interconnection point. 
+    """
+    # <<< line.attributes
+    # @generated
+    # >>> line.attributes
+
+    # <<< line.references
+    # @generated
+    # >>> line.references
+
+    # <<< line.operations
+    # @generated
+    # >>> line.operations
 
 # EOF -------------------------------------------------------------------------

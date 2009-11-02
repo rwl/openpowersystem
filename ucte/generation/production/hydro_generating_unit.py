@@ -15,10 +15,31 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" A generating unit whose prime mover is a hydraulic turbine (e.g., Francis, Pelton, Kaplan) 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.generation.production.generating_unit import GeneratingUnit
+
+
+
+from google.appengine.ext import db
+# >>> imports
+
+class HydroGeneratingUnit(GeneratingUnit):
+    """ A generating unit whose prime mover is a hydraulic turbine (e.g., Francis, Pelton, Kaplan) 
+    """
+    # <<< hydro_generating_unit.attributes
+    # @generated
+    # >>> hydro_generating_unit.attributes
+
+    # <<< hydro_generating_unit.references
+    # @generated
+    # >>> hydro_generating_unit.references
+
+    # <<< hydro_generating_unit.operations
+    # @generated
+    # >>> hydro_generating_unit.operations
 
 # EOF -------------------------------------------------------------------------

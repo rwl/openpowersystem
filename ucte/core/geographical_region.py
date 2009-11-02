@@ -15,10 +15,34 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" A geographical region of a power system network model. 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.core.identified_object import IdentifiedObject
+
+
+
+from google.appengine.ext import db
+# >>> imports
+
+class GeographicalRegion(IdentifiedObject):
+    """ A geographical region of a power system network model. 
+    """
+    # <<< geographical_region.attributes
+    # @generated
+    # >>> geographical_region.attributes
+
+    # <<< geographical_region.references
+    # @generated
+    # Virtual property. The association is used in the naming hierarchy.  
+    pass # regions
+
+    # >>> geographical_region.references
+
+    # <<< geographical_region.operations
+    # @generated
+    # >>> geographical_region.operations
 
 # EOF -------------------------------------------------------------------------

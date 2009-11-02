@@ -15,26 +15,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package is responsible for modeling the energy consumers and the system load as curves and associated curve data. Special circumstances that may affect the load, such as seasons and daytypes, are also included here.  This information is used by Load Forecasting and Load Management. 
+""" Models the characteristic response of the load demand due to to changes in system conditions such as voltage and frequency. This is not related to demand response. 
 """
 
 # <<< imports
 # @generated
-from ucte.core import IdentifiedObject
+from ucte.core.identified_object import IdentifiedObject
+
 
 
 from google.appengine.ext import db
 # >>> imports
-
-# <<< properties
-# @generated
-# >>> properties
-
-# <<< constants
-# @generated
-NS_PREFIX = "cim"
-NS_URI = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_LoadModel"
-# >>> constants
 
 class LoadResponseCharacteristic(IdentifiedObject):
     """ Models the characteristic response of the load demand due to to changes in system conditions such as voltage and frequency. This is not related to demand response. 
@@ -80,7 +71,5 @@ class LoadResponseCharacteristic(IdentifiedObject):
     # <<< load_response_characteristic.operations
     # @generated
     # >>> load_response_characteristic.operations
-
-
 
 # EOF -------------------------------------------------------------------------

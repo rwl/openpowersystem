@@ -15,10 +15,30 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" An extension to the Core and Topology package that models information on the electrical characteristics of Transmission and Distribution networks. This package is used by network applications such as State Estimation, Load Flow and Optimal Power Flow. 
 """
 
+from google.appengine.ext import db
+
 ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Wires"
+
+
+WindingType = db.StringProperty(choices=("tertiary", "primary", "secondary"))
+
+
+WindingConnection = db.StringProperty(choices=("Z", "Y", "D"))
+
+
+RegulatingControlModeKind = db.StringProperty(choices=("reactivePower", "voltage", "activePower", "currentFlow", "fixed", "admittance"))
+
+
+SynchronousMachineType = db.StringProperty(choices=("condenser", "generator_or_condenser", "generator"))
+
+
+SynchronousMachineOperatingMode = db.StringProperty(choices=("condenser", "generator"))
+
+
+PhaseTapChangerKind = db.StringProperty(choices=("asymmetrical", "symmetrical"))
 
 # EOF -------------------------------------------------------------------------

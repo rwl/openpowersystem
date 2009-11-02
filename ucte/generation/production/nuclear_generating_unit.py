@@ -15,42 +15,31 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" The equivalents package models equivalent networks. 
+""" A nuclear generating unit. 
 """
 
 # <<< imports
 # @generated
-from ucte.core import ConductingEquipment
+from ucte.generation.production.generating_unit import GeneratingUnit
+
 
 
 from google.appengine.ext import db
 # >>> imports
 
-# <<< properties
-# @generated
-# >>> properties
-
-# <<< constants
-# @generated
-NS_PREFIX = "cim"
-NS_URI = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Equivalents"
-# >>> constants
-
-class EquivalentEquipment(ConductingEquipment):
-    """ The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types. 
+class NuclearGeneratingUnit(GeneratingUnit):
+    """ A nuclear generating unit. 
     """
-    # <<< equivalent_equipment.attributes
+    # <<< nuclear_generating_unit.attributes
     # @generated
-    # >>> equivalent_equipment.attributes
+    # >>> nuclear_generating_unit.attributes
 
-    # <<< equivalent_equipment.references
+    # <<< nuclear_generating_unit.references
     # @generated
-    # >>> equivalent_equipment.references
+    # >>> nuclear_generating_unit.references
 
-    # <<< equivalent_equipment.operations
+    # <<< nuclear_generating_unit.operations
     # @generated
-    # >>> equivalent_equipment.operations
-
-
+    # >>> nuclear_generating_unit.operations
 
 # EOF -------------------------------------------------------------------------

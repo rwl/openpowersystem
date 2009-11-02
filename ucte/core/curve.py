@@ -15,10 +15,34 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" Relationship between an independent variable (X-axis) and one or two dependent  variables (Y1-axis and Y2-axis). Curves can also serve as schedules. 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.core.identified_object import IdentifiedObject
+
+
+
+from google.appengine.ext import db
+# >>> imports
+
+class Curve(IdentifiedObject):
+    """ Relationship between an independent variable (X-axis) and one or two dependent  variables (Y1-axis and Y2-axis). Curves can also serve as schedules. 
+    """
+    # <<< curve.attributes
+    # @generated
+    # >>> curve.attributes
+
+    # <<< curve.references
+    # @generated
+    # Virtual property. The point data values that define a curve  
+    pass # curve_schedule_datas
+
+    # >>> curve.references
+
+    # <<< curve.operations
+    # @generated
+    # >>> curve.operations
 
 # EOF -------------------------------------------------------------------------

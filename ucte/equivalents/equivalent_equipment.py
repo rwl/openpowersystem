@@ -15,10 +15,31 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types. 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.core.conducting_equipment import ConductingEquipment
+
+
+
+from google.appengine.ext import db
+# >>> imports
+
+class EquivalentEquipment(ConductingEquipment):
+    """ The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types. 
+    """
+    # <<< equivalent_equipment.attributes
+    # @generated
+    # >>> equivalent_equipment.attributes
+
+    # <<< equivalent_equipment.references
+    # @generated
+    # >>> equivalent_equipment.references
+
+    # <<< equivalent_equipment.operations
+    # @generated
+    # >>> equivalent_equipment.operations
 
 # EOF -------------------------------------------------------------------------

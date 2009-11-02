@@ -15,10 +15,31 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" An abstract class for state variables. 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.element import Element
+
+
+
+from google.appengine.ext import db
+# >>> imports
+
+class StateVariable(Element):
+    """ An abstract class for state variables. 
+    """
+    # <<< state_variable.attributes
+    # @generated
+    # >>> state_variable.attributes
+
+    # <<< state_variable.references
+    # @generated
+    # >>> state_variable.references
+
+    # <<< state_variable.operations
+    # @generated
+    # >>> state_variable.operations
 
 # EOF -------------------------------------------------------------------------

@@ -15,10 +15,42 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" State variable for voltage. 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.state_variables.state_variable import StateVariable
+
+
+from ucte.domain import AngleRadians
+from ucte.domain import Voltage
+
+from google.appengine.ext import db
+# >>> imports
+
+class SvVoltage(StateVariable):
+    """ State variable for voltage. 
+    """
+    # <<< sv_voltage.attributes
+    # @generated
+    # The voltage angle in radians of the topological node. 
+    angle = AngleRadians
+
+    # The voltage magnitude of the topological node. 
+    v = Voltage
+
+    # >>> sv_voltage.attributes
+
+    # <<< sv_voltage.references
+    # @generated
+    # The topological node associated with the voltage state. 
+    topological_node = db.ReferenceProperty(db.Model, collection_name="_sv_voltage_set")
+
+    # >>> sv_voltage.references
+
+    # <<< sv_voltage.operations
+    # @generated
+    # >>> sv_voltage.operations
 
 # EOF -------------------------------------------------------------------------

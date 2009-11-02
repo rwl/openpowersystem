@@ -27,10 +27,10 @@ from os.path import basename, exists, splitext
 
 import rdfxml
 
-from package_map import pkg_map
+#from package_map import pkg_map
 
-from ucte import NS_URI
-#NS_URI = "http://iec.ch/TC57/2009/CIM-schema-cim14#"
+from ucte import ns_uri
+#ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#"
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,
     format="%(levelname)s: %(message)s")
@@ -217,7 +217,7 @@ class CIMParser(object):
         unique resource identifiers to CIM object instances.
     """
 
-    def __init__(self, ns_cim=NS_URI, pwd=None):
+    def __init__(self, ns_cim=ns_uri, pwd=None):
         """ Initialises a new CIMReader instance.
         """
         # CIM XML namespace.

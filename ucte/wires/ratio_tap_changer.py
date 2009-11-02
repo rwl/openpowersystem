@@ -15,10 +15,34 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
+""" A tap changer that changes the voltage ratio impacting the voltage magnitude but not direclty the phase angle across the transformer.. 
 """
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+from ucte.wires.tap_changer import TapChanger
+
+
+
+from google.appengine.ext import db
+# >>> imports
+
+class RatioTapChanger(TapChanger):
+    """ A tap changer that changes the voltage ratio impacting the voltage magnitude but not direclty the phase angle across the transformer.. 
+    """
+    # <<< ratio_tap_changer.attributes
+    # @generated
+    # >>> ratio_tap_changer.attributes
+
+    # <<< ratio_tap_changer.references
+    # @generated
+    # The transformer winding to which the ratio tap changer belongs. 
+    transformer_winding = db.ReferenceProperty(db.Model, collection_name="_ratio_tap_changer_set")
+
+    # >>> ratio_tap_changer.references
+
+    # <<< ratio_tap_changer.operations
+    # @generated
+    # >>> ratio_tap_changer.operations
 
 # EOF -------------------------------------------------------------------------

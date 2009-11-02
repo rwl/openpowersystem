@@ -15,10 +15,31 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" This package contains packages that have information for Unit Commitment and Economic Dispatch of Hydro and Thermal Generating Units, Load Forecasting, Automatic Generation Control, and Unit Modeling for Dynamic Training Simulator. 
-"""
 
-ns_prefix = "cim"
-ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Generation"
+# <<< imports
+# @generated
+
+
+
+from google.appengine.ext import db
+# >>> imports
+
+class Model(db.Model):
+    # <<< model.attributes
+    # @generated
+    uri = db.StringProperty()
+
+    # >>> model.attributes
+
+    # <<< model.references
+    # @generated
+    # Virtual property. 
+    pass # elements
+
+    # >>> model.references
+
+    # <<< model.operations
+    # @generated
+    # >>> model.operations
 
 # EOF -------------------------------------------------------------------------
