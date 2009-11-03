@@ -10,11 +10,6 @@ License
 
 GNU Affero General Public License
 
-Author
-------
-
-Richard Lincoln (r.w.lincoln@gmail.com)
-
 Developers
 ----------
 
@@ -29,9 +24,24 @@ to the PYTHON_PATH. Run
 
 ::
 
-  $ dev_appserver.py path/to/openpowersystem/
+  $ dev_appserver.py path/to/OpenPowerSystem/
 
 Browse http://localhost:8080. Changes are recognised automatically. Upload the
 finished application with the command::
 
-  $ appcfg.py update path/to/openpowersystem/
+  $ appcfg.py update path/to/OpenPowerSystem/
+
+To re-build the Pyjamas app run;
+
+::
+
+  $ pyjsbuild -o ../content OpenPowerSystem
+
+in the 'pyjs' directory.
+
+N.B. The 'content' attribute in the .html loader must be the module name.
+
+Author
+------
+
+Richard Lincoln (r.w.lincoln@gmail.com)

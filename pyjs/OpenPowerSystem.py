@@ -1,3 +1,20 @@
+#------------------------------------------------------------------------------
+# Copyright (C) 2009 Richard Lincoln
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation; version 2 dated June, 1991.
+#
+# This software is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANDABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+#------------------------------------------------------------------------------
+
 #import pyjd # dummy in pyjs
 from pyjamas.ui.RootPanel import RootPanel
 from pyjamas.ui.Label import Label
@@ -12,25 +29,38 @@ from pyjamas.ui.decoratorpanel import DecoratedTabPanel, DecoratorPanel
 from pyjamas.ui.decoratorpanel import DecoratorTitledPanel
 from pyjamas import Window
 
-from Edit import Edit
+import edit_panel
+#from open_layers.open_map import OpenMap, OpenWMSLayer
 
-from OpenMaps import OpenMap, OpenWMSLayer
+#------------------------------------------------------------------------------
+#  "OpenPowerSystem" class:
+#------------------------------------------------------------------------------
 
 class OpenPowerSystem:
+    """ Defines the main panel for OpenPowerSystem.
+    """
+
     def __init__(self):
+        """ Constructs a new OpenPowerSystem instance.
+        """
         self.TEXT_WAITING = "Waiting for response..."
         self.TEXT_ERROR = "Server Error"
 
         self.base_panel = HorizontalPanel()
-        self.base_panel.add(self.get_edit_panel())
 
         self.tab_panel = TabPanel()
         self.tab_panel.add(self.get_home_panel(), "OpenPowerSystem")
+#        self.tab_panel.add(self.get_map_panel(), "Map")
+#        self.tab_panel.add(self.get_edit_panel(), "Edit")
+        self.tab_panel.add(self.get_upload_panel(), "Upload")
         self.tab_panel.selectTab(0)
 
-        self.base_panel.add(self.tab_panel())
+        self.base_panel.add(self.tab_panel)
+
+        self.b2 = Button("Do not push!", self)
 
         RootPanel().add(self.base_panel)
+
 
     def get_home_panel(self):
         panel = VerticalPanel()
@@ -43,24 +73,24 @@ class OpenPowerSystem:
 
         return panel
 
-    def get_map_panel(self):
-        panel = VerticalPanel()
 
-        self.map = OpenMap(Width="900px", Height="900px")
-        panel.add(self.map)
+#    def get_map_panel(self):
+#        panel = VerticalPanel()
+#
+#        self.map = OpenMap(Width="900px", Height="900px")
+#        panel.add(self.map)
+#
+#        self.wms = OpenWMSLayer("OpenLayers WMS",
+#            "http://labs.metacarta.com/wms/vmap0", layers="basic")
+#        self.map.addLayer(self.wms)
+#
+#        return panel
 
-        self.wms = OpenWMSLayer("OpenLayers WMS",
-            "http://labs.metacarta.com/wms/vmap0", layers="basic")
-        self.map.addLayer(self.wms)
 
-        RootPanel().add(panel)
+#    def get_edit_panel(self):
+#        edit_page = edit_panel.EditPanel()
+#        return edit_page.panel
 
-        return panel
-
-    def get_edit_panel(self):
-        edit_page = Edit()
-        edit_page.onModuleLoad()
-        return edit_page.panel
 
     def get_upload_panel(self):
         # Create a FormPanel and point it at a service.
@@ -96,29 +126,41 @@ class OpenPowerSystem:
 
         return self.form
 
+#------------------------------------------------------------------------------
+#  "UploadFormHandler" class:
+#------------------------------------------------------------------------------
+
 class UploadFormHandler:
     """ Event handler for the upload form.
     """
+
     def onClick(self, sender):
         self.form.submit()
 
+
     def onSubmitComplete(self, event):
-        # When the form submission is successfully completed, this event is
-        # fired. Assuming the service returned a response of type text/plain,
-        # we can get the result text here (see the FormPanel documentation for
-        # further explanation).
+        """ When the form submission is successfully completed, this event is
+            fired. Assuming the service returned a response of type text/plain,
+            we can get the result text here (see the FormPanel documentation
+            for further explanation).
+        """
 #        Window.alert(event.getResults())
         pass
 
+
     def onSubmit(self, event):
-        # This event is fired just before the form is submitted. We can take
-        # this opportunity to perform validation.
+        """ This event is fired just before the form is submitted. We can take
+            this opportunity to perform validation.
+        """
 #        if (self.upload.getFilename().length == 0):
 #            Window.alert("The file field must not be empty")
 #            event.setCancelled(True)
         pass
 
+
 if __name__ == '__main__':
-#    pyjd.setup("./public/Upload.html")
+#    pyjd.setup("./public/OpenPowerSystem.html") # dummy in pyjs
     app = OpenPowerSystem()
-#    pyjd.run()
+#    pyjd.run() # dummy in pyjs
+
+# EOF -------------------------------------------------------------------------
