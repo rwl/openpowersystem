@@ -14009,6 +14009,7 @@ $pyjs.loaded_modules['OpenPowerSystem'] = function (__mod_name__) {
 	OpenPowerSystem.__track_lines__[138] = "OpenPowerSystem.py, line 138:\n    self.form.submit()";
 	OpenPowerSystem.__track_lines__[151] = "OpenPowerSystem.py, line 151:\n    def onSubmit(self, event):";
 	OpenPowerSystem.__track_lines__[141] = "OpenPowerSystem.py, line 141:\n    def onSubmitComplete(self, event):";
+	OpenPowerSystem.__track_lines__[18] = "OpenPowerSystem.py, line 18:\n    import pyjd # dummy in pyjs";
 	OpenPowerSystem.__track_lines__[19] = "OpenPowerSystem.py, line 19:\n    from pyjamas.ui.RootPanel import RootPanel";
 	OpenPowerSystem.__track_lines__[20] = "OpenPowerSystem.py, line 20:\n    from pyjamas.ui.Label import Label";
 	OpenPowerSystem.__track_lines__[21] = "OpenPowerSystem.py, line 21:\n    from pyjamas.ui.Button import Button";
@@ -14023,7 +14024,9 @@ $pyjs.loaded_modules['OpenPowerSystem'] = function (__mod_name__) {
 	OpenPowerSystem.__track_lines__[30] = "OpenPowerSystem.py, line 30:\n    from pyjamas import Window";
 	OpenPowerSystem.__track_lines__[32] = "OpenPowerSystem.py, line 32:\n    import edit_panel";
 	OpenPowerSystem.__track_lines__[161] = "OpenPowerSystem.py, line 161:\n    if __name__ == \'__main__\':";
+	OpenPowerSystem.__track_lines__[162] = "OpenPowerSystem.py, line 162:\n    pyjd.setup(\"http://127.0.0.1:8080/content/OpenPowerSystem.html\")";
 	OpenPowerSystem.__track_lines__[163] = "OpenPowerSystem.py, line 163:\n    app = OpenPowerSystem()";
+	OpenPowerSystem.__track_lines__[164] = "OpenPowerSystem.py, line 164:\n    pyjd.run() # dummy in pyjs";
 	OpenPowerSystem.__track_lines__[39] = "OpenPowerSystem.py, line 39:\n    class OpenPowerSystem:";
 	OpenPowerSystem.__track_lines__[43] = "OpenPowerSystem.py, line 43:\n    def __init__(self):";
 	OpenPowerSystem.__track_lines__[46] = "OpenPowerSystem.py, line 46:\n    self.TEXT_WAITING = \"Waiting for response...\"";
@@ -14069,6 +14072,8 @@ $pyjs.loaded_modules['OpenPowerSystem'] = function (__mod_name__) {
 
 	$pyjs.track.module='OpenPowerSystem';
 	$pyjs.track.lineno=1;
+	$pyjs.track.lineno=18;
+	OpenPowerSystem['pyjd'] = pyjslib['___import___']('pyjd', null);
 	$pyjs.track.lineno=19;
 	OpenPowerSystem['RootPanel'] = pyjslib['___import___']('pyjamas.ui.RootPanel.RootPanel', null, null, false);
 	$pyjs.track.lineno=20;
@@ -15299,9 +15304,9 @@ try{var $pyjs_dbg_35_res=pyjslib['bool'](pyjslib['op_eq'](OpenPowerSystem['__nam
             throw $pyjs_dbg_35_err;
     }
 }return $pyjs_dbg_35_res})()) {
-		$pyjs.track.lineno=163;
-		OpenPowerSystem['app'] = (function(){var $pyjs_dbg_36_retry = 0;
-try{var $pyjs_dbg_36_res=OpenPowerSystem['OpenPowerSystem']();}catch($pyjs_dbg_36_err){
+		$pyjs.track.lineno=162;
+		(function(){var $pyjs_dbg_36_retry = 0;
+try{var $pyjs_dbg_36_res=OpenPowerSystem['pyjd']['setup'](String('http://127.0.0.1:8080/content/OpenPowerSystem.html'));}catch($pyjs_dbg_36_err){
     if ($pyjs_dbg_36_err.__name__ != 'StopIteration') {
         var save_stack = $pyjs.__last_exception_stack__;
         sys.save_exception_stack();
@@ -15312,14 +15317,14 @@ try{var $pyjs_dbg_36_res=OpenPowerSystem['OpenPowerSystem']();}catch($pyjs_dbg_3
         } catch (s) {};
         $pyjs.__last_exception_stack__ = save_stack;
         if ($pyjs_msg !== $pyjs.debug_msg) {
-            pyjslib['debugReport']("Module OpenPowerSystem at line 163 :\n" + $pyjs_dbg_36_err + $pyjs_msg);
+            pyjslib['debugReport']("Module OpenPowerSystem at line 162 :\n" + $pyjs_dbg_36_err + $pyjs_msg);
             $pyjs.debug_msg = $pyjs_msg;
             debugger;
         }
     }
     switch ($pyjs_dbg_36_retry) {
         case 1:
-            $pyjs_dbg_36_res=OpenPowerSystem['OpenPowerSystem']();
+            $pyjs_dbg_36_res=OpenPowerSystem['pyjd']['setup'](String('http://127.0.0.1:8080/content/OpenPowerSystem.html'));
             break;
         case 2:
             break;
@@ -15327,6 +15332,62 @@ try{var $pyjs_dbg_36_res=OpenPowerSystem['OpenPowerSystem']();}catch($pyjs_dbg_3
             throw $pyjs_dbg_36_err;
     }
 }return $pyjs_dbg_36_res})();
+		$pyjs.track.lineno=163;
+		OpenPowerSystem['app'] = (function(){var $pyjs_dbg_37_retry = 0;
+try{var $pyjs_dbg_37_res=OpenPowerSystem['OpenPowerSystem']();}catch($pyjs_dbg_37_err){
+    if ($pyjs_dbg_37_err.__name__ != 'StopIteration') {
+        var save_stack = $pyjs.__last_exception_stack__;
+        sys.save_exception_stack();
+        var $pyjs_msg = "";
+
+        try {
+            $pyjs_msg = "\n" + sys.trackstackstr();
+        } catch (s) {};
+        $pyjs.__last_exception_stack__ = save_stack;
+        if ($pyjs_msg !== $pyjs.debug_msg) {
+            pyjslib['debugReport']("Module OpenPowerSystem at line 163 :\n" + $pyjs_dbg_37_err + $pyjs_msg);
+            $pyjs.debug_msg = $pyjs_msg;
+            debugger;
+        }
+    }
+    switch ($pyjs_dbg_37_retry) {
+        case 1:
+            $pyjs_dbg_37_res=OpenPowerSystem['OpenPowerSystem']();
+            break;
+        case 2:
+            break;
+        default:
+            throw $pyjs_dbg_37_err;
+    }
+}return $pyjs_dbg_37_res})();
+		$pyjs.track.lineno=164;
+		(function(){var $pyjs_dbg_38_retry = 0;
+try{var $pyjs_dbg_38_res=OpenPowerSystem['pyjd']['run']();}catch($pyjs_dbg_38_err){
+    if ($pyjs_dbg_38_err.__name__ != 'StopIteration') {
+        var save_stack = $pyjs.__last_exception_stack__;
+        sys.save_exception_stack();
+        var $pyjs_msg = "";
+
+        try {
+            $pyjs_msg = "\n" + sys.trackstackstr();
+        } catch (s) {};
+        $pyjs.__last_exception_stack__ = save_stack;
+        if ($pyjs_msg !== $pyjs.debug_msg) {
+            pyjslib['debugReport']("Module OpenPowerSystem at line 164 :\n" + $pyjs_dbg_38_err + $pyjs_msg);
+            $pyjs.debug_msg = $pyjs_msg;
+            debugger;
+        }
+    }
+    switch ($pyjs_dbg_38_retry) {
+        case 1:
+            $pyjs_dbg_38_res=OpenPowerSystem['pyjd']['run']();
+            break;
+        case 2:
+            break;
+        default:
+            throw $pyjs_dbg_38_err;
+    }
+}return $pyjs_dbg_38_res})();
 	}
 	return this;
 }; /* end OpenPowerSystem */
@@ -15336,7 +15397,7 @@ try{var $pyjs_dbg_36_res=OpenPowerSystem['OpenPowerSystem']();}catch($pyjs_dbg_3
 
 
 /*
-PYJS_DEPS: ['pyjamas.ui.RootPanel.RootPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.RootPanel', 'pyjamas.ui.Label.Label', 'pyjamas.ui.Label', 'pyjamas.ui.Button.Button', 'pyjamas.ui.Button', 'pyjamas.ui.HTML.HTML', 'pyjamas.ui.HTML', 'pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HorizontalPanel.HorizontalPanel', 'pyjamas.ui.HorizontalPanel', 'pyjamas.ui.FormPanel.FormPanel', 'pyjamas.ui.FormPanel', 'pyjamas.ui.FileUpload.FileUpload', 'pyjamas.ui.FileUpload', 'pyjamas.ui.TabPanel.TabPanel', 'pyjamas.ui.TabPanel', 'pyjamas.ui.decoratorpanel.DecoratedTabPanel', 'pyjamas.ui.decoratorpanel', 'pyjamas.ui.decoratorpanel.DecoratorPanel', 'pyjamas.ui.decoratorpanel.DecoratorTitledPanel', 'pyjamas.Window', 'edit_panel']
+PYJS_DEPS: ['pyjd', 'pyjamas.ui.RootPanel.RootPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.RootPanel', 'pyjamas.ui.Label.Label', 'pyjamas.ui.Label', 'pyjamas.ui.Button.Button', 'pyjamas.ui.Button', 'pyjamas.ui.HTML.HTML', 'pyjamas.ui.HTML', 'pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HorizontalPanel.HorizontalPanel', 'pyjamas.ui.HorizontalPanel', 'pyjamas.ui.FormPanel.FormPanel', 'pyjamas.ui.FormPanel', 'pyjamas.ui.FileUpload.FileUpload', 'pyjamas.ui.FileUpload', 'pyjamas.ui.TabPanel.TabPanel', 'pyjamas.ui.TabPanel', 'pyjamas.ui.decoratorpanel.DecoratedTabPanel', 'pyjamas.ui.decoratorpanel', 'pyjamas.ui.decoratorpanel.DecoratorPanel', 'pyjamas.ui.decoratorpanel.DecoratorTitledPanel', 'pyjamas.Window', 'edit_panel']
 */
 
 /* start module: pyjamas.ui.VerticalPanel */
@@ -91166,7 +91227,7 @@ function prepare_app() {
         };
         wait();
     }
-    wait_for_loading_modules(app_imported, ['pyjamas.ui','pyjamas.ui.TabBar','pyjamas.ui.FocusWidget','pyjamas.ui.Widget','pyjamas.ui.ClickListener','pyjamas.ui.SimplePanel','pyjamas.Location','pyjamas.ui.VerticalPanel','sys','pyjamas.JSONParser','pygwt','pyjamas.ui.TreeContentPanel','pyjamas.ui.TreeItem','pyjamas','pyjamas.ui.HorizontalPanel','pyjamas.ui.Focus','pyjamas.ui.Label','pyjamas.ui.RootPanel','edit_panel','pyjamas.ui.FormPanel','pyjamas.ui.ComplexPanel','pyjamas.HTTPRequest','pyjamas.ui.AbsolutePanel','pyjamas.ui.KeyboardListener','math','pyjamas.ui.Event','pyjamas.ui.Button','pyjamas.Window','dynamic','pyjamas.ui.Panel','pyjamas.ui.TabPanel','pyjamas.Factory','pyjamas.ui.Composite','pyjd','pyjamas.ui.DeckPanel','pyjamas.ui.CellPanel','pyjamas.ui.MouseListener','pyjamas.log','jsonrpc.json','pyjslib','pyjamas.ui.ButtonBase','jsonrpc','pyjamas.JSONService','pyjamas.ui.ClickDelegatePanel','pyjamas.ui.FileUpload','pyjamas.ui.EventObject','pyjamas.DOM','pyjamas.ui.decoratorpanel','sets','pyjamas.ui.HTML','pyjamas.ui.FocusListener','pyjamas.ui.UIObject','pyjamas.ui.Tree','OpenPowerSystem']);
+    wait_for_loading_modules(app_imported, ['pyjamas.ui','pyjamas.ui.TabBar','pyjamas.ui.FocusWidget','pyjamas.ui.Widget','pyjamas.ui.ClickListener','pyjamas.ui.SimplePanel','pyjamas.Location','pyjamas.ui.VerticalPanel','sys','pyjamas.JSONParser','pygwt','pyjamas.ui.TreeContentPanel','pyjamas.ui.TreeItem','pyjamas','pyjamas.ui.HorizontalPanel','pyjamas.ui.Focus','pyjamas.ui.Label','pyjamas.ui.RootPanel','edit_panel','jsonrpc.json','pyjamas.HTTPRequest','pyjamas.ui.AbsolutePanel','pyjamas.ui.KeyboardListener','math','pyjamas.ui.Event','pyjamas.ui.Button','pyjamas.Window','dynamic','pyjamas.ui.Panel','pyjamas.ui.TabPanel','pyjamas.Factory','pyjamas.ui.Composite','pyjd','pyjamas.ui.DeckPanel','pyjamas.ui.CellPanel','pyjamas.ui.MouseListener','pyjamas.log','pyjamas.ui.ComplexPanel','pyjslib','pyjamas.ui.ButtonBase','jsonrpc','pyjamas.JSONService','pyjamas.ui.ClickDelegatePanel','pyjamas.ui.FileUpload','pyjamas.ui.EventObject','pyjamas.DOM','pyjamas.ui.FormPanel','pyjamas.ui.decoratorpanel','sets','pyjamas.ui.HTML','pyjamas.ui.FocusListener','pyjamas.ui.UIObject','pyjamas.ui.Tree','OpenPowerSystem']);
 }
 
 function pygwtOnLoad(onLoadError, name) {

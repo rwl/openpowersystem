@@ -15,7 +15,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-""" A set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes can change as the current network state changes (i.e., switches, breakers, etc. change state).
+""" A set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes can change as the current network state changes (i.e., switches, breakers, etc. change state). 
 """
 
 # <<< imports
@@ -27,56 +27,54 @@ from ucte.core.base_voltage import BaseVoltage
 from ucte.topology.topological_island import TopologicalIsland
 from ucte.core.connectivity_node_container import ConnectivityNodeContainer
 
-from ucte.state_variables.sv_voltage import SvVoltage
-
 from ucte.domain import ApparentPower
 
 from google.appengine.ext import db
 # >>> imports
 
 class TopologicalNode(IdentifiedObject):
-    """ A set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes can change as the current network state changes (i.e., switches, breakers, etc. change state).
+    """ A set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes can change as the current network state changes (i.e., switches, breakers, etc. change state). 
     """
     # <<< topological_node.attributes
     # @generated
-    # The short circuit apparent power drawn at this node when faulted. This is for Short Circuit only.
+    # The short circuit apparent power drawn at this node when faulted. This is for Short Circuit only. 
     s_short_circuit = ApparentPower
 
-    # The topological node is equivalent and not real equipment. If this is missing, it is assumed to be False.  If it is an X-Node, this equivalent is required.
+    # The topological node is equivalent and not real equipment. If this is missing, it is assumed to be False.  If it is an X-Node, this equivalent is required. 
     equivalent = db.BooleanProperty()
 
-    # The ratio of zero sequence reactance per positive sequence reactance. This is for Short Circuit only.
+    # The ratio of zero sequence reactance per positive sequence reactance. This is for Short Circuit only. 
     x0_per_x = db.FloatProperty()
 
-    # The ratio of zero sequence resistance to positive sequence resistance. This is for Short Circuit only.
+    # The ratio of zero sequence resistance to positive sequence resistance. This is for Short Circuit only. 
     r0_per_r = db.FloatProperty()
 
-    # Ratio of positive sequence reactance per postive sequence resistance. This is for Short Circuit only.
+    # Ratio of positive sequence reactance per postive sequence resistance. This is for Short Circuit only. 
     x_per_r = db.FloatProperty()
 
     # >>> topological_node.attributes
 
     # <<< topological_node.references
     # @generated
-    # The control area into which the node is included.
+    # The control area into which the node is included. 
     control_area = db.ReferenceProperty(ControlArea, collection_name="topological_node")
 
-    # The base voltage of the topologocial node. The base voltage of the TopologicalNode should match the BaseVoltage of the containing VoltageLevel if such a containing VoltageLevel is specified.
+    # The base voltage of the topologocial node. The base voltage of the TopologicalNode should match the BaseVoltage of the containing VoltageLevel if such a containing VoltageLevel is specified. 
     base_voltage = db.ReferenceProperty(BaseVoltage, collection_name="topological_node")
 
-    # The state voltage associated with the topological node.
-    sv_voltage = db.ReferenceProperty(SvVoltage, collection_name="_topological_node_set")
+    # The state voltage associated with the topological node.  
+    sv_voltage = db.ReferenceProperty(db.Model, collection_name="_topological_node_set")
 
-    # A topological node belongs to a topological island
+    # A topological node belongs to a topological island 
     topological_island = db.ReferenceProperty(TopologicalIsland, collection_name="topological_nodes")
 
-    # The island for which the node is an angle reference.   Normally there is one angle reference node for each island.
-    angle_ref_topological_island = db.ReferenceProperty(db.Model, collection_name="_topological_node")
+    # The island for which the node is an angle reference.   Normally there is one angle reference node for each island.  
+    angle_ref_topological_island = db.ReferenceProperty(db.Model, collection_name="_topological_node_set")
 
-    # The connectivity node container to which the toplogical node belongs. The TopologicalNode will normally belong only to a VoltageLevel instance within a Substation.   All instances of TopologicalNode that are not X-nodes will require an association to a containing VoltageLevel instance.  The BaseVoltage of the VoltageLevel should match that of the TopologicalNode itself. A TopologicalNode object used for an X-node will not be contained, thus this association is specified as optional in the profile.
+    # The connectivity node container to which the toplogical node belongs. The TopologicalNode will normally belong only to a VoltageLevel instance within a Substation.   All instances of TopologicalNode that are not X-nodes will require an association to a containing VoltageLevel instance.  The BaseVoltage of the VoltageLevel should match that of the TopologicalNode itself. A TopologicalNode object used for an X-node will not be contained, thus this association is specified as optional in the profile. 
     connectivity_node_container = db.ReferenceProperty(ConnectivityNodeContainer, collection_name="topological_node")
 
-    # Virtual property. The terminals associated with the topological node.   This can be used as an alternative to the connectivity node path to terminal, thus making it unneccesary to model connedtivity nodes in some cases.   Note that the if connectivity nodes are in the model, this association would proably not be used.
+    # Virtual property. The terminals associated with the topological node.   This can be used as an alternative to the connectivity node path to terminal, thus making it unneccesary to model connedtivity nodes in some cases.   Note that the if connectivity nodes are in the model, this association would proably not be used.  
     pass # terminal
 
     # >>> topological_node.references

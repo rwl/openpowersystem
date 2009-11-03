@@ -42,6 +42,8 @@ from openpowersystem.parser import CIMParser
 #------------------------------------------------------------------------------
 
 class MainPage(webapp.RequestHandler):
+    """ Defines a request handler for the root url.
+    """
     def get(self):
 #        terminals_query = Terminal.all().order('-date')
 #        terminals = terminals_query.fetch(10)
@@ -75,13 +77,14 @@ class MainPage(webapp.RequestHandler):
 #------------------------------------------------------------------------------
 
 class UploadPage(webapp.RequestHandler):
+    """ Defines a request handler for uploading files.
+    """
     def post(self):
 #        if users.get_current_user():
         rdf_data = self.request.get('uploadFormElement')
-        ns_cim = self.request.get('ns_cim')
+        pkg = self.request.get('package')
 
-        parser = CIMParser()
-        parser(rdf_data)
+        CIMParser().parse(rdf_data)
 
         self.redirect('/')
 

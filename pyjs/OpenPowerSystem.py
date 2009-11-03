@@ -15,7 +15,7 @@
 # Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
-#import pyjd # dummy in pyjs
+import pyjd # dummy in pyjs
 from pyjamas.ui.RootPanel import RootPanel
 from pyjamas.ui.Label import Label
 from pyjamas.ui.Button import Button
@@ -49,10 +49,10 @@ class OpenPowerSystem:
         self.base_panel = HorizontalPanel()
 
         self.tab_panel = TabPanel()
-        self.tab_panel.add(self.get_home_panel(), "OpenPowerSystem")
+        self.tab_panel.add(self.get_upload_panel(), "Upload")
+#        self.tab_panel.add(self.get_home_panel(), "OpenPowerSystem")
 #        self.tab_panel.add(self.get_map_panel(), "Map")
 #        self.tab_panel.add(self.get_edit_panel(), "Edit")
-        self.tab_panel.add(self.get_upload_panel(), "Upload")
         self.tab_panel.selectTab(0)
 
         self.base_panel.add(self.tab_panel)
@@ -115,6 +115,16 @@ class OpenPowerSystem:
         info = HTML(r'Upload CIM RDF/XML instance file.')
         panel.add(info)
 
+        # Create a list box for choice of profile.
+        self.profiles = [("UCTE (CIM 14)", "ucte"),
+                         ("CPSM (CIM13)", "cpsm"),
+                         ("CDPSM (CIM 14)", "cdpsm")]
+        self.profile = ListBox(VisibleItemCount=1)
+        self.profile.setName("package")
+        for n, v in self.profiles:
+            self.profile.addItem(n, v)
+        panel.add(self.profile)
+
         # Create a FileUpload widget.
         rdfxml_file = FileUpload()
         rdfxml_file.setName("uploadFormElement")
@@ -159,8 +169,8 @@ class UploadFormHandler:
 
 
 if __name__ == '__main__':
-#    pyjd.setup("./public/OpenPowerSystem.html") # dummy in pyjs
+    pyjd.setup("http://localhost:8080/content/OpenPowerSystem.html")
     app = OpenPowerSystem()
-#    pyjd.run() # dummy in pyjs
+    pyjd.run() # dummy in pyjs
 
 # EOF -------------------------------------------------------------------------

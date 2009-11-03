@@ -1,3 +1,4 @@
+#------------------------------------------------------------------------------
 # Copyright (C) 2009 Richard W. Lincoln
 #
 # This program is free software; you can redistribute it and/or modify
@@ -12,10 +13,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program; if not, write to the Free Software Foundation,
 # Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+#------------------------------------------------------------------------------
 
-""" Looks like we got ourselves a reader.
+""" Defines sinks for use with rdfxml.py by Sean Palmer.
 """
 
+import os
 import re
 import sys
 import gzip
@@ -23,33 +26,42 @@ import bz2
 import zipfile
 import logging
 
-from os.path import basename, exists, splitext
-
 import rdfxml
 
-#from package_map import pkg_map
+from ucte_pkg_map import ucte_pkg_map
+from cpsm_pkg_map import cpsm_pkg_map
+from cdpsm_pkg_map import cdpsm_pkg_map
 
-from ucte import ns_uri
-#ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#"
+pkg_map = {"ucte": ucte_pkg_map, "cpsm": cpsm_pkg_map, "cdpsm": cdpsm_pkg_map}
+
+from ucte import ns_uri as ns_ucte
+from cpsm import ns_uri as ns_cpsm
+from cdpsm import ns_uri as ns_cdpsm
+
+ns_map = {"ucte": ns_ucte, "cpsm": ns_cpsm, "cdpsm": ns_cdpsm}
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,
     format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
 
+#------------------------------------------------------------------------------
+#  "AttributeSink" class:
+#------------------------------------------------------------------------------
 
-class CIMAttributeSink(object):
+class AttributeSink(object):
     """ Uses triples from the RDF parser to populate a dictionary that maps
         rdf:IDs to objects.  The objects are instantiated and their attributes
         are set, but any references are not.  This is done with a second pass
         using a CIMReferenceSink that is passed this sink.
     """
 
-    def __init__(self, ns_cim):
+    def __init__(self, pkg):
         self.uri_object_map = {}
-        self.ns_cim = rdfxml.Namespace(ns_cim)
+        self.pkg_map = pkg_map[pkg]
+        self.ns_cim = rdfxml.Namespace(ns_map[pkg])
 
         # Convertor from camel case to lowercase underscore separated.
-        self.camel_to_lcu = _CamelToLowercaseUnderscore()
+        self.under = _CamelToLowercaseUnderscore()
 
 
     def triple(self, sub, pred, obj):
@@ -61,15 +73,16 @@ class CIMAttributeSink(object):
 
         # Instantiate an object if the predicate is an RDF type and the object
         # is in the CIM namespace.
-        if (ns_pred == rdfxml.rdf) and (frag_pred == "type") and \
+        if (ns_pred == rdfxml.rdf) and \
+            (frag_pred == "type") and \
             (ns_obj == self.ns_cim):
 
             cls_name = frag_obj
             uri      = frag_sub
 
-            if pkg_map.has_key(cls_name):
+            if self.pkg_map.has_key(cls_name):
                 # It is fairly cheap to import an already imported module.
-                module_name = pkg_map[cls_name]
+                module_name = self.pkg_map[cls_name]
 
                 logger.debug("Class [%s] located [%s]." %
                     (cls_name, module_name))
@@ -85,7 +98,7 @@ class CIMAttributeSink(object):
             # Map the element according to its URI.
             self.uri_object_map[uri] = element
 
-            element.put(    )
+            element.put()
 
         # If the predicate is in the CIM namespace the triple is specifying
         # an attribute or a reference.
@@ -97,7 +110,7 @@ class CIMAttributeSink(object):
 
             # Split the class name and the attribute name.
             class_name, camel_attr_name = frag_pred.rsplit(".", 1)
-            attr_name = self.camel_to_lcu(camel_attr_name)
+            attr_name = self.under(camel_attr_name)
 #            logger.debug("Attempting to set '%s' for '%s' to '%s'." %
 #                (attr_name, class_name, value))
 
@@ -133,22 +146,27 @@ class CIMAttributeSink(object):
 
             setattr(element, attr_name, value)
 
+#------------------------------------------------------------------------------
+#  "ReferenceSink" class:
+#------------------------------------------------------------------------------
 
-class CIMReferenceSink(object):
+class ReferenceSink(object):
     """ Handles setting the references for a CIM.
     """
-
-    # The sink used in the first pass.
-    attr_sink = None
 
     def __init__(self, attr_sink):
         assert isinstance(attr_sink, CIMAttributeSink)
 
+        # The sink used in the first pass.
         self.attr_sink = attr_sink
-        self.ns_cim    = self.attr_sink.ns_cim
+
+        self.pkg_map = self.attr_sink.pkg_map
+        self.ns_cim = self.attr_sink.ns_cim
+        # Map of URIs to model elements from the first pass.
+        self.uri_map = self.attr_sink.uri_object_map
 
         # Convertor from camel case to lowercase underscore separated.
-        self.camel_to_lcu = _CamelToLowercaseUnderscore()
+        self.under = _CamelToLowercaseUnderscore()
 
 
     def triple(self, sub, pred, obj):
@@ -162,11 +180,9 @@ class CIMReferenceSink(object):
         if ns_pred == self.ns_cim:
             ns_sub, uri_subject = splitURI(sub)
 
-            # Get the map of URIs to model elements for the first pass sink.
-            uri_map = self.attr_sink.uri_object_map
             # Try to get the object with the reference being set.
-            if uri_map.has_key(uri_subject):
-                sub_obj = self.attr_sink.uri_object_map[uri_subject]
+            if self.uri_map.has_key(uri_subject):
+                sub_obj = self.uri_map[uri_subject]
             else:
                 logger.error("Referencing object [%s] not found." %
                     uri_subject)
@@ -174,7 +190,7 @@ class CIMReferenceSink(object):
 
             # Split the predicate fragment into class name and attribute name.
             class_name, camel_ref_name = frag_pred.rsplit(".", 1)
-            ref_name = self.camel_to_lcu(camel_ref_name)
+            ref_name = self.under(camel_ref_name)
             # Assert that the object from the dictionary has the same type as
             # that specified in the predicate.
 #            assert sub_obj.__class__.__name__ == class_name
@@ -188,9 +204,6 @@ class CIMReferenceSink(object):
                 logger.error("Object [%s] has no reference: %s" %
                     (sub_obj.__class__.__name__, ref_name))
                 return
-
-            # Set reference traits.
-#            if trait.is_trait_type( Instance ):
 
             # Try to get the object being referenced.
             if uri_map.has_key(obj_uri):
@@ -211,33 +224,32 @@ class CIMReferenceSink(object):
 #
 #                logger.warning("Skipping multiplicity-many reference.")
 
+#------------------------------------------------------------------------------
+#  "Parser" class:
+#------------------------------------------------------------------------------
 
-class CIMParser(object):
+class Parser(object):
     """ Reads CIM RDF/XML data files and returns a dictionary that maps
         unique resource identifiers to CIM object instances.
     """
 
-    def __init__(self, ns_cim=ns_uri, pwd=None):
+    def __init__(self, profile, pwd=None):
         """ Initialises a new CIMReader instance.
         """
-        # CIM XML namespace.
-        self.ns_cim = ns_cim
+        # CIM profile to which the data conforms.
+        self.profile = profile
         # Password used for encrypted zip files.
         self.pwd = pwd
 
 
-    def __call__(self, filename):
+    def parse(self, filename):
         """ Parses an RDF/XML file and returns a model containing CIM elements.
         """
-        # Path to the file containing CIM RDF/XML data.
-#        filename = filename or self.filename
-
         # Split the extension from the pathname
-        root, extension = splitext(filename)
+        root, extension = os.path.splitext(filename)
 
         if isinstance(filename, file):
             s = filename.read()
-
         elif extension in [".xml"]:
             fd = None
             try:
@@ -248,66 +260,25 @@ class CIMParser(object):
             finally:
                 if fd is not None:
                     fd.close()
-
-        elif zipfile.is_zipfile(filename):
-            zipdatafile = None
-            try:
-                zipdatafile = zipfile.ZipFile(filename)
-                member_names = zipdatafile.namelist()
-                if member_names:
-                    member_name = member_names[0]
-                else:
-                    logger.error("Zip file contains no members.")
-                    return None
-
-                # FIXME: Perhaps extract to a temporary directory.
-                zipextdatafile = zipdatafile.open(member_name, "rb", pwd)
-                s = zipextdatafile.read()
-                zipextdatafile.close()
-            except:
-                logger.error("Error reading Zip file.")
-            finally:
-                if zipdatafile is not None:
-                    zipdatafile.close()
-
-        elif extension in [".gz"]:
-            fd = None
-            try:
-                fd = gzip.open(filename, "rb")
-                s = f.read()
-            except:
-                logger.error("Error reading gzip archive.")
-            finally:
-                if fd is not None:
-                    fd.close()
-
-        elif extension == ".bz2":
-            bz2datafile = None
-            try:
-                bz2file = bz2.BZ2File( filename )
-                s = bz2file.read()
-            except:
-                logger.error("Error reading bzip2 archive.")
-            finally:
-                if bz2datafile is not None:
-                    bz2datafile.close()
-
         else:
             s = filename
 
         # Instantiate CIM objects and set their attributes.
-        attr_sink = CIMAttributeSink(self.ns_cim)
+        attr_sink = AttributeSink(self.profile)
         logger.debug("Parsing objects and attributes in: %s" % filename)
         rdfxml.parseRDF(s, base=filename, sink=attr_sink)
 
         # Second pass to set references.
-        ref_sink = CIMReferenceSink(attr_sink)
+        ref_sink = ReferenceSink(attr_sink)
         logger.debug("Starting second pass to set references.")
 #        rdfxml.parseRDF(s, base=filename, sink=ref_sink)
 
         # Return a map of unique resource identifiers to CIM objects.
         return attr_sink.uri_object_map
 
+#------------------------------------------------------------------------------
+#  "splitURI" function:
+#------------------------------------------------------------------------------
 
 def splitURI(uri):
     """ Splits the fragment from an URI and returns a tuple.
@@ -332,6 +303,9 @@ def splitURI(uri):
 #        logger.debug("URI [%s] has no end fragment." % uri)
         return (tail, "")
 
+#------------------------------------------------------------------------------
+#  "_CamelToLowercaseUnderscore" callable:
+#------------------------------------------------------------------------------
 
 class _CamelToLowercaseUnderscore(object):
     """ Simple functor class to convert names from CamelCase to
@@ -351,3 +325,5 @@ class _CamelToLowercaseUnderscore(object):
             s += c.lower()
 
         return s
+
+# EOF -------------------------------------------------------------------------
