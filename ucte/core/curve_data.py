@@ -34,13 +34,13 @@ class CurveData(Element):
     # <<< curve_data.attributes
     # @generated
     # The data value of the  first Y-axis variable, depending on the Y-axis units 
-    y1value = db.FloatProperty(default=0.0)
+    y1value = db.FloatProperty()
 
     # The data value of the X-axis variable,  depending on the X-axis units 
-    xvalue = db.FloatProperty(default=0.0)
+    xvalue = db.FloatProperty()
 
     # The data value of the second Y-axis variable (if present), depending on the Y-axis units 
-    y2value = db.FloatProperty(default=0.0)
+    y2value = db.FloatProperty()
 
     # >>> curve_data.attributes
 

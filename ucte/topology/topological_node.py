@@ -42,16 +42,16 @@ class TopologicalNode(IdentifiedObject):
     s_short_circuit = ApparentPower
 
     # The topological node is equivalent and not real equipment. If this is missing, it is assumed to be False.  If it is an X-Node, this equivalent is required. 
-    equivalent = db.BooleanProperty(default=False)
+    equivalent = db.BooleanProperty()
 
     # The ratio of zero sequence reactance per positive sequence reactance. This is for Short Circuit only. 
-    x0_per_x = db.FloatProperty(default=0.0)
+    x0_per_x = db.FloatProperty()
 
     # The ratio of zero sequence resistance to positive sequence resistance. This is for Short Circuit only. 
-    r0_per_r = db.FloatProperty(default=0.0)
+    r0_per_r = db.FloatProperty()
 
     # Ratio of positive sequence reactance per postive sequence resistance. This is for Short Circuit only. 
-    x_per_r = db.FloatProperty(default=0.0)
+    x_per_r = db.FloatProperty()
 
     # >>> topological_node.attributes
 

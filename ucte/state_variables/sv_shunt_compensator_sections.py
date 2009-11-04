@@ -33,7 +33,7 @@ class SvShuntCompensatorSections(StateVariable):
     # <<< sv_shunt_compensator_sections.attributes
     # @generated
     # The number of sections in service as a continous variable. 
-    continuous_sections = db.FloatProperty(default=0.0)
+    continuous_sections = db.FloatProperty()
 
     # >>> sv_shunt_compensator_sections.attributes
 

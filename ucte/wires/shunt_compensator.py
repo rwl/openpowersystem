@@ -38,7 +38,7 @@ class ShuntCompensator(RegulatingCondEq):
     b0_per_section = Susceptance
 
     # For a capacitor bank, the maximum number of sections that may be switched in. 
-    maximum_sections = db.IntegerProperty(default=0)
+    maximum_sections = db.IntegerProperty()
 
     # Zero sequence shunt (charging) conductance per section This is for Short Circuit only. 
     g0_per_section = Conductance

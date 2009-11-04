@@ -37,7 +37,7 @@ class BaseVoltage(IdentifiedObject):
     nominal_voltage = Voltage
 
     # If true, this is a direct current base voltage and items assigned to this base voltage are also associated with a direct current capabilities.   False indicates alternating current. 
-    is_dc = db.BooleanProperty(default=False)
+    is_dc = db.BooleanProperty()
 
     # >>> base_voltage.attributes
 

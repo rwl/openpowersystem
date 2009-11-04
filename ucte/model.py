@@ -27,7 +27,7 @@ from google.appengine.ext import db
 class Model(db.Model):
     # <<< model.attributes
     # @generated
-    uri = db.StringProperty(default='')
+    uri = db.StringProperty()
 
     # >>> model.attributes
 

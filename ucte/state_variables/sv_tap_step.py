@@ -33,7 +33,7 @@ class SvTapStep(StateVariable):
     # <<< sv_tap_step.attributes
     # @generated
     # The floating point tap position. 
-    continuous_position = db.FloatProperty(default=0.0)
+    continuous_position = db.FloatProperty()
 
     # >>> sv_tap_step.attributes
 

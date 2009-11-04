@@ -33,31 +33,31 @@ class LoadResponseCharacteristic(IdentifiedObject):
     # <<< load_response_characteristic.attributes
     # @generated
     # Exponent of per unit voltage effecting real power.   This model used only when 'useExponentModel' is true. 
-    p_voltage_exponent = db.FloatProperty(default=0.0)
+    p_voltage_exponent = db.FloatProperty()
 
     # Portion of reactive power load modeled as constant current. Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP. 
-    q_constant_current = db.FloatProperty(default=0.0)
+    q_constant_current = db.FloatProperty()
 
     # Portion of active power load modeled as constant current. Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP. 
-    p_constant_current = db.FloatProperty(default=0.0)
+    p_constant_current = db.FloatProperty()
 
     # Indicates the exponential voltage dependency model (pVoltateExponent and qVoltageExponent) is to be used.   If false, the coeficient model (consisting of pConstantImpedance, pConstantCurrent, pConstantPower, qConstantImpedance, qConstantCurrent, and qConstantPower) is to be used. 
-    exponent_model = db.BooleanProperty(default=False)
+    exponent_model = db.BooleanProperty()
 
     # Portion of active power load modeled as constant power. Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP. 
-    p_constant_power = db.FloatProperty(default=0.0)
+    p_constant_power = db.FloatProperty()
 
     # Exponent of per unit voltage effecting reactive power.   This model used only when 'useExponentModel' is true. 
-    q_voltage_exponent = db.FloatProperty(default=0.0)
+    q_voltage_exponent = db.FloatProperty()
 
     # Portion of reactive power load modeled as constant power. Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP. 
-    q_constant_power = db.FloatProperty(default=0.0)
+    q_constant_power = db.FloatProperty()
 
     # Portion of reactive power load modeled as constant impedance.  Used only if the useExponentModel is false.    This value is noralized against the sum of qZ, qI, and qP. 
-    q_constant_impedance = db.FloatProperty(default=0.0)
+    q_constant_impedance = db.FloatProperty()
 
     # Portion of active power load modeled as constant impedance.  Used only if the useExponentModel is false.    This value is noralized against the sum of pZ, pI, and pP. 
-    p_constant_impedance = db.FloatProperty(default=0.0)
+    p_constant_impedance = db.FloatProperty()
 
     # >>> load_response_characteristic.attributes
 

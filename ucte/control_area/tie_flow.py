@@ -35,7 +35,7 @@ class TieFlow(Element):
     # <<< tie_flow.attributes
     # @generated
     # The flow is positive into the terminal.  A flow is positive if it is an import into the control area. The power flow is positive into the Terminal of the ConductingEquipment. 
-    positive_flow_in = db.BooleanProperty(default=False)
+    positive_flow_in = db.BooleanProperty()
 
     # >>> tie_flow.attributes
 

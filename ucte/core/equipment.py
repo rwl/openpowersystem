@@ -34,7 +34,7 @@ class Equipment(IdentifiedObject):
     # <<< equipment.attributes
     # @generated
     # Indicates if the equipment is real equipment (false) or an equivalent. If this is missing, it is assumed to be False.  It is required for Equipment connected to the X-Node. All classes derived from Equipment are to include this attribute except for the TransformerWinding class.     For transformers the PowerTransformer class will be used to specify the real or equivalent status and the contained TransformerWinding class instances need not and should not specify this attribute. 
-    equivalent = db.BooleanProperty(default=False)
+    equivalent = db.BooleanProperty()
 
     # >>> equipment.attributes
 

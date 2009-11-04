@@ -18,13 +18,15 @@
 """ Defines sinks for use with rdfxml.py by Sean Palmer.
 """
 
+#------------------------------------------------------------------------------
+#  Imports:
+#------------------------------------------------------------------------------
+
 import os
 import re
 import sys
-import gzip
-import bz2
-import zipfile
 import logging
+import datetime
 
 from google.appengine.ext import db
 
@@ -34,17 +36,23 @@ from ucte_pkg_map import ucte_pkg_map
 #from cpsm_pkg_map import cpsm_pkg_map
 #from cdpsm_pkg_map import cdpsm_pkg_map
 
-pkg_map = {"ucte": ucte_pkg_map}#, "cpsm": cpsm_pkg_map, "cdpsm": cdpsm_pkg_map}
-
 from ucte import ns_uri as ns_ucte
 #from cpsm import ns_uri as ns_cpsm
 #from cdpsm import ns_uri as ns_cdpsm
 
-ns_map = {"ucte": ns_ucte}#, "cpsm": ns_cpsm, "cdpsm": ns_cdpsm}
+#------------------------------------------------------------------------------
+#  Logging:
+#------------------------------------------------------------------------------
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,
-    format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
+
+#------------------------------------------------------------------------------
+#  Constants:
+#------------------------------------------------------------------------------
+
+PKG_MAP = {"ucte": ucte_pkg_map}#, "cpsm": cpsm_pkg_map, "cdpsm": cdpsm_pkg_map}
+
+NS_MAP = {"ucte": ns_ucte}#, "cpsm": ns_cpsm, "cdpsm": ns_cdpsm}
 
 #------------------------------------------------------------------------------
 #  "AttributeSink" class:
@@ -59,8 +67,8 @@ class AttributeSink(object):
 
     def __init__(self, pkg):
         self.uri_object_map = {}
-        self.pkg_map = pkg_map[pkg]
-        self.ns_cim = rdfxml.Namespace(ns_map[pkg])
+        self.pkg_map = PKG_MAP[pkg]
+        self.ns_cim = rdfxml.Namespace(NS_MAP[pkg])
 
         # Convertor from camel case to lowercase underscore separated.
         self.under = _CamelToLowercaseUnderscore()
@@ -75,8 +83,7 @@ class AttributeSink(object):
 
         # Instantiate an object if the predicate is an RDF type and the object
         # is in the CIM namespace.
-        if (ns_pred == rdfxml.rdf) and \
-            (frag_pred == "type") and \
+        if (ns_pred == rdfxml.rdf) and (frag_pred == "type") and \
             (ns_obj == self.ns_cim):
 
             cls_name = frag_obj
@@ -86,8 +93,8 @@ class AttributeSink(object):
                 # It is fairly cheap to import an already imported module.
                 module_name = self.pkg_map[cls_name]
 
-                logger.debug("Class [%s] located [%s]." %
-                    (cls_name, module_name))
+#                logger.debug("Class [%s] located [%s]." %
+#                    (cls_name, module_name))
 
                 exec "import %s" % module_name
                 element = eval("%s.%s(uri=uri)" % (module_name, cls_name))
@@ -128,45 +135,71 @@ class AttributeSink(object):
                     (element.__class__.__name__, attr_name))
                 return
 
+            # Handle enumerations where the object is in the CIM namespace
+            # and the value must be split of the end of the fragment.
+            #
+            # "http://iec.ch/TC57/2009/CIM-schema-cim14#
+            # SynchronousMachineOperatingMode.generator"
+            if ns_obj == self.ns_cim:
+                value = frag_obj.rsplit(".", 1)[1]
+
             prop = element.properties()[attr_name]
 
-            logger.debug("Model property: %s" % prop.__class__.__name__)
-
-            logger.debug("ReferenceProperty: %s" %
-                         isinstance(prop, db.ReferenceProperty))
-#            logger.debug("StringProperty: %s" %
-#                         isinstance(prop, db.StringProperty))
-#            logger.debug("FloatProperty: %s" %
-#                         isinstance(prop, db.FloatProperty))
-#            logger.debug("BooleanProperty: %s" %
-#                         isinstance(prop, db.BooleanProperty))
-
-            # Leave references until the second pass.
-            # FIXME: Use isinstance(prop, db.ReferenceProperty)
-            if prop.__class__.__name__ != "ReferenceProperty":
-                default = prop.default_value()
-
-                if default is not None:
-#                    logger.debug("Default value of '%s'." % default)
-                    # Coerce the value according to the type of the default.
-                    default_type = type(default)
-                    value = default_type(value)
-                else:
-                    logger.error("No default value [%s]." % attr_name)
-                    return
+            if isinstance(prop, db.ReferenceProperty):
+#                logger.debug("Leaving reference [%s] until second pass." %
+#                             (attr_name))
+                pass
             else:
-                return
+                coerced = coercePropertyValue(value, prop)
 
-            # TODO: Handle enumerations where the 'object' in the triple is the
-            # URL for the data type and the value must be split of the end of
-            # the fragment.
-            # value = frag_obj.rsplit(".", 1)[1]
+                if coerced is not None:
+#                    logger.debug("Setting '%s' attribute '%s' to: %s %s" %
+#                        (element.__class__.__name__, attr_name, str(coerced),
+#                         type(coerced)))
 
-#            logger.debug("Setting '%s' attribute '%s' to: %s %s" %
-#                (element.__class__.__name__, attr_name, str(value),
-#                 type(value)))
+                    setattr(element, attr_name, coerced)
+                else:
+                    logger.error("Invalid value [%s] for '%s' on '%s'" %
+                                 (value, attr_name, element))
 
-            setattr(element, attr_name, value)
+#------------------------------------------------------------------------------
+#  "coercePropertyValue" function:
+#------------------------------------------------------------------------------
+
+def coercePropertyValue(value, prop):
+    """ Coerces the type of a parsed value according to the property to which
+        it is to be assigned.
+    """
+    if isinstance(prop, db.StringProperty):
+        typ = str
+    elif isinstance(prop, db.FloatProperty):
+        typ = float
+    elif isinstance(prop, db.BooleanProperty):
+        typ = bool
+    elif isinstance(prop, db.IntegerProperty):
+        typ = int
+    elif isinstance(prop, db.ListProperty):
+        typ = list
+    elif isinstance(prop, db.DateProperty): # YYYY-MM-DD
+        try:
+            y, m, d = [int(s) for s in value.split("-")]
+            new_value = datetime.date(y, m, d)
+        except:
+            logger.error("Invalid date [%s] format (YYYY-MM-DD)" % value)
+            return None
+        return new_value
+    else:
+        logger.error("Unrecognised property type [%s]." % prop)
+        return None
+
+    try:
+        new_value = typ(value)
+#        logger.debug("Coerced: %s %s" % (new_value, type(new_value)))
+    except ValueError, e:
+        logger.error("Problem coercing '%s' to %s." % (value, typ))
+        new_value = None
+
+    return new_value
 
 #------------------------------------------------------------------------------
 #  "ReferenceSink" class:
@@ -258,6 +291,8 @@ class Parser(object):
     def __init__(self, profile, pwd=None):
         """ Initialises a new CIMReader instance.
         """
+        assert PKG_MAP.has_key(profile) and NS_MAP.has_key(profile)
+
         # CIM profile to which the data conforms.
         self.profile = profile
         # Password used for encrypted zip files.
