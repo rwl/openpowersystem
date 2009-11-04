@@ -34,20 +34,21 @@ class CurveData(Element):
     # <<< curve_data.attributes
     # @generated
     # The data value of the  first Y-axis variable, depending on the Y-axis units 
-    y1value = db.FloatProperty()
+    y1value = db.FloatProperty(default=0.0)
 
     # The data value of the X-axis variable,  depending on the X-axis units 
-    xvalue = db.FloatProperty()
+    xvalue = db.FloatProperty(default=0.0)
 
     # The data value of the second Y-axis variable (if present), depending on the Y-axis units 
-    y2value = db.FloatProperty()
+    y2value = db.FloatProperty(default=0.0)
 
     # >>> curve_data.attributes
 
     # <<< curve_data.references
     # @generated
     # The Curve defined by this CurveData. 
-    curve_schedule = db.ReferenceProperty(Curve, collection_name="curve_schedule_datas")
+    curve_schedule = db.ReferenceProperty(Curve,
+        collection_name="curve_schedule_datas")
 
     # >>> curve_data.references
 

@@ -82,13 +82,16 @@ class SynchronousMachine(RegulatingCondEq):
     # <<< synchronous_machine.references
     # @generated
     # The default ReactiveCapabilityCurve for use by a SynchronousMachine 
-    initial_reactive_capability_curve = db.ReferenceProperty(ReactiveCapabilityCurve, collection_name="initially_used_by_synchronous_machine")
+    initial_reactive_capability_curve = db.ReferenceProperty(ReactiveCapabilityCurve,
+        collection_name="initially_used_by_synchronous_machine")
 
     # The synchronous machine drives the turbine which moves the water from a low elevation to a higher elevation. The direction of machine rotation for pumping may or may not be the same as for generating.  
-    drives_hydro_pump = db.ReferenceProperty(db.Model, collection_name="_synchronous_machine_set")
+    drives_hydro_pump = db.ReferenceProperty(db.Model,
+        collection_name="_synchronous_machine_set") # driven_by_synchronous_machine
 
     # A synchronous machine may operate as a generator and as such becomes a member of a generating unit Each SynchronousMachine is a member of one and only one GeneratingUnit plus each GeneratingUnit should have one and only one SynchronousMachine.   This is required to properly proportion generation limits specified on GeneratingUnit to the appropriate injection points specified by SynchronousMachine and its Terminal connection. 
-    member_of_generating_unit = db.ReferenceProperty(GeneratingUnit, collection_name="contains_synchronous_machines")
+    member_of_generating_unit = db.ReferenceProperty(GeneratingUnit,
+        collection_name="contains_synchronous_machines")
 
     # >>> synchronous_machine.references
 

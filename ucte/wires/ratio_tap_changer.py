@@ -37,7 +37,8 @@ class RatioTapChanger(TapChanger):
     # <<< ratio_tap_changer.references
     # @generated
     # The transformer winding to which the ratio tap changer belongs. 
-    transformer_winding = db.ReferenceProperty(db.Model, collection_name="_ratio_tap_changer_set")
+    transformer_winding = db.ReferenceProperty(db.Model,
+        collection_name="_ratio_tap_changer_set") # ratio_tap_changer
 
     # >>> ratio_tap_changer.references
 

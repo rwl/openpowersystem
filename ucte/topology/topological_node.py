@@ -19,13 +19,14 @@
 """
 
 # <<< imports
-# @generated
 from ucte.core.identified_object import IdentifiedObject
 
 from ucte.control_area.control_area import ControlArea
 from ucte.core.base_voltage import BaseVoltage
 from ucte.topology.topological_island import TopologicalIsland
 from ucte.core.connectivity_node_container import ConnectivityNodeContainer
+
+from ucte.state_variables.sv_voltage import SvVoltage
 
 from ucte.domain import ApparentPower
 
@@ -41,40 +42,39 @@ class TopologicalNode(IdentifiedObject):
     s_short_circuit = ApparentPower
 
     # The topological node is equivalent and not real equipment. If this is missing, it is assumed to be False.  If it is an X-Node, this equivalent is required. 
-    equivalent = db.BooleanProperty()
+    equivalent = db.BooleanProperty(default=False)
 
     # The ratio of zero sequence reactance per positive sequence reactance. This is for Short Circuit only. 
-    x0_per_x = db.FloatProperty()
+    x0_per_x = db.FloatProperty(default=0.0)
 
     # The ratio of zero sequence resistance to positive sequence resistance. This is for Short Circuit only. 
-    r0_per_r = db.FloatProperty()
+    r0_per_r = db.FloatProperty(default=0.0)
 
     # Ratio of positive sequence reactance per postive sequence resistance. This is for Short Circuit only. 
-    x_per_r = db.FloatProperty()
+    x_per_r = db.FloatProperty(default=0.0)
 
     # >>> topological_node.attributes
 
     # <<< topological_node.references
-    # @generated
-    # The control area into which the node is included. 
+    # The control area into which the node is included.
     control_area = db.ReferenceProperty(ControlArea, collection_name="topological_node")
 
-    # The base voltage of the topologocial node. The base voltage of the TopologicalNode should match the BaseVoltage of the containing VoltageLevel if such a containing VoltageLevel is specified. 
+    # The base voltage of the topologocial node. The base voltage of the TopologicalNode should match the BaseVoltage of the containing VoltageLevel if such a containing VoltageLevel is specified.
     base_voltage = db.ReferenceProperty(BaseVoltage, collection_name="topological_node")
 
-    # The state voltage associated with the topological node.  
-    sv_voltage = db.ReferenceProperty(db.Model, collection_name="_topological_node_set")
+    # The state voltage associated with the topological node.
+    sv_voltage = db.ReferenceProperty(SvVoltage, collection_name="_topological_node_set")
 
-    # A topological node belongs to a topological island 
+    # A topological node belongs to a topological island
     topological_island = db.ReferenceProperty(TopologicalIsland, collection_name="topological_nodes")
 
-    # The island for which the node is an angle reference.   Normally there is one angle reference node for each island.  
-    angle_ref_topological_island = db.ReferenceProperty(db.Model, collection_name="_topological_node_set")
+    # The island for which the node is an angle reference.   Normally there is one angle reference node for each island.
+    angle_ref_topological_island = db.ReferenceProperty(db.Model, collection_name="_topological_nodes")
 
-    # The connectivity node container to which the toplogical node belongs. The TopologicalNode will normally belong only to a VoltageLevel instance within a Substation.   All instances of TopologicalNode that are not X-nodes will require an association to a containing VoltageLevel instance.  The BaseVoltage of the VoltageLevel should match that of the TopologicalNode itself. A TopologicalNode object used for an X-node will not be contained, thus this association is specified as optional in the profile. 
+    # The connectivity node container to which the toplogical node belongs. The TopologicalNode will normally belong only to a VoltageLevel instance within a Substation.   All instances of TopologicalNode that are not X-nodes will require an association to a containing VoltageLevel instance.  The BaseVoltage of the VoltageLevel should match that of the TopologicalNode itself. A TopologicalNode object used for an X-node will not be contained, thus this association is specified as optional in the profile.
     connectivity_node_container = db.ReferenceProperty(ConnectivityNodeContainer, collection_name="topological_node")
 
-    # Virtual property. The terminals associated with the topological node.   This can be used as an alternative to the connectivity node path to terminal, thus making it unneccesary to model connedtivity nodes in some cases.   Note that the if connectivity nodes are in the model, this association would proably not be used.  
+    # Virtual property. The terminals associated with the topological node.   This can be used as an alternative to the connectivity node path to terminal, thus making it unneccesary to model connedtivity nodes in some cases.   Note that the if connectivity nodes are in the model, this association would proably not be used.
     pass # terminal
 
     # >>> topological_node.references

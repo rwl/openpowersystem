@@ -33,14 +33,15 @@ class SvTapStep(StateVariable):
     # <<< sv_tap_step.attributes
     # @generated
     # The floating point tap position. 
-    continuous_position = db.FloatProperty()
+    continuous_position = db.FloatProperty(default=0.0)
 
     # >>> sv_tap_step.attributes
 
     # <<< sv_tap_step.references
     # @generated
     # The tap changer associated with the tap step state. 
-    tap_changer = db.ReferenceProperty(db.Model, collection_name="_sv_tap_step_set")
+    tap_changer = db.ReferenceProperty(db.Model,
+        collection_name="_sv_tap_step_set") # sv_tap_step
 
     # >>> sv_tap_step.references
 

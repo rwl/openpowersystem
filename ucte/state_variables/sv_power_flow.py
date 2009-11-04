@@ -45,7 +45,8 @@ class SvPowerFlow(StateVariable):
     # <<< sv_power_flow.references
     # @generated
     # The terminal associated with the power flow state. The SvPowerFlow is only associated with the Terminal objects of shunt injection classes EnergyConsumer and  SynchronousMachine.  Branch flows are not exchanged since they can be readily computed from the voltages, impedances, and for transformers additionally the tap parameters including the SvTapStep.  Similarly, Switch flows are not included because they can typically be uniquely computed, except in the case of meshed networks of Switch objects.  Terminals of the ShuntCompensator class are not associated because the injection value can be computed from the solved voltage, number of sections, Termianl.connected state, and the impedance per section attributes on the ShuntCompensator.  
-    terminal = db.ReferenceProperty(db.Model, collection_name="_sv_power_flow_set")
+    terminal = db.ReferenceProperty(db.Model,
+        collection_name="_sv_power_flow_set") # sv_power_flow
 
     # >>> sv_power_flow.references
 

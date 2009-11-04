@@ -39,10 +39,12 @@ class OperationalLimit(IdentifiedObject):
     # <<< operational_limit.references
     # @generated
     # The limit set to which the limit values belong. 
-    operational_limit_set = db.ReferenceProperty(OperationalLimitSet, collection_name="operational_limit_value")
+    operational_limit_set = db.ReferenceProperty(OperationalLimitSet,
+        collection_name="operational_limit_value")
 
     # The limit type associated with this limit. 
-    operational_limit_type = db.ReferenceProperty(OperationalLimitType, collection_name="operational_limit")
+    operational_limit_type = db.ReferenceProperty(OperationalLimitType,
+        collection_name="operational_limit")
 
     # >>> operational_limit.references
 

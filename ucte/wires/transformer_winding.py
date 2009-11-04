@@ -86,15 +86,14 @@ class TransformerWinding(ConductingEquipment):
     # >>> transformer_winding.attributes
 
     # <<< transformer_winding.references
-    # @generated
-    # A transformer has windings 
+    # A transformer has windings
     member_of_power_transformer = db.ReferenceProperty(PowerTransformer, collection_name="contains_transformer_windings")
 
-    # The ratio tap changer associated with the transformer winding.  
+    # The ratio tap changer associated with the transformer winding.
     ratio_tap_changer = db.ReferenceProperty(db.Model, collection_name="_transformer_winding_set")
 
-    # The phase tap changer associated with the transformer winding.  
-    phase_tap_changer = db.ReferenceProperty(db.Model, collection_name="_transformer_winding_set")
+    # The phase tap changer associated with the transformer winding.
+    phase_tap_changer = db.ReferenceProperty(db.Model, collection_name="_transformer_windings")
 
     # >>> transformer_winding.references
 

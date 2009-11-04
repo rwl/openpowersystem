@@ -35,10 +35,10 @@ class Terminal(IdentifiedObject):
     # <<< terminal.attributes
     # @generated
     # The orientation of the terminal connections for a multiple terminal conducting equipment.  The sequence numbering starts with 1 and additional terminals should follow in increasing order.   The first terminal is the 'starting point' for a two terminal branch.   In the case of class TransformerWinding only one terminal is used so its sequenceNumber must be 1. For UCTE profile, the terminal sequence number is not required.   And, when used, follows the UML description. The orientation of the terminal connections for a multiple terminal conducting equipment.  The sequence numbering starts with 1 and additional terminals should follow in increasing order.   The first terminal is the 'starting point' for a two terminal branch.   In the case of class TransformerWinding only one terminal is used so its sequenceNumber must be 1. 
-    sequence_number = db.IntegerProperty()
+    sequence_number = db.IntegerProperty(default=0)
 
     # The terminal connection status.   True implies the terminal is connected, and false implies the terminal is not connected. This is the result of topoplogical processing of a detailed Connectivity node and Switch model whether present in the model or not.   A terminal that is not connected cannot support a current flow.   A terminal that is connected may have flow.  In general a multi-terminal device may simultaneously have connected and disconnected terminals.  No other aspect of the algorithm for topological analysis is implied. 
-    connected = db.BooleanProperty()
+    connected = db.BooleanProperty(default=False)
 
     # >>> terminal.attributes
 
@@ -51,7 +51,8 @@ class Terminal(IdentifiedObject):
     pass # operational_limit_set
 
     # The power flow state associated with the terminal.  
-    sv_power_flow = db.ReferenceProperty(db.Model, collection_name="_terminal_set")
+    sv_power_flow = db.ReferenceProperty(db.Model,
+        collection_name="_terminal_set") # terminal
 
     # Virtual property. The terminal is regulated by a control.  
     pass # regulating_control
@@ -60,10 +61,12 @@ class Terminal(IdentifiedObject):
     pass # tie_flow
 
     # ConductingEquipment has 1 or 2 terminals that may be connected to other ConductingEquipment terminals via ConnectivityNodes 
-    conducting_equipment = db.ReferenceProperty(ConductingEquipment, collection_name="terminals")
+    conducting_equipment = db.ReferenceProperty(ConductingEquipment,
+        collection_name="terminals")
 
     # The topological node associated with the terminal.   This can be used as an alternative to the connectivity node path to topological node, thus making it unneccesary to model connedtivity nodes in some cases.   Note that the if connectivity nodes are in the model, this association would proably not be used. 
-    topological_node = db.ReferenceProperty(TopologicalNode, collection_name="terminal")
+    topological_node = db.ReferenceProperty(TopologicalNode,
+        collection_name="terminal")
 
     # Virtual property. Mutual couplings with the branch associated as the first branch.  
     pass # has_second_mutual_coupling

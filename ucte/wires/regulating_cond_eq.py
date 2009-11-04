@@ -38,7 +38,8 @@ class RegulatingCondEq(ConductingEquipment):
     # <<< regulating_cond_eq.references
     # @generated
     # copy from ... Regulating control scheme in which this equipment participates. 
-    regulating_control = db.ReferenceProperty(RegulatingControl, collection_name="regulating_cond_eq")
+    regulating_control = db.ReferenceProperty(RegulatingControl,
+        collection_name="regulating_cond_eq")
 
     # >>> regulating_cond_eq.references
 

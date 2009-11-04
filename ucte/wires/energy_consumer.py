@@ -38,7 +38,8 @@ class EnergyConsumer(ConductingEquipment):
     # <<< energy_consumer.references
     # @generated
     # The load response characteristic of this load. 
-    load_response = db.ReferenceProperty(LoadResponseCharacteristic, collection_name="energy_consumer")
+    load_response = db.ReferenceProperty(LoadResponseCharacteristic,
+        collection_name="energy_consumer")
 
     # >>> energy_consumer.references
 

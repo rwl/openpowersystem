@@ -39,10 +39,12 @@ class VoltageLevel(EquipmentContainer):
     # <<< voltage_level.references
     # @generated
     # The base voltage used for all equipment within the VoltageLevel. 
-    base_voltage = db.ReferenceProperty(BaseVoltage, collection_name="voltage_level")
+    base_voltage = db.ReferenceProperty(BaseVoltage,
+        collection_name="voltage_level")
 
     # The association is used in the naming hierarchy. 
-    member_of_substation = db.ReferenceProperty(Substation, collection_name="contains_voltage_levels")
+    member_of_substation = db.ReferenceProperty(Substation,
+        collection_name="contains_voltage_levels")
 
     # >>> voltage_level.references
 

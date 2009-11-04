@@ -42,23 +42,25 @@ class TapChanger(IdentifiedObject):
     neutral_u = Voltage
 
     # Lowest possible tap step position, retard from neutral 
-    low_step = db.IntegerProperty()
+    low_step = db.IntegerProperty(default=0)
 
     # The neutral tap step position for this winding. This attribute is used to define the neutral step for a tap changer or a phase tap changer.  The neutralStep value cannot be higher than the highStep value or lower than the lowStep value.  
-    neutral_step = db.IntegerProperty()
+    neutral_step = db.IntegerProperty(default=0)
 
     # Highest possible tap step position, advance from neutral 
-    high_step = db.IntegerProperty()
+    high_step = db.IntegerProperty(default=0)
 
     # >>> tap_changer.attributes
 
     # <<< tap_changer.references
     # @generated
     # The tap step state associated with the tap changer.  
-    sv_tap_step = db.ReferenceProperty(db.Model, collection_name="_tap_changer_set")
+    sv_tap_step = db.ReferenceProperty(db.Model,
+        collection_name="_tap_changer_set") # tap_changer
 
     # 
-    regulating_control = db.ReferenceProperty(RegulatingControl, collection_name="tap_changer")
+    regulating_control = db.ReferenceProperty(RegulatingControl,
+        collection_name="tap_changer")
 
     # >>> tap_changer.references
 

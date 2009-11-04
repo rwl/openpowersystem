@@ -31,10 +31,10 @@ class IEC61970CIMVersion(Element):
     # <<< iec61970_cimversion.attributes
     # @generated
     # The date of release of the model version.  Of the form 2008-12-22 for example if the date was the twentysecond day of December in 2008. 
-    date = db.DateProperty()
+    date = db.StringProperty(default='')
 
     # Version number of the model.   Of the form IEC61970CIM14v01 for example.  For UCTE on 2009-01-15 added the terminal.SequenceNumber  added some clarification of MutualCoupling  For UCTE on 2009-0116 added IdentifiedObject inhereitance to OperationalLimitType class  For UCTE on 2009-01-17 added the TopologicalNode-BaseVoltage association.  For UCTE on 2009-01-27 added the TopologicalNode.equivalent attribute.  For UCTE on 2009-02-04 renamed SvTapStep.tapRatio to SvTapStep.continuousPosition. Multipliicty made optional or SvTapStep.position and SvTapStep.continuousPosition. Please see the profile comments on the IEC61970CIMVersion class for the profile version comments.  
-    version = db.StringProperty()
+    version = db.StringProperty(default='')
 
     # >>> iec61970_cimversion.attributes
 

@@ -15,6 +15,13 @@
 # Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #------------------------------------------------------------------------------
 
+""" Defines request handlers for OpenPowerSystem.
+"""
+
+#------------------------------------------------------------------------------
+#  Imports:
+#------------------------------------------------------------------------------
+
 import os
 import cgi
 import logging
@@ -35,7 +42,13 @@ from ucte.generation.production.thermal_generating_unit import ThermalGenerating
 
 from django.utils import simplejson
 
-from openpowersystem.parser import CIMParser
+from openpowersystem.parser import Parser
+
+#------------------------------------------------------------------------------
+#  Logging:
+#------------------------------------------------------------------------------
+
+logger = logging.getLogger()
 
 #------------------------------------------------------------------------------
 #  "MainPage" class:
@@ -82,9 +95,11 @@ class UploadPage(webapp.RequestHandler):
     def post(self):
 #        if users.get_current_user():
         rdf_data = self.request.get('uploadFormElement')
-        pkg = self.request.get('package')
+        profile = self.request.get('profileType')
 
-        CIMParser().parse(rdf_data)
+#        logging.debug("Profile Type: %s" % profile)
+
+        Parser(profile).parse(rdf_data)
 
         self.redirect('/')
 

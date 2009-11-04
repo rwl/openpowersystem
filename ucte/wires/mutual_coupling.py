@@ -67,10 +67,12 @@ class MutualCoupling(IdentifiedObject):
     # <<< mutual_coupling.references
     # @generated
     # The starting terminal for the calculation of distances along the first branch of the mutual coupling.  Normally MutualCoupling would only be used for terminals of AC line segments.  The first and second terminals of a mutual coupling should point to different AC line segments. 
-    first_terminal = db.ReferenceProperty(Terminal, collection_name="has_first_mutual_coupling")
+    first_terminal = db.ReferenceProperty(Terminal,
+        collection_name="has_first_mutual_coupling")
 
     # The starting terminal for the calculation of distances along the second branch of the mutual coupling. 
-    second_terminal = db.ReferenceProperty(Terminal, collection_name="has_second_mutual_coupling")
+    second_terminal = db.ReferenceProperty(Terminal,
+        collection_name="has_second_mutual_coupling")
 
     # >>> mutual_coupling.references
 

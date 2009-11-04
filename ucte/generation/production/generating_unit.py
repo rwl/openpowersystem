@@ -57,7 +57,7 @@ class GeneratingUnit(Equipment):
     min_operating_p = ActivePower
 
     # Generating unit economic participation factor For UCTE only one Generating per control area should be non-zero.  The attribute is optional on a GeneratingUnit and the value can be assumed to be zero if missing.   This minimizes the data that must be exchanged.   By convention the non-zero value is specified as one.  
-    normal_pf = db.FloatProperty()
+    normal_pf = db.FloatProperty(default=0.0)
 
     # >>> generating_unit.attributes
 

@@ -33,13 +33,13 @@ class IdentifiedObject(Element):
     # <<< identified_object.attributes
     # @generated
     # The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy. 
-    description = db.StringProperty()
+    description = db.StringProperty(default='')
 
     # The name is a free text human readable name of the object. It may be non unique and may not correlate to a naming hierarchy. This attribute is required on all instances in this Profile that inherit from IdentifiedObject except for the following Classes: 1) BaseVoltage; 2) Terminal; 3) TransformerWinding; 4) RatioTapChanger; 5) PhaseTapChanger; 6) OperationalLImitSet; 7) CurrentLimit; and, 8) VoltageLimit. 
-    name = db.StringProperty()
+    name = db.StringProperty(default='')
 
     # The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy. In the UCTE profile the aliasName is used to hold the EIC code.    The code length is 16 characters.    Not all CIM classes have an EIC code so the attribute is optional.    
-    alias_name = db.StringProperty()
+    alias_name = db.StringProperty(default='')
 
     # >>> identified_object.attributes
 

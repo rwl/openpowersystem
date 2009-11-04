@@ -24,6 +24,7 @@ ns_prefix = "cim"
 ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Production"
 
 
-FuelType = db.StringProperty(choices=("oil", "coal", "lignite", "gas"))
+FuelType = db.StringProperty(default="oil",
+    choices=("oil", "coal", "lignite", "gas"))
 
 # EOF -------------------------------------------------------------------------

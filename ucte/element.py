@@ -28,14 +28,15 @@ from google.appengine.ext import db
 class Element(db.Model):
     # <<< element.attributes
     # @generated
-    uri = db.StringProperty()
+    uri = db.StringProperty(default='')
 
     # >>> element.attributes
 
     # <<< element.references
     # @generated
     # 
-    model = db.ReferenceProperty(Model, collection_name="elements")
+    model = db.ReferenceProperty(Model,
+        collection_name="elements")
 
     # >>> element.references
 

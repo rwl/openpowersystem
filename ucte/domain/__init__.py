@@ -24,48 +24,48 @@ ns_prefix = "cim"
 ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Domain"
 
 # Long unit of length. 
-LongLength = db.FloatProperty()
+LongLength = db.FloatProperty(default=0.0)
 
 # Amount of money 
-Money = db.FloatProperty()
+Money = db.FloatProperty(default=0.0)
 
 # Resistance (real part of impedance). 
-Resistance = db.FloatProperty()
+Resistance = db.FloatProperty(default=0.0)
 
 # Product of the RMS value of the voltage and the RMS value of the current 
-ApparentPower = db.FloatProperty()
+ApparentPower = db.FloatProperty(default=0.0)
 
 # Phase angle in radians 
-AngleRadians = db.FloatProperty()
+AngleRadians = db.FloatProperty(default=0.0)
 
 # Product of RMS value of the voltage and the RMS value of the in-phase component of the current 
-ActivePower = db.FloatProperty()
+ActivePower = db.FloatProperty(default=0.0)
 
 # Imaginary part of admittance. 
-Susceptance = db.FloatProperty()
+Susceptance = db.FloatProperty(default=0.0)
 
 # Electrical current (positive flow is out of the ConductingEquipment into the ConnectivityNode) 
-CurrentFlow = db.FloatProperty()
+CurrentFlow = db.FloatProperty(default=0.0)
 
 # Factor by which voltage must be multiplied to give corresponding power lost from a circuit. Real part of admittance. 
-Conductance = db.FloatProperty()
+Conductance = db.FloatProperty(default=0.0)
 
 # Reactance (imaginary part of impedance), at rated frequency. 
-Reactance = db.FloatProperty()
+Reactance = db.FloatProperty(default=0.0)
 
 # Time, in seconds 
-Seconds = db.FloatProperty()
+Seconds = db.FloatProperty(default=0.0)
 
 # Electrical voltage. 
-Voltage = db.FloatProperty()
+Voltage = db.FloatProperty(default=0.0)
 
 # Product of RMS value of the voltage and the RMS value of the quadrature component of the current. 
-ReactivePower = db.FloatProperty()
+ReactivePower = db.FloatProperty(default=0.0)
 
 # Measurement of angle in degrees 
-AngleDegrees = db.FloatProperty()
+AngleDegrees = db.FloatProperty(default=0.0)
 
 # Normally 0 - 100 on a defined base 
-PerCent = db.FloatProperty()
+PerCent = db.FloatProperty(default=0.0)
 
 # EOF -------------------------------------------------------------------------

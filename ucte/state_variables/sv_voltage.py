@@ -45,7 +45,8 @@ class SvVoltage(StateVariable):
     # <<< sv_voltage.references
     # @generated
     # The topological node associated with the voltage state. 
-    topological_node = db.ReferenceProperty(db.Model, collection_name="_sv_voltage_set")
+    topological_node = db.ReferenceProperty(db.Model,
+        collection_name="_sv_voltage_set") # sv_voltage
 
     # >>> sv_voltage.references
 

@@ -37,7 +37,8 @@ class VoltageControlZone(IdentifiedObject):
     # <<< voltage_control_zone.references
     # @generated
     # A VoltageControlZone is controlled by a designated BusbarSection.  
-    busbar_section = db.ReferenceProperty(db.Model, collection_name="_voltage_control_zone_set")
+    busbar_section = db.ReferenceProperty(db.Model,
+        collection_name="_voltage_control_zone_set") # voltage_control_zone
 
     # >>> voltage_control_zone.references
 

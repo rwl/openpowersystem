@@ -24,21 +24,27 @@ ns_prefix = "cim"
 ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_Wires"
 
 
-WindingType = db.StringProperty(choices=("tertiary", "primary", "secondary"))
+WindingType = db.StringProperty(default="tertiary",
+    choices=("tertiary", "primary", "secondary"))
 
 
-WindingConnection = db.StringProperty(choices=("Z", "Y", "D"))
+WindingConnection = db.StringProperty(default="Z",
+    choices=("Z", "Y", "D"))
 
 
-RegulatingControlModeKind = db.StringProperty(choices=("reactivePower", "voltage", "activePower", "currentFlow", "fixed", "admittance"))
+RegulatingControlModeKind = db.StringProperty(default="reactivePower",
+    choices=("reactivePower", "voltage", "activePower", "currentFlow", "fixed", "admittance"))
 
 
-SynchronousMachineType = db.StringProperty(choices=("condenser", "generator_or_condenser", "generator"))
+SynchronousMachineType = db.StringProperty(default="condenser",
+    choices=("condenser", "generator_or_condenser", "generator"))
 
 
-SynchronousMachineOperatingMode = db.StringProperty(choices=("condenser", "generator"))
+SynchronousMachineOperatingMode = db.StringProperty(default="condenser",
+    choices=("condenser", "generator"))
 
 
-PhaseTapChangerKind = db.StringProperty(choices=("asymmetrical", "symmetrical"))
+PhaseTapChangerKind = db.StringProperty(default="asymmetrical",
+    choices=("asymmetrical", "symmetrical"))
 
 # EOF -------------------------------------------------------------------------

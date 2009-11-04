@@ -38,7 +38,8 @@ class ConductingEquipment(Equipment):
     # <<< conducting_equipment.references
     # @generated
     # Use association to ConductingEquipment only when there is no VoltageLevel container used. The profile requires a BaseVoltage associaton on ConductingEquipment subtypes of classes ACLineSegment and TransformerWinding. The association is not used for any other subtypes. 
-    base_voltage = db.ReferenceProperty(BaseVoltage, collection_name="conducting_equipment")
+    base_voltage = db.ReferenceProperty(BaseVoltage,
+        collection_name="conducting_equipment")
 
     # Virtual property. ConductingEquipment has 1 or 2 terminals that may be connected to other ConductingEquipment terminals via ConnectivityNodes  
     pass # terminals

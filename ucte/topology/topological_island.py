@@ -40,7 +40,8 @@ class TopologicalIsland(IdentifiedObject):
     pass # topological_nodes
 
     # The angle reference for the island.   Normally there is one TopologicalNode that is selected as the angle reference for each island.   Other reference schemes exist, so the association is optional. 
-    angle_ref_topological_node = db.ReferenceProperty(db.Model, collection_name="_topological_island_set")
+    angle_ref_topological_node = db.ReferenceProperty(db.Model,
+        collection_name="_topological_island_set") # angle_ref_topological_island
 
     # >>> topological_island.references
 

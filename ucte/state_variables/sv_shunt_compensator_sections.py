@@ -33,14 +33,15 @@ class SvShuntCompensatorSections(StateVariable):
     # <<< sv_shunt_compensator_sections.attributes
     # @generated
     # The number of sections in service as a continous variable. 
-    continuous_sections = db.FloatProperty()
+    continuous_sections = db.FloatProperty(default=0.0)
 
     # >>> sv_shunt_compensator_sections.attributes
 
     # <<< sv_shunt_compensator_sections.references
     # @generated
     # The shunt compensator for which the state applies. 
-    shunt_compensator = db.ReferenceProperty(db.Model, collection_name="_sv_shunt_compensator_sections_set")
+    shunt_compensator = db.ReferenceProperty(db.Model,
+        collection_name="_sv_shunt_compensator_sections_set") # sv_shunt_compensator_sections
 
     # >>> sv_shunt_compensator_sections.references
 

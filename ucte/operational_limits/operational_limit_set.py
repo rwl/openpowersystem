@@ -38,7 +38,8 @@ class OperationalLimitSet(IdentifiedObject):
     # <<< operational_limit_set.references
     # @generated
     # The terminal specifically associated to this operational limit set.  If no terminal is associated, all terminals of the equipment are implied. For UCTE profile, the terminal associated with the limit is always required, and thus there is no need to exchange the associated Equipment which can always be derived from the terminal. 
-    terminal = db.ReferenceProperty(Terminal, collection_name="operational_limit_set")
+    terminal = db.ReferenceProperty(Terminal,
+        collection_name="operational_limit_set")
 
     # Virtual property. Values of equipment limits.  
     pass # operational_limit_value

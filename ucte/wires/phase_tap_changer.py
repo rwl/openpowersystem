@@ -59,7 +59,8 @@ class PhaseTapChanger(TapChanger):
     # <<< phase_tap_changer.references
     # @generated
     # The transformer winding to which the phase tap changer belongs. 
-    transformer_winding = db.ReferenceProperty(db.Model, collection_name="_phase_tap_changer_set")
+    transformer_winding = db.ReferenceProperty(db.Model,
+        collection_name="_phase_tap_changer_set") # phase_tap_changer
 
     # >>> phase_tap_changer.references
 

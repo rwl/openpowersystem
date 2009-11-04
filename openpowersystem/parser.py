@@ -26,19 +26,21 @@ import bz2
 import zipfile
 import logging
 
+from google.appengine.ext import db
+
 import rdfxml
 
 from ucte_pkg_map import ucte_pkg_map
-from cpsm_pkg_map import cpsm_pkg_map
-from cdpsm_pkg_map import cdpsm_pkg_map
+#from cpsm_pkg_map import cpsm_pkg_map
+#from cdpsm_pkg_map import cdpsm_pkg_map
 
-pkg_map = {"ucte": ucte_pkg_map, "cpsm": cpsm_pkg_map, "cdpsm": cdpsm_pkg_map}
+pkg_map = {"ucte": ucte_pkg_map}#, "cpsm": cpsm_pkg_map, "cdpsm": cdpsm_pkg_map}
 
 from ucte import ns_uri as ns_ucte
-from cpsm import ns_uri as ns_cpsm
-from cdpsm import ns_uri as ns_cdpsm
+#from cpsm import ns_uri as ns_cpsm
+#from cdpsm import ns_uri as ns_cdpsm
 
-ns_map = {"ucte": ns_ucte, "cpsm": ns_cpsm, "cdpsm": ns_cdpsm}
+ns_map = {"ucte": ns_ucte}#, "cpsm": ns_cpsm, "cdpsm": ns_cdpsm}
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,
     format="%(levelname)s: %(message)s")
@@ -126,13 +128,33 @@ class AttributeSink(object):
                     (element.__class__.__name__, attr_name))
                 return
 
-            default = getattr(element, attr_name)
-            if default is not None:
-                # Coerce the parsed value according to the type of the default.
-                default_type = type(default)
-                value = default_type(value)
+            prop = element.properties()[attr_name]
+
+            logger.debug("Model property: %s" % prop.__class__.__name__)
+
+            logger.debug("ReferenceProperty: %s" %
+                         isinstance(prop, db.ReferenceProperty))
+#            logger.debug("StringProperty: %s" %
+#                         isinstance(prop, db.StringProperty))
+#            logger.debug("FloatProperty: %s" %
+#                         isinstance(prop, db.FloatProperty))
+#            logger.debug("BooleanProperty: %s" %
+#                         isinstance(prop, db.BooleanProperty))
+
+            # Leave references until the second pass.
+            # FIXME: Use isinstance(prop, db.ReferenceProperty)
+            if prop.__class__.__name__ != "ReferenceProperty":
+                default = prop.default_value()
+
+                if default is not None:
+#                    logger.debug("Default value of '%s'." % default)
+                    # Coerce the value according to the type of the default.
+                    default_type = type(default)
+                    value = default_type(value)
+                else:
+                    logger.error("No default value [%s]." % attr_name)
+                    return
             else:
-                logger.debug("Default value of 'None'.")
                 return
 
             # TODO: Handle enumerations where the 'object' in the triple is the
@@ -140,9 +162,9 @@ class AttributeSink(object):
             # the fragment.
             # value = frag_obj.rsplit(".", 1)[1]
 
-            logger.debug("Setting '%s' attribute '%s' to: %s %s" %
-                (element.__class__.__name__, attr_name, str(value),
-                 type(value)))
+#            logger.debug("Setting '%s' attribute '%s' to: %s %s" %
+#                (element.__class__.__name__, attr_name, str(value),
+#                 type(value)))
 
             setattr(element, attr_name, value)
 
@@ -155,12 +177,12 @@ class ReferenceSink(object):
     """
 
     def __init__(self, attr_sink):
-        assert isinstance(attr_sink, CIMAttributeSink)
+        assert isinstance(attr_sink, AttributeSink)
 
         # The sink used in the first pass.
         self.attr_sink = attr_sink
 
-        self.pkg_map = self.attr_sink.pkg_map
+#        self.pkg_map = self.attr_sink.pkg_map
         self.ns_cim = self.attr_sink.ns_cim
         # Map of URIs to model elements from the first pass.
         self.uri_map = self.attr_sink.uri_object_map
@@ -265,12 +287,12 @@ class Parser(object):
 
         # Instantiate CIM objects and set their attributes.
         attr_sink = AttributeSink(self.profile)
-        logger.debug("Parsing objects and attributes in: %s" % filename)
+#        logger.debug("Parsing objects and attributes in: %s" % filename)
         rdfxml.parseRDF(s, base=filename, sink=attr_sink)
 
         # Second pass to set references.
         ref_sink = ReferenceSink(attr_sink)
-        logger.debug("Starting second pass to set references.")
+#        logger.debug("Starting second pass to set references.")
 #        rdfxml.parseRDF(s, base=filename, sink=ref_sink)
 
         # Return a map of unique resource identifiers to CIM objects.

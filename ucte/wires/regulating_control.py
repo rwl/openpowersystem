@@ -38,20 +38,21 @@ class RegulatingControl(IdentifiedObject):
     mode = RegulatingControlModeKind
 
     # The regulation is performed in a discrete mode. 
-    discrete = db.BooleanProperty()
+    discrete = db.BooleanProperty(default=False)
 
     # The target value specified for case input.   This value can be used for the target value wihout the use of schedules. The value has the units appropriate to the mode attribute. 
-    target_value = db.FloatProperty()
+    target_value = db.FloatProperty(default=0.0)
 
     # This is the case input target range.   This performs the same function as the value2 attribute on the regulation schedule in the case that schedules are not used.   The units of those appropriate for the mode. 
-    target_range = db.FloatProperty()
+    target_range = db.FloatProperty(default=0.0)
 
     # >>> regulating_control.attributes
 
     # <<< regulating_control.references
     # @generated
     # The terminal associated with this regulating control. 
-    terminal = db.ReferenceProperty(Terminal, collection_name="regulating_control")
+    terminal = db.ReferenceProperty(Terminal,
+        collection_name="regulating_control")
 
     # Virtual property. copy from reg cond eq  
     pass # regulating_cond_eq

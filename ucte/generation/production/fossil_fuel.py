@@ -41,7 +41,8 @@ class FossilFuel(IdentifiedObject):
     # <<< fossil_fuel.references
     # @generated
     # A thermal generating unit may have one or more fossil fuels  
-    thermal_generating_unit = db.ReferenceProperty(db.Model, collection_name="_fossil_fuel_set")
+    thermal_generating_unit = db.ReferenceProperty(db.Model,
+        collection_name="_fossil_fuel_set") # fossil_fuels
 
     # >>> fossil_fuel.references
 

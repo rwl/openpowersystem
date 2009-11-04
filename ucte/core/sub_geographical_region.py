@@ -41,7 +41,8 @@ class SubGeographicalRegion(IdentifiedObject):
     pass # substations
 
     # The association is used in the naming hierarchy. 
-    region = db.ReferenceProperty(GeographicalRegion, collection_name="regions")
+    region = db.ReferenceProperty(GeographicalRegion,
+        collection_name="regions")
 
     # >>> sub_geographical_region.references
 

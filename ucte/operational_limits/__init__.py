@@ -24,6 +24,7 @@ ns_prefix = "cim"
 ns_uri = "http://iec.ch/TC57/2009/CIM-schema-cim14#Package_OperationalLimits"
 
 
-OperationalLimitDirectionKind = db.StringProperty(choices=("high", "absoluteValue", "low"))
+OperationalLimitDirectionKind = db.StringProperty(default="high",
+    choices=("high", "absoluteValue", "low"))
 
 # EOF -------------------------------------------------------------------------

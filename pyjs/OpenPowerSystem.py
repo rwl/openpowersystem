@@ -20,6 +20,7 @@ from pyjamas.ui.RootPanel import RootPanel
 from pyjamas.ui.Label import Label
 from pyjamas.ui.Button import Button
 from pyjamas.ui.HTML import HTML
+from pyjamas.ui.ListBox import ListBox
 from pyjamas.ui.VerticalPanel import VerticalPanel
 from pyjamas.ui.HorizontalPanel import HorizontalPanel
 from pyjamas.ui.FormPanel import FormPanel
@@ -56,8 +57,6 @@ class OpenPowerSystem:
         self.tab_panel.selectTab(0)
 
         self.base_panel.add(self.tab_panel)
-
-        self.b2 = Button("Do not push!", self)
 
         RootPanel().add(self.base_panel)
 
@@ -120,7 +119,7 @@ class OpenPowerSystem:
                          ("CPSM (CIM13)", "cpsm"),
                          ("CDPSM (CIM 14)", "cdpsm")]
         self.profile = ListBox(VisibleItemCount=1)
-        self.profile.setName("package")
+        self.profile.setName("profileType")
         for n, v in self.profiles:
             self.profile.addItem(n, v)
         panel.add(self.profile)

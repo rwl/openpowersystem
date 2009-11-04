@@ -38,7 +38,7 @@ class ShuntCompensator(RegulatingCondEq):
     b0_per_section = Susceptance
 
     # For a capacitor bank, the maximum number of sections that may be switched in. 
-    maximum_sections = db.IntegerProperty()
+    maximum_sections = db.IntegerProperty(default=0)
 
     # Zero sequence shunt (charging) conductance per section This is for Short Circuit only. 
     g0_per_section = Conductance
@@ -54,7 +54,8 @@ class ShuntCompensator(RegulatingCondEq):
     # <<< shunt_compensator.references
     # @generated
     # The state for the number of shunt compensator sections in service.  
-    sv_shunt_compensator_sections = db.ReferenceProperty(db.Model, collection_name="_shunt_compensator_set")
+    sv_shunt_compensator_sections = db.ReferenceProperty(db.Model,
+        collection_name="_shunt_compensator_set") # shunt_compensator
 
     # >>> shunt_compensator.references
 

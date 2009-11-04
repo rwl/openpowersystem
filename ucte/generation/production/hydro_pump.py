@@ -37,7 +37,8 @@ class HydroPump(IdentifiedObject):
     # <<< hydro_pump.references
     # @generated
     # The synchronous machine drives the turbine which moves the water from a low elevation to a higher elevation. The direction of machine rotation for pumping may or may not be the same as for generating. 
-    driven_by_synchronous_machine = db.ReferenceProperty(db.Model, collection_name="_hydro_pump_set")
+    driven_by_synchronous_machine = db.ReferenceProperty(db.Model,
+        collection_name="_hydro_pump_set") # drives_hydro_pump
 
     # >>> hydro_pump.references
 

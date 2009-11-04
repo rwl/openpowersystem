@@ -39,10 +39,12 @@ class ControlAreaGeneratingUnit(Element):
     # <<< control_area_generating_unit.references
     # @generated
     # The parent control area for the generating unit specifications. 
-    control_area = db.ReferenceProperty(ControlArea, collection_name="control_area_generating_unit")
+    control_area = db.ReferenceProperty(ControlArea,
+        collection_name="control_area_generating_unit")
 
     # The generating unit specified for this control area.  Note that a control area should include a GeneratingUnit only once. 
-    generating_unit = db.ReferenceProperty(GeneratingUnit, collection_name="control_area_generating_unit")
+    generating_unit = db.ReferenceProperty(GeneratingUnit,
+        collection_name="control_area_generating_unit")
 
     # >>> control_area_generating_unit.references
 

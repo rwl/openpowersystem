@@ -37,7 +37,8 @@ class ThermalGeneratingUnit(GeneratingUnit):
     # <<< thermal_generating_unit.references
     # @generated
     # A thermal generating unit may have one or more fossil fuels The UCTE profile allows only one type of fuel per ThermalGeneratingUnit. 
-    fossil_fuels = db.ReferenceProperty(db.Model, collection_name="_thermal_generating_unit_set")
+    fossil_fuels = db.ReferenceProperty(db.Model,
+        collection_name="_thermal_generating_unit_set") # thermal_generating_unit
 
     # >>> thermal_generating_unit.references
 

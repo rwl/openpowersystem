@@ -35,17 +35,19 @@ class TieFlow(Element):
     # <<< tie_flow.attributes
     # @generated
     # The flow is positive into the terminal.  A flow is positive if it is an import into the control area. The power flow is positive into the Terminal of the ConductingEquipment. 
-    positive_flow_in = db.BooleanProperty()
+    positive_flow_in = db.BooleanProperty(default=False)
 
     # >>> tie_flow.attributes
 
     # <<< tie_flow.references
     # @generated
     # The control area of the tie flows. 
-    control_area = db.ReferenceProperty(ControlArea, collection_name="tie_flow")
+    control_area = db.ReferenceProperty(ControlArea,
+        collection_name="tie_flow")
 
     # The terminal to which this tie flow belongs. 
-    terminal = db.ReferenceProperty(Terminal, collection_name="tie_flow")
+    terminal = db.ReferenceProperty(Terminal,
+        collection_name="tie_flow")
 
     # >>> tie_flow.references
 

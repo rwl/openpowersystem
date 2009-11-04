@@ -41,7 +41,8 @@ class Substation(EquipmentContainer):
     pass # contains_voltage_levels
 
     # The association is used in the naming hierarchy. 
-    region = db.ReferenceProperty(SubGeographicalRegion, collection_name="substations")
+    region = db.ReferenceProperty(SubGeographicalRegion,
+        collection_name="substations")
 
     # >>> substation.references
 
