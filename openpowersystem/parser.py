@@ -81,9 +81,13 @@ class AttributeSink(object):
         ns_pred, frag_pred = splitURI(pred)
         ns_obj,  frag_obj  = splitURI(obj)
 
+#        logger.debug("Subject: %s, %s" % (ns_sub, frag_sub))
+#        logger.debug("Predicate: %s, %s" % (ns_pred, frag_pred))
+#        logger.debug("Object: %s, %s" % (ns_obj, frag_obj))
+
         # Instantiate an object if the predicate is an RDF type and the object
         # is in the CIM namespace.
-        if (ns_pred == rdfxml.rdf) and (frag_pred == "type") and \
+        if (rdfxml.rdf in ns_pred) and (frag_pred == "type") and \
             (ns_obj == self.ns_cim):
 
             cls_name = frag_obj
@@ -163,45 +167,6 @@ class AttributeSink(object):
                                  (value, attr_name, element))
 
 #------------------------------------------------------------------------------
-#  "coercePropertyValue" function:
-#------------------------------------------------------------------------------
-
-def coercePropertyValue(value, prop):
-    """ Coerces the type of a parsed value according to the property to which
-        it is to be assigned.
-    """
-    if isinstance(prop, db.StringProperty):
-        typ = str
-    elif isinstance(prop, db.FloatProperty):
-        typ = float
-    elif isinstance(prop, db.BooleanProperty):
-        typ = bool
-    elif isinstance(prop, db.IntegerProperty):
-        typ = int
-    elif isinstance(prop, db.ListProperty):
-        typ = list
-    elif isinstance(prop, db.DateProperty): # YYYY-MM-DD
-        try:
-            y, m, d = [int(s) for s in value.split("-")]
-            new_value = datetime.date(y, m, d)
-        except:
-            logger.error("Invalid date [%s] format (YYYY-MM-DD)" % value)
-            return None
-        return new_value
-    else:
-        logger.error("Unrecognised property type [%s]." % prop)
-        return None
-
-    try:
-        new_value = typ(value)
-#        logger.debug("Coerced: %s %s" % (new_value, type(new_value)))
-    except ValueError, e:
-        logger.error("Problem coercing '%s' to %s." % (value, typ))
-        new_value = None
-
-    return new_value
-
-#------------------------------------------------------------------------------
 #  "ReferenceSink" class:
 #------------------------------------------------------------------------------
 
@@ -218,7 +183,7 @@ class ReferenceSink(object):
 #        self.pkg_map = self.attr_sink.pkg_map
         self.ns_cim = self.attr_sink.ns_cim
         # Map of URIs to model elements from the first pass.
-        self.uri_map = self.attr_sink.uri_object_map
+#        self.uri_map = self.attr_sink.uri_object_map
 
         # Convertor from camel case to lowercase underscore separated.
         self.under = _CamelToLowercaseUnderscore()
@@ -227,57 +192,72 @@ class ReferenceSink(object):
     def triple(self, sub, pred, obj):
         """ Handles triples from the RDF parser.
         """
+        ns_sub, frag_sub = splitURI(sub)
         ns_pred, frag_pred = splitURI(pred)
-        ns_obj,  obj_uri   = splitURI(obj)
+        ns_obj, frag_obj = splitURI(obj)
+
+        """
+Subject: <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#_88f0284d16dc11deb60900059a3c7800>
+Predicate: <http://iec.ch/TC57/2009/CIM-schema-cim14#RegulatingControl.Terminal>
+Object: <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#_88f0284316dc11deb60900059a3c7800>
+
+Subject: <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#, _88f0285816dc11deb60900059a3c7800
+Predicate: http://iec.ch/TC57/2009/CIM-schema-cim14#, IdentifiedObject.name
+Object: "9"
+
+Subject: <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#, _88f0284d16dc11deb60900059a3c7800
+Predicate: http://iec.ch/TC57/2009/CIM-schema-cim14#, RegulatingControl.mode
+Object: http://iec.ch/TC57/2009/CIM-schema-cim14#, RegulatingControlModeKind.voltage
+        """
+
+#        logger.debug("Namespace: %s, %s" % (ns_obj))
 
         # If the predicate is in the CIM namespace, the triple is specifying
-        # an attribute or a reference.
-        if ns_pred == self.ns_cim:
-            ns_sub, uri_subject = splitURI(sub)
+        # an attribute or a reference.  Both enums and references have objects
+        # in the CIM namespace, but the end fragment for a reference is a hash.
+        if (ns_pred == self.ns_cim) and (rdfxml.rdf in ns_obj):
 
-            # Try to get the object with the reference being set.
-            if self.uri_map.has_key(uri_subject):
-                sub_obj = self.uri_map[uri_subject]
+            logger.debug("Setting reference: %s, %s" % (frag_pred, frag_sub))
+
+            # Get the object with the reference being set.
+            if self.attr_sink.uri_object_map.has_key(frag_sub):
+                sub_obj = self.attr_sink.uri_object_map[frag_sub]
             else:
-                logger.error("Referencing object [%s] not found." %
-                    uri_subject)
+                logger.error("Referencing object [%s] not found." % frag_sub)
+                return
+
+            # Get the object being referenced.
+            if self.attr_sink.uri_object_map.has_key(frag_obj):
+                ref_obj = self.attr_sink.uri_object_map[frag_obj]
+            else:
+                logger.error("Referenced object [%s] not found." % frag_obj)
                 return
 
             # Split the predicate fragment into class name and attribute name.
             class_name, camel_ref_name = frag_pred.rsplit(".", 1)
             ref_name = self.under(camel_ref_name)
-            # Assert that the object from the dictionary has the same type as
-            # that specified in the predicate.
-#            assert sub_obj.__class__.__name__ == class_name
-
-#            logger.debug("Trying to set the '%s' reference of '%s' to: '%s'" %
-#                (ref_name, class_name, ref_name))
 
             # Get the attribute object so the type can be determined.
-#            trait = sub_obj.trait( ref_name )
-            if not hasattr(object, ref_name):
+            prop = sub_obj.properties()[ref_name]
+
+            if isinstance(prop, db.ReferenceProperty):
+                setattr(sub_obj, ref_name, ref_obj.key())
+            elif isinstance(prop, db.Query):
+                logger.debug("Skipping virtual reference property [%s]." %
+                             ref_name)
+            elif isinstance(prop, db.ListProperty):
+                logger.debug("Skipping 'many' reference property [%s]." %
+                             ref_name)
+            else:
                 logger.error("Object [%s] has no reference: %s" %
                     (sub_obj.__class__.__name__, ref_name))
                 return
 
-            # Try to get the object being referenced.
-            if uri_map.has_key(obj_uri):
-                ref_obj = self.attr_sink.uri_object_map[obj_uri]
-            else:
-                logger.error("Referenced object [%s] not found." % obj_uri)
-                return
-
-
-            logger.debug("Setting the '%s' reference of '%s' to: %s" %
-                (ref_name, sub_obj, ref_obj))
+            logger.debug("Setting the '%s' property of %s to reference %s" %
+                (ref_name, sub_obj.__class__.__name__,
+                 ref_obj.__class__.__name__))
 
             setattr(sub_obj, ref_name, ref_obj)
-
-            # One to many and many to many references (List(Instance)).
-#            elif trait.is_trait_type( List ) and \
-#                trait.inner_traits[0].is_trait_type( Instance ):
-#
-#                logger.warning("Skipping multiplicity-many reference.")
 
 #------------------------------------------------------------------------------
 #  "Parser" class:
@@ -323,12 +303,15 @@ class Parser(object):
         # Instantiate CIM objects and set their attributes.
         attr_sink = AttributeSink(self.profile)
 #        logger.debug("Parsing objects and attributes in: %s" % filename)
+        # If 'base' is None then no RDF namespace in triples.
         rdfxml.parseRDF(s, base=filename, sink=attr_sink)
 
         # Second pass to set references.
         ref_sink = ReferenceSink(attr_sink)
 #        logger.debug("Starting second pass to set references.")
-#        rdfxml.parseRDF(s, base=filename, sink=ref_sink)
+        rdfxml.parseRDF(s, base=filename, sink=ref_sink)
+
+        logger.info("%d model elements created." % len(attr_sink.uri_object_map))
 
         # Return a map of unique resource identifiers to CIM objects.
         return attr_sink.uri_object_map
@@ -361,6 +344,45 @@ def splitURI(uri):
         return (tail, "")
 
 #------------------------------------------------------------------------------
+#  "coercePropertyValue" function:
+#------------------------------------------------------------------------------
+
+def coercePropertyValue(value, prop):
+    """ Coerces the type of a parsed value according to the property to which
+        it is to be assigned.
+    """
+    if isinstance(prop, db.StringProperty):
+        typ = str
+    elif isinstance(prop, db.FloatProperty):
+        typ = float
+    elif isinstance(prop, db.BooleanProperty):
+        typ = bool
+    elif isinstance(prop, db.IntegerProperty):
+        typ = int
+    elif isinstance(prop, db.ListProperty):
+        typ = list
+    elif isinstance(prop, db.DateProperty): # YYYY-MM-DD
+        try:
+            y, m, d = [int(s) for s in value.split("-")]
+            new_value = datetime.date(y, m, d)
+        except:
+            logger.error("Invalid date [%s] format (YYYY-MM-DD)" % value)
+            return None
+        return new_value
+    else:
+        logger.error("Unrecognised property type [%s]." % prop)
+        return None
+
+    try:
+        new_value = typ(value)
+#        logger.debug("Coerced: %s %s" % (new_value, type(new_value)))
+    except ValueError, e:
+        logger.error("Problem coercing '%s' to %s." % (value, typ))
+        new_value = None
+
+    return new_value
+
+#------------------------------------------------------------------------------
 #  "_CamelToLowercaseUnderscore" callable:
 #------------------------------------------------------------------------------
 
@@ -382,5 +404,12 @@ class _CamelToLowercaseUnderscore(object):
             s += c.lower()
 
         return s
+
+
+class LogSink(object):
+   def triple(self, s, p, o):
+       logger.debug("Subject: %s" % s)
+       logger.debug("Predicate: %s" % p)
+       logger.debug("Object: %s\n" % o)
 
 # EOF -------------------------------------------------------------------------
