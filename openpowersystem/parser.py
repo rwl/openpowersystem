@@ -33,12 +33,14 @@ from google.appengine.ext import db
 import rdfxml
 
 from ucte_pkg_map import ucte_pkg_map
-#from cpsm_pkg_map import cpsm_pkg_map
-#from cdpsm_pkg_map import cdpsm_pkg_map
+from cpsm_pkg_map import cpsm_pkg_map
+from cdpsm_pkg_map import cdpsm_pkg_map
+from dynamics_pkg_map import dynamics_pkg_map
 
 from ucte import ns_uri as ns_ucte
-#from cpsm import ns_uri as ns_cpsm
-#from cdpsm import ns_uri as ns_cdpsm
+from cpsm import ns_uri as ns_cpsm
+from cdpsm import ns_uri as ns_cdpsm
+from dynamics import ns_uri as ns_dyn
 
 #------------------------------------------------------------------------------
 #  Logging:
@@ -50,9 +52,11 @@ logger = logging.getLogger(__name__)
 #  Constants:
 #------------------------------------------------------------------------------
 
-PKG_MAP = {"ucte": ucte_pkg_map}#, "cpsm": cpsm_pkg_map, "cdpsm": cdpsm_pkg_map}
+PKG_MAP = {"ucte": ucte_pkg_map, "cpsm": cpsm_pkg_map, "cdpsm": cdpsm_pkg_map,
+           "dynamics": dynamics_pkg_map}
 
-NS_MAP = {"ucte": ns_ucte}#, "cpsm": ns_cpsm, "cdpsm": ns_cdpsm}
+NS_MAP = {"ucte": ns_ucte, "cpsm": ns_cpsm, "cdpsm": ns_cdpsm,
+          "dynamics": ns_dyn}
 
 #------------------------------------------------------------------------------
 #  "AttributeSink" class:
@@ -97,20 +101,23 @@ class AttributeSink(object):
                 # It is fairly cheap to import an already imported module.
                 module_name = self.pkg_map[cls_name]
 
-#                logger.debug("Class [%s] located [%s]." %
-#                    (cls_name, module_name))
+                logger.debug("Class [%s] located [%s]." %
+                    (cls_name, module_name))
 
                 exec "import %s" % module_name
-                element = eval("%s.%s(uri=uri)" % (module_name, cls_name))
+                element = eval("%s.%s()" % (module_name, cls_name))
 
+                if hasattr(element, "uri"):
+                    setattr(element, "uri", uri)
                 if hasattr(element, "m_rid"):
-                    element.m_rid = uri
+                    setattr(element, "m_rid", uri)
             else:
                 logger.error("Module for '%s' not located." % cls_name)
 
             # Map the element according to its URI.
             self.uri_object_map[uri] = element
 
+            # Put the model element into the data store.
             element.put()
 
         # If the predicate is in the CIM namespace the triple is specifying
@@ -157,9 +164,9 @@ class AttributeSink(object):
                 coerced = coercePropertyValue(value, prop)
 
                 if coerced is not None:
-#                    logger.debug("Setting '%s' attribute '%s' to: %s %s" %
-#                        (element.__class__.__name__, attr_name, str(coerced),
-#                         type(coerced)))
+                    logger.debug("Setting '%s' attribute '%s' to: %s %s" %
+                        (element.__class__.__name__, attr_name, str(coerced),
+                         type(coerced)))
 
                     setattr(element, attr_name, coerced)
                 else:
@@ -217,20 +224,27 @@ Object: http://iec.ch/TC57/2009/CIM-schema-cim14#, RegulatingControlModeKind.vol
         # in the CIM namespace, but the end fragment for a reference is a hash.
         if (ns_pred == self.ns_cim) and (rdfxml.rdf in ns_obj):
 
-            logger.debug("Setting reference: %s, %s" % (frag_pred, frag_sub))
+            suburi = frag_sub # URI for the referencing element.
+            objuri = frag_obj # URI for the referenced element.
+
+#            logger.debug("Setting reference: %s, %s" % (frag_pred, suburi))
 
             # Get the object with the reference being set.
-            if self.attr_sink.uri_object_map.has_key(frag_sub):
-                sub_obj = self.attr_sink.uri_object_map[frag_sub]
+            if self.attr_sink.uri_object_map.has_key(suburi):
+                sub_obj = self.attr_sink.uri_object_map[suburi]
             else:
-                logger.error("Referencing object [%s] not found." % frag_sub)
+                logger.error("Referencing object [%s] not found." % suburi)
                 return
 
             # Get the object being referenced.
-            if self.attr_sink.uri_object_map.has_key(frag_obj):
-                ref_obj = self.attr_sink.uri_object_map[frag_obj]
+            if self.attr_sink.uri_object_map.has_key(objuri):
+                ref_obj = self.attr_sink.uri_object_map[objuri]
             else:
-                logger.error("Referenced object [%s] not found." % frag_obj)
+                # The element being referenced may exist in the data store.
+                ref_obj = None#self.search_datastore(suburi)
+
+            if ref_obj is None:
+                logger.error("Referenced object [%s] not found." % objuri)
                 return
 
             # Split the predicate fragment into class name and attribute name.
@@ -258,6 +272,29 @@ Object: http://iec.ch/TC57/2009/CIM-schema-cim14#, RegulatingControlModeKind.vol
                  ref_obj.__class__.__name__))
 
             setattr(sub_obj, ref_name, ref_obj)
+
+
+#    def search_datastore(self, uri, root="Element"):
+#        """ Returns the first object from the data store with the given URI
+#            or returns None if no match found.
+#        """
+#        if not self.attr_sink.pkg_map.has_key(root):
+#            logger.warning("Root element not available.")
+#            return None
+#
+#        root_module = self.attr_sink.pkg_map[root]
+#        exec "import %s" % root_module
+#        element = eval("%s.%s" % (root_module, root))
+#
+#        q = element.all().filter("uri =", uri)
+#        results = q.fetch(1)
+#
+#        logger.debug("RESULTS: %s" % results)
+#
+#        if results:
+#            return results[0]
+#        else:
+#            return None
 
 #------------------------------------------------------------------------------
 #  "Parser" class:
@@ -361,10 +398,12 @@ def coercePropertyValue(value, prop):
         typ = int
     elif isinstance(prop, db.ListProperty):
         typ = list
-    elif isinstance(prop, db.DateProperty): # YYYY-MM-DD
+    elif isinstance(prop, db.DateTimeProperty):
+        # YYYY-MM-DD
+        # 11/10/2009 12:23:59 AM
         try:
             y, m, d = [int(s) for s in value.split("-")]
-            new_value = datetime.date(y, m, d)
+            new_value = datetime.datetime(y, m, d)
         except:
             logger.error("Invalid date [%s] format (YYYY-MM-DD)" % value)
             return None

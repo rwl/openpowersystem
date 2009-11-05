@@ -117,7 +117,8 @@ class OpenPowerSystem:
         # Create a list box for choice of profile.
         self.profiles = [("UCTE (CIM 14)", "ucte"),
                          ("CPSM (CIM13)", "cpsm"),
-                         ("CDPSM (CIM 14)", "cdpsm")]
+                         ("CDPSM (CIM 14)", "cdpsm"),
+                         ("Dynamics (CIM 14)", "dynamics")]
         self.profile = ListBox(VisibleItemCount=1)
         self.profile.setName("profileType")
         for n, v in self.profiles:
