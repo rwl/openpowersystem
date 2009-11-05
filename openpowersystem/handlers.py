@@ -26,6 +26,8 @@ import os
 import cgi
 import logging
 
+from StringIO import StringIO
+
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
@@ -43,6 +45,8 @@ from ucte.generation.production.thermal_generating_unit import ThermalGenerating
 from django.utils import simplejson
 
 from openpowersystem.parser import Parser
+
+from rdflib.Graph import Graph
 
 #------------------------------------------------------------------------------
 #  Logging:
@@ -99,7 +103,11 @@ class UploadPage(webapp.RequestHandler):
 
 #        logging.debug("Profile Type: %s" % profile)
 
-        Parser(profile).parse(rdf_data)
+#        Parser(profile).parse(rdf_data)
+        g = Graph()
+        g.parse(StringIO(rdf_data), format="xml")
+
+        logger.debug("Triples: %d" % len(g))
 
         self.redirect('/')
 
