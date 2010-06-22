@@ -5,6 +5,8 @@ from pyjamas.ui.SimplePanel import SimplePanel
 
 import OpenLayers.js
 
+from __pyjamas__ import JS
+
 class OpenMap(SimplePanel):
     def __init__(self, *args, **kwargs):
         map_div = DOM.createDiv()

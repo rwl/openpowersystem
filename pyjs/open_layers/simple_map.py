@@ -3,7 +3,7 @@ from pyjamas.ui.VerticalPanel import VerticalPanel
 from pyjamas.ui.SimplePanel import SimplePanel
 from pyjamas.ui.Button import Button
 
-from OpenMaps import OpenMap, OpenWMSLayer
+from open_map import OpenMap, OpenWMSLayer
 
 import OpenLayers.js
 
